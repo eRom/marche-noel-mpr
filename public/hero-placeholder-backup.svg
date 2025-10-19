@@ -1,0 +1,61 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8fafc;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e2e8f0;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="card" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#dc2626;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#b91c1c;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="600" fill="url(#bg)"/>
+  
+  <!-- Christmas Card -->
+  <rect x="200" y="100" width="400" height="300" rx="20" fill="url(#card)" stroke="#991b1b" stroke-width="3"/>
+  
+  <!-- Card Border -->
+  <rect x="210" y="110" width="380" height="280" rx="15" fill="none" stroke="#fbbf24" stroke-width="2"/>
+  
+  <!-- Christmas Tree -->
+  <path d="M400 150 L380 200 L420 200 Z" fill="#16a34a"/>
+  <path d="M400 170 L375 220 L425 220 Z" fill="#15803d"/>
+  <path d="M400 190 L370 240 L430 240 Z" fill="#16a34a"/>
+  <rect x="395" y="240" width="10" height="20" fill="#8b4513"/>
+  
+  <!-- Star on tree -->
+  <path d="M400 140 L402 150 L410 150 L404 155 L406 165 L400 160 L394 165 L396 155 L390 150 L398 150 Z" fill="#fbbf24"/>
+  
+  <!-- Ornaments -->
+  <circle cx="385" cy="180" r="4" fill="#dc2626"/>
+  <circle cx="415" cy="190" r="4" fill="#fbbf24"/>
+  <circle cx="375" cy="210" r="4" fill="#dc2626"/>
+  <circle cx="425" cy="210" r="4" fill="#fbbf24"/>
+  
+  <!-- Snowflakes -->
+  <g fill="#ffffff" opacity="0.8">
+    <path d="M100 80 L102 85 L107 85 L103 88 L105 93 L100 90 L95 93 L97 88 L93 85 L98 85 Z"/>
+    <path d="M700 120 L702 125 L707 125 L703 128 L705 133 L700 130 L695 133 L697 128 L693 125 L698 125 Z"/>
+    <path d="M150 200 L152 205 L157 205 L153 208 L155 213 L150 210 L145 213 L147 208 L143 205 L148 205 Z"/>
+    <path d="M650 250 L652 255 L657 255 L653 258 L655 263 L650 260 L645 263 L647 258 L643 255 L648 255 Z"/>
+  </g>
+  
+  <!-- Text -->
+  <text x="400" y="350" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#ffffff">
+    Marché de Noël MPR
+  </text>
+  <text x="400" y="380" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#fbbf24">
+    15 - 24 Décembre 2024
+  </text>
+  <text x="400" y="400" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#ffffff">
+    Nantes
+  </text>
+  
+  <!-- Decorative elements -->
+  <circle cx="150" cy="150" r="3" fill="#dc2626" opacity="0.6"/>
+  <circle cx="650" cy="180" r="3" fill="#16a34a" opacity="0.6"/>
+  <circle cx="120" cy="300" r="2" fill="#fbbf24" opacity="0.6"/>
+  <circle cx="680" cy="320" r="2" fill="#dc2626" opacity="0.6"/>
+</svg>
