@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -8,9 +9,13 @@ export default function Footer() {
           {/* Logo and description */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-noel-red rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-sm">M</span>
-              </div>
+              <Image
+                src="/icon-192.png"
+                alt="Logo Marché de Noël MPR"
+                width={32}
+                height={32}
+                className="w-8 h-8"
+              />
               <span className="font-bold text-lg">Marché de Noël MPR</span>
             </div>
             <p className="text-gray-300 text-sm">

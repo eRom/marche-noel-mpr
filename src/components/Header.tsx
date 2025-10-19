@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
@@ -20,9 +21,13 @@ export default function Header() {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <Link href="/" className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-noel-red rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-sm">M</span>
-              </div>
+              <Image
+                src="/icon-192.png"
+                alt="Logo Marché de Noël MPR"
+                width={32}
+                height={32}
+                className="w-8 h-8"
+              />
               <span className="font-bold text-lg text-gray-900">Marché de Noël MPR</span>
             </Link>
           </div>
