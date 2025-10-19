@@ -1,8 +1,9 @@
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Calendar, Clock, MapPin, Users } from "lucide-react";
+import Image from "next/image";
 
 export const metadata = {
   title: "Programme - Marché de Noël MPR",
@@ -89,13 +90,27 @@ export default function Programme() {
       
       <main>
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-noel-red to-red-700 py-16">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+        <section className="relative py-16 overflow-hidden">
+          {/* Background Image */}
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="/hero-placeholder.png"
+              alt="Marché de Noël MPR"
+              fill
+              className="object-cover"
+              priority
+            />
+            {/* Overlay with blur and opacity */}
+            <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
+          </div>
+          
+          {/* Content */}
+          <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
             <AnimatedSection animation="fadeInUp">
               <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">
                 Programme du Marché de Noël
               </h1>
-              <p className="text-xl text-red-100 max-w-2xl mx-auto">
+              <p className="text-xl text-white/90 max-w-2xl mx-auto">
                 Du 15 au 24 décembre 2024, découvrez un programme riche en animations, 
                 concerts et activités pour toute la famille.
               </p>
