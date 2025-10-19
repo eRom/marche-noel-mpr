@@ -17,7 +17,7 @@ description: Initialize a new feature branch named feature/[feature-name]-[YYYY-
    - Existing similar implementations or related features
 
 3. **Understand the feature** to implement
-[feature-need]
+Read [feature-need]
 
 4. **Think deeply and create a comprehensive implementation plan** that includes:
    - **Scope & Requirements**: Clear definition of what needs to be built

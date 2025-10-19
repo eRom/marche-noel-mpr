@@ -2,6 +2,7 @@ import AnimatedSection from "@/components/AnimatedSection";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
+import QRCodeSection from "@/components/QRCodeSection";
 import { Card, CardContent } from "@/components/ui/card";
 import { Calendar, Heart, ShoppingBag } from "lucide-react";
 import Link from "next/link";
@@ -118,6 +119,9 @@ export default function Home() {
             </AnimatedSection>
           </div>
         </section>
+
+        {/* QR Code Section */}
+        <QRCodeSection />
       </main>
 
       <Footer />
