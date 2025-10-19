@@ -1,9 +1,9 @@
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 import { Badge } from "@/components/ui/badge";
-import { ShoppingBag, Star, MapPin, Phone } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { MapPin, Phone, ShoppingBag, Star } from "lucide-react";
 import Image from "next/image";
 
 export const metadata = {
@@ -76,7 +76,7 @@ export default function Boutique() {
               src="/hero-placeholder.png"
               alt="Marché de Noël MPR"
               fill
-              className="object-cover"
+              className="object-cover object-bottom"
               priority
             />
             {/* Overlay with blur and opacity */}
