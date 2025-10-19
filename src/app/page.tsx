@@ -30,10 +30,10 @@ export default function Home() {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <AnimatedSection animation="fadeInUp">
               <div className="text-center mb-12">
-                <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+                <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
                   Pourquoi nous choisir ?
                 </h2>
-                <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
                   Un marché de Noël authentique qui célèbre les traditions locales et l&apos;artisanat français.
                 </p>
               </div>
@@ -42,13 +42,13 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <AnimatedSection animation="fadeInLeft" delay={200}>
                 <Link href="/programme">
-                  <Card className="text-center p-6 hover:shadow-lg cursor-pointer hover:bg-red-50 transition-all duration-300">
+                  <Card className="text-center p-6 hover:shadow-lg cursor-pointer hover:bg-red-50 dark:hover:bg-red-900/20 transition-all duration-300 bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
                     <CardContent className="pt-6">
                       <Calendar className="w-12 h-12 text-noel-red mx-auto mb-4" />
-                      <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
                         Programme riche
                       </h3>
-                      <p className="text-gray-600">
+                      <p className="text-gray-600 dark:text-gray-300">
                         Des animations quotidiennes et des ateliers pour toute la famille.
                       </p>
                     </CardContent>
@@ -58,13 +58,13 @@ export default function Home() {
 
               <AnimatedSection animation="fadeInUp" delay={400}>
                 <Link href="/boutique">
-                  <Card className="text-center p-6 hover:shadow-lg cursor-pointer hover:bg-green-50 transition-all duration-300">
+                  <Card className="text-center p-6 hover:shadow-lg cursor-pointer hover:bg-green-50 dark:hover:bg-green-900/20 transition-all duration-300 bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
                     <CardContent className="pt-6">
                       <ShoppingBag className="w-12 h-12 text-noel-green mx-auto mb-4" />
-                      <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
                         Artisans patients
                       </h3>
-                      <p className="text-gray-600">
+                      <p className="text-gray-600 dark:text-gray-300">
                         Découvrez des créateurs talentueux et des produits uniques de notre région.
                       </p>
                     </CardContent>
@@ -74,13 +74,13 @@ export default function Home() {
 
               <AnimatedSection animation="fadeInRight" delay={600}>
                 <Link href="/merci">
-                  <Card className="text-center p-6 hover:shadow-lg cursor-pointer hover:bg-yellow-50 transition-all duration-300">
+                  <Card className="text-center p-6 hover:shadow-lg cursor-pointer hover:bg-yellow-50 dark:hover:bg-yellow-900/20 transition-all duration-300 bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
                     <CardContent className="pt-6">
                       <Heart className="w-12 h-12 text-noel-gold mx-auto mb-4" />
-                      <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
                         Esprit de Noël
                       </h3>
-                      <p className="text-gray-600">
+                      <p className="text-gray-600 dark:text-gray-300">
                         Une ambiance chaleureuse et festive pour créer des souvenirs inoubliables.
                       </p>
                     </CardContent>
