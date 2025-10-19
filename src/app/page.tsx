@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import { Card, CardContent } from "@/components/ui/card";
 import { Calendar, Heart, ShoppingBag } from "lucide-react";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -40,45 +41,51 @@ export default function Home() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <AnimatedSection animation="fadeInLeft" delay={200}>
-                <Card className="text-center p-6 hover:shadow-lg hover:bg-red-50 transition-all duration-300">
-                  <CardContent className="pt-6">
-                    <Calendar className="w-12 h-12 text-noel-red mx-auto mb-4" />
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                      Programme riche
-                    </h3>
-                    <p className="text-gray-600">
-                      Des animations quotidiennes et des ateliers pour toute la famille.
-                    </p>
-                  </CardContent>
-                </Card>
+                <Link href="/programme">
+                  <Card className="text-center p-6 hover:shadow-lg cursor-pointer hover:bg-red-50 transition-all duration-300">
+                    <CardContent className="pt-6">
+                      <Calendar className="w-12 h-12 text-noel-red mx-auto mb-4" />
+                      <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                        Programme riche
+                      </h3>
+                      <p className="text-gray-600">
+                        Des animations quotidiennes et des ateliers pour toute la famille.
+                      </p>
+                    </CardContent>
+                  </Card>
+                </Link>
               </AnimatedSection>
 
               <AnimatedSection animation="fadeInUp" delay={400}>
-                <Card className="text-center p-6 hover:shadow-lg hover:bg-green-50 transition-all duration-300">
-                  <CardContent className="pt-6">
-                    <ShoppingBag className="w-12 h-12 text-noel-green mx-auto mb-4" />
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                      Artisans patients
-                    </h3>
-                    <p className="text-gray-600">
-                      Découvrez des créateurs talentueux et des produits uniques de notre région.
-                    </p>
-                  </CardContent>
-                </Card>
+                <Link href="/boutique">
+                  <Card className="text-center p-6 hover:shadow-lg cursor-pointer hover:bg-green-50 transition-all duration-300">
+                    <CardContent className="pt-6">
+                      <ShoppingBag className="w-12 h-12 text-noel-green mx-auto mb-4" />
+                      <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                        Artisans patients
+                      </h3>
+                      <p className="text-gray-600">
+                        Découvrez des créateurs talentueux et des produits uniques de notre région.
+                      </p>
+                    </CardContent>
+                  </Card>
+                </Link>
               </AnimatedSection>
 
               <AnimatedSection animation="fadeInRight" delay={600}>
-                <Card className="text-center p-6 hover:shadow-lg hover:bg-yellow-50 transition-all duration-300">
-                  <CardContent className="pt-6">
-                    <Heart className="w-12 h-12 text-noel-gold mx-auto mb-4" />
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                      Esprit de Noël
-                    </h3>
-                    <p className="text-gray-600">
-                      Une ambiance chaleureuse et festive pour créer des souvenirs inoubliables.
-                    </p>
-                  </CardContent>
-                </Card>
+                <Link href="/merci">
+                  <Card className="text-center p-6 hover:shadow-lg cursor-pointer hover:bg-yellow-50 transition-all duration-300">
+                    <CardContent className="pt-6">
+                      <Heart className="w-12 h-12 text-noel-gold mx-auto mb-4" />
+                      <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                        Esprit de Noël
+                      </h3>
+                      <p className="text-gray-600">
+                        Une ambiance chaleureuse et festive pour créer des souvenirs inoubliables.
+                      </p>
+                    </CardContent>
+                  </Card>
+                </Link>
               </AnimatedSection>
             </div>
           </div>
