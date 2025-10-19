@@ -1,5 +1,5 @@
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -16,11 +16,11 @@ export default function Footer() {
                 height={32}
                 className="w-8 h-8"
               />
-              <span className="font-bold text-lg">Marché de Noël MPR</span>
+              <span className="font-bold text-lg">Marché de Noël du MPR</span>
             </div>
             <p className="text-gray-300 text-sm">
               Marché de Noël du MPR de Nantes<br />
-              Du 15 au 24 décembre
+              Du 15 au 24 décembre 2025
             </p>
           </div>
 
@@ -49,7 +49,7 @@ export default function Footer() {
             <div className="space-y-2 text-sm text-gray-300">
               <p>MPR Nantes</p>
               <p>Nantes, France</p>
-              <p>15-24 décembre 2024</p>
+              <p>15-24 décembre 2025</p>
             </div>
           </div>
         </div>
@@ -57,11 +57,11 @@ export default function Footer() {
         <div className="mt-8 pt-8 border-t border-gray-800">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm">
-              © 2024 Marché de Noël MPR. Tous droits réservés.
+              © 2025 MPR de Nantes. Tous droits réservés.
             </p>
             <div className="mt-4 md:mt-0">
               <p className="text-gray-400 text-sm">
-                Fait avec ❤️ pour la communauté MPR
+                Fait avec ❤️ pour la communauté
               </p>
             </div>
           </div>
