@@ -14,22 +14,31 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Marché de Noël MPR",
+  title: "Marché de Noël du MPR",
   description: "Marché de Noël du MPR de Nantes - 15 au 24 décembre",
   manifest: "/manifest.json",
   keywords: ["marché", "noël", "nantes", "mpr", "événement", "décembre"],
-  authors: [{ name: "MPR Nantes" }],
+  authors: [{ name: "Romain Ecarnot" }],
   openGraph: {
-    title: "Marché de Noël MPR",
+    title: "Marché de Noël du MPR",
     description: "Marché de Noël du MPR de Nantes - 15 au 24 décembre",
     type: "website",
     locale: "fr_FR",
-    siteName: "Marché de Noël MPR",
+    siteName: "Marché de Noël du MPR",
+    images: [
+      {
+        url: "/og.png",
+        width: 1280,
+        height: 800,
+        alt: "Marché de Noël du MPR de Nantes - 15 au 24 décembre 2024",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Marché de Noël MPR",
+    title: "Marché de Noël du MPR",
     description: "Marché de Noël du MPR de Nantes - 15 au 24 décembre",
+    images: ["/og.png"],
   },
   icons: {
     icon: [
@@ -48,7 +57,7 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "Marché de Noël MPR",
+    title: "Marché de Noël du MPR",
   },
 };
 
