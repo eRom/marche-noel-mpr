@@ -1,12 +1,12 @@
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
-import { Heart, Users, Star, Gift } from "lucide-react";
+import { Gift, Heart, Star, Users } from "lucide-react";
 
 export const metadata = {
-  title: "Merci - Marché de Noël MPR",
-  description: "Remerciements et informations sur le Marché de Noël MPR",
+  title: "Merci - Marché de Noël du MPR",
+  description: "Remerciements et informations sur le Marché de Noël du MPR",
 };
 
 export default function Merci() {
@@ -39,7 +39,7 @@ export default function Merci() {
                   Un événement réussi grâce à vous
                 </h2>
                 <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                  Le Marché de Noël MPR 2024 a été un véritable succès grâce à la participation 
+                  Le Marché de Noël MPR 2025 a été un véritable succès grâce à la participation 
                   de tous : visiteurs, artisans, bénévoles et organisateurs. Votre enthousiasme 
                   et votre soutien ont créé une ambiance magique qui restera dans nos mémoires.
                 </p>
@@ -198,11 +198,11 @@ export default function Merci() {
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
                 Nous vous donnons rendez-vous l&apos;année prochaine pour une nouvelle édition 
-                encore plus magique du Marché de Noël MPR.
+                encore plus magique du Marché de Noël du MPR.
               </p>
               <div className="bg-white p-6 rounded-lg shadow-lg max-w-md mx-auto">
                 <h3 className="text-xl font-semibold text-noel-red mb-2">
-                  Marché de Noël MPR 2025
+                  Marché de Noël du MPR 2026
                 </h3>
                 <p className="text-gray-600">
                   Dates à confirmer<br />
