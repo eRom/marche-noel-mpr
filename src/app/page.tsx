@@ -8,7 +8,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       <Header />
       
       <main>
@@ -30,10 +30,10 @@ export default function Home() {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <AnimatedSection animation="fadeInUp">
               <div className="text-center mb-12">
-                <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
                   Pourquoi nous choisir ?
                 </h2>
-                <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                   Un marché de Noël authentique qui célèbre les traditions locales et l&apos;artisanat français.
                 </p>
               </div>
@@ -42,13 +42,13 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <AnimatedSection animation="fadeInLeft" delay={200}>
                 <Link href="/programme">
-                  <Card className="text-center p-6 hover:shadow-lg cursor-pointer hover:bg-red-50 dark:hover:bg-red-900/20 transition-all duration-300 bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
+                  <Card className="text-center p-6 hover:shadow-lg cursor-pointer hover:bg-primary/10 transition-all duration-300 bg-card border-border">
                     <CardContent className="pt-6">
-                      <Calendar className="w-12 h-12 text-noel-red mx-auto mb-4" />
-                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                      <Calendar className="w-12 h-12 text-primary mx-auto mb-4" />
+                      <h3 className="text-xl font-semibold text-card-foreground mb-2">
                         Programme riche
                       </h3>
-                      <p className="text-gray-600 dark:text-gray-300">
+                      <p className="text-muted-foreground">
                         Des animations quotidiennes et des ateliers pour toute la famille.
                       </p>
                     </CardContent>
@@ -58,13 +58,13 @@ export default function Home() {
 
               <AnimatedSection animation="fadeInUp" delay={400}>
                 <Link href="/boutique">
-                  <Card className="text-center p-6 hover:shadow-lg cursor-pointer hover:bg-green-50 dark:hover:bg-green-900/20 transition-all duration-300 bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
+                  <Card className="text-center p-6 hover:shadow-lg cursor-pointer hover:bg-secondary/10 transition-all duration-300 bg-card border-border">
                     <CardContent className="pt-6">
-                      <ShoppingBag className="w-12 h-12 text-noel-green mx-auto mb-4" />
-                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                      <ShoppingBag className="w-12 h-12 text-secondary mx-auto mb-4" />
+                      <h3 className="text-xl font-semibold text-card-foreground mb-2">
                         Artisans patients
                       </h3>
-                      <p className="text-gray-600 dark:text-gray-300">
+                      <p className="text-muted-foreground">
                         Découvrez des créateurs talentueux et des produits uniques de notre région.
                       </p>
                     </CardContent>
@@ -74,13 +74,13 @@ export default function Home() {
 
               <AnimatedSection animation="fadeInRight" delay={600}>
                 <Link href="/merci">
-                  <Card className="text-center p-6 hover:shadow-lg cursor-pointer hover:bg-yellow-50 dark:hover:bg-yellow-900/20 transition-all duration-300 bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
+                  <Card className="text-center p-6 hover:shadow-lg cursor-pointer hover:bg-accent/10 transition-all duration-300 bg-card border-border">
                     <CardContent className="pt-6">
-                      <Heart className="w-12 h-12 text-noel-gold mx-auto mb-4" />
-                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                      <Heart className="w-12 h-12 text-accent mx-auto mb-4" />
+                      <h3 className="text-xl font-semibold text-card-foreground mb-2">
                         Esprit de Noël
                       </h3>
-                      <p className="text-gray-600 dark:text-gray-300">
+                      <p className="text-muted-foreground">
                         Une ambiance chaleureuse et festive pour créer des souvenirs inoubliables.
                       </p>
                     </CardContent>
@@ -92,25 +92,25 @@ export default function Home() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-16 bg-gradient-to-r from-noel-red to-red-700">
+        <section className="py-16 bg-gradient-to-r from-primary to-primary-dark">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
             <AnimatedSection animation="fadeInUp">
-              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+              <h2 className="text-3xl sm:text-4xl font-bold text-primary-foreground mb-4">
                 Prêt à vivre la magie de Noël ?
               </h2>
-              <p className="text-xl text-red-100 mb-8 max-w-2xl mx-auto">
+              <p className="text-xl text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
                 Rejoignez-nous du 15 au 24 décembre pour une expérience inoubliable au cœur de Nantes.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
                   href="/programme"
-                  className="bg-white text-noel-red hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold text-lg transition-colors"
+                  className="bg-background text-primary hover:bg-muted px-8 py-3 rounded-lg font-semibold text-lg transition-colors"
                 >
                   Voir le programme complet
                 </a>
                 <a
                   href="/boutique"
-                  className="border-2 border-white text-white hover:bg-white hover:text-noel-red px-8 py-3 rounded-lg font-semibold text-lg transition-colors"
+                  className="border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary px-8 py-3 rounded-lg font-semibold text-lg transition-colors"
                 >
                   Explorer la boutique
                 </a>

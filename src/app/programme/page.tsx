@@ -85,7 +85,7 @@ export default function Programme() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       <Header />
       
       <main>
@@ -102,17 +102,17 @@ export default function Programme() {
               priority
             />
             {/* Overlay with blur and opacity */}
-            <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
+            <div className="absolute inset-0 bg-foreground/20 backdrop-blur-sm" />
           </div>
           
           {/* Content */}
           <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
             <AnimatedSection animation="fadeInUp">
-              <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">
+              <h1 className="text-4xl sm:text-5xl font-bold text-background mb-4">
                 Programme du Marché de Noël
               </h1>
-              <p className="text-xl text-white/90 max-w-2xl mx-auto">
-                Du 15 au 24 décembre 2024, découvrez un programme riche en animations, 
+              <p className="text-xl text-background/90 max-w-2xl mx-auto">
+                Du 15 au 24 décembre 2024, découvrez un programme riche en animations,
                 concerts et activités pour toute la famille.
               </p>
             </AnimatedSection>
@@ -124,10 +124,10 @@ export default function Programme() {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <AnimatedSection animation="fadeInUp">
               <div className="text-center mb-12">
-                <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+                <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
                   Événements quotidiens
                 </h2>
-                <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                   Chaque jour, de nouvelles surprises vous attendent au Marché de Noël MPR.
                 </p>
               </div>
@@ -140,27 +140,27 @@ export default function Programme() {
                   animation="fadeInUp" 
                   delay={index * 100}
                 >
-                  <Card className="h-full hover:shadow-lg transition-shadow">
+                  <Card className="h-full hover:shadow-lg transition-shadow bg-card border-border">
                     <CardHeader>
                       <div className="flex items-center justify-between mb-2">
-                        <CardTitle className="text-lg text-noel-red">
+                        <CardTitle className="text-lg text-primary">
                           {event.day}
                         </CardTitle>
-                        <span className="text-xs bg-noel-gold text-white px-2 py-1 rounded-full">
+                        <span className="text-xs bg-accent text-accent-foreground px-2 py-1 rounded-full">
                           {event.type}
                         </span>
                       </div>
-                      <h3 className="text-xl font-semibold text-gray-900">
+                      <h3 className="text-xl font-semibold text-card-foreground">
                         {event.title}
                       </h3>
                     </CardHeader>
                     <CardContent>
                       <div className="space-y-3">
-                        <div className="flex items-center text-gray-600">
+                        <div className="flex items-center text-muted-foreground">
                           <Clock className="w-4 h-4 mr-2" />
                           <span className="text-sm">{event.time}</span>
                         </div>
-                        <p className="text-gray-600 text-sm leading-relaxed">
+                        <p className="text-muted-foreground text-sm leading-relaxed">
                           {event.description}
                         </p>
                       </div>
@@ -173,11 +173,11 @@ export default function Programme() {
         </section>
 
         {/* Practical Information */}
-        <section className="py-16 bg-white">
+        <section className="py-16 bg-background">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <AnimatedSection animation="fadeInUp">
               <div className="text-center mb-12">
-                <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+                <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
                   Informations pratiques
                 </h2>
               </div>
@@ -185,13 +185,13 @@ export default function Programme() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
               <AnimatedSection animation="fadeInLeft" delay={200}>
-                <Card className="text-center p-6 h-full flex flex-col">
+                <Card className="text-center p-6 h-full flex flex-col bg-card border-border">
                   <CardContent className="pt-6 flex-1 flex flex-col justify-center">
-                    <Calendar className="w-12 h-12 text-noel-red mx-auto mb-4" />
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                    <Calendar className="w-12 h-12 text-primary mx-auto mb-4" />
+                    <h3 className="text-lg font-semibold text-card-foreground mb-2">
                       Dates
                     </h3>
-                    <p className="text-gray-600 text-sm">
+                    <p className="text-muted-foreground text-sm">
                       15 - 24 décembre 2024
                     </p>
                   </CardContent>
@@ -199,13 +199,13 @@ export default function Programme() {
               </AnimatedSection>
 
               <AnimatedSection animation="fadeInUp" delay={400}>
-                <Card className="text-center p-6 h-full flex flex-col">
+                <Card className="text-center p-6 h-full flex flex-col bg-card border-border">
                   <CardContent className="pt-6 flex-1 flex flex-col justify-center">
-                    <Clock className="w-12 h-12 text-noel-green mx-auto mb-4" />
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                    <Clock className="w-12 h-12 text-secondary mx-auto mb-4" />
+                    <h3 className="text-lg font-semibold text-card-foreground mb-2">
                       Horaires
                     </h3>
-                    <p className="text-gray-600 text-sm">
+                    <p className="text-muted-foreground text-sm">
                       10h00 - 20h00<br />
                       (varie selon les jours)
                     </p>
@@ -214,13 +214,13 @@ export default function Programme() {
               </AnimatedSection>
 
               <AnimatedSection animation="fadeInUp" delay={600}>
-                <Card className="text-center p-6 h-full flex flex-col">
+                <Card className="text-center p-6 h-full flex flex-col bg-card border-border">
                   <CardContent className="pt-6 flex-1 flex flex-col justify-center">
-                    <MapPin className="w-12 h-12 text-noel-gold mx-auto mb-4" />
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                    <MapPin className="w-12 h-12 text-accent mx-auto mb-4" />
+                    <h3 className="text-lg font-semibold text-card-foreground mb-2">
                       Lieu
                     </h3>
-                    <p className="text-gray-600 text-sm">
+                    <p className="text-muted-foreground text-sm">
                       MPR Nantes<br />
                       Centre-ville
                     </p>
@@ -229,13 +229,13 @@ export default function Programme() {
               </AnimatedSection>
 
               <AnimatedSection animation="fadeInRight" delay={800}>
-                <Card className="text-center p-6 h-full flex flex-col">
+                <Card className="text-center p-6 h-full flex flex-col bg-card border-border">
                   <CardContent className="pt-6 flex-1 flex flex-col justify-center">
-                    <Users className="w-12 h-12 text-noel-red mx-auto mb-4" />
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                    <Users className="w-12 h-12 text-primary mx-auto mb-4" />
+                    <h3 className="text-lg font-semibold text-card-foreground mb-2">
                       Accès
                     </h3>
-                    <p className="text-gray-600 text-sm">
+                    <p className="text-muted-foreground text-sm">
                       Gratuit<br />
                       Tous publics
                     </p>

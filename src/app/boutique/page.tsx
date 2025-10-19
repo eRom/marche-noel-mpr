@@ -64,7 +64,7 @@ export default function Boutique() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       <Header />
       
       <main>
@@ -80,17 +80,17 @@ export default function Boutique() {
               priority
             />
             {/* Overlay with blur and opacity */}
-            <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
+            <div className="absolute inset-0 bg-foreground/20 backdrop-blur-sm" />
           </div>
           
           {/* Content */}
           <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
             <AnimatedSection animation="fadeInUp">
-              <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">
+              <h1 className="text-4xl sm:text-5xl font-bold text-background mb-4">
                 Notre Boutique
               </h1>
-              <p className="text-xl text-white/90 max-w-2xl mx-auto">
-                Découvrez les créations uniques de nos artisans locaux. 
+              <p className="text-xl text-background/90 max-w-2xl mx-auto">
+                Découvrez les créations uniques de nos artisans locaux.
                 Des produits authentiques et de qualité pour vos cadeaux de Noël.
               </p>
             </AnimatedSection>
@@ -102,10 +102,10 @@ export default function Boutique() {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <AnimatedSection animation="fadeInUp">
               <div className="text-center mb-12">
-                <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+                <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
                   Nos Artisans
                 </h2>
-                <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                   Rencontrez les créateurs talentueux qui participent à notre marché de Noël.
                 </p>
               </div>
@@ -118,36 +118,36 @@ export default function Boutique() {
                   animation="fadeInUp" 
                   delay={index * 100}
                 >
-                  <Card className="h-full hover:shadow-lg transition-shadow">
+                  <Card className="h-full hover:shadow-lg transition-shadow bg-card border-border">
                     <CardHeader>
                       <div className="flex items-start justify-between mb-2">
-                        <CardTitle className="text-xl text-gray-900">
+                        <CardTitle className="text-xl text-card-foreground">
                           {artisan.name}
                         </CardTitle>
-                       
+
                       </div>
-                      <Badge variant="secondary" className="w-fit bg-noel-red text-white">
+                      <Badge variant="secondary" className="w-fit bg-primary text-primary-foreground">
                         {artisan.specialty}
                       </Badge>
                     </CardHeader>
                     <CardContent>
                       <div className="space-y-4">
-                        <p className="text-gray-600 text-sm leading-relaxed">
+                        <p className="text-muted-foreground text-sm leading-relaxed">
                           {artisan.description}
                         </p>
-                        
+
                         <div>
-                          <h4 className="font-semibold text-gray-900 mb-2">Produits :</h4>
+                          <h4 className="font-semibold text-card-foreground mb-2">Produits :</h4>
                           <div className="flex flex-wrap gap-1">
                             {artisan.products.map((product) => (
-                              <Badge key={product} variant="outline" className="text-xs">
+                              <Badge key={product} variant="outline" className="text-xs border-border">
                                 {product}
                               </Badge>
                             ))}
                           </div>
                         </div>
 
-                        <div className="flex items-center text-gray-600 text-sm">
+                        <div className="flex items-center text-muted-foreground text-sm">
                           <MapPin className="w-4 h-4 mr-2" />
                           <span>{artisan.location}</span>
                         </div>
@@ -161,14 +161,14 @@ export default function Boutique() {
         </section>
 
         {/* Contact Section */}
-        <section className="py-16 bg-white">
+        <section className="py-16 bg-background">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <AnimatedSection animation="fadeInUp">
               <div className="text-center mb-12">
-                <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+                <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
                   Informations Boutique
                 </h2>
-                <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                   Besoin d&apos;informations sur nos produits ou nos artisans ? Contactez-nous !
                 </p>
               </div>
@@ -176,15 +176,15 @@ export default function Boutique() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <AnimatedSection animation="fadeInLeft" delay={200}>
-                <Card className="p-6">
+                <Card className="p-6 bg-card border-border">
                   <CardContent className="pt-6">
-                    <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                    <h3 className="text-xl font-semibold text-card-foreground mb-4">
                       Horaires de la boutique
                     </h3>
-                    <div className="space-y-2 text-gray-600">
+                    <div className="space-y-2 text-muted-foreground">
                       <p><strong>Lundi - Dimanche :</strong> 10h00 - 20h00</p>
                       <p><strong>24 décembre :</strong> 10h00 - 16h00</p>
-                      <p className="text-sm text-gray-500 mt-4">
+                      <p className="text-sm text-muted-foreground/70 mt-4">
                         * Horaires susceptibles de varier selon les artisans
                       </p>
                     </div>
@@ -193,22 +193,22 @@ export default function Boutique() {
               </AnimatedSection>
 
               <AnimatedSection animation="fadeInRight" delay={400}>
-                <Card className="p-6">
+                <Card className="p-6 bg-card border-border">
                   <CardContent className="pt-6">
-                    <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                    <h3 className="text-xl font-semibold text-card-foreground mb-4">
                       Contact
                     </h3>
-                    <div className="space-y-3 text-gray-600">
+                    <div className="space-y-3 text-muted-foreground">
                       <div className="flex items-center">
-                        <MapPin className="w-5 h-5 mr-3 text-noel-red" />
+                        <MapPin className="w-5 h-5 mr-3 text-primary" />
                         <span>MPR Nantes - Centre-ville</span>
                       </div>
                       <div className="flex items-center">
-                        <Phone className="w-5 h-5 mr-3 text-noel-green" />
+                        <Phone className="w-5 h-5 mr-3 text-secondary" />
                         <span>02 XX XX XX XX</span>
                       </div>
                       <div className="flex items-center">
-                        <ShoppingBag className="w-5 h-5 mr-3 text-noel-gold" />
+                        <ShoppingBag className="w-5 h-5 mr-3 text-accent" />
                         <span>Boutique ouverte du 15 au 24 décembre</span>
                       </div>
                     </div>

@@ -26,19 +26,19 @@ export default function HeroSection({
   secondaryButtonHref = "/boutique",
 }: HeroSectionProps) {
   return (
-    <section className="relative bg-gradient-to-br from-noel-snow to-white overflow-hidden">
+    <section className="relative bg-gradient-to-br from-noel-snow to-background overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-16 lg:py-24">
           {/* Content */}
           <div className="space-y-8 animate-fade-in-left">
             <div className="space-y-4">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
                 {title}
               </h1>
-              <p className="text-xl sm:text-2xl text-noel-red font-semibold">
+              <p className="text-xl sm:text-2xl text-primary font-semibold">
                 {subtitle}
               </p>
-              <p className="text-lg text-gray-600 leading-relaxed">
+              <p className="text-lg text-muted-foreground leading-relaxed">
                 {description}
               </p>
             </div>
@@ -48,7 +48,7 @@ export default function HeroSection({
               <Button
                 asChild
                 size="lg"
-                className="bg-noel-red hover:bg-red-700 text-white px-8 py-3 text-lg font-semibold"
+                className="bg-primary hover:bg-primary-dark text-primary-foreground px-8 py-3 text-lg font-semibold"
               >
                 <Link href={primaryButtonHref}>
                   {primaryButtonText}
@@ -58,7 +58,7 @@ export default function HeroSection({
                 asChild
                 variant="outline"
                 size="lg"
-                className="border-noel-green text-noel-green hover:bg-noel-green hover:text-white px-8 py-3 text-lg font-semibold"
+                className="border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground px-8 py-3 text-lg font-semibold"
               >
                 <Link href={secondaryButtonHref}>
                   {secondaryButtonText}
