@@ -76,7 +76,7 @@ export default function Boutique() {
               src="/hero-placeholder.png"
               alt="Marché de Noël MPR"
               fill
-              className="object-cover object-bottom"
+              className="object-cover object-center"
               priority
             />
             {/* Overlay with blur and opacity */}
