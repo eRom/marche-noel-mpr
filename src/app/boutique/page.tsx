@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { MapPin, Phone, ShoppingBag, Star } from "lucide-react";
+import { MapPin, Phone, ShoppingBag } from "lucide-react";
 import Image from "next/image";
 
 export const metadata = {
@@ -76,7 +76,7 @@ export default function Boutique() {
               src="/hero-placeholder.png"
               alt="Marché de Noël MPR"
               fill
-              className="object-cover object-center"
+              className="object-cover object-bottom"
               priority
             />
             {/* Overlay with blur and opacity */}
@@ -124,11 +124,7 @@ export default function Boutique() {
                         <CardTitle className="text-xl text-gray-900">
                           {artisan.name}
                         </CardTitle>
-                        <div className="flex items-center">
-                          {[...Array(artisan.rating)].map((_, i) => (
-                            <Star key={i} className="w-4 h-4 fill-noel-gold text-noel-gold" />
-                          ))}
-                        </div>
+                       
                       </div>
                       <Badge variant="secondary" className="w-fit bg-noel-red text-white">
                         {artisan.specialty}

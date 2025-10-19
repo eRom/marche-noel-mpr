@@ -47,8 +47,8 @@ export default function Footer() {
           <div className="space-y-4">
             <h3 className="font-semibold text-lg">Contact</h3>
             <div className="space-y-2 text-sm text-gray-300">
-              <p>MPR Nantes</p>
-              <p>Nantes, France</p>
+              <p>Hopital Saint-Jacques</p>
+              <p>85 Rue Saint-Jacques, Nantes</p>
               <p>15-24 décembre 2025</p>
             </div>
           </div>

@@ -92,6 +92,7 @@ export default function Programme() {
         {/* Hero Section */}
         <section className="relative py-16 overflow-hidden">
           {/* Background Image */}
+         
           <div className="absolute inset-0 z-0">
             <Image
               src="/hero-placeholder.png"
@@ -182,10 +183,10 @@ export default function Programme() {
               </div>
             </AnimatedSection>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
               <AnimatedSection animation="fadeInLeft" delay={200}>
-                <Card className="text-center p-6">
-                  <CardContent className="pt-6">
+                <Card className="text-center p-6 h-full flex flex-col">
+                  <CardContent className="pt-6 flex-1 flex flex-col justify-center">
                     <Calendar className="w-12 h-12 text-noel-red mx-auto mb-4" />
                     <h3 className="text-lg font-semibold text-gray-900 mb-2">
                       Dates
@@ -198,8 +199,8 @@ export default function Programme() {
               </AnimatedSection>
 
               <AnimatedSection animation="fadeInUp" delay={400}>
-                <Card className="text-center p-6">
-                  <CardContent className="pt-6">
+                <Card className="text-center p-6 h-full flex flex-col">
+                  <CardContent className="pt-6 flex-1 flex flex-col justify-center">
                     <Clock className="w-12 h-12 text-noel-green mx-auto mb-4" />
                     <h3 className="text-lg font-semibold text-gray-900 mb-2">
                       Horaires
@@ -213,8 +214,8 @@ export default function Programme() {
               </AnimatedSection>
 
               <AnimatedSection animation="fadeInUp" delay={600}>
-                <Card className="text-center p-6">
-                  <CardContent className="pt-6">
+                <Card className="text-center p-6 h-full flex flex-col">
+                  <CardContent className="pt-6 flex-1 flex flex-col justify-center">
                     <MapPin className="w-12 h-12 text-noel-gold mx-auto mb-4" />
                     <h3 className="text-lg font-semibold text-gray-900 mb-2">
                       Lieu
@@ -228,8 +229,8 @@ export default function Programme() {
               </AnimatedSection>
 
               <AnimatedSection animation="fadeInRight" delay={800}>
-                <Card className="text-center p-6">
-                  <CardContent className="pt-6">
+                <Card className="text-center p-6 h-full flex flex-col">
+                  <CardContent className="pt-6 flex-1 flex flex-col justify-center">
                     <Users className="w-12 h-12 text-noel-red mx-auto mb-4" />
                     <h3 className="text-lg font-semibold text-gray-900 mb-2">
                       Accès
