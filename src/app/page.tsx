@@ -1,9 +1,9 @@
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import HeroSection from "@/components/HeroSection";
 import AnimatedSection from "@/components/AnimatedSection";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import HeroSection from "@/components/HeroSection";
 import { Card, CardContent } from "@/components/ui/card";
-import { Calendar, ShoppingBag, Heart } from "lucide-react";
+import { Calendar, Heart, ShoppingBag } from "lucide-react";
 
 export default function Home() {
   return (
@@ -13,7 +13,7 @@ export default function Home() {
       <main>
         {/* Hero Section */}
         <HeroSection
-          title="Bienvenue au Marché de Noël MPR"
+          title="Bienvenue au Marché de Noël du MPR de Nantes"
           subtitle="Du 15 au 24 décembre 2024"
           description="Découvrez la magie de Noël au cœur de Nantes avec notre marché traditionnel. Artisans locaux, produits authentiques et ambiance festive vous attendent."
           imageSrc="/hero-placeholder.svg"
@@ -47,7 +47,7 @@ export default function Home() {
                       Programme riche
                     </h3>
                     <p className="text-gray-600">
-                      Des animations quotidiennes, des concerts et des ateliers pour toute la famille.
+                      Des animations quotidiennes et des ateliers pour toute la famille.
                     </p>
                   </CardContent>
                 </Card>
@@ -58,7 +58,7 @@ export default function Home() {
                   <CardContent className="pt-6">
                     <ShoppingBag className="w-12 h-12 text-noel-green mx-auto mb-4" />
                     <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                      Artisans locaux
+                      Artisans patients
                     </h3>
                     <p className="text-gray-600">
                       Découvrez des créateurs talentueux et des produits uniques de notre région.
