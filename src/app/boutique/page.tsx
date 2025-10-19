@@ -4,6 +4,7 @@ import AnimatedSection from "@/components/AnimatedSection";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ShoppingBag, Star, MapPin, Phone } from "lucide-react";
+import Image from "next/image";
 
 export const metadata = {
   title: "Boutique - Marché de Noël MPR",
@@ -68,13 +69,27 @@ export default function Boutique() {
       
       <main>
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-noel-green to-green-700 py-16">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+        <section className="relative py-16 overflow-hidden">
+          {/* Background Image */}
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="/hero-placeholder.png"
+              alt="Marché de Noël MPR"
+              fill
+              className="object-cover"
+              priority
+            />
+            {/* Overlay with blur and opacity */}
+            <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
+          </div>
+          
+          {/* Content */}
+          <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
             <AnimatedSection animation="fadeInUp">
               <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">
                 Notre Boutique
               </h1>
-              <p className="text-xl text-green-100 max-w-2xl mx-auto">
+              <p className="text-xl text-white/90 max-w-2xl mx-auto">
                 Découvrez les créations uniques de nos artisans locaux. 
                 Des produits authentiques et de qualité pour vos cadeaux de Noël.
               </p>
