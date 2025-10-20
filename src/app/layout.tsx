@@ -6,11 +6,15 @@ import "./globals.css";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: 'swap',
+  preload: true,
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: 'swap',
+  preload: false, // Only preload the primary font
 });
 
 export const metadata: Metadata = {
@@ -28,7 +32,7 @@ export const metadata: Metadata = {
     siteName: "Marché de Noël du MPR",
     images: [
       {
-        url: "/og.png",
+        url: "/og.webp",
         width: 1280,
         height: 800,
         alt: "Marché de Noël du MPR de Nantes - 15 au 24 décembre 2024",
@@ -39,7 +43,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Marché de Noël du MPR",
     description: "Marché de Noël du MPR de Nantes - 15 au 24 décembre",
-    images: ["/og.png"],
+    images: ["/og.webp"],
   },
   icons: {
     icon: [

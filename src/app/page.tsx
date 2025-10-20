@@ -1,11 +1,20 @@
-import AnimatedSection from "@/components/AnimatedSection";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
-import QRCodeSection from "@/components/QRCodeSection";
 import { Card, CardContent } from "@/components/ui/card";
 import { Calendar, Heart, ShoppingBag } from "lucide-react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
+
+// Lazy load non-critical components
+const AnimatedSection = dynamic(() => import("@/components/AnimatedSection"), {
+  loading: () => <div />,
+  ssr: true
+});
+
+const QRCodeSection = dynamic(() => import("@/components/QRCodeSection"), {
+  loading: () => <div className="h-32 bg-muted animate-pulse rounded-lg" />
+});
 
 export default function Home() {
   return (
@@ -18,7 +27,7 @@ export default function Home() {
           title="Bienvenue au Marché de Noël du MPR de Nantes"
           subtitle="Du 15 au 24 décembre 2024"
           description="Découvrez la magie de Noël au cœur de Nantes avec notre marché traditionnel. Artisans locaux, produits authentiques et ambiance festive vous attendent."
-          imageSrc="/hero-placeholder.png"
+          imageSrc="/hero-placeholder.webp"
           imageAlt="Marché de Noël MPR - Marché traditionnel dans un village de montagne enneigé"
           primaryButtonText="Voir le programme"
           primaryButtonHref="/programme"

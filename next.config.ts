@@ -1,7 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  /* Performance optimizations */
+  compress: true,
+  
+  /* Image optimization */
   images: {
     formats: ['image/webp', 'image/avif'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
@@ -10,6 +13,12 @@ const nextConfig: NextConfig = {
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
+  
+  /* Bundle optimization */
+  experimental: {
+    optimizePackageImports: ['lucide-react', '@radix-ui/react-avatar', '@radix-ui/react-checkbox', '@radix-ui/react-separator', '@radix-ui/react-slot', '@radix-ui/react-switch'],
+  },
+  
   async headers() {
     return [
       {

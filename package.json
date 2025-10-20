@@ -14,7 +14,9 @@
     "lighthouse": "node scripts/lighthouse-test.js",
     "lighthouse:desktop": "node scripts/lighthouse-test.js http://localhost:3000 desktop",
     "lighthouse:mobile": "node scripts/lighthouse-test.js http://localhost:3000 mobile",
-    "lighthouse:both": "node scripts/lighthouse-test.js http://localhost:3000 both"
+    "lighthouse:both": "node scripts/lighthouse-test.js http://localhost:3000 both",
+    "optimize:images": "node scripts/optimize-images.js",
+    "optimize:all": "npm run optimize:images && npm run build"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.10",
@@ -44,6 +46,9 @@
     "chrome-launcher": "^1.2.1",
     "eslint": "^9",
     "eslint-config-next": "15.5.6",
+    "imagemin": "^9.0.1",
+    "imagemin-avif": "^0.1.6",
+    "imagemin-webp": "^8.0.0",
     "lighthouse": "^12.8.2",
     "prettier": "^3.6.2",
     "sharp": "^0.34.4",
