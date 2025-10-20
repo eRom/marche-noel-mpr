@@ -1,6 +1,6 @@
+import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 
 interface HeroSectionProps {
   title: string;
@@ -76,6 +76,8 @@ export default function HeroSection({
                 fill
                 className="object-cover"
                 priority
+                fetchPriority="high"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
               {/* Decorative overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />

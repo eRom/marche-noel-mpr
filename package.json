@@ -10,7 +10,11 @@
     "format": "prettier --write .",
     "format:staged": "prettier --write",
     "icons": "node scripts/generate-icons.js",
-    "icons:watch": "nodemon --watch logo.png --exec \"npm run icons\""
+    "icons:watch": "nodemon --watch logo.png --exec \"npm run icons\"",
+    "lighthouse": "node scripts/lighthouse-test.js",
+    "lighthouse:desktop": "node scripts/lighthouse-test.js http://localhost:3000 desktop",
+    "lighthouse:mobile": "node scripts/lighthouse-test.js http://localhost:3000 mobile",
+    "lighthouse:both": "node scripts/lighthouse-test.js http://localhost:3000 both"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.10",
@@ -37,8 +41,10 @@
     "@types/node": "^20.19.22",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "chrome-launcher": "^1.2.1",
     "eslint": "^9",
     "eslint-config-next": "15.5.6",
+    "lighthouse": "^12.8.2",
     "prettier": "^3.6.2",
     "sharp": "^0.34.4",
     "tailwindcss": "^4",
