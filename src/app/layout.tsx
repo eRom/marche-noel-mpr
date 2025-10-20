@@ -14,6 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://marche-noel-mpr.vercel.app'),
   title: "Marché de Noël du MPR",
   description: "Marché de Noël du MPR de Nantes - 15 au 24 décembre",
   manifest: "/manifest.json",
