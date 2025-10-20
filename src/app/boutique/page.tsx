@@ -1,14 +1,26 @@
-import AnimatedSection from "@/components/AnimatedSection";
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { MapPin, Phone, ShoppingBag } from "lucide-react";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 
+// Lazy load non-critical components
+const Header = dynamic(() => import("@/components/Header"), {
+  loading: () => <div className="h-16 bg-background" />
+});
+
+const Footer = dynamic(() => import("@/components/Footer"), {
+  loading: () => <div className="h-32 bg-muted" />
+});
+
+const AnimatedSection = dynamic(() => import("@/components/AnimatedSection"), {
+  loading: () => <div />,
+  ssr: true
+});
+
 export const metadata = {
-  title: "Boutique - Marché de Noël MPR",
-  description: "Découvrez notre boutique avec les créations des artisans locaux du Marché de Noël MPR",
+  title: "Boutique Artisans - Marché de Noël MPR Nantes",
+  description: "Découvrez les créations uniques de nos artisans locaux au Marché de Noël MPR. Décorations en bois, pâtisseries artisanales, textiles naturels, céramique, cosmétiques bio et bijoux d'art. Produits authentiques pour vos cadeaux de Noël.",
 };
 
 export default function Boutique() {

@@ -1,13 +1,25 @@
-import AnimatedSection from "@/components/AnimatedSection";
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Calendar, Clock, MapPin, Users } from "lucide-react";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 
+// Lazy load non-critical components
+const Header = dynamic(() => import("@/components/Header"), {
+  loading: () => <div className="h-16 bg-background" />
+});
+
+const Footer = dynamic(() => import("@/components/Footer"), {
+  loading: () => <div className="h-32 bg-muted" />
+});
+
+const AnimatedSection = dynamic(() => import("@/components/AnimatedSection"), {
+  loading: () => <div />,
+  ssr: true
+});
+
 export const metadata = {
-  title: "Programme - Marché de Noël MPR",
-  description: "Découvrez le programme complet du Marché de Noël MPR du 15 au 24 décembre 2024",
+  title: "Programme Festivités - Marché de Noël MPR Nantes",
+  description: "Programme complet du Marché de Noël MPR du 15 au 24 décembre 2024. Chorale de Noël, ateliers créatifs, concerts jazz, rencontre avec le Père Noël, dégustations locales, contes de Noël et animations pour toute la famille.",
 };
 
 export default function Programme() {

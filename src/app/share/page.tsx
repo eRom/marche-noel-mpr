@@ -1,11 +1,8 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { FileText, Image, Link, Share2 } from "lucide-react";
-
-export const metadata = {
-  title: "Partager - Marché de Noël MPR",
-  description: "Partagez le Marché de Noël MPR avec vos amis et votre famille",
-};
 
 export default function SharePage() {
   return (
@@ -59,7 +56,7 @@ export default function SharePage() {
             <CardHeader>
               <div className="flex items-center space-x-3">
                 <div className="p-2 bg-secondary/10 rounded-lg">
-                  <Image className="w-6 h-6 text-secondary" />
+                  <Image className="w-6 h-6 text-secondary" aria-label="Icône photo" />
                 </div>
                 <CardTitle className="text-lg">Partager des photos</CardTitle>
               </div>
@@ -76,7 +73,8 @@ export default function SharePage() {
                   input.accept = 'image/*';
                   input.multiple = true;
                   input.onchange = (e) => {
-                    const files = Array.from(e.target.files);
+                    const target = e.target as HTMLInputElement;
+                    const files = Array.from(target.files || []);
                     if (files.length > 0) {
                       alert(`${files.length} photo(s) sélectionnée(s) !`);
                       // Ici vous pourriez implémenter l'upload
@@ -87,7 +85,7 @@ export default function SharePage() {
                 variant="outline"
                 className="w-full"
               >
-                <Image className="w-4 h-4 mr-2" />
+                <Image className="w-4 h-4 mr-2" aria-label="Icône photo" />
                 Sélectionner des photos
               </Button>
             </CardContent>

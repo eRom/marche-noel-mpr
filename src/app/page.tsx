@@ -1,12 +1,21 @@
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
-import HeroSection from "@/components/HeroSection";
 import { Card, CardContent } from "@/components/ui/card";
 import { Calendar, Heart, ShoppingBag } from "lucide-react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 
-// Lazy load non-critical components
+// Lazy load all non-critical components
+const Header = dynamic(() => import("@/components/Header"), {
+  loading: () => <div className="h-16 bg-background" />
+});
+
+const Footer = dynamic(() => import("@/components/Footer"), {
+  loading: () => <div className="h-32 bg-muted" />
+});
+
+const HeroSection = dynamic(() => import("@/components/HeroSection"), {
+  loading: () => <div className="h-96 bg-muted animate-pulse" />
+});
+
 const AnimatedSection = dynamic(() => import("@/components/AnimatedSection"), {
   loading: () => <div />,
   ssr: true

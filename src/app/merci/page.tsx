@@ -1,12 +1,24 @@
-import AnimatedSection from "@/components/AnimatedSection";
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
 import { Gift, Heart, Star, Users } from "lucide-react";
+import dynamic from "next/dynamic";
+
+// Lazy load non-critical components
+const Header = dynamic(() => import("@/components/Header"), {
+  loading: () => <div className="h-16 bg-background" />
+});
+
+const Footer = dynamic(() => import("@/components/Footer"), {
+  loading: () => <div className="h-32 bg-muted" />
+});
+
+const AnimatedSection = dynamic(() => import("@/components/AnimatedSection"), {
+  loading: () => <div />,
+  ssr: true
+});
 
 export const metadata = {
-  title: "Merci - Marché de Noël du MPR",
-  description: "Remerciements et informations sur le Marché de Noël du MPR",
+  title: "Merci - Marché de Noël MPR Nantes 2024",
+  description: "Remerciements pour votre participation au Marché de Noël MPR de Nantes. Découvrez les points forts de cette édition, les moments magiques partagés et les informations pour l'année prochaine.",
 };
 
 export default function Merci() {

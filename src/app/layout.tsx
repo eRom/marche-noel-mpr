@@ -19,14 +19,14 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://marche-noel-mpr.vercel.app'),
-  title: "Marché de Noël du MPR",
-  description: "Marché de Noël du MPR de Nantes - 15 au 24 décembre",
+  title: "Marché de Noël du MPR - Nantes 2024",
+  description: "Découvrez la magie de Noël au cœur de Nantes ! Marché traditionnel du MPR du 15 au 24 décembre 2024. Artisans locaux, produits authentiques, animations festives et ambiance chaleureuse vous attendent.",
   manifest: "/manifest.json",
-  keywords: ["marché", "noël", "nantes", "mpr", "événement", "décembre"],
+  keywords: ["marché de noël", "nantes", "mpr", "artisans", "décembre 2024", "événement", "tradition", "cadeaux", "produits locaux"],
   authors: [{ name: "Romain Ecarnot" }],
   openGraph: {
-    title: "Marché de Noël du MPR",
-    description: "Marché de Noël du MPR de Nantes - 15 au 24 décembre",
+    title: "Marché de Noël du MPR - Nantes 2024",
+    description: "Découvrez la magie de Noël au cœur de Nantes ! Marché traditionnel du MPR du 15 au 24 décembre 2024. Artisans locaux, produits authentiques, animations festives et ambiance chaleureuse vous attendent.",
     type: "website",
     locale: "fr_FR",
     siteName: "Marché de Noël du MPR",
@@ -41,8 +41,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Marché de Noël du MPR",
-    description: "Marché de Noël du MPR de Nantes - 15 au 24 décembre",
+    title: "Marché de Noël du MPR - Nantes 2024",
+    description: "Découvrez la magie de Noël au cœur de Nantes ! Marché traditionnel du MPR du 15 au 24 décembre 2024. Artisans locaux, produits authentiques, animations festives et ambiance chaleureuse vous attendent.",
     images: ["/og.webp"],
   },
   icons: {
