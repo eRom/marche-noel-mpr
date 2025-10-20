@@ -110,6 +110,8 @@ export default function Home() {
           </div>
         </section>
 
+        
+
         {/* CTA Section */}
         <section className="py-16 bg-gradient-to-r from-primary to-primary-dark">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
@@ -140,6 +142,8 @@ export default function Home() {
 
         {/* QR Code Section */}
         <QRCodeSection />
+
+        
       </main>
 
       <Footer />
