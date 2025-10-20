@@ -53,9 +53,8 @@ const viewportConfigs = {
 
 // Configuration des captures d'écran
 const screenshotConfig = {
-  // Qualité et format
+  // Format PNG (pas de qualité pour PNG)
   type: 'png',
-  quality: 100,
   
   // Capture complète
   fullPage: true,

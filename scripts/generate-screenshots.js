@@ -45,10 +45,10 @@ async function generateScreenshots() {
       });
 
       // Attendre que les animations se terminent
-      await page.waitForTimeout(waitConfig.animationDelay);
+      await new Promise(resolve => setTimeout(resolve, waitConfig.animationDelay));
 
       // Attendre que les images se chargent
-      await page.waitForTimeout(waitConfig.imageLoadDelay);
+      await new Promise(resolve => setTimeout(resolve, waitConfig.imageLoadDelay));
 
       // Prendre la capture d'écran
       const screenshotPath = path.join(__dirname, '..', 'public', viewport.filename);
