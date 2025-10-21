@@ -6,7 +6,7 @@ async function optimizeImages() {
   const publicDir = path.join(__dirname, '..', 'public');
   const images = [
     'hero-placeholder.png',
-    'og.png',
+    //'og.png',
     // ❌ NE PAS convertir les icônes (compatibilité requise) :
     // 'favicon.png',
     // 'icon.png', 
