@@ -29,7 +29,7 @@ export default function Merci() {
       
       <main>
         {/* Hero Section */}
-        <section className="relative py-12 overflow-hidden">
+        <section className="relative py-16 overflow-hidden">
           {/* Background Image */}
          
           <div className="absolute inset-0 z-0">

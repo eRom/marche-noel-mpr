@@ -121,7 +121,7 @@ export default function Home() {
                 Prêt à vivre la magie de Noël ?
               </h2>
               <p className="text-xl text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
-                Rejoignez-nous du 15 au 24 décembre pour une expérience inoubliable au cœur de Nantes.
+                Rejoignez-nous le 27 nov. - 11, 13 et 16 déc. pour une expérience inoubliable au cœur de MPR.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
@@ -147,7 +147,7 @@ export default function Home() {
             <AnimatedSection animation="fadeInUp">
               <div className="text-center mb-12">
                 <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-                  Soutenu par l&apos;APRAIH
+                  Au profit de l&apos;APRAIH
                 </h2>
                 <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
                   L&apos;Association pour la Promotion de la Réadaptation et l&apos;Accompagnement 
