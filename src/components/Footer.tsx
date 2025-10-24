@@ -56,20 +56,16 @@ export default function Footer() {
             <p className="text-muted-foreground text-sm">
               © 2025 MPR de Nantes. Tous droits réservés.
             </p>
-            <div className="text-muted-foreground text-sm">
-              <a
+           
+            <div className="mt-4 md:mt-0">
+            <a
                 href="https://fr.tipeee.com/rebondir-apres-lavc-ma-carriere-dans-la-tech/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-card-foreground transition-colors"
+                className="text-muted-foreground text-sm hover:text-card-foreground transition-colors"
               >
-                👍🏼 Romain Ecarnot
-              </a>
-            </div>
-            <div className="mt-4 md:mt-0">
-              <p className="text-muted-foreground text-sm">
                 Fait avec ❤️ pour la communauté
-              </p>
+              </a>
             </div>
           </div>
         </div>

@@ -127,7 +127,7 @@ export default function Programme() {
                 Le 27 nov. - 11, 13 et 16 déc.
               </p>
               <p className="text-xl text-background/90 max-w-2xl mx-auto">
-                découvrez un programme riche en animations,
+              Découvrez un programme riche en animations,
                 concerts et activités pour toute la famille.
               </p>
             </AnimatedSection>
