@@ -102,12 +102,12 @@ export default function Programme() {
       
       <main>
         {/* Hero Section */}
-        <section className="relative py-16 overflow-hidden">
+        <section className="relative py-12 overflow-hidden">
           {/* Background Image */}
          
           <div className="absolute inset-0 z-0">
             <Image
-              src="/hero-placeholder.png"
+              src="/hero-placeholder-md.webp"
               alt="Marché de Noël MPR"
               fill
               className="object-cover"
