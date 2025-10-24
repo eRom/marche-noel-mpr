@@ -121,10 +121,13 @@ export default function Programme() {
           <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
             <AnimatedSection animation="fadeInUp">
               <h1 className="text-4xl sm:text-5xl font-bold text-background mb-4">
-                Programme du Marché de Noël
+                Programme 2025
               </h1>
               <p className="text-xl text-background/90 max-w-2xl mx-auto">
-                Le 27 nov. - 11, 13 et 16 déc. 2025, découvrez un programme riche en animations,
+                Le 27 nov. - 11, 13 et 16 déc.
+              </p>
+              <p className="text-xl text-background/90 max-w-2xl mx-auto">
+                découvrez un programme riche en animations,
                 concerts et activités pour toute la famille.
               </p>
             </AnimatedSection>
@@ -137,10 +140,10 @@ export default function Programme() {
             <AnimatedSection animation="fadeInUp">
               <div className="text-center mb-12">
                 <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-                  Événements quotidiens
+                  Événements
                 </h2>
                 <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                  Chaque jour, de nouvelles surprises vous attendent au Marché de Noël MPR.
+                  Chaque jour, de nouvelles surprises vous attendent au Marché de Noël du MPR.
                 </p>
               </div>
             </AnimatedSection>
