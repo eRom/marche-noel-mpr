@@ -204,7 +204,7 @@ export default function Programme() {
                       Dates
                     </h3>
                     <p className="text-muted-foreground text-sm">
-                      15 - 24 décembre 2024
+                      27 nov. - 11, 13 et 16 déc. 2025
                     </p>
                   </CardContent>
                 </Card>
@@ -218,7 +218,8 @@ export default function Programme() {
                       Horaires
                     </h3>
                     <p className="text-muted-foreground text-sm">
-                      10h00 - 20h00<br />
+                      10h00 - 20h00 le 27 nov. et le 11 déc.<br />
+                      10h00 - 22h00 les 13 et 16 déc.<br />
                       (varie selon les jours)
                     </p>
                   </CardContent>

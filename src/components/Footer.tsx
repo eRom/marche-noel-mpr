@@ -20,7 +20,7 @@ export default function Footer() {
             </div>
             <p className="text-muted-foreground text-sm">
               Marché de Noël du MPR de Nantes<br />
-              Du 15 au 24 décembre 2025
+              27 nov. - 11, 13 et 16 déc. 2025
             </p>
           </div>
 
@@ -44,9 +44,9 @@ export default function Footer() {
           <div className="space-y-4">
             <h3 className="font-semibold text-lg">Contact</h3>
             <div className="space-y-2 text-sm text-muted-foreground">
-              <p>Hopital Saint-Jacques</p>
+              <p>Hôpital Saint-Jacques – CHU de Nantes</p>
               <p>85 Rue Saint-Jacques, Nantes</p>
-              <p>15-24 décembre 2025</p>
+              <p>44093 Nantes Cedex 1</p>
             </div>
           </div>
         </div>
