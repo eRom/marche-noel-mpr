@@ -28,7 +28,7 @@ export default function Header() {
                 height={32}
                 className="w-8 h-8"
               />
-              <span className="font-bold text-lg text-foreground">Marché de Noël du MPR</span>
+              <span className="font-bold text-lg text-primary pt-1">Marché de Noël</span>
             </Link>
           </div>
           

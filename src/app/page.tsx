@@ -38,8 +38,8 @@ export default function Home() {
         {/* Hero Section */}
         <HeroSection
           title="Bienvenue au Marché de Noël du MPR de Nantes"
-          subtitle="Du 15 au 24 décembre 2024"
-          description="Découvrez la magie de Noël au cœur de Nantes avec notre marché traditionnel. Artisans locaux, produits authentiques et ambiance festive vous attendent."
+          subtitle="Le 27 nov. - 11, 13 et 16 déc. 2025"
+          description="Découvrez la magie de Noël au cœur de Nantes/Saint Jacques, avec notre marché traditionnel. Patients, soignants, produits authentiques et ambiance festive vous attendent."
           imageSrc="/hero-placeholder.webp"
           imageAlt="Marché de Noël MPR - Marché traditionnel dans un village de montagne enneigé"
           primaryButtonText="Voir le programme"

@@ -5,7 +5,7 @@ import QRCode from "qrcode";
 async function generateQRCodeWithLogo(): Promise<string> {
   try {
     // Generate QR code with high error correction for logo overlay
-    const qrCodeDataURL = await QRCode.toDataURL("https://marche-noel-mpr.vercel.app", {
+    const qrCodeDataURL = await QRCode.toDataURL("https://mpr-noel.romain-ecarnot.com", {
       errorCorrectionLevel: "H",
       margin: 2,
       width: 300,
@@ -21,7 +21,7 @@ async function generateQRCodeWithLogo(): Promise<string> {
   } catch (error) {
     console.error("Error generating QR code:", error);
     // Fallback to basic QR code without logo
-    return await QRCode.toDataURL("https://marche-noel-mpr.vercel.app", {
+    return await QRCode.toDataURL("https://mpr-noel.romain-ecarnot.com", {
       errorCorrectionLevel: "H",
       margin: 2,
       width: 300,

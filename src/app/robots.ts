@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/private/', '/admin/'],
     },
-    sitemap: 'https://marche-noel-mpr.vercel.app/sitemap.xml',
+    sitemap: 'https://mpr-noel.romain-ecarnot.com/sitemap.xml',
   }
 }

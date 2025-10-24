@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://marche-noel-mpr.vercel.app'),
+  metadataBase: new URL('https://mpr-noel.romain-ecarnot.com'),
   title: "Marché de Noël du MPR - Nantes 2024",
   description: "Découvrez la magie de Noël au cœur de Nantes ! Marché traditionnel du MPR du 15 au 24 décembre 2024. Artisans locaux, produits authentiques, animations festives et ambiance chaleureuse vous attendent.",
   manifest: "/manifest.json",
