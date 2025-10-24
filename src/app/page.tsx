@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Calendar, Heart, ShoppingBag } from "lucide-react";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import Link from "next/link";
 
 // Lazy load all non-critical components
@@ -137,6 +138,70 @@ export default function Home() {
                 </a>
               </div>
             </AnimatedSection>
+          </div>
+        </section>
+
+        {/* APRAIH Section */}
+        <section className="py-16 bg-gradient-to-b from-background to-primary/5">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <AnimatedSection animation="fadeInUp">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+                  Soutenu par l&apos;APRAIH
+                </h2>
+                <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+                  L&apos;Association pour la Promotion de la Réadaptation et l&apos;Accompagnement 
+                  des personnes en situation de Handicap accompagne depuis 30 ans les personnes 
+                  touchées par les accidents de la vie vers le retour à leur quotidien.
+                </p>
+              </div>
+            </AnimatedSection>
+
+            <div className="flex flex-col lg:flex-row items-center justify-center gap-12">
+              <AnimatedSection animation="fadeInLeft" delay={200}>
+                <div className="flex-shrink-0">
+                  <Image
+                    src="/apraih-logo.png"
+                    alt="Logo APRAIH - Association pour la Promotion de la Réadaptation"
+                    width={300}
+                    height={205}
+                    className="w-64 h-auto mx-auto"
+                  />
+                </div>
+              </AnimatedSection>
+
+              <AnimatedSection animation="fadeInRight" delay={400}>
+                <div className="text-center lg:text-left max-w-2xl">
+                  <h3 className="text-2xl font-bold text-foreground mb-6">
+                    Une association dévouée
+                  </h3>
+                  <div className="space-y-4 text-muted-foreground">
+                    <p>
+                      Encadrée par une équipe de bénévoles dévoués et de kinésithérapeutes, 
+                      l&apos;APRAIH propose aux patients hospitalisés de participer à des activités 
+                      variées pour rompre l&apos;isolement et favoriser la socialisation.
+                    </p>
+                    <p>
+                      Sorties concerts, ateliers cuisine, soirées cinéma, et sorties exceptionnelles 
+                      comme assister à un match de foot à Paris ou découvrir les Jeux Olympiques.
+                    </p>
+                    <div className="pt-4">
+                      <a
+                        href="https://www.apraih.fr/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center px-6 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary-dark transition-colors"
+                      >
+                        Découvrir l&apos;APRAIH
+                        <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </AnimatedSection>
+            </div>
           </div>
         </section>
 

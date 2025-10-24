@@ -33,8 +33,9 @@ export default async function QRCodeSection() {
   const qrCodeDataURL = await generateQRCodeWithLogo();
 
   return (
-    <section className="py-16 bg-gradient-to-b from-primary/5 to-background hidden lg:block">
+    <section className="py-16 bg-noel-snow hidden lg:block">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      
         <AnimatedSection animation="fadeInUp">
           <div className="text-center">
             <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
