@@ -22,8 +22,8 @@ export default function HeroSection({
   imageAlt = "Image du Marché de Noël MPR",
   primaryButtonText = "Découvrir le programme",
   primaryButtonHref = "/programme",
-  secondaryButtonText = "Visiter la boutique",
-  secondaryButtonHref = "/boutique",
+  secondaryButtonText,
+  secondaryButtonHref,
 }: HeroSectionProps) {
   return (
     <section className="relative bg-gradient-to-br from-noel-snow to-background overflow-hidden">
@@ -54,16 +54,18 @@ export default function HeroSection({
                   {primaryButtonText}
                 </Link>
               </Button>
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground px-8 py-3 text-lg font-semibold"
-              >
-                <Link href={secondaryButtonHref}>
-                  {secondaryButtonText}
-                </Link>
-              </Button>
+              {secondaryButtonText && secondaryButtonHref && (
+                <Button
+                  asChild
+                  variant="outline"
+                  size="lg"
+                  className="border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground px-8 py-3 text-lg font-semibold"
+                >
+                  <Link href={secondaryButtonHref}>
+                    {secondaryButtonText}
+                  </Link>
+                </Button>
+              )}
             </div>
           </div>
 

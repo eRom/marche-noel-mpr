@@ -44,8 +44,6 @@ export default function Home() {
           imageAlt="Marché de Noël MPR - Marché traditionnel dans un village de montagne enneigé"
           primaryButtonText="Voir le programme"
           primaryButtonHref="/programme"
-          secondaryButtonText="Découvrir la boutique"
-          secondaryButtonHref="/boutique"
         />
 
         {/* Features Section */}
@@ -80,19 +78,17 @@ export default function Home() {
               </AnimatedSection>
 
               <AnimatedSection animation="fadeInUp" delay={400}>
-                <Link href="/boutique">
-                  <Card className="text-center p-6 hover:shadow-lg cursor-pointer hover:bg-secondary/10 transition-all duration-300 bg-card border-border">
-                    <CardContent className="pt-6">
-                      <ShoppingBag className="w-12 h-12 text-secondary mx-auto mb-4" />
-                      <h3 className="text-xl font-semibold text-card-foreground mb-2">
-                        Artisans patients
-                      </h3>
-                      <p className="text-muted-foreground">
-                        Découvrez des créateurs talentueux et des produits uniques de notre région.
-                      </p>
-                    </CardContent>
-                  </Card>
-                </Link>
+                <Card className="text-center p-6 bg-card border-border">
+                  <CardContent className="pt-6">
+                    <ShoppingBag className="w-12 h-12 text-secondary mx-auto mb-4" />
+                    <h3 className="text-xl font-semibold text-card-foreground mb-2">
+                      Artisans patients
+                    </h3>
+                    <p className="text-muted-foreground">
+                      Découvrez des créateurs talentueux et des produits uniques de notre région.
+                    </p>
+                  </CardContent>
+                </Card>
               </AnimatedSection>
 
               <AnimatedSection animation="fadeInRight" delay={600}>
@@ -134,10 +130,10 @@ export default function Home() {
                   Voir le programme complet
                 </a>
                 <a
-                  href="/boutique"
+                  href="/merci"
                   className="border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary px-8 py-3 rounded-lg font-semibold text-lg transition-colors"
                 >
-                  Explorer la boutique
+                  Remerciements
                 </a>
               </div>
             </AnimatedSection>
