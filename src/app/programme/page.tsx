@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Calendar, Clock, MapPin, Users } from "lucide-react";
+import { Calendar, Clock, Users } from "lucide-react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 
@@ -124,7 +124,7 @@ export default function Programme() {
                 Programme du Marché de Noël
               </h1>
               <p className="text-xl text-background/90 max-w-2xl mx-auto">
-                Du 15 au 24 décembre 2024, découvrez un programme riche en animations,
+                Le 27 nov. - 11, 13 et 16 déc. 2025, découvrez un programme riche en animations,
                 concerts et activités pour toute la famille.
               </p>
             </AnimatedSection>
@@ -195,7 +195,7 @@ export default function Programme() {
               </div>
             </AnimatedSection>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
               <AnimatedSection animation="fadeInLeft" delay={200}>
                 <Card className="text-center p-6 h-full flex flex-col bg-card border-border">
                   <CardContent className="pt-6 flex-1 flex flex-col justify-center">
@@ -218,30 +218,14 @@ export default function Programme() {
                       Horaires
                     </h3>
                     <p className="text-muted-foreground text-sm">
-                      10h00 - 20h00 le 27 nov. et le 11 déc.<br />
-                      10h00 - 22h00 les 13 et 16 déc.<br />
-                      (varie selon les jours)
+                      16h00 - 19h00 le 27 nov. et le 11, 16 déc.<br />
+                      14h00 - 18h00 le 13 déc.<br />
                     </p>
                   </CardContent>
                 </Card>
               </AnimatedSection>
 
-              <AnimatedSection animation="fadeInUp" delay={600}>
-                <Card className="text-center p-6 h-full flex flex-col bg-card border-border">
-                  <CardContent className="pt-6 flex-1 flex flex-col justify-center">
-                    <MapPin className="w-12 h-12 text-accent mx-auto mb-4" />
-                    <h3 className="text-lg font-semibold text-card-foreground mb-2">
-                      Lieu
-                    </h3>
-                    <p className="text-muted-foreground text-sm">
-                      MPR Nantes<br />
-                      Centre-ville
-                    </p>
-                  </CardContent>
-                </Card>
-              </AnimatedSection>
-
-              <AnimatedSection animation="fadeInRight" delay={800}>
+              <AnimatedSection animation="fadeInRight" delay={600}>
                 <Card className="text-center p-6 h-full flex flex-col bg-card border-border">
                   <CardContent className="pt-6 flex-1 flex flex-col justify-center">
                     <Users className="w-12 h-12 text-primary mx-auto mb-4" />
