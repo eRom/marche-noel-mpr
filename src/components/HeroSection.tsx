@@ -48,7 +48,7 @@ export default function HeroSection({
               <Button
                 asChild
                 size="lg"
-                className="!bg-primary !hover:bg-transparent !hover:border-2 !hover:border-primary !hover:text-primary !text-primary-foreground px-8 py-3 text-lg font-semibold focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                className="bg-amber-50 text-amber-950 border-amber-950 border px-8 py-3 text-lg font-semibold focus:ring-2 focus:ring-primary focus:ring-offset-2"
               >
                 <Link href={primaryButtonHref}>
                   {primaryButtonText}
