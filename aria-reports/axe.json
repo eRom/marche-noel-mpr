@@ -14,7 +14,7 @@
       "orientationAngle": 0,
       "orientationType": "landscape-primary"
     },
-    "timestamp": "2025-10-25T12:22:34.157Z",
+    "timestamp": "2025-10-25T15:06:32.074Z",
     "url": "http://localhost:3000/",
     "toolOptions": {
       "runOnly": {
@@ -2451,7 +2451,7 @@
                   {
                     "html": "<h2 class=\"text-3xl sm:text-4xl font-bold text-primary-foreground mb-4\">Prêt à vivre la magie de Noël ?</h2>",
                     "target": [
-                      ".transition-opacity.duration-500.opacity-0 > h2"
+                      ".transition-opacity.duration-500.opacity-0 > .text-primary-foreground"
                     ]
                   },
                   {
@@ -2549,6 +2549,31 @@
             "html": "<span class=\"font-bold text-lg text-primary pt-1\">Marché de Noël</span>",
             "target": [
               ".pt-1"
+            ]
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fgColor": "#896c5d",
+                  "bgColor": "#fffcf2",
+                  "contrastRatio": 4.68,
+                  "fontSize": "13.5pt (18px)",
+                  "fontWeight": "normal",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [],
+                "impact": "serious",
+                "message": "Element has sufficient color contrast of 4.68"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": null,
+            "html": "<a data-slot=\"button\" class=\"inline-flex items-ce...\" href=\"/programme\">",
+            "target": [
+              ".gap-2"
             ]
           },
           {
@@ -3386,9 +3411,9 @@
               }
             ],
             "impact": null,
-            "html": "<a href=\"/programme\" class=\"bg-background text-primary hover:bg-muted hover:text-primary-dark px-8 py-3 rounded-lg font-semibold text-lg transition-colors focus:ring-2 focus:ring-primary focus:ring-offset-2\">Voir le programme complet</a>",
+            "html": "<a href=\"/programme\" class=\"bg-background text-primary hover:bg-transparent hover:border-2 hover:border-primary hover:text-primary px-8 py-3 rounded-lg font-semibold text-lg transition-colors focus:ring-2 focus:ring-primary focus:ring-offset-2\">Voir le programme complet</a>",
             "target": [
-              ".hover\\:bg-muted"
+              ".hover\\:bg-transparent"
             ]
           },
           {
@@ -3440,7 +3465,7 @@
             "impact": null,
             "html": "<a href=\"https://www.apraih.fr/\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center px-6 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary-dark transition-colors\">",
             "target": [
-              "a[href$=\"apraih.fr/\"]"
+              ".bg-primary"
             ]
           },
           {
@@ -3579,7 +3604,7 @@
             "all": [],
             "none": [],
             "impact": null,
-            "html": "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes\">",
+            "html": "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, user-scalable=yes\">",
             "target": [
               "meta[name=\"viewport\"]"
             ]
@@ -3892,62 +3917,6 @@
         ]
       }
     ],
-    "violations": [
-      {
-        "id": "color-contrast",
-        "impact": "serious",
-        "tags": [
-          "cat.color",
-          "wcag2aa",
-          "wcag143",
-          "TTv5",
-          "TT13.c",
-          "EN-301-549",
-          "EN-9.1.4.3",
-          "ACT",
-          "RGAAv4",
-          "RGAA-3.2.1"
-        ],
-        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
-        "help": "Elements must meet minimum color contrast ratio thresholds",
-        "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=webdriverjs",
-        "nodes": [
-          {
-            "any": [
-              {
-                "id": "color-contrast",
-                "data": {
-                  "fgColor": "#ffffff",
-                  "bgColor": "#ea7b7b",
-                  "contrastRatio": 2.75,
-                  "fontSize": "13.5pt (18px)",
-                  "fontWeight": "normal",
-                  "messageKey": null,
-                  "expectedContrastRatio": "4.5:1"
-                },
-                "relatedNodes": [
-                  {
-                    "html": "<a data-slot=\"button\" class=\"inline-flex items-ce...\" href=\"/programme\">",
-                    "target": [
-                      ".gap-2"
-                    ]
-                  }
-                ],
-                "impact": "serious",
-                "message": "Element has insufficient color contrast of 2.75 (foreground color: #ffffff, background color: #ea7b7b, font size: 13.5pt (18px), font weight: normal). Expected contrast ratio of 4.5:1"
-              }
-            ],
-            "all": [],
-            "none": [],
-            "impact": "serious",
-            "html": "<a data-slot=\"button\" class=\"inline-flex items-ce...\" href=\"/programme\">",
-            "target": [
-              ".gap-2"
-            ],
-            "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.75 (foreground color: #ffffff, background color: #ea7b7b, font size: 13.5pt (18px), font weight: normal). Expected contrast ratio of 4.5:1"
-          }
-        ]
-      }
-    ]
+    "violations": []
   }
 ]
