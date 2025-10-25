@@ -2,7 +2,8 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { FileText, Image, Link, Share2 } from "lucide-react";
+import { FileText, Image as ImageIcon, Link, Share2 } from "lucide-react";
+import Image from "next/image";
 
 export default function SharePage() {
   return (
@@ -56,7 +57,7 @@ export default function SharePage() {
             <CardHeader>
               <div className="flex items-center space-x-3">
                 <div className="p-2 bg-secondary/10 rounded-lg">
-                  <Image className="w-6 h-6 text-secondary" aria-label="Icône photo" />
+                  <ImageIcon className="w-6 h-6 text-secondary" aria-label="Icône photo" />
                 </div>
                 <CardTitle className="text-lg">Partager des photos</CardTitle>
               </div>
@@ -85,7 +86,7 @@ export default function SharePage() {
                 variant="outline"
                 className="w-full"
               >
-                <Image className="w-4 h-4 mr-2" aria-label="Icône photo" />
+                <ImageIcon className="w-4 h-4 mr-2" aria-label="Icône photo" />
                 Sélectionner des photos
               </Button>
             </CardContent>
@@ -141,7 +142,7 @@ export default function SharePage() {
               </p>
               <div className="flex justify-center">
                 <div className="bg-white p-4 rounded-lg shadow-lg">
-                  <img
+                  <Image
                     src="/qr-code.png"
                     alt="QR code pour le Marché de Noël MPR"
                     width={128}

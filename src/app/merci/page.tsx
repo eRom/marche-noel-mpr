@@ -196,24 +196,27 @@ export default function Merci() {
                 Suivez-nous sur les réseaux sociaux pour ne rien rater de nos prochains événements.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a
-                  href="#"
+                <button
+                  type="button"
                   className="bg-background text-primary hover:bg-muted px-8 py-3 rounded-lg font-semibold text-lg transition-colors"
+                  aria-label="Suivre sur Facebook"
                 >
                   Facebook
-                </a>
-                <a
-                  href="#"
+                </button>
+                <button
+                  type="button"
                   className="bg-background text-primary hover:bg-muted px-8 py-3 rounded-lg font-semibold text-lg transition-colors"
+                  aria-label="Suivre sur Instagram"
                 >
                   Instagram
-                </a>
-                <a
-                  href="#"
+                </button>
+                <button
+                  type="button"
                   className="bg-background text-primary hover:bg-muted px-8 py-3 rounded-lg font-semibold text-lg transition-colors"
+                  aria-label="Suivre sur Twitter"
                 >
                   Twitter
-                </a>
+                </button>
               </div>
             </AnimatedSection>
           </div>
