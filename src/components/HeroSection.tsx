@@ -48,7 +48,7 @@ export default function HeroSection({
               <Button
                 asChild
                 size="lg"
-                className="bg-primary hover:bg-primary-dark text-primary-foreground px-8 py-3 text-lg font-semibold"
+                className="!bg-primary !hover:bg-black !text-primary-foreground !hover:text-white px-8 py-3 text-lg font-semibold focus:ring-2 focus:ring-primary focus:ring-offset-2"
               >
                 <Link href={primaryButtonHref}>
                   {primaryButtonText}
@@ -88,15 +88,15 @@ export default function HeroSection({
             </div>
             
             {/* Floating decorative elements */}
-            <div className="absolute -top-4 -right-4 w-8 h-8 bg-noel-gold rounded-full animate-twinkle" />
-            <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-noel-red rounded-full animate-twinkle" style={{ animationDelay: "1s" }} />
-            <div className="absolute top-1/2 -left-8 w-4 h-4 bg-noel-green rounded-full animate-twinkle" style={{ animationDelay: "2s" }} />
+            <div className="absolute -top-4 -right-4 w-8 h-8 bg-noel-gold rounded-full animate-twinkle" aria-hidden="true" />
+            <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-noel-red rounded-full animate-twinkle" style={{ animationDelay: "1s" }} aria-hidden="true" />
+            <div className="absolute top-1/2 -left-8 w-4 h-4 bg-noel-green rounded-full animate-twinkle" style={{ animationDelay: "2s" }} aria-hidden="true" />
           </div>
         </div>
       </div>
 
       {/* Background decorative elements */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none" aria-hidden="true">
         <div className="absolute top-20 left-10 w-2 h-2 bg-noel-gold rounded-full animate-twinkle" />
         <div className="absolute top-40 right-20 w-3 h-3 bg-noel-red rounded-full animate-twinkle" style={{ animationDelay: "0.5s" }} />
         <div className="absolute bottom-20 left-1/4 w-2 h-2 bg-noel-green rounded-full animate-twinkle" style={{ animationDelay: "1.5s" }} />

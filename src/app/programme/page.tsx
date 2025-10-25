@@ -172,7 +172,7 @@ export default function Programme() {
                     <CardContent>
                       <div className="space-y-3">
                         <div className="flex items-center text-muted-foreground">
-                          <Clock className="w-4 h-4 mr-2" />
+                          <Clock className="w-4 h-4 mr-2" aria-hidden="true" />
                           <span className="text-sm">{event.time}</span>
                         </div>
                         <p className="text-muted-foreground text-sm leading-relaxed">
@@ -202,7 +202,7 @@ export default function Programme() {
               <AnimatedSection animation="fadeInLeft" delay={200}>
                 <Card className="text-center p-6 h-full flex flex-col bg-card border-border">
                   <CardContent className="pt-6 flex-1 flex flex-col justify-center">
-                    <Calendar className="w-12 h-12 text-primary mx-auto mb-4" />
+                    <Calendar className="w-12 h-12 text-primary mx-auto mb-4" aria-hidden="true" />
                     <h3 className="text-lg font-semibold text-card-foreground mb-2">
                       Dates
                     </h3>
@@ -216,7 +216,7 @@ export default function Programme() {
               <AnimatedSection animation="fadeInUp" delay={400}>
                 <Card className="text-center p-6 h-full flex flex-col bg-card border-border">
                   <CardContent className="pt-6 flex-1 flex flex-col justify-center">
-                    <Clock className="w-12 h-12 text-secondary mx-auto mb-4" />
+                    <Clock className="w-12 h-12 text-secondary mx-auto mb-4" aria-hidden="true" />
                     <h3 className="text-lg font-semibold text-card-foreground mb-2">
                       Horaires
                     </h3>
@@ -231,7 +231,7 @@ export default function Programme() {
               <AnimatedSection animation="fadeInRight" delay={600}>
                 <Card className="text-center p-6 h-full flex flex-col bg-card border-border">
                   <CardContent className="pt-6 flex-1 flex flex-col justify-center">
-                    <Users className="w-12 h-12 text-primary mx-auto mb-4" />
+                    <Users className="w-12 h-12 text-primary mx-auto mb-4" aria-hidden="true" />
                     <h3 className="text-lg font-semibold text-card-foreground mb-2">
                       Accès
                     </h3>

@@ -80,7 +80,7 @@ export default function Merci() {
               <AnimatedSection animation="fadeInLeft" delay={200}>
                 <Card className="text-center p-6 bg-card border-border">
                   <CardContent className="pt-6">
-                    <Users className="w-12 h-12 text-primary mx-auto mb-4" />
+                    <Users className="w-12 h-12 text-primary mx-auto mb-4" aria-hidden="true" />
                     <h3 className="text-lg font-semibold text-card-foreground mb-2">
                       Visiteurs
                     </h3>
@@ -94,7 +94,7 @@ export default function Merci() {
               <AnimatedSection animation="fadeInUp" delay={400}>
                 <Card className="text-center p-6 bg-card border-border">
                   <CardContent className="pt-6">
-                    <Gift className="w-12 h-12 text-secondary mx-auto mb-4" />
+                    <Gift className="w-12 h-12 text-secondary mx-auto mb-4" aria-hidden="true" />
                     <h3 className="text-lg font-semibold text-card-foreground mb-2">
                       Artisans
                     </h3>
@@ -122,7 +122,7 @@ export default function Merci() {
               <AnimatedSection animation="fadeInRight" delay={800}>
                 <Card className="text-center p-6 bg-card border-border">
                   <CardContent className="pt-6">
-                    <Star className="w-12 h-12 text-primary mx-auto mb-4" />
+                    <Star className="w-12 h-12 text-primary mx-auto mb-4" aria-hidden="true" />
                     <h3 className="text-lg font-semibold text-card-foreground mb-2">
                       Satisfaction
                     </h3>

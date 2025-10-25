@@ -25,9 +25,19 @@ export default function Header() {
     setIsMobileMenuOpen(false);
   };
 
+  // Handle keyboard navigation on the button
+  const handleButtonKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === 'Escape') {
+      closeMobileMenu();
+    }
+  };
+
   return (
     <header className="bg-background/95 backdrop-blur-sm border-b border-border sticky top-0 z-50">
-      <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-label="Navigation principale">
+      <nav 
+        className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" 
+        aria-label="Navigation principale"
+      >
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <Link href="/" className="flex items-center space-x-2">
@@ -68,11 +78,14 @@ export default function Header() {
             <button
               type="button"
               onClick={toggleMobileMenu}
+              onKeyDown={handleButtonKeyDown}
               className="text-muted-foreground hover:text-primary focus:outline-none focus:text-primary transition-colors"
               aria-label={isMobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
               aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-menu"
+              aria-haspopup="menu"
             >
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                 {isMobileMenuOpen ? (
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 ) : (
@@ -84,10 +97,13 @@ export default function Header() {
         </div>
 
         {/* Mobile Navigation Menu */}
-        <div className={cn(
-          "md:hidden overflow-hidden transition-all duration-300 ease-in-out",
-          isMobileMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-        )}>
+        <div 
+          id="mobile-menu"
+          className={cn(
+            "md:hidden overflow-hidden transition-all duration-300 ease-in-out",
+            isMobileMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+          )}
+        >
           <div className="px-2 pt-2 pb-3 space-y-1 bg-background/95 backdrop-blur-sm border-t border-border">
             {navigation.map((item) => (
               <Link

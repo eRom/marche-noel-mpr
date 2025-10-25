@@ -63,10 +63,10 @@ export default function Home() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <AnimatedSection animation="fadeInLeft" delay={200}>
-                <Link href="/programme">
-                  <Card className="text-center p-6 hover:shadow-lg cursor-pointer hover:bg-primary/10 transition-all duration-300 bg-card border-border">
+                <Link href="/programme" className="block">
+                  <Card className="text-center p-6 hover:shadow-lg cursor-pointer hover:bg-primary/10 transition-all duration-300 bg-card border-border focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2">
                     <CardContent className="pt-6">
-                      <Calendar className="w-12 h-12 text-primary mx-auto mb-4" />
+                      <Calendar className="w-12 h-12 text-primary mx-auto mb-4" aria-hidden="true" />
                       <h3 className="text-xl font-semibold text-card-foreground mb-2">
                         Programme riche
                       </h3>
@@ -81,7 +81,7 @@ export default function Home() {
               <AnimatedSection animation="fadeInUp" delay={400}>
                 <Card className="text-center p-6 bg-card border-border">
                   <CardContent className="pt-6">
-                    <ShoppingBag className="w-12 h-12 text-secondary mx-auto mb-4" />
+                    <ShoppingBag className="w-12 h-12 text-secondary mx-auto mb-4" aria-hidden="true" />
                     <h3 className="text-xl font-semibold text-card-foreground mb-2">
                       Artisans patients
                     </h3>
@@ -93,10 +93,10 @@ export default function Home() {
               </AnimatedSection>
 
               <AnimatedSection animation="fadeInRight" delay={600}>
-                <Link href="/merci">
-                  <Card className="text-center p-6 hover:shadow-lg cursor-pointer hover:bg-accent/10 transition-all duration-300 bg-card border-border">
+                <Link href="/merci" className="block">
+                  <Card className="text-center p-6 hover:shadow-lg cursor-pointer hover:bg-accent/10 transition-all duration-300 bg-card border-border focus-within:ring-2 focus-within:ring-accent focus-within:ring-offset-2">
                     <CardContent className="pt-6">
-                      <Heart className="w-12 h-12 text-accent mx-auto mb-4" />
+                      <Heart className="w-12 h-12 text-accent mx-auto mb-4" aria-hidden="true" />
                       <h3 className="text-xl font-semibold text-card-foreground mb-2">
                         Esprit de Noël
                       </h3>
@@ -126,13 +126,13 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
                   href="/programme"
-                  className="bg-background text-primary hover:bg-muted px-8 py-3 rounded-lg font-semibold text-lg transition-colors"
+                  className="bg-background text-primary hover:bg-muted hover:text-primary-dark px-8 py-3 rounded-lg font-semibold text-lg transition-colors focus:ring-2 focus:ring-primary focus:ring-offset-2"
                 >
                   Voir le programme complet
                 </a>
                 <a
                   href="/merci"
-                  className="border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary px-8 py-3 rounded-lg font-semibold text-lg transition-colors"
+                  className="border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary-dark px-8 py-3 rounded-lg font-semibold text-lg transition-colors"
                 >
                   Remerciements
                 </a>
@@ -193,7 +193,7 @@ export default function Home() {
                         className="inline-flex items-center px-6 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary-dark transition-colors"
                       >
                         Découvrir l&apos;APRAIH
-                        <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                         </svg>
                       </a>
