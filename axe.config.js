@@ -47,7 +47,7 @@ module.exports = {
   
   // Options de rapport
   reporter: 'json',
-  output: './axe-reports',
+  output: './aria-reports',
   
   // Options de navigation
   timeout: 30000,
