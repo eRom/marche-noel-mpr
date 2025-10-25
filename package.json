@@ -18,7 +18,11 @@
     "lighthouse:both": "node scripts/lighthouse-test.js http://localhost:3000 both",
     "optimize:images": "node scripts/optimize-images.js",
     "optimize:all": "npm run optimize:images && npm run build",
-    "pwa:setup": "npm run screenshots && npm run optimize:images"
+    "pwa:setup": "npm run screenshots && npm run optimize:images",
+    "axe": "axe --config axe.config.js",
+    "axe:dev": "axe http://localhost:3000 --config axe.config.js",
+    "axe:all": "axe --config axe.config.js --reporter json --output ./axe-reports",
+    "axe:ci": "axe --config axe.config.js --reporter json --output ./axe-reports --exit"
   },
   "dependencies": {
     "@radix-ui/react-separator": "^1.1.7",
@@ -36,6 +40,7 @@
     "tailwind-merge": "^3.3.1"
   },
   "devDependencies": {
+    "@axe-core/cli": "^4.11.0",
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20.19.22",
