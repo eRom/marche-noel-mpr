@@ -24,7 +24,8 @@ export default function ThemeToggle() {
   const iconColor = isDark ? "text-noel-gold" : "text-noel-gold-dark";
   const hoverBg = isDark ? "hover:bg-noel-snow-dark" : "hover:bg-noel-snow";
   const buttonBg = isDark ? "bg-noel-snow" : "bg-noel-snow-light";
-
+  
+  return;
   return (
     <button
       onClick={() => setTheme(isDark ? "light" : "dark")}
