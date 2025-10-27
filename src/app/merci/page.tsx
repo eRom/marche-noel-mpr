@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Gift, Heart, Star, Users } from "lucide-react";
+import { Gift, Heart, Users } from "lucide-react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 
@@ -76,16 +76,16 @@ export default function Merci() {
               </div>
             </AnimatedSection>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6 mb-12">
               <AnimatedSection animation="fadeInLeft" delay={200}>
                 <Card className="text-center p-6 bg-card border-border">
                   <CardContent className="pt-6">
                     <Users className="w-12 h-12 text-primary mx-auto mb-4" aria-hidden="true" />
                     <h3 className="text-lg font-semibold text-card-foreground mb-2">
-                      Visiteurs
+                      Soignants
                     </h3>
                     <p className="text-muted-foreground text-sm">
-                      Plus de 5000 visiteurs ont découvert notre marché
+                      Toutes l&apos;équipe des ergothérapeutes
                     </p>
                   </CardContent>
                 </Card>
@@ -96,10 +96,10 @@ export default function Merci() {
                   <CardContent className="pt-6">
                     <Gift className="w-12 h-12 text-secondary mx-auto mb-4" aria-hidden="true" />
                     <h3 className="text-lg font-semibold text-card-foreground mb-2">
-                      Artisans
+                      Patients
                     </h3>
                     <p className="text-muted-foreground text-sm">
-                      25 artisans locaux ont participé à l&apos;événement
+                      Les patients vontontaires du MPR 
                     </p>
                   </CardContent>
                 </Card>
@@ -110,28 +110,16 @@ export default function Merci() {
                   <CardContent className="pt-6">
                     <Heart className="w-12 h-12 text-accent mx-auto mb-4" />
                     <h3 className="text-lg font-semibold text-card-foreground mb-2">
-                      Bénévoles
+                      Partenaires
                     </h3>
                     <p className="text-muted-foreground text-sm">
-                      50 bénévoles ont donné de leur temps
+                      Tous les partenaires du MPR
                     </p>
                   </CardContent>
                 </Card>
               </AnimatedSection>
 
-              <AnimatedSection animation="fadeInRight" delay={800}>
-                <Card className="text-center p-6 bg-card border-border">
-                  <CardContent className="pt-6">
-                    <Star className="w-12 h-12 text-primary mx-auto mb-4" aria-hidden="true" />
-                    <h3 className="text-lg font-semibold text-card-foreground mb-2">
-                      Satisfaction
-                    </h3>
-                    <p className="text-muted-foreground text-sm">
-                      98% de satisfaction des visiteurs
-                    </p>
-                  </CardContent>
-                </Card>
-              </AnimatedSection>
+            
             </div>
           </div>
         </section>
@@ -155,11 +143,8 @@ export default function Merci() {
                       Nos partenaires
                     </h3>
                     <ul className="space-y-2 text-muted-foreground">
-                      <li>• Ville de Nantes</li>
-                      <li>• Chambre de Commerce</li>
-                      <li>• Office de Tourisme</li>
-                      <li>• Associations locales</li>
-                      <li>• Médias partenaires</li>
+                      <li>• MPR de Nantes</li>
+                      <li>• APRAIH</li>
                     </ul>
                   </CardContent>
                 </Card>
@@ -172,11 +157,9 @@ export default function Merci() {
                       Équipe organisatrice
                     </h3>
                     <ul className="space-y-2 text-muted-foreground">
-                      <li>• Comité d&apos;organisation MPR</li>
-                      <li>• Équipe technique</li>
-                      <li>• Service sécurité</li>
-                      <li>• Service communication</li>
-                      <li>• Logistique et accueil</li>
+                      <li>• TODO_NAME</li>
+                      <li>• TODO_NAME</li>
+                      <li>• TODO_NAME</li>
                     </ul>
                   </CardContent>
                 </Card>
@@ -185,66 +168,17 @@ export default function Merci() {
           </div>
         </section>
 
-        {/* Social Media */}
-        <section className="py-16 bg-gradient-to-r from-primary to-primary-dark">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+        {/* Next Year */}
+        <section className="py-16 bg-gradient-to-r from-primary to-primary-dark flex items-center min-h-[200px]">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
             <AnimatedSection animation="fadeInUp">
-              <h2 className="text-3xl sm:text-4xl font-bold text-primary-foreground mb-4">
-                Restez connectés
+              <h2 className="text-3xl sm:text-4xl font-bold text-primary-foreground text-center">
+                A l&apos;année prochaine !
               </h2>
-              <p className="text-xl text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
-                Suivez-nous sur les réseaux sociaux pour ne rien rater de nos prochains événements.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button
-                  type="button"
-                  className="bg-background text-primary hover:bg-muted px-8 py-3 rounded-lg font-semibold text-lg transition-colors"
-                  aria-label="Suivre sur Facebook"
-                >
-                  Facebook
-                </button>
-                <button
-                  type="button"
-                  className="bg-background text-primary hover:bg-muted px-8 py-3 rounded-lg font-semibold text-lg transition-colors"
-                  aria-label="Suivre sur Instagram"
-                >
-                  Instagram
-                </button>
-                <button
-                  type="button"
-                  className="bg-background text-primary hover:bg-muted px-8 py-3 rounded-lg font-semibold text-lg transition-colors"
-                  aria-label="Suivre sur Twitter"
-                >
-                  Twitter
-                </button>
-              </div>
             </AnimatedSection>
           </div>
         </section>
 
-        {/* Next Year */}
-        <section className="py-16 bg-noel-snow">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-            <AnimatedSection animation="fadeInUp">
-              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-                À l&apos;année prochaine !
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
-                Nous vous donnons rendez-vous l&apos;année prochaine pour une nouvelle édition
-                encore plus magique du Marché de Noël du MPR.
-              </p>
-              <div className="bg-card p-6 rounded-lg shadow-lg max-w-md mx-auto border-border">
-                <h3 className="text-xl font-semibold text-primary mb-2">
-                  Marché de Noël du MPR 2026
-                </h3>
-                <p className="text-muted-foreground">
-                  Dates à confirmer<br />
-                  Restez informés !
-                </p>
-              </div>
-            </AnimatedSection>
-          </div>
-        </section>
       </main>
 
       <Footer />
