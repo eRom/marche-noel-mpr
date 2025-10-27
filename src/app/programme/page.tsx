@@ -216,14 +216,13 @@ export default function Programme() {
         </section>
 
         {/* Video Section */}
-        <section className="py-16 bg-noel-snow">
+        {/* <section className="py-16 bg-noel-snow">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <AnimatedSection animation="fadeInUp">
-             
               <VideoSection />
             </AnimatedSection>
           </div>
-        </section>
+        </section> */}
       </main>
 
       <Footer />

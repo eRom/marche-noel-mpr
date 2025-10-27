@@ -66,12 +66,12 @@ export default function Merci() {
             <AnimatedSection animation="fadeInUp">
               <div className="text-center mb-12">
                 <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6">
-                  Un événement réussi grâce à vous
+                  Un événement possible grâce à vous
                 </h2>
                 <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                  Le Marché de Noël MPR 2025 a été un véritable succès grâce à la participation
-                  de tous : visiteurs, artisans, bénévoles et organisateurs. Votre enthousiasme
-                  et votre soutien ont créé une ambiance magique qui restera dans nos mémoires.
+                Le Marché de Noël du MPR 2025 est rendu possible grâce à l&apos;engagement exceptionnel 
+                de nos équipes soignantes et à la participation active de nos patients. 
+                Votre collaboration et votre détermination font la magie de cet événement.  
                 </p>
               </div>
             </AnimatedSection>
@@ -135,10 +135,10 @@ export default function Merci() {
               </div>
             </AnimatedSection>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <AnimatedSection animation="fadeInLeft" delay={200}>
-                <Card className="p-6 bg-card border-border">
-                  <CardContent className="pt-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+              <AnimatedSection animation="fadeInLeft" delay={200} className="h-full">
+                <Card className="p-6 bg-card border-border h-full flex flex-col">
+                  <CardContent className="pt-6 flex-1">
                     <h3 className="text-xl font-semibold text-card-foreground mb-4">
                       Nos partenaires
                     </h3>
@@ -150,9 +150,9 @@ export default function Merci() {
                 </Card>
               </AnimatedSection>
 
-              <AnimatedSection animation="fadeInRight" delay={400}>
-                <Card className="p-6 bg-card border-border">
-                  <CardContent className="pt-6">
+              <AnimatedSection animation="fadeInRight" delay={400} className="h-full">
+                <Card className="p-6 bg-card border-border h-full flex flex-col">
+                  <CardContent className="pt-6 flex-1">
                     <h3 className="text-xl font-semibold text-card-foreground mb-4">
                       Équipe organisatrice
                     </h3>
