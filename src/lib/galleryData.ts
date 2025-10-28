@@ -8,40 +8,37 @@ export async function getGalleryImages(): Promise<GalleryImage[]> {
       prefix: 'gallery/',
     });
 
-    // Logging pour debug
-    console.log(`📸 Nombre de blobs récupérés: ${blobs.length}`);
-    console.log('📸 Pathnames:', blobs.map(b => b.pathname));
-
     const images: GalleryImage[] = blobs
       .filter((blob) => {
-        // Filtrer les blobs valides
+        // Filtrer uniquement les fichiers valides (pas les dossiers vides)
         const hasValidPath = blob.pathname.startsWith('gallery/');
         const hasValidUrl = blob.url && blob.url.startsWith('https://');
         
         // Vérifier qu'il y a bien un nom de fichier (pas juste un dossier)
         const parts = blob.pathname.split('/');
         const hasThreeParts = parts.length === 3; // gallery/category/filename
-        const hasFilename = parts[2] && parts[2].length > 0 && !parts[2].endsWith('/');
+        const hasFilename = parts[2] && parts[2].length > 0;
         const notEndingWithSlash = !blob.pathname.endsWith('/');
         
-        const isValid = hasValidPath && hasValidUrl && hasThreeParts && hasFilename && notEndingWithSlash;
-        
-        if (!isValid) {
-          console.log(`❌ Blob invalide filtré: ${blob.pathname}`);
-        }
-        
-        return isValid;
+        return hasValidPath && hasValidUrl && hasThreeParts && hasFilename && notEndingWithSlash;
       })
       .map((blob) => {
         // Parser metadata depuis pathname : gallery/category/filename.ext
         const parts = blob.pathname.split('/');
         const category = parts[1] as GalleryImage['category'];
-        const filename = parts[2]?.replace(/\.[^/.]+$/, '') || 'Photo';
-
-        // Formatter le titre : "photo-001" → "Photo 001"
-        const formattedTitle = filename
-          .replace(/-/g, ' ')
-          .replace(/\b\w/g, (char) => char.toUpperCase());
+        const filenameWithExt = parts[2] || '';
+        
+        // Extraire le nom sans extension : "marche-de-noel-1699876543210.webp" → "marche-de-noel-1699876543210"
+        const filenameWithoutExt = filenameWithExt.replace(/\.[^/.]+$/, '');
+        
+        // Retirer le timestamp (13 chiffres) : "marche-de-noel-1699876543210" → "marche-de-noel"
+        const titleSlug = filenameWithoutExt.replace(/-\d{13}$/, '');
+        
+        // Formatter le titre : "marche-de-noel" → "Marche De Noel"
+        const formattedTitle = titleSlug
+          .split('-')
+          .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+          .join(' ') || 'Photo';
 
         return {
           id: blob.pathname,
@@ -61,9 +58,6 @@ export async function getGalleryImages(): Promise<GalleryImage[]> {
         return a.id.localeCompare(b.id);
       });
 
-    console.log(`📸 Nombre d'images finales après filtrage: ${images.length}`);
-    console.log('📸 Images retenues:', images.map(i => ({ id: i.id, url: i.url })));
-    
     return images;
   } catch (error) {
     console.error('Erreur récupération images:', error);

@@ -32,6 +32,7 @@ export function GalleryUpload({ password }: GalleryUploadProps) {
   const [category, setCategory] = useState<string>('ambiance');
   const [isDragging, setIsDragging] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
+  const [imageTitles, setImageTitles] = useState<Map<number, string>>(new Map());
 
   const handleDragEnter = useCallback((e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
@@ -86,13 +87,43 @@ export function GalleryUpload({ password }: GalleryUploadProps) {
       newFiles.splice(index, 1);
       return newFiles;
     });
+    setImageTitles((prev) => {
+      const newTitles = new Map(prev);
+      newTitles.delete(index);
+      return newTitles;
+    });
+  };
+
+  const updateTitle = (index: number, title: string) => {
+    // Convertir en minuscules et limiter à 50 caractères
+    const cleanTitle = title.toLowerCase().substring(0, 50);
+    setImageTitles((prev) => {
+      const newTitles = new Map(prev);
+      newTitles.set(index, cleanTitle);
+      return newTitles;
+    });
   };
 
   const uploadFile = async (file: File, index: number) => {
+    const title = imageTitles.get(index);
+    
+    if (!title || title.trim() === '') {
+      setFiles((prev) => {
+        const newFiles = [...prev];
+        newFiles[index] = {
+          ...newFiles[index],
+          status: 'error',
+          error: 'Titre manquant',
+        };
+        return newFiles;
+      });
+      return;
+    }
+
     const formData = new FormData();
     formData.append('file', file);
     formData.append('category', category);
-    formData.append('title', file.name.replace(/\.[^/.]+$/, ''));
+    formData.append('title', title.trim());
 
     try {
       const response = await fetch('/api/gallery/upload', {
@@ -156,11 +187,18 @@ export function GalleryUpload({ password }: GalleryUploadProps) {
   const clearAll = () => {
     files.forEach((file) => URL.revokeObjectURL(file.preview));
     setFiles([]);
+    setImageTitles(new Map());
   };
 
   const pendingCount = files.filter((f) => f.status === 'pending').length;
   const successCount = files.filter((f) => f.status === 'success').length;
   const errorCount = files.filter((f) => f.status === 'error').length;
+  
+  // Vérifier que toutes les images ont un titre
+  const allTitlesFilled = files.every((_, index) => {
+    const title = imageTitles.get(index);
+    return title && title.trim().length > 0;
+  });
 
   return (
     <div className="space-y-6">
@@ -249,70 +287,128 @@ export function GalleryUpload({ password }: GalleryUploadProps) {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {files.map((uploadFile, index) => (
-              <div key={index} className="relative group">
-                <div className="aspect-square rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-800">
-                  <Image
-                    src={uploadFile.preview}
-                    alt={`Preview ${index + 1}`}
-                    width={200}
-                    height={200}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {files.map((uploadFile, index) => {
+              const title = imageTitles.get(index) || '';
+              const charCount = title.length;
+              
+              return (
+                <div key={index} className="relative">
+                  <div className="aspect-square rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-800 relative group">
+                    <Image
+                      src={uploadFile.preview}
+                      alt={`Preview ${index + 1}`}
+                      width={300}
+                      height={300}
+                      className="w-full h-full object-cover"
+                    />
 
-                {/* Status overlay */}
-                <div className="absolute inset-0 flex items-center justify-center bg-black/50 rounded-lg">
-                  {uploadFile.status === 'uploading' && (
-                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-white" />
+                    {/* Status overlay */}
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/50 rounded-lg">
+                      {uploadFile.status === 'uploading' && (
+                        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-white" />
+                      )}
+                      {uploadFile.status === 'success' && (
+                        <CheckCircle className="h-8 w-8 text-green-500" />
+                      )}
+                      {uploadFile.status === 'error' && (
+                        <AlertCircle className="h-8 w-8 text-red-500" />
+                      )}
+                    </div>
+
+                    {/* Bouton supprimer */}
+                    {uploadFile.status === 'pending' && (
+                      <button
+                        onClick={() => removeFile(index)}
+                        className="absolute top-2 right-2 p-1 bg-red-500 rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity z-10"
+                        aria-label="Supprimer"
+                        type="button"
+                      >
+                        <X size={16} />
+                      </button>
+                    )}
+                  </div>
+
+                  {/* Input titre */}
+                  {uploadFile.status === 'pending' && (
+                    <div className="mt-2">
+                      <label
+                        htmlFor={`title-${index}`}
+                        className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                      >
+                        Titre <span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        id={`title-${index}`}
+                        type="text"
+                        value={title}
+                        onChange={(e) => updateTitle(index, e.target.value)}
+                        placeholder="Titre de l'image (obligatoire)"
+                        maxLength={50}
+                        className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 ${
+                          title.trim() === ''
+                            ? 'border-red-300 focus:ring-red-500'
+                            : 'border-gray-300 dark:border-gray-600 focus:ring-red-500'
+                        }`}
+                      />
+                      <div className="flex justify-between items-center mt-1">
+                        <span
+                          className={`text-xs ${
+                            title.trim() === ''
+                              ? 'text-red-500'
+                              : 'text-gray-500 dark:text-gray-400'
+                          }`}
+                        >
+                          {title.trim() === '' ? 'Titre requis' : 'Minuscules automatiques'}
+                        </span>
+                        <span className="text-xs text-gray-500 dark:text-gray-400">
+                          {charCount}/50
+                        </span>
+                      </div>
+                    </div>
                   )}
+
+                  {/* Message d'erreur */}
+                  {uploadFile.status === 'error' && uploadFile.error && (
+                    <p className="mt-2 text-sm text-red-500">
+                      {uploadFile.error}
+                    </p>
+                  )}
+
+                  {/* Titre affiché après succès */}
                   {uploadFile.status === 'success' && (
-                    <CheckCircle className="h-8 w-8 text-green-500" />
-                  )}
-                  {uploadFile.status === 'error' && (
-                    <AlertCircle className="h-8 w-8 text-red-500" />
+                    <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 font-medium">
+                      {title}
+                    </p>
                   )}
                 </div>
-
-                {/* Bouton supprimer */}
-                {uploadFile.status === 'pending' && (
-                  <button
-                    onClick={() => removeFile(index)}
-                    className="absolute top-2 right-2 p-1 bg-red-500 rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity"
-                    aria-label="Supprimer"
-                    type="button"
-                  >
-                    <X size={16} />
-                  </button>
-                )}
-
-                {/* Message d'erreur */}
-                {uploadFile.status === 'error' && uploadFile.error && (
-                  <p className="absolute bottom-2 left-2 right-2 text-xs text-white bg-red-500 px-2 py-1 rounded">
-                    {uploadFile.error}
-                  </p>
-                )}
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           {/* Actions */}
-          <div className="flex gap-3">
-            <Button
-              onClick={handleUpload}
-              disabled={pendingCount === 0 || isUploading}
-              className="flex-1 bg-red-600 hover:bg-red-700 text-white"
-            >
-              {isUploading ? 'Upload en cours...' : `Uploader ${pendingCount} image${pendingCount > 1 ? 's' : ''}`}
-            </Button>
-            <Button
-              onClick={clearAll}
-              disabled={isUploading}
-              variant="outline"
-            >
-              Tout effacer
-            </Button>
+          <div className="flex flex-col gap-3">
+            {!allTitlesFilled && pendingCount > 0 && (
+              <p className="text-sm text-red-500 text-center">
+                ⚠️ Veuillez remplir tous les titres avant d&apos;uploader
+              </p>
+            )}
+            <div className="flex gap-3">
+              <Button
+                onClick={handleUpload}
+                disabled={pendingCount === 0 || isUploading || !allTitlesFilled}
+                className="flex-1 bg-red-600 hover:bg-red-700 text-white disabled:opacity-50"
+              >
+                {isUploading ? 'Upload en cours...' : `Uploader ${pendingCount} image${pendingCount > 1 ? 's' : ''}`}
+              </Button>
+              <Button
+                onClick={clearAll}
+                disabled={isUploading}
+                variant="outline"
+              >
+                Tout effacer
+              </Button>
+            </div>
           </div>
         </div>
       )}
