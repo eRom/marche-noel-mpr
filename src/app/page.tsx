@@ -121,12 +121,12 @@ export default function Home() {
                 Prêt à vivre la magie de Noël ?
               </h2>
               <p className="text-xl text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
-                Rejoignez-nous le 27 nov. - 11, 13 et 16 déc. pour une expérience inoubliable au cœur de MPR.
+                Rejoignez-nous le 27 nov. - 11, 13 et 16 déc. pour une expérience inoubliable au cœur de MPR
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
                   href="/programme"
-                  className="bg-background text-primary hover:bg-transparent hover:border-2 hover:border-primary hover:text-primary px-8 py-3 rounded-lg font-semibold text-lg transition-colors focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                  className="bg-background text-primary hover:bg-transparent hover:border-2 hover:border-primary hover:text-foreground px-8 py-3 rounded-lg font-semibold text-lg transition-colors focus:ring-2 focus:ring-primary focus:ring-offset-2"
                 >
                   Voir le programme complet
                 </a>

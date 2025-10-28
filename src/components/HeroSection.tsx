@@ -48,7 +48,7 @@ export default function HeroSection({
               <Button
                 asChild
                 size="lg"
-                className="bg-amber-50 text-amber-950 border-amber-950 border px-8 py-3 text-lg font-semibold focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                className="bg-primary text-primary-foreground px-8 py-3 text-lg "
               >
                 <Link href={primaryButtonHref}>
                   {primaryButtonText}
@@ -69,7 +69,7 @@ export default function HeroSection({
             </div>
           </div>
 
-          {/* Image */}
+          {/* Image Section */}
           <div className="relative animate-fade-in-right">
             <div className="relative w-full h-96 lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
               <Image
