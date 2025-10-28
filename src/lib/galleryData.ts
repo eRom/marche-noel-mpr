@@ -17,9 +17,20 @@ export async function getGalleryImages(): Promise<GalleryImage[]> {
         // Filtrer les blobs valides
         const hasValidPath = blob.pathname.startsWith('gallery/');
         const hasValidUrl = blob.url && blob.url.startsWith('https://');
-        const hasFilename = blob.pathname.split('/').length === 3; // gallery/category/filename
         
-        return hasValidPath && hasValidUrl && hasFilename;
+        // Vérifier qu'il y a bien un nom de fichier (pas juste un dossier)
+        const parts = blob.pathname.split('/');
+        const hasThreeParts = parts.length === 3; // gallery/category/filename
+        const hasFilename = parts[2] && parts[2].length > 0 && !parts[2].endsWith('/');
+        const notEndingWithSlash = !blob.pathname.endsWith('/');
+        
+        const isValid = hasValidPath && hasValidUrl && hasThreeParts && hasFilename && notEndingWithSlash;
+        
+        if (!isValid) {
+          console.log(`❌ Blob invalide filtré: ${blob.pathname}`);
+        }
+        
+        return isValid;
       })
       .map((blob) => {
         // Parser metadata depuis pathname : gallery/category/filename.ext
