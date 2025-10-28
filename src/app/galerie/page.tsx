@@ -21,9 +21,9 @@ export default async function GalleriePage() {
   const images = await getGalleryImages();
 
   return (
-    <>
+    <div className="min-h-screen bg-gradient-to-b from-red-50 to-white dark:from-gray-900 dark:to-gray-800">
       <Header />
-      <main className="min-h-screen bg-gradient-to-b from-red-50 to-white dark:from-gray-900 dark:to-gray-800">
+      <main>
         <div className="container mx-auto px-4 py-12">
           <header className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold text-red-700 dark:text-red-500 mb-4">
@@ -52,7 +52,7 @@ export default async function GalleriePage() {
         </div>
       </main>
       <Footer />
-    </>
+    </div>
   );
 }
 
