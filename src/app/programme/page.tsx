@@ -120,7 +120,7 @@ export default function Programme() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {events.map((event, index) => (
                 <AnimatedSection 
-                  key={event.day} 
+                  key={`${event.day}-${event.title}-${index}`} 
                   animation="fadeInUp" 
                   delay={index * 100}
                 >
