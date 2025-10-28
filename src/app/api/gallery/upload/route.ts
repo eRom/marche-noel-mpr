@@ -42,7 +42,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Validation de la catégorie
-    const validCategories = ['stands', 'animations', 'visiteurs', 'ambiance', 'MPR'];
+    const validCategories = ['stands', 'animations', 'visiteurs', 'ambiance', 'MPR', 'IA'];
     if (!category || !validCategories.includes(category)) {
       return NextResponse.json(
         { error: 'Catégorie invalide' },

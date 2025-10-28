@@ -16,6 +16,7 @@ const categoryColors: Record<GalleryImage['category'], string> = {
   visiteurs: 'bg-blue-600',
   ambiance: 'bg-purple-600',
   MPR: 'bg-yellow-600',
+  IA: 'bg-pink-600',
 };
 
 export function GalleryGrid({ images }: GalleryGridProps) {

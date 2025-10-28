@@ -24,6 +24,7 @@ const categories = [
   { value: 'visiteurs', label: 'Visiteurs' },
   { value: 'ambiance', label: 'Ambiance' },
   { value: 'MPR', label: 'MPR' },
+  { value: 'IA', label: 'IA' },
 ];
 
 export function GalleryUpload({ password }: GalleryUploadProps) {
