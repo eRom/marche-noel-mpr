@@ -18,11 +18,11 @@ const AnimatedSection = dynamic(() => import("@/components/AnimatedSection"), {
 });
 
 export const metadata = {
-  title: "Merci - Marché de Noël MPR Nantes 2024",
-  description: "Remerciements pour votre participation au Marché de Noël MPR de Nantes. Découvrez les points forts de cette édition, les moments magiques partagés et les informations pour l'année prochaine.",
+  title: "À propos - Marché de Noël MPR Nantes 2025",
+  description: "À propos du Marché de Noël du MPR. Découvrez les équipes soignantes, les patients volontaires et les partenaires qui rendent cet événement possible.",
 };
 
-export default function Merci() {
+export default function APropos() {
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -48,7 +48,7 @@ export default function Merci() {
           <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
             <AnimatedSection animation="fadeInUp">
               <h1 className="text-4xl sm:text-5xl font-bold text-background mb-4">
-                Merci
+                À propos
               </h1>
               <p className="text-xl text-background/90 max-w-2xl mx-auto">
                 Un grand merci à tous ceux qui ont rendu ce Marché de Noël possible.
@@ -185,3 +185,4 @@ export default function Merci() {
     </div>
   );
 }
+

@@ -1,0 +1,6 @@
+# Vercel Blob Storage Token (requis pour la galerie)
+BLOB_READ_WRITE_TOKEN=vercel_blob_xxx
+
+# Mot de passe admin pour l'authentification et l'upload (SECRET - côté serveur uniquement)
+# ⚠️ NE JAMAIS utiliser NEXT_PUBLIC_ pour des secrets !
+ADMIN_PASSWORD=changez_ce_mot_de_passe_en_production

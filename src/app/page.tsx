@@ -93,7 +93,7 @@ export default function Home() {
               </AnimatedSection>
 
               <AnimatedSection animation="fadeInRight" delay={600}>
-                <Link href="/merci" className="block">
+                <Link href="/a-propos" className="block">
                   <Card className="text-center p-6 hover:shadow-lg cursor-pointer hover:bg-accent/10 transition-all duration-300 bg-card border-border focus-within:ring-2 focus-within:ring-accent focus-within:ring-offset-2">
                     <CardContent className="pt-6">
                       <Heart className="w-12 h-12 text-accent mx-auto mb-4" aria-hidden="true" />
@@ -131,10 +131,10 @@ export default function Home() {
                   Voir le programme complet
                 </a>
                 <a
-                  href="/merci"
+                  href="/a-propos"
                   className="border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary-dark px-8 py-3 rounded-lg font-semibold text-lg transition-colors"
                 >
-                  Remerciements
+                  À propos
                 </a>
               </div>
             </AnimatedSection>

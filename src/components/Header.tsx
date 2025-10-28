@@ -10,7 +10,8 @@ import ThemeToggle from "./ThemeToggle";
 const navigation = [
   { name: "Accueil", href: "/" },
   { name: "Programme", href: "/programme" },
-  { name: "Merci", href: "/merci" },
+  { name: "Galerie", href: "/galerie" },
+  { name: "À propos", href: "/a-propos" },
 ];
 
 export default function Header() {

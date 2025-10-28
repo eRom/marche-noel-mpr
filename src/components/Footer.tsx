@@ -34,8 +34,11 @@ export default function Footer() {
               <Link href="/programme" className="block text-muted-foreground hover:text-card-foreground transition-colors">
                 Programme
               </Link>
-              <Link href="/merci" className="block text-muted-foreground hover:text-card-foreground transition-colors">
-                Merci
+              <Link href="/galerie" className="block text-muted-foreground hover:text-card-foreground transition-colors">
+                Galerie
+              </Link>
+              <Link href="/a-propos" className="block text-muted-foreground hover:text-card-foreground transition-colors">
+                À propos
               </Link>
             </nav>
           </div>

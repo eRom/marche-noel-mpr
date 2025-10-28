@@ -25,75 +25,40 @@ export const metadata = {
 export default function Programme() {
   const events = [
     {
-      day: "15 décembre",
+      day: "27 novembre",
       title: "Ouverture officielle",
-      time: "10h00",
-      description: "Cérémonie d'ouverture avec les autorités locales et les artisans",
+      time: "16h00",
+      description: "Découvrez les animations et les ateliers de Noël",
       type: "Cérémonie"
     },
     {
-      day: "16 décembre",
-      title: "Atelier de décoration",
-      time: "14h00 - 16h00",
-      description: "Apprenez à créer vos propres décorations de Noël",
-      type: "Atelier"
+      day: "27 novembre",
+      title: "Marché des artisans",
+      time: "16h00 - 19h00",
+      description: "Vente de décorations de Noël, créations artisanales",
+      type: "Marché"
     },
     {
-      day: "17 décembre",
-      title: "Concert de chorale",
-      time: "18h00 - 19h30",
-      description: "Chants de Noël par la chorale locale",
+      day: "11 décembre",
+      title: "TODO_TITLE",
+      time: "16h00 - 19h00",
+      description: "TODO_DESCRIPTION",
       type: "Concert"
     },
     {
-      day: "18 décembre",
-      title: "Marché des artisans",
-      time: "10h00 - 20h00",
-      description: "Rencontrez nos artisans et découvrez leurs créations",
+      day: "13 décembre",
+      title: "Marché de Noël",
+      time: "14h00 - 18h00",
+      description: "TODO_DESCRIPTION",
       type: "Marché"
     },
     {
-      day: "19 décembre",
-      title: "Contes de Noël",
-      time: "15h00 - 16h00",
-      description: "Histoires magiques pour petits et grands",
-      type: "Animation"
+      day: "16 décembre",
+      title: "TODO_TITLE",
+      time: "16h00 - 19h00",
+      description: "TODO_DESCRIPTION",
+      type: "Concert"
     },
-    {
-      day: "20 décembre",
-      title: "Dégustation de spécialités",
-      time: "16h00 - 18h00",
-      description: "Découvrez les saveurs locales et les spécialités de Noël",
-      type: "Dégustation"
-    },
-    {
-      day: "21 décembre",
-      title: "Spectacle de marionnettes",
-      time: "14h30 - 15h30",
-      description: "Spectacle interactif pour toute la famille",
-      type: "Spectacle"
-    },
-    {
-      day: "22 décembre",
-      title: "Marché nocturne",
-      time: "18h00 - 22h00",
-      description: "Marché illuminé avec ambiance festive",
-      type: "Marché"
-    },
-    {
-      day: "23 décembre",
-      title: "Grande tombola",
-      time: "17h00",
-      description: "Tirage au sort avec de nombreux lots à gagner",
-      type: "Animation"
-    },
-    {
-      day: "24 décembre",
-      title: "Fermeture festive",
-      time: "16h00",
-      description: "Dernière journée avec animations spéciales",
-      type: "Cérémonie"
-    }
   ];
 
   return (
@@ -151,7 +116,7 @@ export default function Programme() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {events.map((event, index) => (
                 <AnimatedSection 
-                  key={event.day} 
+                  key={`${event.day}-${event.title}-${index}`} 
                   animation="fadeInUp" 
                   delay={index * 100}
                 >
@@ -185,6 +150,8 @@ export default function Programme() {
               ))}
             </div>
           </div>
+
+          
         </section>
 
         {/* Practical Information */}
@@ -231,13 +198,13 @@ export default function Programme() {
               <AnimatedSection animation="fadeInRight" delay={600}>
                 <Card className="text-center p-6 h-full flex flex-col bg-card border-border">
                   <CardContent className="pt-6 flex-1 flex flex-col justify-center">
-                    <Users className="w-12 h-12 text-primary mx-auto mb-4" aria-hidden="true" />
+                    <Users className="w-12 h-12 text-accent mx-auto mb-4" aria-hidden="true" />
                     <h3 className="text-lg font-semibold text-card-foreground mb-2">
                       Accès
                     </h3>
                     <p className="text-muted-foreground text-sm">
-                      Gratuit<br />
-                      Tous publics
+                      Hall d&apos;intégration du MPR<br />
+                      Gratuit
                     </p>
                   </CardContent>
                 </Card>
@@ -245,6 +212,15 @@ export default function Programme() {
             </div>
           </div>
         </section>
+
+        {/* Video Section */}
+        {/* <section className="py-16 bg-noel-snow">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <AnimatedSection animation="fadeInUp">
+              <VideoSection />
+            </AnimatedSection>
+          </div>
+        </section> */}
       </main>
 
       <Footer />
