@@ -17,6 +17,9 @@ export const metadata: Metadata = {
   },
 };
 
+// Revalider la page toutes les 60 secondes pour afficher les nouvelles images
+export const revalidate = 60;
+
 export default async function GalleriePage() {
   const images = await getGalleryImages();
 
