@@ -5,7 +5,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Check, Edit2, Trash2, X } from 'lucide-react';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 interface ImageInfo {
   id: string;
@@ -27,8 +27,9 @@ export function GalleryManager({ password }: GalleryManagerProps) {
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editingTitle, setEditingTitle] = useState<string>('');
   const [deletingId, setDeletingId] = useState<string | null>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  const loadImages = async () => {
+  const loadImages = useCallback(async () => {
     try {
       setLoading(true);
       setError('');
@@ -46,16 +47,23 @@ export function GalleryManager({ password }: GalleryManagerProps) {
       } else {
         setError(data.error || 'Erreur lors du chargement');
       }
-    } catch (err) {
+    } catch {
       setError('Erreur de connexion');
     } finally {
       setLoading(false);
     }
-  };
+  }, [password]);
 
   useEffect(() => {
     loadImages();
-  }, [password]);
+  }, [loadImages]);
+
+  // Focus sur l'input quand on passe en mode édition
+  useEffect(() => {
+    if (editingId && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [editingId]);
 
   const handleDelete = async (imageId: string, pathname: string) => {
     if (!confirm('Êtes-vous sûr de vouloir supprimer cette image ?')) {
@@ -82,7 +90,7 @@ export function GalleryManager({ password }: GalleryManagerProps) {
       } else {
         alert(data.error || 'Erreur lors de la suppression');
       }
-    } catch (err) {
+    } catch {
       alert('Erreur de connexion');
     } finally {
       setDeletingId(null);
@@ -124,7 +132,7 @@ export function GalleryManager({ password }: GalleryManagerProps) {
       } else {
         alert(data.error || 'Erreur lors du renommage');
       }
-    } catch (err) {
+    } catch {
       alert('Erreur de connexion');
     }
   };
@@ -223,11 +231,11 @@ export function GalleryManager({ password }: GalleryManagerProps) {
                 {isEditing ? (
                   <div className="space-y-2">
                     <Input
+                      ref={inputRef}
                       value={editingTitle}
                       onChange={(e) => setEditingTitle(e.target.value)}
                       placeholder="Nouveau titre"
                       className="text-sm"
-                      autoFocus
                     />
                     <div className="flex gap-2">
                       <Button
