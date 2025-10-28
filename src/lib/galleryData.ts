@@ -13,9 +13,16 @@ export async function getGalleryImages(): Promise<GalleryImage[]> {
     console.log('📸 Pathnames:', blobs.map(b => b.pathname));
 
     const images: GalleryImage[] = blobs
-      .filter((blob) => blob.pathname.startsWith('gallery/'))
+      .filter((blob) => {
+        // Filtrer les blobs valides
+        const hasValidPath = blob.pathname.startsWith('gallery/');
+        const hasValidUrl = blob.url && blob.url.startsWith('https://');
+        const hasFilename = blob.pathname.split('/').length === 3; // gallery/category/filename
+        
+        return hasValidPath && hasValidUrl && hasFilename;
+      })
       .map((blob) => {
-        // Parser metadata depuis pathname : gallery/stands/photo-001.jpg
+        // Parser metadata depuis pathname : gallery/category/filename.ext
         const parts = blob.pathname.split('/');
         const category = parts[1] as GalleryImage['category'];
         const filename = parts[2]?.replace(/\.[^/.]+$/, '') || 'Photo';
@@ -43,7 +50,8 @@ export async function getGalleryImages(): Promise<GalleryImage[]> {
         return a.id.localeCompare(b.id);
       });
 
-    console.log(`📸 Nombre d'images finales: ${images.length}`);
+    console.log(`📸 Nombre d'images finales après filtrage: ${images.length}`);
+    console.log('📸 Images retenues:', images.map(i => ({ id: i.id, url: i.url })));
     
     return images;
   } catch (error) {
