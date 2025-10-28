@@ -20,12 +20,13 @@ Créez un fichier `.env.local` à la racine du projet avec les variables suivant
 # Token Vercel Blob Storage (obligatoire)
 BLOB_READ_WRITE_TOKEN=vercel_blob_xxx
 
-# Mot de passe pour l'API d'upload (côté serveur)
+# Mot de passe admin (SECRET - côté serveur uniquement)
+# ⚠️ NE JAMAIS utiliser NEXT_PUBLIC_ pour des secrets !
 ADMIN_PASSWORD=votre_mot_de_passe_securise
-
-# Mot de passe pour la page de connexion (côté client)
-NEXT_PUBLIC_ADMIN_PASSWORD=votre_mot_de_passe_securise
 ```
+
+**Important :** Le mot de passe est vérifié côté serveur via l'API `/api/gallery/auth`. 
+Il n'est JAMAIS exposé dans le JavaScript côté client.
 
 ### Obtenir le token Vercel Blob
 

@@ -12,18 +12,29 @@ export default function GalleryAdminPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [error, setError] = useState('');
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Vérification simple du mot de passe
-    // En production, utilisez une vraie authentification
-    const adminPassword = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || 'admin123';
-    
-    if (password === adminPassword) {
-      setIsAuthenticated(true);
-      setError('');
-    } else {
-      setError('Mot de passe incorrect');
+    setError('');
+
+    try {
+      const response = await fetch('/api/gallery/auth', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ password }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setIsAuthenticated(true);
+      } else {
+        setError(data.error || 'Mot de passe incorrect');
+      }
+    } catch (error) {
+      console.error('Erreur de connexion:', error);
+      setError('Erreur de connexion');
     }
   };
 
