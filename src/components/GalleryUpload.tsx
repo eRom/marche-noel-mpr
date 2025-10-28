@@ -5,11 +5,11 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
 } from '@/components/ui/select';
 import { AlertCircle, CheckCircle, Upload, X } from 'lucide-react';
 import Image from 'next/image';
@@ -41,6 +41,7 @@ export function GalleryUpload({ password }: GalleryUploadProps) {
   const [category, setCategory] = useState<string>('ambiance');
   const [isDragging, setIsDragging] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
+  const [isProcessing, setIsProcessing] = useState(false);
   const [title, setTitle] = useState<string>('');
 
   const handleDragEnter = useCallback((e: DragEvent<HTMLDivElement>) => {
@@ -60,18 +61,114 @@ export function GalleryUpload({ password }: GalleryUploadProps) {
     e.stopPropagation();
   }, []);
 
-  const addFile = useCallback((newFile: File) => {
+  const processImage = async (originalFile: File): Promise<File> => {
+    return new Promise((resolve, reject) => {
+      const img = new window.Image();
+      const reader = new FileReader();
+
+      reader.onload = (e) => {
+        img.onload = () => {
+          // Calculer les nouvelles dimensions (max 1440px)
+          let width = img.width;
+          let height = img.height;
+          const maxSize = 1440;
+
+          // Redimensionner seulement si l'image dépasse 1440px
+          if (width > maxSize || height > maxSize) {
+            if (width > height) {
+              // Image paysage : limiter la largeur
+              height = Math.round((height / width) * maxSize);
+              width = maxSize;
+            } else {
+              // Image portrait : limiter la hauteur
+              width = Math.round((width / height) * maxSize);
+              height = maxSize;
+            }
+          }
+
+          // Créer un canvas avec les nouvelles dimensions
+          const canvas = document.createElement('canvas');
+          canvas.width = width;
+          canvas.height = height;
+
+          const ctx = canvas.getContext('2d');
+          if (!ctx) {
+            reject(new Error('Impossible de créer le contexte canvas'));
+            return;
+          }
+
+          // Dessiner l'image redimensionnée avec interpolation de haute qualité
+          ctx.imageSmoothingEnabled = true;
+          ctx.imageSmoothingQuality = 'high';
+          ctx.drawImage(img, 0, 0, width, height);
+
+          // Convertir en WebP avec qualité 85
+          canvas.toBlob(
+            (blob) => {
+              if (!blob) {
+                reject(new Error('Échec de la conversion WebP'));
+                return;
+              }
+
+              // Créer un nouveau fichier .webp
+              const nameWithoutExt = originalFile.name.replace(/\.[^/.]+$/, '');
+              const newFile = new File([blob], `${nameWithoutExt}.webp`, {
+                type: 'image/webp',
+                lastModified: Date.now(),
+              });
+
+              resolve(newFile);
+            },
+            'image/webp',
+            0.85 // Qualité 85%
+          );
+        };
+
+        img.onerror = () => {
+          reject(new Error('Échec du chargement de l\'image'));
+        };
+
+        img.src = e.target?.result as string;
+      };
+
+      reader.onerror = () => {
+        reject(new Error('Échec de la lecture du fichier'));
+      };
+
+      reader.readAsDataURL(originalFile);
+    });
+  };
+
+  const addFile = useCallback(async (newFile: File) => {
     // Nettoyer le fichier précédent si existe
     if (file) {
       URL.revokeObjectURL(file.preview);
     }
 
-    setFile({
-      file: newFile,
-      preview: URL.createObjectURL(newFile),
-      status: 'pending',
-    });
-    setTitle(''); // Réinitialiser le titre
+    setIsProcessing(true);
+
+    try {
+      // Traiter l'image (redimensionner si > 1440px + convertir en WebP)
+      const processedFile = await processImage(newFile);
+
+      setFile({
+        file: processedFile,
+        preview: URL.createObjectURL(processedFile),
+        status: 'pending',
+      });
+      setTitle(''); // Réinitialiser le titre
+    } catch (error) {
+      console.error('Erreur de traitement de l\'image:', error);
+      // En cas d'erreur, utiliser le fichier original
+      setFile({
+        file: newFile,
+        preview: URL.createObjectURL(newFile),
+        status: 'pending',
+      });
+      setTitle('');
+    } finally {
+      setIsProcessing(false);
+    }
   }, [file]);
 
   const handleDrop = useCallback((e: DragEvent<HTMLDivElement>) => {
@@ -201,7 +298,7 @@ export function GalleryUpload({ password }: GalleryUploadProps) {
       </Card>
 
       {/* Zone de drop - affichée uniquement si pas de fichier */}
-      {!file && (
+      {!file && !isProcessing && (
         <div
           onDragEnter={handleDragEnter}
           onDragOver={handleDragOver}
@@ -237,6 +334,26 @@ export function GalleryUpload({ password }: GalleryUploadProps) {
           <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
             PNG, JPG, WebP jusqu&apos;à 10MB
           </p>
+          <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+            Conversion automatique en WebP (max 1440px)
+          </p>
+        </div>
+      )}
+
+      {/* Indicateur de traitement */}
+      {isProcessing && (
+        <div className="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-12 text-center">
+          <div className="flex flex-col items-center gap-4">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900 dark:border-gray-100" />
+            <div>
+              <p className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                Traitement en cours...
+              </p>
+              <p className="text-xs text-muted-foreground mt-1">
+                Redimensionnement et conversion WebP
+              </p>
+            </div>
+          </div>
         </div>
       )}
 
