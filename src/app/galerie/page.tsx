@@ -33,7 +33,7 @@ export default async function GalleriePage() {
               Galerie Photos
             </h1>
             <p className="text-lg text-gray-600 dark:text-gray-300">
-              Revivez les moments magiques du Marché de Noël du MPR
+              Vivez les moments magiques du Marché de Noël du MPR
             </p>
             {images.length > 0 && (
               <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
