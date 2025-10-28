@@ -83,8 +83,12 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Encoder le titre original en base64 pour préserver les majuscules
+    const titleBase64 = Buffer.from(customTitle.trim()).toString('base64url');
+
     const extension = file.name.split('.').pop() || 'jpg';
-    const filename = `${slug}-${timestamp}.${extension}`;
+    // Format: slug-timestamp-base64Title.ext
+    const filename = `${slug}-${timestamp}-${titleBase64}.${extension}`;
 
     // Structure : gallery/category/filename
     const pathname = `gallery/${category}/${filename}`;
@@ -93,6 +97,9 @@ export async function POST(request: NextRequest) {
     const blob = await put(pathname, file, {
       access: 'public',
       token: process.env.BLOB_READ_WRITE_TOKEN!,
+      addRandomSuffix: false,
+      cacheControlMaxAge: 31536000, // 1 an
+      contentType: file.type,
     });
 
     return NextResponse.json({

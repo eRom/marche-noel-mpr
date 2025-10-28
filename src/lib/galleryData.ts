@@ -28,22 +28,46 @@ export async function getGalleryImages(): Promise<GalleryImage[]> {
         const category = parts[1] as GalleryImage['category'];
         const filenameWithExt = parts[2] || '';
         
-        // Extraire le nom sans extension : "marche-de-noel-1699876543210.webp" → "marche-de-noel-1699876543210"
+        // Extraire le titre depuis le filename
+        let title = 'Photo';
         const filenameWithoutExt = filenameWithExt.replace(/\.[^/.]+$/, '');
+        const filenameParts = filenameWithoutExt.split('-');
         
-        // Retirer le timestamp (13 chiffres) : "marche-de-noel-1699876543210" → "marche-de-noel"
-        const titleSlug = filenameWithoutExt.replace(/-\d{13}$/, '');
-        
-        // Formatter le titre : "marche-de-noel" → "Marche De Noel"
-        const formattedTitle = titleSlug
-          .split('-')
-          .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-          .join(' ') || 'Photo';
+        // Nouveau format: slug-timestamp-base64Title
+        // Ancien format: slug-timestamp
+        if (filenameParts.length >= 3) {
+          const lastPart = filenameParts[filenameParts.length - 1];
+          const secondLastPart = filenameParts[filenameParts.length - 2];
+          
+          // Vérifier si c'est le nouveau format (dernière partie = base64)
+          // et avant-dernière partie = timestamp (13 chiffres)
+          if (/^\d{13}$/.test(secondLastPart)) {
+            try {
+              // Décoder le titre depuis base64url
+              title = Buffer.from(lastPart, 'base64url').toString('utf-8');
+            } catch {
+              // Si le décodage échoue, c'est l'ancien format
+              // Retirer le timestamp et formater depuis le slug
+              const titleSlug = filenameWithoutExt.replace(/-\d{13}$/, '');
+              title = titleSlug
+                .split('-')
+                .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                .join(' ') || 'Photo';
+            }
+          } else {
+            // Ancien format : formater depuis le slug
+            const titleSlug = filenameWithoutExt.replace(/-\d{13}$/, '');
+            title = titleSlug
+              .split('-')
+              .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+              .join(' ') || 'Photo';
+          }
+        }
 
         return {
           id: blob.pathname,
           url: blob.url,
-          title: formattedTitle,
+          title: title,
           category: category || 'ambiance',
           date: new Date(blob.uploadedAt).toLocaleDateString('fr-FR', {
             day: 'numeric',

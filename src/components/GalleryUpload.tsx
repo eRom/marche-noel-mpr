@@ -200,8 +200,8 @@ export function GalleryUpload({ password }: GalleryUploadProps) {
   };
 
   const updateTitle = (newTitle: string) => {
-    // Convertir en minuscules et limiter à 50 caractères
-    const cleanTitle = newTitle.toLowerCase().substring(0, 50);
+    // Limiter à 50 caractères (garder les majuscules)
+    const cleanTitle = newTitle.substring(0, 50);
     setTitle(cleanTitle);
   };
 
@@ -385,7 +385,7 @@ export function GalleryUpload({ password }: GalleryUploadProps) {
                       : 'text-muted-foreground'
                   }`}
                 >
-                  {title.trim() === '' ? 'Titre requis' : 'Minuscules automatiques'}
+                  {title.trim() === '' ? 'Titre requis' : 'Majuscules conservées'}
                 </span>
                 <span className="text-sm text-muted-foreground">
                   {charCount}/50
