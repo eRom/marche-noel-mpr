@@ -8,6 +8,10 @@ export async function getGalleryImages(): Promise<GalleryImage[]> {
       prefix: 'gallery/',
     });
 
+    // Logging pour debug
+    console.log(`📸 Nombre de blobs récupérés: ${blobs.length}`);
+    console.log('📸 Pathnames:', blobs.map(b => b.pathname));
+
     const images: GalleryImage[] = blobs
       .filter((blob) => blob.pathname.startsWith('gallery/'))
       .map((blob) => {
@@ -35,12 +39,12 @@ export async function getGalleryImages(): Promise<GalleryImage[]> {
         };
       })
       .sort((a, b) => {
-        // Trier par date de upload (plus récent en premier)
-        const dateA = new Date(a.date).getTime();
-        const dateB = new Date(b.date).getTime();
-        return dateB - dateA;
+        // Trier par ID (pathname) pour un ordre cohérent
+        return a.id.localeCompare(b.id);
       });
 
+    console.log(`📸 Nombre d'images finales: ${images.length}`);
+    
     return images;
   } catch (error) {
     console.error('Erreur récupération images:', error);
