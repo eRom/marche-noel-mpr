@@ -40,7 +40,7 @@ export function Lightbox({
           text: `Photo du Marché de Noël du MPR : ${image.title}`,
           url: window.location.href,
         });
-      } catch (error) {
+      } catch (_error) {
         // L'utilisateur a annulé le partage
         console.log('Partage annulé');
       }
@@ -89,6 +89,13 @@ export function Lightbox({
         <div
           className="relative max-w-7xl max-h-[90vh] w-full mx-4"
           onClick={(e) => e.stopPropagation()}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.stopPropagation();
+            }
+          }}
+          role="img"
+          tabIndex={-1}
         >
           <Image
             src={image.url}

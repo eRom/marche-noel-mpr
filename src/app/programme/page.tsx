@@ -17,10 +17,6 @@ const AnimatedSection = dynamic(() => import("@/components/AnimatedSection"), {
   ssr: true
 });
 
-const VideoSection = dynamic(() => import("@/components/VideoSection"), {
-  loading: () => <div className="aspect-video bg-muted animate-pulse rounded-lg" />
-});
-
 export const metadata = {
   title: "Programme Festivités - Marché de Noël MPR Nantes",
   description: "Programme complet du Marché de Noël MPR du 15 au 24 décembre 2024. Chorale de Noël, ateliers créatifs, concerts jazz, rencontre avec le Père Noël, dégustations locales, contes de Noël et animations pour toute la famille.",
