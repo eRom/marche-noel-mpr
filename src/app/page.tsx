@@ -177,13 +177,12 @@ export default function Home() {
                   </h3>
                   <div className="space-y-4 text-muted-foreground">
                     <p>
-                      Encadrée par une équipe de bénévoles dévoués et de kinésithérapeutes, 
-                      l&apos;APRAIH propose aux patients hospitalisés de participer à des activités 
-                      variées pour rompre l&apos;isolement et favoriser la socialisation.
+                    Encadrée par une équipe de bénévoles dévoués, de soignants et rééducateurs, l&apos;APRAIH propose aux 
+                    patients hospitalisés de participer à des activités variées pour rompre l&apos;isolement et favoriser la socialisation.
                     </p>
                     <p>
-                      Sorties concerts, ateliers cuisine, soirées cinéma, et sorties exceptionnelles 
-                      comme assister à un match de foot à Paris ou découvrir les Jeux Olympiques.
+                    Sorties concerts, ateliers cuisine, soirées cinéma, et sorties exceptionnelles comme assister à un match de foot à Paris, 
+                    découvrir les Jeux Paralympiques, ou participer à des séjours thérapeutiques de plusieurs jours à la montagne.
                     </p>
                     <div className="pt-4">
                       <a
