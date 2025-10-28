@@ -2,7 +2,7 @@
 
 import type { GalleryImage, LightboxProps } from '@/types/gallery';
 import { AnimatePresence, motion } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Download, Share2, X } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Share2, X } from 'lucide-react';
 import Image from 'next/image';
 import { useEffect } from 'react';
 
@@ -131,15 +131,7 @@ export function Lightbox({
                   Partager
                 </button>
               )}
-              <a
-                href={image.url}
-                download={`${image.title}.jpg`}
-                className="flex items-center gap-2 px-4 py-2 bg-white/20 hover:bg-white/30 rounded-lg transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-white/50"
-                aria-label="Télécharger cette photo"
-              >
-                <Download size={18} />
-                Télécharger
-              </a>
+              
             </div>
           </div>
         </div>
