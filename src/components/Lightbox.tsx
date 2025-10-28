@@ -33,7 +33,7 @@ export function Lightbox({
   }, [currentIndex, onClose, onNavigate, images.length]);
 
   const handleShare = async () => {
-    if (navigator.share) {
+    if (typeof navigator !== 'undefined' && navigator.share !== undefined) {
       try {
         await navigator.share({
           title: image.title,
@@ -111,7 +111,7 @@ export function Lightbox({
             </div>
 
             <div className="flex gap-3">
-              {navigator.share && (
+              {typeof navigator !== 'undefined' && navigator.share !== undefined && (
                 <button
                   onClick={handleShare}
                   className="flex items-center gap-2 px-4 py-2 bg-white/20 hover:bg-white/30 rounded-lg transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-white/50"

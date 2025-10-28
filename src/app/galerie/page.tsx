@@ -3,6 +3,7 @@ import { GalleryGrid } from '@/components/GalleryGrid';
 import Header from '@/components/Header';
 import { getGalleryImages } from '@/lib/galleryData';
 import type { Metadata } from 'next';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Galerie Photos - Marché de Noël du MPR',
@@ -36,6 +37,14 @@ export default async function GalleriePage() {
                 {images.length} photo{images.length > 1 ? 's' : ''} disponible
                 {images.length > 1 ? 's' : ''}
               </p>
+            )}
+            {process.env.NODE_ENV === 'development' && (
+              <Link
+                href="/galerie/admin"
+                className="inline-block mt-4 text-sm text-red-600 dark:text-red-400 hover:underline"
+              >
+                → Administration (dev)
+              </Link>
             )}
           </header>
 
