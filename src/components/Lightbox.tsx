@@ -96,21 +96,23 @@ export function Lightbox({
         {/* Image principale - Le conteneur empêche la fermeture du lightbox lors du clic */}
         {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
         <div
-          className="relative max-w-7xl max-h-[90vh] w-full mx-4"
+          className="relative max-w-[95vw] max-h-[95vh] w-auto mx-4 flex items-center justify-center"
           onClick={(e) => e.stopPropagation()}
         >
-          <Image
-            src={image.url}
-            alt={image.alt}
-            width={1920}
-            height={1080}
-            className="w-full h-full object-contain rounded-lg"
-            quality={90}
-            priority
-          />
+          <div className="relative" style={{ maxWidth: '95vw', maxHeight: '95vh', width: 'auto', height: 'auto' }}>
+            <Image
+              src={image.url}
+              alt={image.alt}
+              width={2000}
+              height={3000}
+              className="max-w-full max-h-[95vh] w-auto h-auto object-contain rounded-lg"
+              quality={90}
+              priority
+              sizes="95vw"
+            />
 
-          {/* Info panel */}
-          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 text-white rounded-b-lg">
+            {/* Info panel */}
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 text-white rounded-b-lg z-20">
             <h3 className="text-xl font-semibold mb-1">{image.title}</h3>
             <div className="flex items-center gap-4 mb-3">
               <p className="text-sm opacity-80">{image.date}</p>
@@ -132,6 +134,7 @@ export function Lightbox({
                 </button>
               )}
               
+            </div>
             </div>
           </div>
         </div>
