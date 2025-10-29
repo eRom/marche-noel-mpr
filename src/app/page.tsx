@@ -40,7 +40,7 @@ export default function Home() {
         <HeroSection
           title="Bienvenue au Marché de Noël du MPR de Nantes"
           subtitle="Le 27 nov. - 11, 13 et 16 déc. 2025"
-          description="Découvrez la magie de Noël au cœur de Nantes/Saint Jacques, avec notre marché traditionnel. Patients, soignants, produits authentiques et ambiance festive vous attendent."
+          description="Découvrez la magie de Noël au sein du pôle de Médecine Physique et de Réadaptation du CHU de Nantes (site de Saint Jacques), avec notre marché traditionnel. Patients, soignants, produits authentiques et ambiance festive vous attendent."
           imageSrc="/hero-placeholder.webp"
           imageAlt="Marché de Noël MPR - Marché traditionnel dans un village de montagne enneigé"
           primaryButtonText="Voir le programme"
