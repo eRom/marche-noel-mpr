@@ -1,193 +1,148 @@
-# Administration de la Galerie Photos
+# 📸 Guide d'utilisation de la galerie photo
 
-Ce document explique comment utiliser le système d'upload de photos pour la galerie.
+Bienvenue ! Ce guide vous explique comment ajouter et gérer les photos du Marché de Noël dans la galerie du site web.
 
-## 🔐 Accès
+---
 
-L'interface d'administration est accessible à l'URL : `/galerie/admin`
+## 🔐 Pour commencer : se connecter
 
-**Mot de passe par défaut** : `admin123`
+1. Allez sur la page admin : **`/galerie/admin`** (à ajouter à la fin de l'adresse du site)
+2. Entrez le **mot de passe** que vous avez reçu
+3. Cliquez sur **"Se connecter"**
 
-⚠️ **Important** : Changez le mot de passe par défaut en production !
+🔒 **C'est protégé par un mot de passe pour que seules les personnes autorisées puissent ajouter des photos.**
 
-## 📝 Configuration
+---
 
-### Variables d'environnement requises
+## ➕ Ajouter une nouvelle photo (onglet « Upload »)
+### Étape 1 : Choisir la catégorie
+Comme mettre un livre dans le bon rayon d'une bibliothèque ! Sélectionnez où votre photo doit aller :
+- **Stands** : photos des stands du marché
+- **Animations** : spectacles, animations, activités
+- **Visiteurs** : les gens qui visitent le marché
+- **Ambiance** : l'atmosphère générale du marché
+- **MPR** : photos liées au MPR
+- **IA** : images générées par intelligence artificielle
 
-Créez un fichier `.env.local` à la racine du projet avec les variables suivantes :
+### Étape 2 : Choisir votre photo
+**Option 1 - Glisser-déposer** (le plus rapide)
+1. Ouvrez le dossier où se trouve votre photo sur votre ordinateur
+2. Prenez la photo avec la souris
+3. Glissez-la dans la grande zone grise qui dit "glissez-déposez une image"
+4. Relâchez !
 
-```bash
-# Token Vercel Blob Storage (obligatoire)
-BLOB_READ_WRITE_TOKEN=vercel_blob_xxx
+**Option 2 - Cliquer pour choisir**
+1 running. Cliquez sur "Cliquez pour choisir"
+2. Naviguez dans vos dossiers pour trouver votre photo
+3. Double-cliquez sur la photo
 
-# Mot de passe admin (SECRET - côté serveur uniquement)
-# ⚠️ NE JAMAIS utiliser NEXT_PUBLIC_ pour des secrets !
-ADMIN_PASSWORD=votre_mot_de_passe_securise
-```
+### Étape 3 : Donner un titre
+Un titre aide les visiteurs à comprendre ce qu'ils voient.
 
-**Important :** Le mot de passe est vérifié côté serveur via l'API `/api/gallery/auth`. 
-Il n'est JAMAIS exposé dans le JavaScript côté client.
+- Cliquez dans la case "Titre de l'image"
+- Écrivez quelque chose de clair : "Stand des crêpes", "Spectacle de Noël", etc.
+- Maximum 50 caractères (vous verrez le compteur à droite)
 
-### Obtenir le token Vercel Blob
+⚠️ **Le titre est obligatoire** - vous ne pourrez pas uploader sans !
 
-1. Allez sur [Vercel Dashboard](https://vercel.com/dashboard)
-2. Sélectionnez votre projet
-3. Allez dans **Storage** → **Blob**
-4. Créez un nouveau store si nécessaire
-5. Copiez le token `BLOB_READ_WRITE_TOKEN`
+### Étape 4 : Uploader !
+1. Regardez l'aperçu pour vérifier que c'est la bonne photo
+2. Si besoin, cliquez sur "Annuler" pour en choisir une autre
+3. Cliquez sur **"Uploader l'image"**
 
-## 📸 Upload de photos
+💡 **Pendant l'upload**, vous verrez une petite animation qui tourne. Ne fermez pas la page !
 
-### Étapes d'upload
+### Étape 5 : C'est fait !
+✅ Vous verrez "Image uploadée avec succès"
+⏱️ La photo apparaîtra dans la galerie publique dans environ 1 minute (le temps que le site se mette à jour)
 
-1. **Accédez à la page admin** : `/galerie/admin`
-2. **Connectez-vous** avec le mot de passe
-3. **Sélectionnez une catégorie** :
-   - Stands
-   - Animations
-   - Visiteurs
-   - Ambiance
-   - MPR
-4. **Ajoutez des images** :
-   - Glissez-déposez les fichiers dans la zone
-   - Ou cliquez pour sélectionner depuis votre ordinateur
-5. **Prévisualisez** les images sélectionnées
-6. **Cliquez sur "Uploader"** pour envoyer les images
+---
 
-### Formats acceptés
+## 🗂️ Gérer les photos existantes (onglet « Gestion »)
 
-- **Types** : JPG, PNG, WebP
-- **Taille max** : 10MB par image
-- **Upload multiple** : Oui, vous pouvez uploader plusieurs images à la fois
+Sur cette page, vous voyez toutes les photos déjà dans la galerie.
 
-### Organisation des fichiers
+### Voir toutes les photos
+Elles sont organisées en petit tableau avec :
+- L'image (miniature)
+- La catégorie (en haut)
+- Le titre
+- La date d'ajout
 
-Les images sont automatiquement organisées sur Vercel Blob selon cette structure :
+### Renommer une photo
+Parfois on veut changer le titre d'une photo après l'avoir uploadée.
 
-```
-gallery/
-  ├── stands/
-  │   ├── photo-001-1699876543210.jpg
-  │   └── stand-vin-chaud-1699876543211.jpg
-  ├── animations/
-  ├── visiteurs/
-  ├── ambiance/
-  └── MPR/
-```
+1. Trouvez la photo dans la liste
+2. Cliquez sur le bouton **"Renommer"** sous la photo
+3. Tapez le nouveau titre
+4. Cliquez sur le **✓** pour valider ou sur **✗** pour annuler
 
-Le nom de fichier inclut :
-- Le titre personnalisé (si fourni) ou "photo"
-- Un timestamp unique
-- L'extension originale
+### Supprimer une photo
+Vous avez mis la mauvaise photo ? Pas de souci, on peut la supprimer.
 
-## 🔧 Fonctionnalités
+1. Trouvez la photo à supprimer
+2. Cliquez sur le bouton **"Supprimer"** (en rouge)
+3. Confirmez en cliquant sur "OK" dans la popup
+4. ⚠️ **Attention** : cette action est définitive ! La photo sera supprimée du site.
 
-### Interface d'upload
+### Actualiser la liste
+Si vous venez d'uploader une photo et que vous ne la voyez pas encore :
+- Cliquez sur le bouton **"Actualiser"** en haut à droite
+- La liste se mettra à jour
 
-- ✅ **Drag & Drop** : Glissez-déposez vos images
-- ✅ **Sélection multiple** : Uploadez plusieurs images d'un coup
-- ✅ **Preview** : Visualisez les images avant upload
-- ✅ **Progression** : Suivi en temps réel de l'upload
-- ✅ **Gestion d'erreurs** : Messages clairs en cas de problème
-- ✅ **Validation** : Vérification de type et taille côté client et serveur
+---
 
-### Sécurité
+## 💡 Astuces et informations utiles
 
-- 🔒 Protection par mot de passe
-- 🔒 Validation des fichiers (type, taille)
-- 🔒 Nom de fichiers sécurisés (pas de caractères dangereux)
-- 🔒 Token d'authentification pour l'API
+### Formats de photos acceptés
+✅ **JPG, PNG, WebP** - comme vos photos d'appareil photo ou de téléphone
 
-## 🚀 API d'upload
+### Taille des fichiers
+✅ **Maximum 10 Mo par photo** - c'est très large, la plupart des photos rentrent dedans !
 
-### Endpoint
+### Traitement automatique
+🔧 **Petit secret** : quand vous uploadez une photo, le site fait automatiquement :
+- La redimensionne si elle est trop grande (pour que le site reste rapide)
+- La convertit en WebP (un format moderne qui charge plus vite)
 
-`POST /api/gallery/upload`
+Vous n'avez rien à faire, c'est automatique ! 🎉
 
-### Headers
+### À propos des catégories
+Pensez à la catégorie avant d'uploader. Les visiteurs du site peuvent filtrer les photos par catégorie, donc c'est important de bien les classer dès le départ.
 
-```
-Authorization: Bearer {ADMIN_PASSWORD}
-```
+---
 
-### Body (FormData)
+## ❓ Questions fréquentes
 
-```
-file: File (image)
-category: string (stands|animations|visiteurs|ambiance|MPR)
-title: string (optionnel, nom personnalisé)
-```
+**Q : Mes photos apparaissent où sur le site ?**
+R : Dans la page **"Galerie"** accessible par tous les visiteurs du site. Ils peuvent voir toutes les photos par catégorie.
 
-### Réponse succès
+**Q : Pourquoi dois-je donner un titre ?**
+R : Le titre aide les visiteurs à comprendre la photo, et il apparaît quand on passe la souris dessus ou qu'on l'ouvre en grand.
 
-```json
-{
-  "success": true,
-  "url": "https://xxx.public.blob.vercel-storage.com/gallery/stands/photo-001.jpg",
-  "pathname": "gallery/stands/photo-001.jpg",
-  "message": "Image uploadée avec succès"
-}
-```
+**Q : Puis-je uploader plusieurs photos à la fois ?**
+R : Oui ! Vous pouvez en uploader une après l'autre rapidement. Après avoir uploadé une photo, cliquez sur "Uploader une autre image" et recommencez.
 
-### Réponse erreur
+**Q : Que faire si je fais une erreur ?**
+R : Pas de panique ! Vous pouvez renommer ou supprimer une photo depuis l'onglet "Gestion".
 
-```json
-{
-  "error": "Message d'erreur"
-}
-```
+**Q : Les photos sont stockées où ?**
+R : Sur le serveur du site. Vous n'avez pas besoin de vous soucier de cela, le système s'en occupe !
 
-## 🐛 Dépannage
+**Q : Mes photos sont-elles visibles immédiatement ?**
+R : Après environ 1 minute. Si vous ne la voyez pas, attendez un peu et rechargez la page.
 
-### Erreur "Non autorisé"
-- Vérifiez que `ADMIN_PASSWORD` est défini dans `.env.local`
-- Vérifiez que vous utilisez le bon mot de passe
+---
 
-### Erreur "Type de fichier non autorisé"
-- Seuls JPG, PNG et WebP sont acceptés
-- Convertissez votre image dans un format compatible
+## 🆘 Besoin d'aide ?
 
-### Erreur "Fichier trop volumineux"
-- La taille maximale est 10MB
-- Réduisez la taille ou compressez l'image
+Si vous rencontrez un problème :
+1. Vérifiez que vous êtes bien connecté avec le bon mot de passe
+2. Vérifiez que votre photo fait moins de 10 Mo
+3. Vérifiez que le format est bien JPG, PNG ou WebP
+4. Si le problème persiste, contactez l'équipe technique
 
-### Images n'apparaissent pas dans la galerie
-- Vérifiez que le `BLOB_READ_WRITE_TOKEN` est correct
-- Vérifiez la structure du pathname (doit commencer par `gallery/`)
-- Rechargez la page galerie (les images sont chargées côté serveur)
+---
 
-## 💡 Recommandations
-
-### Pour de meilleures performances
-
-1. **Optimisez vos images avant upload** :
-   - Résolution recommandée : 1920px de largeur max
-   - Compressez avec des outils comme TinyPNG
-   - Privilégiez le format WebP si possible
-
-2. **Nommez vos fichiers de manière descriptive** :
-   - Le nom sera utilisé comme titre par défaut
-   - Exemple : `stand-crepes-2024.jpg` → "Stand Crepes 2024"
-
-3. **Organisez par catégorie** :
-   - Utilisez les bonnes catégories dès le départ
-   - Cela facilite la navigation dans la galerie
-
-### Sécurité en production
-
-1. **Changez le mot de passe** :
-   - Utilisez un mot de passe fort et unique
-   - Ne partagez pas le mot de passe publiquement
-
-2. **Considérez une vraie authentification** :
-   - Pour un usage en production sérieux
-   - Utilisez NextAuth.js ou un service d'authentification
-
-3. **Limitez l'accès** :
-   - Ajoutez une liste blanche d'IPs si possible
-   - Utilisez des variables d'environnement différentes par environnement
-
-## 📚 Support
-
-Pour toute question ou problème, contactez l'équipe de développement.
+**Bon upload ! 📸✨**
 
