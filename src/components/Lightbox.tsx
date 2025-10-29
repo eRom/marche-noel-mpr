@@ -96,16 +96,15 @@ export function Lightbox({
         {/* Image principale - Le conteneur empêche la fermeture du lightbox lors du clic */}
         {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
         <div
-          className="relative max-w-[95vw] max-h-[95vh] w-auto mx-4 flex items-center justify-center"
+          className="relative w-[95vw] h-[95vh] max-w-full max-h-full mx-4"
           onClick={(e) => e.stopPropagation()}
         >
-          <div className="relative" style={{ maxWidth: '95vw', maxHeight: '95vh', width: 'auto', height: 'auto' }}>
+          <div className="relative w-full h-full">
             <Image
               src={image.url}
               alt={image.alt}
-              width={2000}
-              height={3000}
-              className="max-w-full max-h-[95vh] w-auto h-auto object-contain rounded-lg"
+              fill
+              className="object-contain rounded-lg"
               quality={90}
               priority
               sizes="95vw"
