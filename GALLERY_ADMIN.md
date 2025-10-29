@@ -7,7 +7,7 @@ Bienvenue ! Ce guide vous explique comment ajouter et gérer les photos du March
 ## 🔐 Pour commencer : se connecter
 
 1. Allez sur la page admin : **`/galerie/admin`** (à ajouter à la fin de l'adresse du site)
-2. Entrez le **mot de passe** que vous avez reçu
+2. Entrez le **mot de passe** que vous avez reçu (ou que vous allez recevoir 😃)
 3. Cliquez sur **"Se connecter"**
 
 🔒 **C'est protégé par un mot de passe pour que seules les personnes autorisées puissent ajouter des photos.**
