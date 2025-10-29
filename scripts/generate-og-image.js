@@ -187,7 +187,7 @@ async function generateOGImage() {
   // Dates
   ctx.fillStyle = COLORS.textSecondary;
   ctx.font = '36px Arial, sans-serif';
-  const dateText = '15 au 24 décembre 2024';
+  const dateText = '15 au 24 décembre 2025';
   const dateY = subtitleY + 80;
   ctx.fillText(dateText, contentX + contentWidth / 2, dateY);
   

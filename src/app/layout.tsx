@@ -19,14 +19,14 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://mpr-noel.romain-ecarnot.com'),
-  title: "Marché de Noël du MPR - Nantes 2024",
-  description: "Découvrez la magie de Noël au cœur de Nantes ! Marché traditionnel du MPR du 15 au 24 décembre 2024. Artisans locaux, produits authentiques, animations festives et ambiance chaleureuse vous attendent.",
+  title: "Marché de Noël du MPR - Nantes 2025",
+  description: "Découvrez la magie de Noël au cœur de Nantes ! Marché traditionnel du MPR du 15 au 24 décembre 2025. Artisans locaux, produits authentiques, animations festives et ambiance chaleureuse vous attendent.",
   manifest: "/manifest.json",
-  keywords: ["marché de noël", "nantes", "mpr", "artisans", "décembre 2024", "événement", "tradition", "cadeaux", "produits locaux"],
+  keywords: ["marché de noël", "nantes", "mpr", "artisans", "décembre 2025", "événement", "tradition", "cadeaux", "produits locaux"],
   authors: [{ name: "Romain Ecarnot" }],
   openGraph: {
-    title: "Marché de Noël du MPR - Nantes 2024",
-    description: "Découvrez la magie de Noël au cœur de Nantes ! Marché traditionnel du MPR du 15 au 24 décembre 2024. Artisans locaux, produits authentiques, animations festives et ambiance chaleureuse vous attendent.",
+    title: "Marché de Noël du MPR - Nantes 2025",
+    description: "Découvrez la magie de Noël au cœur de Nantes ! Marché traditionnel du MPR du 15 au 24 décembre 2025. Artisans locaux, produits authentiques, animations festives et ambiance chaleureuse vous attendent.",
     type: "website",
     locale: "fr_FR",
     siteName: "Marché de Noël du MPR",
@@ -35,14 +35,14 @@ export const metadata: Metadata = {
         url: "/og.webp",
         width: 1280,
         height: 800,
-        alt: "Marché de Noël du MPR de Nantes - 15 au 24 décembre 2024",
+        alt: "Marché de Noël du MPR de Nantes - 15 au 24 décembre 2025",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Marché de Noël du MPR - Nantes 2024",
-    description: "Découvrez la magie de Noël au cœur de Nantes ! Marché traditionnel du MPR du 15 au 24 décembre 2024. Artisans locaux, produits authentiques, animations festives et ambiance chaleureuse vous attendent.",
+    title: "Marché de Noël du MPR - Nantes 2025",
+    description: "Découvrez la magie de Noël au cœur de Nantes ! Marché traditionnel du MPR du 15 au 24 décembre 2025. Artisans locaux, produits authentiques, animations festives et ambiance chaleureuse vous attendent.",
     images: ["/og.webp"],
   },
   icons: {

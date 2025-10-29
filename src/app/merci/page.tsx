@@ -18,7 +18,7 @@ const AnimatedSection = dynamic(() => import("@/components/AnimatedSection"), {
 });
 
 export const metadata = {
-  title: "Merci - Marché de Noël MPR Nantes 2024",
+  title: "Merci - Marché de Noël MPR Nantes 2025",
   description: "Remerciements pour votre participation au Marché de Noël MPR de Nantes. Découvrez les points forts de cette édition, les moments magiques partagés et les informations pour l'année prochaine.",
 };
 
