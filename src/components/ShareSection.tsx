@@ -2,13 +2,13 @@
 
 import AnimatedSection from "@/components/AnimatedSection";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebook, faWhatsapp, faXTwitter } from "@fortawesome/free-brands-svg-icons";
+import { faFacebook, faWhatsapp, faXTwitter, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
 export default function ShareSection() {
   const shareUrl = typeof window !== "undefined" ? window.location.href : "https://mpr-noel.romain-ecarnot.com";
   const shareText = "Découvrez le Marché de Noël du MPR de Nantes - Le 27 nov. - 11, 13 et 16 déc. 2025";
 
-  const handleShare = (platform: "facebook" | "whatsapp" | "twitter") => {
+  const handleShare = (platform: "facebook" | "whatsapp" | "twitter" | "linkedin") => {
     let url = "";
     
     switch (platform) {
@@ -20,6 +20,9 @@ export default function ShareSection() {
         break;
       case "twitter":
         url = `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}`;
+        break;
+      case "linkedin":
+        url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
         break;
     }
 
@@ -77,6 +80,19 @@ export default function ShareSection() {
                   aria-hidden="true"
                 />
                 <span>Twitter</span>
+              </button>
+
+              <button
+                onClick={() => handleShare("linkedin")}
+                className="group flex items-center gap-3 px-8 py-4 bg-[#0A66C2] text-white rounded-lg font-semibold text-lg hover:bg-[#004182] transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 focus:ring-2 focus:ring-[#0A66C2] focus:ring-offset-2"
+                aria-label="Partager sur LinkedIn"
+              >
+                <FontAwesomeIcon 
+                  icon={faLinkedin} 
+                  className="w-6 h-6 transition-transform group-hover:scale-110" 
+                  aria-hidden="true"
+                />
+                <span>LinkedIn</span>
               </button>
             </div>
           </div>
