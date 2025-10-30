@@ -18,8 +18,8 @@ const AnimatedSection = dynamic(() => import("@/components/AnimatedSection"), {
 });
 
 export const metadata = {
-  title: "Programme Festivités - Marché de Noël MPR Nantes",
-  description: "Programme complet du Marché de Noël MPR du 15 au 24 décembre 2025. Chorale de Noël, ateliers créatifs, concerts jazz, rencontre avec le Père Noël, dégustations locales, contes de Noël et animations pour toute la famille.",
+  title: "Programme Festivités - Marché de Noël du MPR de Nantes",
+  description: "Programme complet du Marché de Noël au sein du pôle de Médecine Physique et de Réadaptation du CHU de Nantes.",
 };
 
 export default function Programme() {
