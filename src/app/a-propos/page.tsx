@@ -129,6 +129,7 @@ export default function APropos() {
                       Nos partenaires
                     </h3>
                     <ul className="space-y-2 text-muted-foreground">
+                    <li>• CHU de Nantes</li>
                       <li>• MPR de Nantes</li>
                       <li>• APRAIH</li>
                     </ul>
