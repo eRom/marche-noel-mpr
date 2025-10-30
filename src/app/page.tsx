@@ -31,6 +31,10 @@ const ImageSection = dynamic(() => import("@/components/ImageSection"), {
   loading: () => <div className="h-64 bg-muted animate-pulse rounded-2xl" />
 });
 
+const ShareSection = dynamic(() => import("@/components/ShareSection"), {
+  loading: () => <div className="h-32 bg-muted animate-pulse rounded-lg" />
+});
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-background">
@@ -213,6 +217,9 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* Share Section */}
+        <ShareSection />
 
         {/* QR Code Section */}
         <QRCodeSection />
