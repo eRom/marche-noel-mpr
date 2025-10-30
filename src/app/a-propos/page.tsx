@@ -2,6 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Gift, Heart, Users } from "lucide-react";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 
 // Lazy load non-critical components
 const Header = dynamic(() => import("@/components/Header"), {
@@ -156,7 +157,27 @@ export default function APropos() {
         </section>
 
         {/* Next Year */}
-        
+        <section className="py-16 bg-noel-snow">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <AnimatedSection animation="fadeInUp">
+              <h2 className="text-3xl sm:text-4xl font-bold text-[#ba55f1] text-center mb-8">
+                A l&apos;année prochaine
+              </h2>
+            </AnimatedSection>
+            <AnimatedSection animation="fadeInUp" delay={150}>
+              <div className="relative overflow-hidden rounded-2xl shadow-xl">
+                <Image
+                  src="/MPR-ambiance-cyber.webp"
+                  alt="Ambiance du MPR - à l'année prochaine"
+                  width={1600}
+                  height={900}
+                  className="w-full h-auto object-cover"
+                  priority={false}
+                />
+              </div>
+            </AnimatedSection>
+          </div>
+        </section>
 
       </main>
 
