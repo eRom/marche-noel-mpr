@@ -1,7 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 import { Gift, Heart, Users } from "lucide-react";
 import dynamic from "next/dynamic";
-import Image from "next/image";
 
 // Lazy load non-critical components
 const Header = dynamic(() => import("@/components/Header"), {
@@ -29,31 +29,17 @@ export default function APropos() {
       
       <main>
         {/* Hero Section */}
-        <section className="relative py-16 overflow-hidden">
-          {/* Background Image */}
-         
-          <div className="absolute inset-0 z-0">
-            <Image
-              src="/hero-placeholder-md.webp"
-              alt="Marché de Noël MPR"
-              fill
-              className="object-cover"
-              priority
-            />
-            {/* Overlay with blur and opacity */}
-            <div className="absolute inset-0 bg-accent/30 backdrop-blur-sm" />
-          </div>
-          
-          {/* Content */}
-          <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+        <section className="py-16">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
             <AnimatedSection animation="fadeInUp">
-              <h1 className="text-4xl sm:text-5xl font-bold text-background mb-4">
+              <h1 className="text-4xl sm:text-5xl font-bold text-foreground">
                 À propos
               </h1>
-              <p className="text-xl text-background/90 max-w-2xl mx-auto">
+              <Separator className="my-6 mx-auto w-24" />
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                 Un grand merci à tous ceux qui ont rendu ce Marché de Noël possible.
               </p>
-              <p className="text-xl text-background/90 max-w-2xl mx-auto">
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                 Votre participation fait la magie de cet événement.
               </p>
             </AnimatedSection>
