@@ -194,7 +194,7 @@ async function generateOGImage() {
   // Description
   ctx.fillStyle = COLORS.textSecondary;
   ctx.font = '24px Arial, sans-serif';
-  const descriptionText = 'Artisans locaux • Produits authentiques • Ambiance festive';
+  const descriptionText = 'Produits authentiques • Ambiance festive';
   const descriptionY = dateY + 60;
   ctx.fillText(descriptionText, contentX + contentWidth / 2, descriptionY);
   

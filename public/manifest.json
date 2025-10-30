@@ -1,7 +1,7 @@
 {
   "name": "Marché de Noël du MPR de Nantes",
   "short_name": "Marché Noël MPR",
-  "description": "Découvrez la magie de Noël au cœur de Nantes avec notre marché traditionnel. Artisans locaux, produits authentiques et ambiance festive vous attendent du 15 au 24 décembre.",
+  "description": "Découvrez la magie de Noël au cœur de Nantes avec notre marché traditionnel. Produits authentiques et ambiance festive vous attendent du 15 au 24 décembre.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
