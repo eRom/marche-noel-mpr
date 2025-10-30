@@ -1,3 +1,4 @@
+import CeremonyTimer from "@/components/CeremonyTimer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Calendar, Heart, ShoppingBag } from "lucide-react";
 import dynamic from "next/dynamic";
@@ -47,6 +48,15 @@ export default function Home() {
           primaryButtonHref="/programme"
         />
 
+        {/* Ceremony Timer Section (no title/description) */}
+        <section className="bg-background">
+          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+            <AnimatedSection animation="fadeInUp">
+              <CeremonyTimer />
+            </AnimatedSection>
+          </div>
+        </section>
+
         {/* Features Section */}
         <section className="py-16 bg-noel-snow">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -55,8 +65,8 @@ export default function Home() {
                 <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
                   Pourquoi nous choisir ?
                 </h2>
-                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                  Un marché de Noël authentique qui célèbre les traditions locales et l&apos;artisanat français.
+                <p className="text-lg text-muted-foreground max-w-2xl mx-auto"> 
+                Un marché de Noël de l&apos;exemplarité, où l&apos;accompagnement, la réadaptation et la créativité sont partagés par les patients, les soignants et la communauté. 
                 </p>
               </div>
             </AnimatedSection>
@@ -121,7 +131,7 @@ export default function Home() {
                 Prêt à vivre la magie de Noël ?
               </h2>
               <p className="text-xl text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
-                Rejoignez-nous le 27 nov. - 11, 13 et 16 déc. pour une expérience inoubliable au cœur de MPR
+                Rejoignez-nous le 27 nov. - 11, 13 et 16 déc. pour une expérience inoubliable au cœur du MPR
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
