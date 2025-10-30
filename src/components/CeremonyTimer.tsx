@@ -56,6 +56,12 @@ export default function CeremonyTimer() {
   const targetDate = useMemo(() => new Date(2025, 10, 27, 16, 0, 0), []); // month is 0-indexed
   const [timeLeft, setTimeLeft] = useState<TimeLeft>(() => getTimeLeft(targetDate));
 
+  // Créer les flocons avant tout return conditionnel (règles des hooks React)
+  const snowflakes = useMemo(
+    () => createSnowflakes(SNOWFLAKE_COUNT),
+    []
+  ); // deterministic values prevent hydration mismatches
+
   useEffect(() => {
     const interval = setInterval(() => {
       setTimeLeft(getTimeLeft(targetDate));
@@ -67,11 +73,6 @@ export default function CeremonyTimer() {
     timeLeft.days === 0 && timeLeft.hours === 0 && timeLeft.minutes === 0 && timeLeft.seconds === 0;
 
   if (isFinished) return null;
-
-  const snowflakes = useMemo(
-    () => createSnowflakes(SNOWFLAKE_COUNT),
-    []
-  ); // deterministic values prevent hydration mismatches
 
   const blocks: Array<{ label: string; value: number; color: string; icon: string }> = [
     { label: 'Jours', value: timeLeft.days, color: 'text-red-600', icon: '🎄' },
@@ -99,7 +100,7 @@ export default function CeremonyTimer() {
 
       {/* Timer principal */}
       <div className="relative z-10 flex flex-wrap gap-4 sm:gap-6 justify-center items-stretch">
-        {blocks.map((b, idx) => (
+        {blocks.map((b) => (
           <motion.div
             key={b.label}
             className="bg-white/90 dark:bg-white/10 backdrop-blur rounded-xl px-5 py-4 sm:px-6 sm:py-6 shadow-lg border border-red-100/70 dark:border-white/10 min-w-[110px] text-center"
