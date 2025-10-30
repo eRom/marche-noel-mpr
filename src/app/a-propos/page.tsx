@@ -156,15 +156,7 @@ export default function APropos() {
         </section>
 
         {/* Next Year */}
-        <section className="py-16 bg-gradient-to-r from-primary to-primary-dark flex items-center min-h-[200px]">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
-            <AnimatedSection animation="fadeInUp">
-              <h2 className="text-3xl sm:text-4xl font-bold text-primary-foreground text-center">
-                A l&apos;année prochaine !
-              </h2>
-            </AnimatedSection>
-          </div>
-        </section>
+        
 
       </main>
 
