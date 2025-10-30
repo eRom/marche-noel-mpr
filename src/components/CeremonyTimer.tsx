@@ -10,6 +10,35 @@ type TimeLeft = {
   seconds: number;
 };
 
+type Snowflake = {
+  initialX: number;
+  targetX: number;
+  duration: number;
+};
+
+const SNOWFLAKE_COUNT = 16;
+const SNOWFLAKE_RANGE = 800;
+
+function mulberry32(seed: number) {
+  return () => {
+    let t = (seed += 0x6d2b79f5);
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+function createSnowflakes(count: number): Snowflake[] {
+  return Array.from({ length: count }, (_, index) => {
+    const rand = mulberry32(0xabc123 + index);
+    return {
+      initialX: rand() * SNOWFLAKE_RANGE,
+      targetX: rand() * SNOWFLAKE_RANGE,
+      duration: rand() * 5 + 5,
+    };
+  });
+}
+
 function getTimeLeft(target: Date): TimeLeft {
   const now = new Date();
   const diffMs = Math.max(0, target.getTime() - now.getTime());
@@ -39,6 +68,11 @@ export default function CeremonyTimer() {
 
   if (isFinished) return null;
 
+  const snowflakes = useMemo(
+    () => createSnowflakes(SNOWFLAKE_COUNT),
+    []
+  ); // deterministic values prevent hydration mismatches
+
   const blocks: Array<{ label: string; value: number; color: string; icon: string }> = [
     { label: 'Jours', value: timeLeft.days, color: 'text-red-600', icon: '🎄' },
     { label: 'Heures', value: timeLeft.hours, color: 'text-green-600', icon: '🎁' },
@@ -50,13 +84,13 @@ export default function CeremonyTimer() {
     <div className="relative overflow-hidden rounded-2xl p-6 sm:p-8 shadow-xl bg-transparent">
       {/* Flocons animés en arrière-plan */}
       <div className="absolute inset-0 pointer-events-none">
-        {[...Array(16)].map((_, i) => (
+        {snowflakes.map((flake, i) => (
           <motion.div
             key={i}
             className="absolute text-blue-200/70 dark:text-blue-300/20 text-xl"
-            initial={{ y: -20, x: Math.random() * 800 }}
-            animate={{ y: 600, x: Math.random() * 800, rotate: 360 }}
-            transition={{ duration: Math.random() * 5 + 5, repeat: Infinity, ease: 'linear' }}
+            initial={{ y: -20, x: flake.initialX }}
+            animate={{ y: 600, x: flake.targetX, rotate: 360 }}
+            transition={{ duration: flake.duration, repeat: Infinity, ease: 'linear' }}
           >
             ❄️
           </motion.div>
@@ -108,5 +142,3 @@ export default function CeremonyTimer() {
     </div>
   );
 }
-
-
