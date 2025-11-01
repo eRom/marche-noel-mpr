@@ -6,6 +6,7 @@ import SnowfallEffect from "@/components/SnowfallEffect";
 import ChristmasLights from "@/components/ChristmasLights";
 import SmoothScroll from "@/components/SmoothScroll";
 import SkipLink from "@/components/SkipLink";
+import KonamiCode from "@/components/KonamiCode";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -116,6 +117,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <SkipLink />
+        <KonamiCode />
         <ServiceWorkerRegistration />
         <SmoothScroll />
         <ChristmasLights />

@@ -135,13 +135,13 @@
 - [ ] **Notifications Push PWA** - Rappels événements (opt-in)
 - [ ] **Mini-jeu / Easter Egg** - Pour l'esprit de Noël
   - [ ] Click sur le logo = surprise
-        Triple-clic sur le logo du header → animation festive
-        Par exemple : Logo qui tourne, change de couleur, neige qui tombe plus fort
-        Impact : Easter egg discret
+          Triple-clic sur le logo du header → animation festive
+          Par exemple : Logo qui tourne, change de couleur, neige qui tombe plus fort
+          Impact : Easter egg discret
   - [ ] Konami Code de Noël
-          Facile à coder
-          Fun et inattendu
-          N'impacte pas l'UX normale
+          Séquence de touches cachée (ex: ↑ ↑ ↓ ↓ ← → ← → Enter)
+          Déclenche une animation spéciale (pluie de cadeaux, Père Noël qui traverse l'écran, explosion de flocons)
+          Impact : Easter egg classique, fun pour les geekse
   - [ ] Chasse aux flocons magiques
           Cacher 5-10 flocons de neige spéciaux (différents visuellement) sur différentes pages
           Quand l'utilisateur clique dessus → animation + son + compteur

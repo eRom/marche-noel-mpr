@@ -315,3 +315,13 @@ body {
 .card-3d:active {
   transform: translateY(-4px) scale(1.01);
 }
+
+/* Konami Code - Animation de chute des emojis */
+@keyframes fall {
+  from {
+    transform: translateY(0) rotate(0deg);
+  }
+  to {
+    transform: translateY(100vh) rotate(360deg);
+  }
+}
