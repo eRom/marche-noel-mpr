@@ -105,6 +105,7 @@ export default function InteractiveMap({ className }: InteractiveMapProps) {
           zoom={15}
           scrollWheelZoom={true}
           className="h-full w-full"
+          attributionControl={false}
           style={{ height: "100%", width: "100%" }}
         >
           <TileLayer

@@ -138,7 +138,7 @@
           Triple-clic sur le logo du header → animation festive
           Par exemple : Logo qui tourne, change de couleur, neige qui tombe plus fort
           Impact : Easter egg discret
-  - [ ] Konami Code de Noël
+  - [x] Konami Code de Noël
           Séquence de touches cachée (ex: ↑ ↑ ↓ ↓ ← → ← → Enter)
           Déclenche une animation spéciale (pluie de cadeaux, Père Noël qui traverse l'écran, explosion de flocons)
           Impact : Easter egg classique, fun pour les geekse
