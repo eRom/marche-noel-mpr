@@ -10,7 +10,7 @@ import { useEffect, useRef, useState } from "react";
  */
 export default function CinematicVideo() {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isMuted, setIsMuted] = useState(true);
+  const [isMuted, setIsMuted] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [videoSrc, setVideoSrc] = useState<string>("");
 
