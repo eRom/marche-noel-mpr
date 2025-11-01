@@ -5,6 +5,7 @@ import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
 import SnowfallEffect from "@/components/SnowfallEffect";
 import ChristmasLights from "@/components/ChristmasLights";
 import SmoothScroll from "@/components/SmoothScroll";
+import SkipLink from "@/components/SkipLink";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -114,6 +115,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <SkipLink />
         <ServiceWorkerRegistration />
         <SmoothScroll />
         <ChristmasLights />

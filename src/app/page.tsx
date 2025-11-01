@@ -43,7 +43,7 @@ export default function Home() {
     <div className="min-h-screen bg-background">
       <Header />
       
-      <main>
+      <main id="main-content">
         {/* Hero Section */}
         <HeroSection
           title="Bienvenue au Marché de Noël du MPR de Nantes"

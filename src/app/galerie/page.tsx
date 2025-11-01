@@ -33,7 +33,7 @@ export default async function GalleriePage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-red-50 to-white dark:from-gray-900 dark:to-gray-800">
       <Header />
-      <main>
+      <main id="main-content">
         <section className="py-12">
           <div className="container mx-auto px-4">
             <AnimatedSection animation="fadeInUp">

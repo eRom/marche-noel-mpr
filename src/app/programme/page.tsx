@@ -66,7 +66,7 @@ export default function Programme() {
     <div className="min-h-screen bg-background">
       <Header />
       
-      <main>
+      <main id="main-content">
         {/* Hero Section */}
         <section className="py-12">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
