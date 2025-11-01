@@ -78,7 +78,13 @@ export default function VideoSection() {
           aria-label="Animation ludique du marché de Noël MPR avec musique de fond"
         >
           <source src="/video.mp4" type="video/mp4" />
-          <track kind="captions" srcLang="fr" label="Sous-titres" default={false} />
+          <track 
+            kind="captions" 
+            src="/video-subtitles.vtt" 
+            srcLang="fr" 
+            label="Français" 
+            default
+          />
           Votre navigateur ne supporte pas la lecture de vidéos.
         </video>
 
