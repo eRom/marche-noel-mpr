@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import VideoSection from "@/components/VideoSection";
 import { Calendar, Clock, Users } from "lucide-react";
 import dynamic from "next/dynamic";
 
@@ -200,13 +201,13 @@ export default function Programme() {
         </section>
 
         {/* Video Section */}
-        {/* <section className="py-16 bg-noel-snow">
+        <section className="py-16 bg-noel-snow">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <AnimatedSection animation="fadeInUp">
               <VideoSection />
             </AnimatedSection>
           </div>
-        </section> */}
+        </section>
       </main>
 
       <Footer />

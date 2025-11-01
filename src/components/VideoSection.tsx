@@ -106,7 +106,7 @@ export default function VideoSection() {
             <Button
               onClick={replayVideo}
               size="lg"
-              className="bg-white/90 hover:bg-white rounded-full shadow-lg text-foreground border border-foreground/10 px-6"
+              className="bg-primary/90 hover:bg-primary rounded-full shadow-lg text-foreground border border-foreground/10 px-6"
               aria-label="Relancer la vidéo"
             >
               <Play className="h-6 w-6 mr-2" aria-hidden="true" />
