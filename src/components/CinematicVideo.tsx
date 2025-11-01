@@ -12,6 +12,22 @@ export default function CinematicVideo() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isMuted, setIsMuted] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [videoSrc, setVideoSrc] = useState<string>("");
+
+  // Détection de la taille d'écran pour choisir la bonne vidéo
+  useEffect(() => {
+    const updateVideoSrc = () => {
+      const isMobile = window.innerWidth < 640;
+      setVideoSrc(isMobile ? "/cinematic-portrait.mp4" : "/cinematic.mp4");
+    };
+
+    // Initialisation
+    updateVideoSrc();
+
+    // Écoute des changements de taille
+    window.addEventListener("resize", updateVideoSrc);
+    return () => window.removeEventListener("resize", updateVideoSrc);
+  }, []);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -51,45 +67,36 @@ export default function CinematicVideo() {
 
   return (
     <div className="relative w-full max-w-5xl mx-auto">
-      <div className="relative aspect-video overflow-hidden rounded-lg bg-foreground/10 shadow-2xl">
-        <video
-          ref={videoRef}
-          className="w-full h-full object-cover"
-          muted={isMuted}
-          preload="metadata"
-          playsInline
-          aria-label="Vidéo testimoniale du Marché de Noël MPR"
-        >
-          {/* Version desktop (landscape) */}
-          <source 
-            src="/cinematic.mp4" 
-            type="video/mp4" 
-            media="(min-width: 768px)"
-          />
-          {/* Version mobile (portrait) */}
-          <source 
-            src="/cinematic-portrait.mp4" 
-            type="video/mp4" 
-            media="(max-width: 767px)"
-          />
-          {/* Sous-titres communs */}
-          <track 
-            kind="captions" 
-            src="/cinematic-subtitles.vtt" 
-            srcLang="fr" 
-            label="Français"
-          />
-          Votre navigateur ne supporte pas la lecture de vidéos.
-        </video>
+      <div className={`relative overflow-hidden rounded-lg bg-foreground/10 shadow-2xl ${videoSrc.includes('portrait') ? 'aspect-[9/16]' : 'aspect-video'}`}>
+        {videoSrc && (
+          <video
+            ref={videoRef}
+            className="w-full h-full object-cover"
+            muted={isMuted}
+            preload="metadata"
+            playsInline
+            aria-label="Vidéo testimoniale du Marché de Noël MPR"
+            key={videoSrc}
+          >
+            <source src={videoSrc} type="video/mp4" />
+            <track 
+              kind="captions" 
+              src="/cinematic-subtitles.vtt" 
+              srcLang="fr" 
+              label="Français"
+            />
+            Votre navigateur ne supporte pas la lecture de vidéos.
+          </video>
+        )}
 
         {/* Contrôles */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          {/* Play/Pause Button - Center */}
+        <div className="absolute inset-0 flex items-center justify-center md:items-center" style={{ paddingTop: 'clamp(0px, 8vh, 100px)' }}>
+          {/* Play/Pause Button - Center on desktop, lower on mobile */}
           {!isPlaying && (
             <Button
               onClick={togglePlay}
               size="lg"
-              className="bg-primary/90 hover:bg-primary rounded-full shadow-2xl text-primary-foreground border-2 border-white/20 px-8 py-6 backdrop-blur-sm"
+              className="bg-primary/90 hover:bg-primary rounded-full shadow-2xl text-primary-foreground border-2 border-white/20 px-8 py-6 backdrop-blur-sm md:mt-0 mt-12"
               aria-label="Lire la vidéo"
             >
               <Play className="h-8 w-8 mr-2" aria-hidden="true" />

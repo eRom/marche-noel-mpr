@@ -270,17 +270,7 @@ export default function TechShowcase() {
           ))}
         </div>
 
-        {/* Footer note */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.8 }}
-          className="text-center pt-8"
-        >
-          <p className="text-sm text-muted-foreground">
-            Scores basés sur les derniers audits Lighthouse • Tests automatisés et manuels
-          </p>
-        </motion.div>
+      
       </div>
     </section>
   );
