@@ -212,6 +212,17 @@
   --info-foreground: #ffffff;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Pour compenser le header fixe */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
@@ -276,4 +287,31 @@ body {
 
 .animate-twinkle {
   animation: twinkle 2s ease-in-out infinite;
+}
+
+/* 3D Hover Effects */
+.hover-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+
+.hover-3d:hover {
+  transform: translateY(-5px) rotateX(5deg) rotateY(5deg);
+}
+
+.card-3d {
+  transform-style: preserve-3d;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: transform;
+}
+
+.card-3d:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 
+    0 20px 40px -10px rgba(0, 0, 0, 0.15),
+    0 0 20px rgba(220, 38, 38, 0.1);
+}
+
+.card-3d:active {
+  transform: translateY(-4px) scale(1.01);
 }

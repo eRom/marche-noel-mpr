@@ -19,4 +19,9 @@
 4. 🔮 Améliorations futures
 [x] Service Worker pour mode hors ligne
 [x] Cache intelligent (3 stratégies: Cache First, Network First, Stale While Revalidate)
-[ ] Plus d'animations
+[x] Plus d'animations
+  [x] Flocons de neige globaux
+  [x] Stagger animations sur les cards
+  [x] Hover effects 3D subtils
+  [x] Guirlandes lumineuses animées
+  [x] Smooth scroll

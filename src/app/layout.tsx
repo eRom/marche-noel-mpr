@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 import { Geist, Geist_Mono } from "next/font/google";
 import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
+import SnowfallEffect from "@/components/SnowfallEffect";
+import ChristmasLights from "@/components/ChristmasLights";
+import SmoothScroll from "@/components/SmoothScroll";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -115,6 +118,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ServiceWorkerRegistration />
+        <SmoothScroll />
+        <ChristmasLights />
+        <SnowfallEffect />
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
