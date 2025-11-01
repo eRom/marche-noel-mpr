@@ -1,5 +1,6 @@
 "use client";
 
+import "leaflet/dist/leaflet.css";
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 
@@ -46,17 +47,17 @@ export default function InteractiveMap({ className }: InteractiveMapProps) {
     return () => clearTimeout(timer);
   }, []);
 
-  // Charger les CSS de Leaflet et configurer les icônes côté client uniquement
+  // Configurer les icônes de marqueur pour Next.js côté client uniquement
   useEffect(() => {
     if (!isClient) return;
 
-    // Importer les styles Leaflet
-    import("leaflet/dist/leaflet.css");
-    
     // Configurer les icônes de marqueur pour Next.js
     import("leaflet").then((L) => {
       // Fix pour les icônes Leaflet avec Next.js
-      delete (L.Icon.Default.prototype as any)._getIconUrl;
+      const iconPrototype = L.Icon.Default.prototype as unknown as Record<string, unknown>;
+      if (iconPrototype._getIconUrl) {
+        delete iconPrototype._getIconUrl;
+      }
       L.Icon.Default.mergeOptions({
         iconRetinaUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon-2x.png",
         iconUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon.png",
