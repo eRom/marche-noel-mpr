@@ -134,6 +134,19 @@
 - [x] **Toggle Dark Mode** - Réactiver le ThemeToggle (déjà en place)
 - [ ] **Notifications Push PWA** - Rappels événements (opt-in)
 - [ ] **Mini-jeu / Easter Egg** - Pour l'esprit de Noël
+  - [ ] Click sur le logo = surprise
+        Triple-clic sur le logo du header → animation festive
+        Par exemple : Logo qui tourne, change de couleur, neige qui tombe plus fort
+        Impact : Easter egg discret
+  - [ ] Konami Code de Noël
+          Facile à coder
+          Fun et inattendu
+          N'impacte pas l'UX normale
+  - [ ] Chasse aux flocons magiques
+          Cacher 5-10 flocons de neige spéciaux (différents visuellement) sur différentes pages
+          Quand l'utilisateur clique dessus → animation + son + compteur
+          Badge/message de félicitation quand tous sont trouvés
+          Impact : Encourage l'exploration du site, ludique
 
 ### Fonctionnalités mise de coté
 - [ ] **Formulaire de contact** (/contact) - Questions générales, contact APRAIH
