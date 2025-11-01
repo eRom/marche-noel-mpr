@@ -35,7 +35,13 @@ export default function CinematicVideo() {
 
     const handlePlay = () => setIsPlaying(true);
     const handlePause = () => setIsPlaying(false);
-    const handleEnded = () => setIsPlaying(false);
+    const handleEnded = () => {
+      setIsPlaying(false);
+      // Revenir au début de la vidéo en utilisant videoRef.current
+      if (videoRef.current) {
+        videoRef.current.currentTime = 0;
+      }
+    };
 
     video.addEventListener("play", handlePlay);
     video.addEventListener("pause", handlePause);
@@ -46,7 +52,7 @@ export default function CinematicVideo() {
       video.removeEventListener("pause", handlePause);
       video.removeEventListener("ended", handleEnded);
     };
-  }, []);
+  }, [videoSrc]);
 
   const toggleMute = () => {
     if (videoRef.current) {
