@@ -79,8 +79,8 @@ Voir **TESTS_UTILISATEURS.md** pour le protocole complet.
 
 ### 3. Améliorations futures (Nice to have)
 - [ ] Niveau AAA RGAA (optionnel)
-- [ ] Tests de charge
-- [ ] Analytics et suivi utilisateurs
+- [x] Tests de charge
+- [x] Analytics et suivi utilisateurs
 - [ ] Newsletter inscription
 
 ## 📚 Documentation

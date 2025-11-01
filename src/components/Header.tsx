@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import ThemeToggle from "./ThemeToggle";
 
 const navigation = [
   { name: "Accueil", href: "/" },
@@ -71,12 +70,10 @@ export default function Header() {
                 {item.name}
               </Link>
             ))}
-            <ThemeToggle />
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden flex items-center space-x-2">
-            <ThemeToggle />
+          <div className="md:hidden">
             <button
               type="button"
               onClick={toggleMobileMenu}

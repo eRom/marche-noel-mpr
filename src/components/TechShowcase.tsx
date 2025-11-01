@@ -6,6 +6,7 @@ import {
   CheckCircle2,
   Search,
   Share2,
+  Shield,
   Smartphone,
   TrendingUp,
   Zap
@@ -77,7 +78,7 @@ export default function TechShowcase() {
     },
   ];
 
-  // Deuxième ligne : Responsive, OpenGraph, PWA
+  // Deuxième ligne : Responsive, OpenGraph, PWA, RGPD
   const secondaryMetrics: TechMetric[] = [
     {
       id: 'responsive',
@@ -102,7 +103,7 @@ export default function TechShowcase() {
         { label: 'OG Images', value: '✓' },
         { label: 'Structured Data', value: '✓' },
       ],
-      gridClass: 'md:col-span-2',
+      gridClass: 'md:col-span-1',
     },
     {
       id: 'pwa',
@@ -114,6 +115,19 @@ export default function TechShowcase() {
         { label: 'Service Worker', value: '✓' },
         { label: 'Manifest', value: '✓' },
         { label: 'Cache stratégies', value: '3' },
+      ],
+      gridClass: 'md:col-span-1',
+    },
+    {
+      id: 'rgpd',
+      title: 'RGPD',
+      icon: <Shield className="w-6 h-6" />,
+      badge: 'Conforme',
+      description: 'Respect total de la vie privée',
+      metrics: [
+        { label: 'Cookies', value: '0' },
+        { label: 'Tracking', value: '0' },
+        { label: 'Analytics', value: '0' },
       ],
       gridClass: 'md:col-span-1',
     },
