@@ -25,3 +25,9 @@
   [x] Hover effects 3D subtils
   [x] Guirlandes lumineuses animées
   [x] Smooth scroll
+
+  5. Page auteur
+  [x] Création
+  [ ] Titres/descriptions/contenu à compléter
+
+  

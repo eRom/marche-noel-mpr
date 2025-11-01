@@ -61,14 +61,12 @@ export default function Footer() {
             </p>
            
             <div className="mt-4 md:mt-0">
-            <a
-                href="https://fr.tipeee.com/rebondir-apres-lavc-ma-carriere-dans-la-tech/"
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/auteur"
                 className="text-muted-foreground text-sm hover:text-card-foreground transition-colors"
               >
                 Fait avec ❤️ pour la communauté
-              </a>
+              </Link>
             </div>
           </div>
         </div>

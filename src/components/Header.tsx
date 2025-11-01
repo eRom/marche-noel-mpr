@@ -61,10 +61,10 @@ export default function Header() {
                 key={item.name}
                 href={item.href}
                 className={cn(
-                  "px-3 py-2 rounded-md text-sm font-medium transition-colors",
+                  "px-3 py-2 text-sm font-medium transition-all duration-200 border-b-2",
                   pathname === item.href
-                    ? "text-primary bg-primary/10"
-                    : "text-muted-foreground hover:text-primary hover:bg-primary/10"
+                    ? "text-primary border-primary"
+                    : "text-muted-foreground border-transparent hover:text-primary hover:border-primary"
                 )}
                 aria-current={pathname === item.href ? "page" : undefined}
               >
@@ -113,10 +113,10 @@ export default function Header() {
                 href={item.href}
                 onClick={closeMobileMenu}
                 className={cn(
-                  "block px-3 py-2 rounded-md text-base font-medium transition-all duration-200",
+                  "block px-3 py-2 text-base font-medium transition-all duration-200 border-l-4",
                   pathname === item.href
-                    ? "text-primary bg-primary/10"
-                    : "text-muted-foreground hover:text-primary hover:bg-primary/10 hover:scale-105"
+                    ? "text-primary border-primary"
+                    : "text-muted-foreground border-transparent hover:text-primary hover:border-primary hover:scale-105"
                 )}
                 aria-current={pathname === item.href ? "page" : undefined}
               >

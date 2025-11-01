@@ -77,7 +77,7 @@ export default function CeremonyTimer() {
   const blocks: Array<{ label: string; value: number; color: string; icon: string }> = [
     { label: 'Jours', value: timeLeft.days, color: 'text-red-600', icon: '🎄' },
     { label: 'Heures', value: timeLeft.hours, color: 'text-green-600', icon: '🎁' },
-    { label: 'Minutes', value: timeLeft.minutes, color: 'text-yellow-600', icon: '⭐' },
+    { label: 'Minutes', value: timeLeft.minutes, color: 'text-orange-600', icon: '⭐' },
     { label: 'Secondes', value: timeLeft.seconds, color: 'text-blue-600', icon: '✨' },
   ];
 
@@ -118,9 +118,6 @@ export default function CeremonyTimer() {
               {b.value.toString().padStart(2, '0')}
             </motion.div>
             
-            <div className="text-lg sm:text-xl mt-1 sm:mt-2" aria-hidden>
-              {b.icon}
-            </div>
           </motion.div>
         ))}
 
