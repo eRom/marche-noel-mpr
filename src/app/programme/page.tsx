@@ -1,8 +1,9 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import VideoSection from "@/components/VideoSection";
-import { Calendar, Clock, Users } from "lucide-react";
+import { Calendar, Clock, MapPin, Users } from "lucide-react";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 
 // Lazy load non-critical components
 const Header = dynamic(() => import("@/components/Header"), {
@@ -152,7 +153,7 @@ export default function Programme() {
               </div>
             </AnimatedSection>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
               <AnimatedSection animation="fadeInLeft" delay={200}>
                 <Card className="text-center p-6 h-full flex flex-col bg-card border-border">
                   <CardContent className="pt-6 flex-1 flex flex-col justify-center">
@@ -182,7 +183,7 @@ export default function Programme() {
                 </Card>
               </AnimatedSection>
 
-              <AnimatedSection animation="fadeInRight" delay={600}>
+              <AnimatedSection animation="fadeInUp" delay={500}>
                 <Card className="text-center p-6 h-full flex flex-col bg-card border-border">
                   <CardContent className="pt-6 flex-1 flex flex-col justify-center">
                     <Users className="w-12 h-12 text-accent mx-auto mb-4" aria-hidden="true" />
@@ -195,6 +196,23 @@ export default function Programme() {
                     </p>
                   </CardContent>
                 </Card>
+              </AnimatedSection>
+
+              <AnimatedSection animation="fadeInRight" delay={600}>
+                <Link href="/plan" className="h-full">
+                  <Card className="text-center p-6 h-full flex flex-col bg-card border-border hover:shadow-lg transition-shadow cursor-pointer">
+                    <CardContent className="pt-6 flex-1 flex flex-col justify-center">
+                      <MapPin className="w-12 h-12 text-primary mx-auto mb-4" aria-hidden="true" />
+                      <h3 className="text-lg font-semibold text-card-foreground mb-2">
+                        Plan
+                      </h3>
+                      <p className="text-muted-foreground text-sm">
+                        Localisation interactive<br />
+                        Itinéraire
+                      </p>
+                    </CardContent>
+                  </Card>
+                </Link>
               </AnimatedSection>
             </div>
           </div>

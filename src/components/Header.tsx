@@ -1,5 +1,6 @@
 "use client";
 
+import ThemeToggle from "@/components/ThemeToggle";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,6 +11,7 @@ const navigation = [
   { name: "Accueil", href: "/" },
   { name: "Programme", href: "/programme" },
   { name: "Galerie", href: "/galerie" },
+  { name: "Plan", href: "/plan" },
   { name: "À propos", href: "/a-propos" },
 ];
 
@@ -39,14 +41,37 @@ export default function Header() {
         aria-label="Navigation principale"
       >
         <div className="flex justify-between items-center h-16">
-          <div className="flex items-center">
+          {/* Mobile menu button - Left */}
+          <div className="md:hidden">
+            <button
+              type="button"
+              onClick={toggleMobileMenu}
+              onKeyDown={handleButtonKeyDown}
+              className="text-muted-foreground hover:text-primary focus:outline-none focus:text-primary transition-colors"
+              aria-label={isMobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-menu"
+              aria-haspopup="menu"
+            >
+              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                {isMobileMenuOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
+          </div>
+
+          {/* Logo/Title - Center on mobile, Left on desktop */}
+          <div className="absolute left-1/2 -translate-x-1/2 md:relative md:left-auto md:translate-x-0 flex items-center">
             <Link href="/" className="flex items-center space-x-2">
               <Image
                 src="/icon-192.png"
                 alt="Logo Marché de Noël du MPR"
                 width={32}
                 height={32}
-                className="w-8 h-8"
+                className="w-8 h-8 hidden md:block"
                 loading="lazy"
               />
               <span className="font-bold text-lg text-primary pt-1">Marché de Noël</span>
@@ -70,28 +95,14 @@ export default function Header() {
                 {item.name}
               </Link>
             ))}
+            
+            {/* Theme Toggle - Desktop */}
+            <ThemeToggle />
           </div>
 
-          {/* Mobile menu button */}
+          {/* Theme Toggle - Mobile (Right) */}
           <div className="md:hidden">
-            <button
-              type="button"
-              onClick={toggleMobileMenu}
-              onKeyDown={handleButtonKeyDown}
-              className="text-muted-foreground hover:text-primary focus:outline-none focus:text-primary transition-colors"
-              aria-label={isMobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
-              aria-expanded={isMobileMenuOpen}
-              aria-controls="mobile-menu"
-              aria-haspopup="menu"
-            >
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                {isMobileMenuOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                )}
-              </svg>
-            </button>
+            <ThemeToggle />
           </div>
         </div>
 
