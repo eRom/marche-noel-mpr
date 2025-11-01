@@ -68,7 +68,7 @@
 ### 1. Contenu éditorial
 - [ ] Titres/descriptions du programme à compléter
 - [ ] Page /a-propos à vérifier/enrichir
-- [ ] Contenu de la page /auteur à personnaliser
+- [x] Contenu de la page /auteur à personnaliser
 
 ### 2. Tests utilisateurs (Recommandé)
 - [ ] Recruter des utilisateurs en situation de handicap
