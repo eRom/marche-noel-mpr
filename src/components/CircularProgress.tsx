@@ -7,7 +7,6 @@ interface CircularProgressProps {
   value: number; // 0-100
   size?: number;
   strokeWidth?: number;
-  color?: string;
   label?: string;
   delay?: number;
 }
@@ -16,7 +15,6 @@ export default function CircularProgress({
   value,
   size = 120,
   strokeWidth = 8,
-  color = '#22c55e', // green-500
   label,
   delay = 0,
 }: CircularProgressProps) {
