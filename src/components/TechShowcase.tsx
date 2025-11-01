@@ -45,7 +45,7 @@ export default function TechShowcase() {
       id: 'seo',
       title: 'SEO',
       icon: <Search className="w-6 h-6" />,
-      score: 92,
+      score: 100,
       description: 'Référencement naturel optimisé',
       metrics: [
         { label: 'Sitemap', value: '✓' },

@@ -5,8 +5,8 @@ import TechShowcase from "@/components/TechShowcase";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Romain Ecarnot — Créateur du Marché de Noël du MPR à Nantes",
-  description: "Découvrez l’univers et l’expertise de Romain Ecarnot, architecte de solutions digitales et passionné par l’innovation. À l’origine de ce site, il façonne chaque détail pour offrir une expérience unique autour du Marché de Noël du MPR à Nantes.",
+  title: "Romain Ecarnot — Créateur du Marché de Noël du MPR",
+  description: "Architecte de solutions digitales, Romain Ecarnot conçoit des expériences web modernes et performantes. Découvrez l'expertise technique derrière ce site.",
 };
 
 export default function AuteurPage() {
