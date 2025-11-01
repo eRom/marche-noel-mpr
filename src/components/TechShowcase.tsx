@@ -74,6 +74,11 @@ export default function TechShowcase() {
       icon: <TrendingUp className="w-6 h-6" />,
       score: 100,
       description: 'Respect des standards web modernes',
+      metrics: [
+        { label: 'HTTPS', value: '✓' },
+        { label: 'Dépendances', value: 'À jour' },
+        { label: 'CSP', value: '✓' },
+      ],
       gridClass: '',
     },
   ];

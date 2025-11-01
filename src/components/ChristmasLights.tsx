@@ -12,7 +12,7 @@ export default function ChristmasLights() {
   }));
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-[60] pointer-events-none overflow-hidden h-8" aria-hidden="true">
+    <div className="hidden md:block fixed top-0 left-0 right-0 z-[60] pointer-events-none overflow-hidden h-8" aria-hidden="true">
       {/* Fil de guirlande */}
       <svg
         className="absolute top-0 left-0 w-full h-8"

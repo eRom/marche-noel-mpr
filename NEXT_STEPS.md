@@ -81,7 +81,7 @@ Voir **TESTS_UTILISATEURS.md** pour le protocole complet.
 - [ ] Niveau AAA RGAA (optionnel)
 - [x] Tests de charge
 - [x] Analytics et suivi utilisateurs
-- [ ] Newsletter inscription
+- [x] Newsletter inscription (pas d'inscription à une newletter)
 
 ## 📚 Documentation
 

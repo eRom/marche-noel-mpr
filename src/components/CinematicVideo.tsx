@@ -60,7 +60,19 @@ export default function CinematicVideo() {
           playsInline
           aria-label="Vidéo testimoniale du Marché de Noël MPR"
         >
-          <source src="/cinematic.mp4" type="video/mp4" />
+          {/* Version desktop (landscape) */}
+          <source 
+            src="/cinematic.mp4" 
+            type="video/mp4" 
+            media="(min-width: 768px)"
+          />
+          {/* Version mobile (portrait) */}
+          <source 
+            src="/cinematic-portrait.mp4" 
+            type="video/mp4" 
+            media="(max-width: 767px)"
+          />
+          {/* Sous-titres communs */}
           <track 
             kind="captions" 
             src="/cinematic-subtitles.vtt" 
