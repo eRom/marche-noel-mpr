@@ -92,7 +92,6 @@ export default function RootLayout({
           href="/hero-placeholder-sm.webp"
           type="image/webp"
           media="(max-width: 640px)"
-          // @ts-expect-error - fetchPriority is valid but TypeScript doesn't recognize it yet
           fetchPriority="high"
         />
         <link
@@ -101,7 +100,6 @@ export default function RootLayout({
           href="/hero-placeholder-md.webp"
           type="image/webp"
           media="(min-width: 641px) and (max-width: 768px)"
-          // @ts-expect-error - fetchPriority is valid but TypeScript doesn't recognize it yet
           fetchPriority="high"
         />
         <link
@@ -110,7 +108,6 @@ export default function RootLayout({
           href="/hero-placeholder.webp"
           type="image/webp"
           media="(min-width: 769px)"
-          // @ts-expect-error - fetchPriority is valid but TypeScript doesn't recognize it yet
           fetchPriority="high"
         />
       </head>
