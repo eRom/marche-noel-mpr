@@ -1,4 +1,5 @@
 import AnimatedSection from "@/components/AnimatedSection";
+import CinematicVideo from "@/components/CinematicVideo";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import TechShowcase from "@/components/TechShowcase";
@@ -26,15 +27,14 @@ export default function AuteurPage() {
               </p>
             </div>
 
-            <div className="prose prose-lg max-w-none dark:prose-invert">
-              <div className="text-center py-8">
-                <p className="text-muted-foreground">
-                  Passionné par l&apos;innovation et l&apos;excellence technique,
-                  <br />
-                  je façonne des expériences modernes et performantes.
-                </p>
-              </div>
-            </div>
+            
+          </AnimatedSection>
+        </div>
+
+        {/* Video Section */}
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+          <AnimatedSection animation="fadeInUp">
+            <CinematicVideo />
           </AnimatedSection>
         </div>
 

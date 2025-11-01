@@ -83,7 +83,6 @@ export default function VideoSection() {
             src="/video-subtitles.vtt" 
             srcLang="fr" 
             label="Français" 
-            default
           />
           Votre navigateur ne supporte pas la lecture de vidéos.
         </video>
