@@ -22,7 +22,6 @@
 - **Appui long** sur l'icône de l'app
 - **Sélectionnez** le raccourci désiré :
   - 📅 **Programme** : Accès direct au programme
-  - 🛍️ **Boutique** : Accès direct à la boutique
   - 💝 **Merci** : Accès direct aux remerciements
 
 ### Sur Desktop

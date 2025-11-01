@@ -180,6 +180,7 @@ export default function Home() {
                     width={300}
                     height={205}
                     className="w-64 h-auto mx-auto"
+                    loading="lazy"
                   />
                 </div>
               </AnimatedSection>

@@ -48,6 +48,7 @@ export default function Header() {
                 width={32}
                 height={32}
                 className="w-8 h-8"
+                loading="lazy"
               />
               <span className="font-bold text-lg text-primary pt-1">Marché de Noël</span>
             </Link>

@@ -101,19 +101,6 @@
       ]
     },
     {
-      "name": "Boutique",
-      "short_name": "Boutique",
-      "description": "Découvrez les créations de nos artisans",
-      "url": "/boutique",
-      "icons": [
-        {
-          "src": "/icon-192.png",
-          "sizes": "192x192",
-          "type": "image/png"
-        }
-      ]
-    },
-    {
       "name": "Merci",
       "short_name": "Merci",
       "description": "Remerciements et informations sur l'événement",

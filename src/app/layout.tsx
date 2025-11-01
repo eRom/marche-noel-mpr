@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 import { Geist, Geist_Mono } from "next/font/google";
+import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
 import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
-  display: 'swap',
+  display: 'optional',
   preload: true,
 });
 
@@ -81,12 +82,39 @@ export default function RootLayout({
   return (
     <html lang="fr" suppressHydrationWarning>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* Preload hero images for better LCP */}
+        <link
+          rel="preload"
+          as="image"
+          href="/hero-placeholder-sm.webp"
+          type="image/webp"
+          media="(max-width: 640px)"
+          // @ts-ignore - fetchPriority is valid but TypeScript doesn't recognize it yet
+          fetchPriority="high"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="/hero-placeholder-md.webp"
+          type="image/webp"
+          media="(min-width: 641px) and (max-width: 768px)"
+          // @ts-ignore - fetchPriority is valid but TypeScript doesn't recognize it yet
+          fetchPriority="high"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="/hero-placeholder.webp"
+          type="image/webp"
+          media="(min-width: 769px)"
+          // @ts-ignore - fetchPriority is valid but TypeScript doesn't recognize it yet
+          fetchPriority="high"
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <ServiceWorkerRegistration />
         <ThemeProvider
           attribute="class"
           defaultTheme="light"

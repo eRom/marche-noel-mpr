@@ -10,7 +10,7 @@
 - ✅ **Edge Side Panel** support pour le panneau latéral Edge
 - ✅ **Icônes optimisées** avec purpose séparé (any/maskable)
 - ✅ **Screenshots automatiques** mobile et desktop
-- ✅ **Raccourcis intelligents** pour Programme, Boutique, Merci
+- ✅ **Raccourcis intelligents** pour Programme et Merci
 - ✅ **Share Target** pour le partage natif
 - ✅ **Categories étendues** : shopping, business, lifestyle, entertainment, events
 
@@ -49,7 +49,6 @@
 
 #### ✅ **Raccourcis Intelligents**
 - Programme : Accès direct au programme
-- Boutique : Accès direct à la boutique
 - Merci : Accès direct aux remerciements
 
 #### ✅ **Partage Natif**

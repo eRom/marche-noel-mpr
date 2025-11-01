@@ -24,7 +24,6 @@ Le fichier `manifest.json` a été considérablement amélioré avec de nombreus
 
 #### ⚡ **Shortcuts (Raccourcis)**
 - **Programme** : Accès rapide au programme
-- **Boutique** : Accès rapide à la boutique
 - **Merci** : Accès rapide aux remerciements
 
 #### 🔗 **Fonctionnalités Avancées**
