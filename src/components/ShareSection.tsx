@@ -1,8 +1,8 @@
 "use client";
 
 import AnimatedSection from "@/components/AnimatedSection";
+import { faFacebook, faLinkedin, faWhatsapp, faXTwitter } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebook, faWhatsapp, faXTwitter, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
 export default function ShareSection() {
   const shareUrl = typeof window !== "undefined" ? window.location.href : "https://mpr-noel.romain-ecarnot.com";
@@ -42,10 +42,10 @@ export default function ShareSection() {
               Partagez le Marché de Noël du MPR avec vos proches sur les réseaux sociaux
             </p>
             
-            <div className="flex flex-wrap justify-center gap-6">
+            <div className="flex flex-col md:flex-row justify-center items-stretch gap-4 max-w-4xl mx-auto">
               <button
                 onClick={() => handleShare("facebook")}
-                className="group flex items-center gap-3 px-8 py-4 bg-[#1877F2] text-white rounded-lg font-semibold text-lg hover:bg-[#145dbf] transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 focus:ring-2 focus:ring-[#1877F2] focus:ring-offset-2"
+                className="group flex items-center justify-center gap-3 px-8 py-4 min-h-[60px] bg-[#1877F2] text-white rounded-lg font-semibold text-lg hover:bg-[#145dbf] transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 focus:ring-2 focus:ring-[#1877F2] focus:ring-offset-2 w-full md:w-auto md:flex-1"
                 aria-label="Partager sur Facebook"
               >
                 <FontAwesomeIcon 
@@ -58,7 +58,7 @@ export default function ShareSection() {
 
               <button
                 onClick={() => handleShare("whatsapp")}
-                className="group flex items-center gap-3 px-8 py-4 bg-[#25D366] text-white rounded-lg font-semibold text-lg hover:bg-[#1da851] transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2"
+                className="group flex items-center justify-center gap-3 px-8 py-4 min-h-[60px] bg-[#25D366] text-white rounded-lg font-semibold text-lg hover:bg-[#1da851] transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2 w-full md:w-auto md:flex-1"
                 aria-label="Partager sur WhatsApp"
               >
                 <FontAwesomeIcon 
@@ -71,7 +71,7 @@ export default function ShareSection() {
 
               <button
                 onClick={() => handleShare("twitter")}
-                className="group flex items-center gap-3 px-8 py-4 bg-[#000000] text-white rounded-lg font-semibold text-lg hover:bg-[#333333] transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 focus:ring-2 focus:ring-[#000000] focus:ring-offset-2"
+                className="group flex items-center justify-center gap-3 px-8 py-4 min-h-[60px] bg-[#000000] text-white rounded-lg font-semibold text-lg hover:bg-[#333333] transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 focus:ring-2 focus:ring-[#000000] focus:ring-offset-2 w-full md:w-auto md:flex-1"
                 aria-label="Partager sur Twitter (X)"
               >
                 <FontAwesomeIcon 
@@ -84,7 +84,7 @@ export default function ShareSection() {
 
               <button
                 onClick={() => handleShare("linkedin")}
-                className="group flex items-center gap-3 px-8 py-4 bg-[#0A66C2] text-white rounded-lg font-semibold text-lg hover:bg-[#004182] transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 focus:ring-2 focus:ring-[#0A66C2] focus:ring-offset-2"
+                className="group flex items-center justify-center gap-3 px-8 py-4 min-h-[60px] bg-[#0A66C2] text-white rounded-lg font-semibold text-lg hover:bg-[#004182] transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 focus:ring-2 focus:ring-[#0A66C2] focus:ring-offset-2 w-full md:w-auto md:flex-1"
                 aria-label="Partager sur LinkedIn"
               >
                 <FontAwesomeIcon 

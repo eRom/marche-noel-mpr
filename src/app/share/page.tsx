@@ -2,8 +2,9 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { FileText, Image as ImageIcon, Link, Share2 } from "lucide-react";
+import { FileText, Link2, Share2 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function SharePage() {
   return (
@@ -14,16 +15,16 @@ export default function SharePage() {
             Partagez la magie de Noël
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Faites découvrir le Marché de Noël MPR à vos proches et partagez vos moments préférés.
+            Faites découvrir le Marché de Noël du MPR de Nantes à vos proches et partagez vos moments préférés.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 mb-12">
           <Card className="hover:shadow-lg transition-shadow">
             <CardHeader>
               <div className="flex items-center space-x-3">
                 <div className="p-2 bg-primary/10 rounded-lg">
-                  <Link className="w-6 h-6 text-primary" />
+                  <Link2 className="w-6 h-6 text-primary" />
                 </div>
                 <CardTitle className="text-lg">Partager le lien</CardTitle>
               </div>
@@ -53,44 +54,7 @@ export default function SharePage() {
             </CardContent>
           </Card>
 
-          <Card className="hover:shadow-lg transition-shadow">
-            <CardHeader>
-              <div className="flex items-center space-x-3">
-                <div className="p-2 bg-secondary/10 rounded-lg">
-                  <ImageIcon className="w-6 h-6 text-secondary" aria-label="Icône photo" />
-                </div>
-                <CardTitle className="text-lg">Partager des photos</CardTitle>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground text-sm mb-4">
-                Partagez vos photos du marché de Noël avec la communauté.
-              </p>
-              <Button 
-                onClick={() => {
-                  // Ouvrir un sélecteur de fichiers
-                  const input = document.createElement('input');
-                  input.type = 'file';
-                  input.accept = 'image/*';
-                  input.multiple = true;
-                  input.onchange = (e) => {
-                    const target = e.target as HTMLInputElement;
-                    const files = Array.from(target.files || []);
-                    if (files.length > 0) {
-                      alert(`${files.length} photo(s) sélectionnée(s) !`);
-                      // Ici vous pourriez implémenter l'upload
-                    }
-                  };
-                  input.click();
-                }}
-                variant="outline"
-                className="w-full"
-              >
-                <ImageIcon className="w-4 h-4 mr-2" aria-label="Icône photo" />
-                Sélectionner des photos
-              </Button>
-            </CardContent>
-          </Card>
+         
 
           <Card className="hover:shadow-lg transition-shadow">
             <CardHeader>
@@ -103,7 +67,7 @@ export default function SharePage() {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground text-sm mb-4">
-                Partagez votre expérience et vos impressions sur l&apos;événement.
+                Partagez votre expérience sur l&apos;événement.
               </p>
               <Button 
                 onClick={() => {

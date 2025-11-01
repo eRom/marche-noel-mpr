@@ -20,7 +20,7 @@ export default function AuteurPage() {
       <main id="main-content" className="min-h-screen pt-16">
         {/* Hero Section */}
         <section className="bg-background">
-          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-12">
             <AnimatedSection animation="fadeInUp" className="">
               <div className="text-center space-y-1">
                 <h1 className="text-3xl md:text-4xl font-bold">
