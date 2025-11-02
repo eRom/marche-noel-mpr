@@ -1,6 +1,7 @@
 import MapSection from "@/components/MapSection";
 import { Separator } from "@/components/ui/separator";
 import dynamic from "next/dynamic";
+import MagicSnowflake from "@/components/MagicSnowflake";
 
 // Lazy load non-critical components
 const Header = dynamic(() => import("@/components/Header"), {
@@ -27,6 +28,10 @@ export default function PlanPage() {
       <Header />
       
       <main id="main-content">
+        {/* Magic Snowflakes for Hunt Game */}
+        <MagicSnowflake id={7} page="plan" />
+        <MagicSnowflake id={8} page="plan" />
+        
         {/* Hero Section */}
         <section className="py-12">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">

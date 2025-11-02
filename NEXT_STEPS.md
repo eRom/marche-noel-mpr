@@ -128,10 +128,11 @@
 
 ### 3. Déploiement
 - [x] Preview Vercel
-  - [ ] `npm run build` sans erreurs
-  - [ ] Déployer sur Vercel
+  - [x] `npm run build` sans erreurs
+  - [x] Déployer sur Vercel
 - [ ] Production Vercel
   - [ ] Tester en production
+  - [ ] Déployer sur Vercel
 
 ## 💡 Idées futures (Nice to have)
 

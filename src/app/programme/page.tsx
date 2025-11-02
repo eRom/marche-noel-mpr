@@ -4,6 +4,7 @@ import VideoSection from "@/components/VideoSection";
 import { Calendar, Clock, MapPin, Users } from "lucide-react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import MagicSnowflake from "@/components/MagicSnowflake";
 
 // Lazy load non-critical components
 const Header = dynamic(() => import("@/components/Header"), {
@@ -68,6 +69,10 @@ export default function Programme() {
       <Header />
       
       <main id="main-content">
+        {/* Magic Snowflakes for Hunt Game */}
+        <MagicSnowflake id={3} page="programme" />
+        <MagicSnowflake id={4} page="programme" />
+        
         {/* Hero Section */}
         <section className="py-12">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">

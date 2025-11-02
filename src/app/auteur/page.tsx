@@ -7,6 +7,7 @@ import { faGithub, faLinkedin, faXTwitter } from "@fortawesome/free-brands-svg-i
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Globe } from "lucide-react";
 import { Metadata } from "next";
+import MagicSnowflake from "@/components/MagicSnowflake";
 
 export const metadata: Metadata = {
   title: "Romain Ecarnot — Créateur du Marché de Noël du MPR",
@@ -18,6 +19,9 @@ export default function AuteurPage() {
     <>
       <Header />
       <main id="main-content" className="min-h-screen pt-16">
+        {/* Magic Snowflake for Hunt Game */}
+        <MagicSnowflake id={11} page="auteur" />
+        
         {/* Hero Section */}
         <section className="bg-background">
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-12">

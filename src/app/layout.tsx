@@ -7,6 +7,8 @@ import ChristmasLights from "@/components/ChristmasLights";
 import SmoothScroll from "@/components/SmoothScroll";
 import SkipLink from "@/components/SkipLink";
 import KonamiCode from "@/components/KonamiCode";
+import SnowflakeVictory from "@/components/SnowflakeVictory";
+import { SnowflakeHuntProvider } from "@/contexts/SnowflakeHuntContext";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -122,14 +124,17 @@ export default function RootLayout({
         <SmoothScroll />
         <ChristmasLights />
         <SnowfallEffect />
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
+        <SnowflakeHuntProvider>
+          <SnowflakeVictory />
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="light"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
+        </SnowflakeHuntProvider>
       </body>
     </html>
   );

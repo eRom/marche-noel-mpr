@@ -325,3 +325,47 @@ body {
     transform: translateY(100vh) rotate(360deg);
   }
 }
+
+/* Chasse aux flocons magiques - Animations */
+@keyframes float-magic {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+  25% {
+    transform: translateY(-10px) rotate(5deg) scale(1.05);
+  }
+  50% {
+    transform: translateY(-5px) rotate(-5deg) scale(1.1);
+  }
+  75% {
+    transform: translateY(-15px) rotate(3deg) scale(1.05);
+  }
+}
+
+@keyframes sparkle {
+  0% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+    filter: drop-shadow(0 0 10px rgba(147, 197, 253, 0.8));
+  }
+  50% {
+    transform: scale(2) rotate(180deg);
+    opacity: 0.5;
+    filter: drop-shadow(0 0 30px rgba(147, 197, 253, 1));
+  }
+  100% {
+    transform: scale(0) rotate(360deg);
+    opacity: 0;
+    filter: drop-shadow(0 0 0px rgba(147, 197, 253, 0));
+  }
+}
+
+.magic-snowflake:hover {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 20px rgba(147, 197, 253, 1)) !important;
+}
+
+.magic-snowflake.collecting {
+  animation: sparkle 1s ease-out forwards !important;
+  pointer-events: none;
+}

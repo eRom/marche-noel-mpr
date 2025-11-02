@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import SnowflakeCounter from "@/components/SnowflakeCounter";
 
 export default function Footer() {
   return (
@@ -22,6 +25,9 @@ export default function Footer() {
               Marché de Noël du MPR de Nantes<br />
               27 nov. - 11, 13 et 16 déc. 2025
             </p>
+            
+            {/* Snowflake Hunt Counter */}
+            <SnowflakeCounter />
           </div>
 
           {/* Quick links */}

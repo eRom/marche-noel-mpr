@@ -4,6 +4,7 @@ import { Calendar, Heart, ShoppingBag } from "lucide-react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
+import MagicSnowflake from "@/components/MagicSnowflake";
 
 // Import StaggerItem for animations
 import { StaggerItem } from "@/components/AnimatedSection";
@@ -44,6 +45,10 @@ export default function Home() {
       <Header />
       
       <main id="main-content">
+        {/* Magic Snowflakes for Hunt Game */}
+        <MagicSnowflake id={1} page="home" />
+        <MagicSnowflake id={2} page="home" />
+        
         {/* Hero Section */}
         <HeroSection
           title="Bienvenue au Marché de Noël du MPR de Nantes"
