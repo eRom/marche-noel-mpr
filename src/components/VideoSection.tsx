@@ -77,10 +77,10 @@ export default function VideoSection() {
           playsInline
           aria-label="Animation ludique du marché de Noël MPR avec musique de fond"
         >
-          <source src="/video.mp4" type="video/mp4" />
+          <source src="/medias/video.mp4" type="video/mp4" />
           <track 
             kind="captions" 
-            src="/video-subtitles.vtt" 
+            src="/medias/video-subtitles.vtt" 
             srcLang="fr" 
             label="Français" 
           />

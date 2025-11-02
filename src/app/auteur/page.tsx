@@ -106,13 +106,13 @@ export default function AuteurPage() {
                   Suivez mon parcours et restons connectés
                 </p>
 
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-4">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-4 ">
                   {/* Linktree / Site perso */}
                   <a
                     href="https://www.romain-ecarnot.com/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex flex-col items-center gap-3 p-6 rounded-xl bg-gray-200/90 hover:bg-primary/10 transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                    className="group flex flex-col items-center gap-3 p-6 rounded-xl bg-noel-snow hover:bg-primary/10 transition-all duration-300 hover:scale-105 hover:shadow-lg"
                   >
                     <div className="w-12 h-12 rounded-full bg-primary/10 group-hover:bg-primary flex items-center justify-center transition-colors">
                       <Globe className="w-6 h-6 text-primary group-hover:text-primary-foreground transition-colors" />
@@ -125,7 +125,7 @@ export default function AuteurPage() {
                     href="https://x.com/CloudinNantes"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex flex-col items-center gap-3 p-6 rounded-xl bg-gray-200/90 hover:bg-black transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                    className="group flex flex-col items-center gap-3 p-6 rounded-xl bg-noel-snow hover:bg-black transition-all duration-300 hover:scale-105 hover:shadow-lg"
                   >
                     <div className="w-12 h-12 rounded-full bg-black/10 group-hover:bg-white flex items-center justify-center transition-colors">
                       <FontAwesomeIcon
@@ -141,7 +141,7 @@ export default function AuteurPage() {
                     href="https://www.linkedin.com/in/romainecarnot/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex flex-col items-center gap-3 p-6 rounded-xl bg-gray-200/90 hover:bg-[#0A66C2] transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                    className="group flex flex-col items-center gap-3 p-6 rounded-xl bg-noel-snow hover:bg-[#0A66C2] transition-all duration-300 hover:scale-105 hover:shadow-lg"
                   >
                     <div className="w-12 h-12 rounded-full bg-[#0A66C2]/10 group-hover:bg-white flex items-center justify-center transition-colors">
                       <FontAwesomeIcon
@@ -157,12 +157,12 @@ export default function AuteurPage() {
                     href="https://github.com/eRom"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex flex-col items-center gap-3 p-6 rounded-xl bg-gray-200/90 hover:bg-gray-800 dark:hover:bg-white transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                    className="group flex flex-col items-center gap-3 p-6 rounded-xl bg-noel-snow hover:bg-gray-800 dark:hover:bg-white transition-all duration-300 hover:scale-105 hover:shadow-lg"
                   >
                     <div className="w-12 h-12 rounded-full bg-gray-800/10 dark:bg-white/10 group-hover:bg-white dark:group-hover:bg-gray-800 flex items-center justify-center transition-colors">
                       <FontAwesomeIcon
                         icon={faGithub}
-                        className="text-2xl text-gray-800 dark:text-white group-hover:text-gray-800 dark:group-hover:text-white transition-colors"
+                        className="text-2xl dark:text-white group-hover:text-gray-800 dark:group-hover:text-white transition-colors"
                       />
                     </div>
                     <span className="font-semibold text-sm group-hover:text-white dark:group-hover:text-gray-800">GitHub</span>

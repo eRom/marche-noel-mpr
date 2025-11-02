@@ -18,7 +18,7 @@ export default function CinematicVideo() {
   useEffect(() => {
     const updateVideoSrc = () => {
       const isMobile = window.innerWidth < 640;
-      setVideoSrc(isMobile ? "/cinematic-portrait.mp4" : "/cinematic.mp4");
+      setVideoSrc(isMobile ? "/medias/cinematic-portrait.mp4" : "/medias/cinematic.mp4");
     };
 
     // Initialisation
@@ -87,7 +87,7 @@ export default function CinematicVideo() {
             <source src={videoSrc} type="video/mp4" />
             <track 
               kind="captions" 
-              src="/cinematic-subtitles.vtt" 
+              src="/medias/cinematic-subtitles.vtt" 
               srcLang="fr" 
               label="Français"
             />
