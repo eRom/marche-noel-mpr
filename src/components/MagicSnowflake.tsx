@@ -1,6 +1,7 @@
 "use client";
 
 import { useSnowflakeHunt } from "@/contexts/SnowflakeHuntContext";
+import { playSnowflakeCollectSound } from "@/lib/snowflakeSound";
 import { useEffect, useMemo, useState } from "react";
 
 interface MagicSnowflakeProps {
@@ -46,6 +47,9 @@ export default function MagicSnowflake({ id, page }: MagicSnowflakeProps) {
     
     setIsCollecting(true);
     collectSnowflake(id);
+    
+    // Jouer le son
+    playSnowflakeCollectSound();
     
     // Animation duration before removal
     setTimeout(() => {

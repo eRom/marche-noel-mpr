@@ -24,7 +24,6 @@ export function VideoCard({ src, title, description }: VideoCardProps) {
   };
 
   const handleShare = async () => {
-    const videoUrl = typeof window !== 'undefined' ? `${window.location.origin}${src}` : src;
     const shareText = `${title} - ${description}`;
     const shareUrl = typeof window !== 'undefined' ? window.location.href : '';
 
@@ -37,7 +36,7 @@ export function VideoCard({ src, title, description }: VideoCardProps) {
           url: shareUrl,
         });
         return;
-      } catch (error) {
+      } catch {
         // L'utilisateur a annulé ou le partage a échoué, on continue avec le fallback
       }
     }
@@ -47,7 +46,7 @@ export function VideoCard({ src, title, description }: VideoCardProps) {
       await navigator.clipboard.writeText(shareUrl);
       setIsCopied(true);
       setTimeout(() => setIsCopied(false), 2000);
-    } catch (error) {
+    } catch {
       // Fallback si clipboard API n'est pas disponible
       const textArea = document.createElement('textarea');
       textArea.value = shareUrl;

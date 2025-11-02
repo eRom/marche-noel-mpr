@@ -1,6 +1,7 @@
 "use client";
 
 import { useSnowflakeHunt } from "@/contexts/SnowflakeHuntContext";
+import { playVictorySound } from "@/lib/snowflakeSound";
 import { useEffect, useState } from "react";
 
 export default function SnowflakeVictory() {
@@ -10,6 +11,9 @@ export default function SnowflakeVictory() {
   useEffect(() => {
     if (hasFoundAll) {
       setShowVictory(true);
+      
+      // Jouer le son de victoire
+      playVictorySound();
       
       // Hide after 5 seconds
       const timer = setTimeout(() => {

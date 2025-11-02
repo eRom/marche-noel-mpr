@@ -17,7 +17,7 @@ const KONAMI_SEQUENCE = [
 const COOLDOWN_DURATION = 30000; // 30 secondes en millisecondes
 
 export default function KonamiCode() {
-  const [keys, setKeys] = useState<string[]>([]);
+  const [, setKeys] = useState<string[]>([]);
   const [activated, setActivated] = useState(false);
   const [lastActivation, setLastActivation] = useState<number>(0);
 

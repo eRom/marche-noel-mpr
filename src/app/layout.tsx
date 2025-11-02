@@ -9,6 +9,8 @@ import SkipLink from "@/components/SkipLink";
 import KonamiCode from "@/components/KonamiCode";
 import SnowflakeVictory from "@/components/SnowflakeVictory";
 import { SnowflakeHuntProvider } from "@/contexts/SnowflakeHuntContext";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -135,6 +137,8 @@ export default function RootLayout({
             {children}
           </ThemeProvider>
         </SnowflakeHuntProvider>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
