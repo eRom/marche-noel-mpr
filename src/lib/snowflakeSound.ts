@@ -1,9 +1,48 @@
 /**
- * Génère un son de cloche/ding agréable avec Web Audio API
- * Parfait pour la collecte de flocons magiques
+ * Son simple "Ding" pour la collecte de flocons magiques
+ * Note cristalline courte et discrète
  */
 export function playSnowflakeCollectSound() {
   // Vérifier si Web Audio API est disponible
+  if (typeof window === 'undefined' || !window.AudioContext) {
+    return;
+  }
+
+  try {
+    const audioContext = new AudioContext();
+    
+    // Simple note cristalline (C6 - Do aigu)
+    const oscillator = audioContext.createOscillator();
+    const gainNode = audioContext.createGain();
+    
+    oscillator.connect(gainNode);
+    gainNode.connect(audioContext.destination);
+    
+    oscillator.frequency.setValueAtTime(1046.5, audioContext.currentTime); // C6
+    oscillator.type = 'sine';
+    
+    // Envelope rapide pour un "ding" court
+    gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+    gainNode.gain.linearRampToValueAtTime(0.2, audioContext.currentTime + 0.01);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
+    
+    oscillator.start(audioContext.currentTime);
+    oscillator.stop(audioContext.currentTime + 0.3);
+    
+    // Nettoyer après la lecture
+    setTimeout(() => {
+      audioContext.close();
+    }, 400);
+  } catch (error) {
+    console.debug('Audio playback prevented:', error);
+  }
+}
+
+/**
+ * Son de victoire (tous les flocons trouvés)
+ * Accord Do+Mi cristallin style "Achievement unlocked"
+ */
+export function playVictorySound() {
   if (typeof window === 'undefined' || !window.AudioContext) {
     return;
   }
@@ -57,16 +96,15 @@ export function playSnowflakeCollectSound() {
       audioContext.close();
     }, 600);
   } catch (error) {
-    // Silencieux en cas d'erreur (ex: autoplay bloqué)
     console.debug('Audio playback prevented:', error);
   }
 }
 
 /**
- * Son de victoire (tous les flocons trouvés)
- * Arpège ascendant festif
+ * Son festif pour le Konami Code
+ * Arpège ascendant Do→Mi→Sol→Do cristallin
  */
-export function playVictorySound() {
+export function playKonamiSound() {
   if (typeof window === 'undefined' || !window.AudioContext) {
     return;
   }

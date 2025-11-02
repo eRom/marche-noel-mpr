@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { playKonamiSound } from "@/lib/snowflakeSound";
 
 const KONAMI_SEQUENCE = [
   "ArrowUp",
@@ -42,6 +43,9 @@ export default function KonamiCode() {
         if (newKeys.join(",") === KONAMI_SEQUENCE.join(",")) {
           setActivated(true);
           setLastActivation(Date.now());
+          
+          // 🎵 Jouer le son "Ho Ho Ho !"
+          playKonamiSound();
           
           // Desactiver l'animation apres 5 secondes
           setTimeout(() => setActivated(false), 5000);

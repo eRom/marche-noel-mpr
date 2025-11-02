@@ -145,15 +145,16 @@
 - [x] **Toggle Dark Mode** - Réactiver le ThemeToggle (déjà en place)
 - [ ] **Notifications Push PWA** - Rappels événements (opt-in)
 - [x] **Mini-jeux / Easter Eggs** - Pour l'esprit de Noël
-  - [x] **Konami Code de Noël** ✅
-    - Séquence : ↑ ↑ ↓ ↓ ← → ← → Enter
-    - Animation : Explosion de flocons + emojis de Noël + message "Ho Ho Ho !"
-    - Cooldown : 30 secondes pour éviter le spam
-    - Impact : Easter egg classique, fun pour les geeks
+- [x] **Konami Code de Noël** ✅
+  - Séquence : ↑ ↑ ↓ ↓ ← → ← → Enter
+  - Animation : Explosion de flocons + emojis de Noël + message "Ho Ho Ho !"
+  - Son : Arpège festif Do→Mi→Sol→Do ascendant cristallin
+  - Cooldown : 30 secondes pour éviter le spam
+  - Impact : Easter egg classique, fun pour les geeks
   - [x] **Chasse aux flocons magiques** ✅
     - 11 flocons cachés : 2 par page (accueil, programme, galerie, plan, à propos) + 1 sur auteur
     - Positions aléatoires à chaque visite (pas de sauvegarde)
-    - Sons générés avec Web Audio API (ding à la collecte, arpège à la victoire)
+    - Sons générés avec Web Audio API (Ding simple à la collecte, accord Do+Mi à la victoire)
     - Compteur dans le footer (desktop uniquement)
     - Animation "sparkle" + explosion de félicitations
     - Desktop uniquement (< 768px = désactivé)
@@ -210,11 +211,11 @@ Le site est **quasi production-ready** avec :
 - ✅ Navigation avec bordures au lieu de backgrounds (meilleur contraste)
 
 ### Easter Eggs & Gamification
-- ✅ **Konami Code de Noël** : Séquence ↑↑↓↓←→←→Enter avec cooldown 30s
+- ✅ **Konami Code de Noël** : Séquence ↑↑↓↓←→←→Enter avec cooldown 30s + arpège festif (C4→E4→G4→C5)
 - ✅ **Chasse aux flocons magiques** : 11 flocons cachés avec sons Web Audio API
   - Positions aléatoires, compteur dans le footer, desktop uniquement
   - Animation sparkle + explosion de victoire
-  - Sons : ding cristallin (Do+Mi) + arpège de victoire (C4→E4→G4→C5)
+  - Sons : Ding simple (C6) à la collecte + accord Do+Mi (C6+E6) à la victoire
 
 ### Analytics & Monitoring
 - ✅ **Vercel Analytics** : Suivi des pages vues, visiteurs uniques, référents
