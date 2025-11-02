@@ -74,6 +74,10 @@
   - [x] Responsive (colonne mobile, ligne desktop)
   - [x] Cartes uniformes (bg-gray-200/90, hauteur identique)
 
+#### Médias (Complète) ✅
+- [x] Grille de vidéos (public/medias/)
+- [x] Boutons : télécharger et partager
+
 #### Autres pages
 - [x] /boutique supprimée (vide)
 - [x] /programme avec TODO à compléter
@@ -115,17 +119,19 @@
 - [ ] **Page /a-propos** : Vérifier et enrichir le contenu si nécessaire
 
 ### 2. Tests finaux
-- [ ] Audit Lighthouse complet (vérifier que les scores sont maintenus)
-- [ ] Tests sur différents devices (mobile, tablette, desktop)
+- [x] Audit Lighthouse complet (vérifier que les scores sont maintenus)
+- [x] Tests sur différents devices (mobile, tablette, desktop)
 - [ ] Vérifier le mode offline (PWA)
 - [ ] Tester tous les liens de partage (Facebook, WhatsApp, Twitter, LinkedIn)
-- [ ] Vérifier le bon fonctionnement de la vidéo testimoniale
-- [ ] Vérifier que tous les assets sont présents (vidéos, sous-titres)
+- [x] Vérifier le bon fonctionnement de la vidéo testimoniale
+- [x] Vérifier que tous les assets sont présents (vidéos, sous-titres)
 
 ### 3. Déploiement
-- [ ] `npm run build` sans erreurs
-- [ ] Déployer sur Vercel
-- [ ] Tester en production
+- [x] Preview Vercel
+  - [ ] `npm run build` sans erreurs
+  - [ ] Déployer sur Vercel
+- [ ] Production Vercel
+  - [ ] Tester en production
 
 ## 💡 Idées futures (Nice to have)
 
@@ -134,10 +140,6 @@
 - [x] **Toggle Dark Mode** - Réactiver le ThemeToggle (déjà en place)
 - [ ] **Notifications Push PWA** - Rappels événements (opt-in)
 - [ ] **Mini-jeu / Easter Egg** - Pour l'esprit de Noël
-  - [ ] Click sur le logo = surprise
-          Triple-clic sur le logo du header → animation festive
-          Par exemple : Logo qui tourne, change de couleur, neige qui tombe plus fort
-          Impact : Easter egg discret
   - [x] Konami Code de Noël
           Séquence de touches cachée (ex: ↑ ↑ ↓ ↓ ← → ← → Enter)
           Déclenche une animation spéciale (pluie de cadeaux, Père Noël qui traverse l'écran, explosion de flocons)
