@@ -117,6 +117,7 @@ export default function AuteurPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group flex flex-col items-center gap-3 p-6 rounded-xl bg-noel-snow hover:bg-primary/10 transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                    aria-label="Visiter mon site web personnel"
                   >
                     <div className="w-12 h-12 rounded-full bg-primary/10 group-hover:bg-primary flex items-center justify-center transition-colors">
                       <Globe className="w-6 h-6 text-primary group-hover:text-primary-foreground transition-colors" />
@@ -130,6 +131,7 @@ export default function AuteurPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group flex flex-col items-center gap-3 p-6 rounded-xl bg-noel-snow hover:bg-black transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                    aria-label="Suivez-moi sur X (Twitter)"
                   >
                     <div className="w-12 h-12 rounded-full bg-black/10 group-hover:bg-white flex items-center justify-center transition-colors">
                       <FontAwesomeIcon
@@ -146,6 +148,7 @@ export default function AuteurPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group flex flex-col items-center gap-3 p-6 rounded-xl bg-noel-snow hover:bg-[#0A66C2] transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                    aria-label="Connectez-vous avec moi sur LinkedIn"
                   >
                     <div className="w-12 h-12 rounded-full bg-[#0A66C2]/10 group-hover:bg-white flex items-center justify-center transition-colors">
                       <FontAwesomeIcon
@@ -162,6 +165,7 @@ export default function AuteurPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group flex flex-col items-center gap-3 p-6 rounded-xl bg-noel-snow hover:bg-gray-800 dark:hover:bg-white transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                    aria-label="Consultez mes projets sur GitHub"
                   >
                     <div className="w-12 h-12 rounded-full bg-gray-800/10 dark:bg-white/10 group-hover:bg-white dark:group-hover:bg-gray-800 flex items-center justify-center transition-colors">
                       <FontAwesomeIcon

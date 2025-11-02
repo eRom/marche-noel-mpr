@@ -90,9 +90,9 @@ export default function Home() {
                     <Card className="card-3d text-center p-6 cursor-pointer hover:bg-primary/10 bg-card border-border focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2 h-full">
                     <CardContent className="pt-6">
                       <Calendar className="w-12 h-12 text-primary mx-auto mb-4" aria-hidden="true" />
-                      <h3 className="text-xl font-semibold text-card-foreground mb-2">
+                      <h2 className="text-xl font-semibold text-card-foreground mb-2">
                         Programme riche
-                      </h3>
+                      </h2>
                       <p className="text-muted-foreground">
                         Des animations quotidiennes et des ateliers pour toute la famille.
                       </p>
@@ -105,9 +105,9 @@ export default function Home() {
                   <Card className="card-3d text-center p-6 bg-card border-border h-full">
                   <CardContent className="pt-6">
                     <ShoppingBag className="w-12 h-12 text-secondary mx-auto mb-4" aria-hidden="true" />
-                    <h3 className="text-xl font-semibold text-card-foreground mb-2">
+                    <h2 className="text-xl font-semibold text-card-foreground mb-2">
                       Artisans patients
-                    </h3>
+                    </h2>
                     <p className="text-muted-foreground">
                       Découvrez des créateurs talentueux et des produits uniques de notre région.
                     </p>
@@ -120,9 +120,9 @@ export default function Home() {
                     <Card className="card-3d text-center p-6 cursor-pointer hover:bg-accent/10 bg-card border-border focus-within:ring-2 focus-within:ring-accent focus-within:ring-offset-2 h-full">
                     <CardContent className="pt-6">
                       <Heart className="w-12 h-12 text-accent mx-auto mb-4" aria-hidden="true" />
-                      <h3 className="text-xl font-semibold text-card-foreground mb-2">
+                      <h2 className="text-xl font-semibold text-card-foreground mb-2">
                         Esprit de Noël
-                      </h3>
+                      </h2>
                       <p className="text-muted-foreground">
                         Une ambiance chaleureuse et festive pour créer des souvenirs inoubliables.
                       </p>
