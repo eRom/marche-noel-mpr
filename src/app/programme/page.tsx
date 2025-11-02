@@ -68,7 +68,7 @@ export default function Programme() {
     <div className="min-h-screen bg-background">
       <Header />
       
-      <main id="main-content">
+      <main id="main-content" role="main">
         {/* Magic Snowflakes for Hunt Game */}
         <MagicSnowflake id={3} page="programme" />
         <MagicSnowflake id={4} page="programme" />

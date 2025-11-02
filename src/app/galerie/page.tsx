@@ -34,7 +34,7 @@ export default async function GalleriePage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-red-50 to-white dark:from-gray-900 dark:to-gray-800">
       <Header />
-      <main id="main-content">
+      <main id="main-content" role="main">
         {/* Magic Snowflakes for Hunt Game */}
         <MagicSnowflake id={5} page="galerie" />
         <MagicSnowflake id={6} page="galerie" />

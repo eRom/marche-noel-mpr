@@ -18,7 +18,7 @@ export default function AuteurPage() {
   return (
     <>
       <Header />
-      <main id="main-content" className="min-h-screen pt-16">
+      <main id="main-content" className="min-h-screen pt-16" role="main">
         {/* Magic Snowflake for Hunt Game */}
         <MagicSnowflake id={11} page="auteur" />
         

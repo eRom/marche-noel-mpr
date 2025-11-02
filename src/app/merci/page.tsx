@@ -27,7 +27,7 @@ export default function Merci() {
     <div className="min-h-screen bg-background">
       <Header />
       
-      <main id="main-content">
+      <main id="main-content" role="main">
         {/* Hero Section */}
         <section className="relative py-16 overflow-hidden">
           {/* Background Image */}

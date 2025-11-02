@@ -39,7 +39,7 @@ export default function MediasPage() {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <main id="main-content">
+      <main id="main-content" role="main">
         <section className="py-12">
           <div className="container mx-auto px-4">
             <AnimatedSection animation="fadeInUp">

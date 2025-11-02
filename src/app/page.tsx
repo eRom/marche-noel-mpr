@@ -44,7 +44,7 @@ export default function Home() {
     <div className="min-h-screen bg-background">
       <Header />
       
-      <main id="main-content">
+      <main id="main-content" role="main">
         {/* Magic Snowflakes for Hunt Game */}
         <MagicSnowflake id={1} page="home" />
         <MagicSnowflake id={2} page="home" />
@@ -61,7 +61,7 @@ export default function Home() {
         />
 
         {/* Ceremony Timer Section (no title/description) */}
-        <section className="bg-background">
+        <section className="bg-background" aria-label="Compte à rebours avant l'événement">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
             <AnimatedSection animation="fadeInUp">
               <CeremonyTimer />
@@ -70,11 +70,11 @@ export default function Home() {
         </section>
 
         {/* Features Section */}
-        <section className="py-16 bg-noel-snow">
+        <section className="py-16 bg-noel-snow" aria-labelledby="features-heading">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <AnimatedSection animation="fadeInUp">
               <div className="text-center mb-12">
-                <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+                <h2 id="features-heading" className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
                   Pourquoi nous choisir ?
                 </h2>
                 <p className="text-lg text-muted-foreground max-w-2xl mx-auto"> 
@@ -138,7 +138,7 @@ export default function Home() {
         
 
         {/* CTA Section */}
-        <section className="py-16 bg-gradient-to-r from-primary to-primary-dark">
+        <section className="py-16 bg-gradient-to-r from-primary to-primary-dark" aria-label="Appel à l'action">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
             <AnimatedSection animation="fadeInUp">
               <h2 className="text-3xl sm:text-4xl font-bold text-primary-foreground mb-4">
@@ -166,11 +166,11 @@ export default function Home() {
         </section>
 
         {/* APRAIH Section */}
-        <section className="py-16 bg-gradient-to-b from-background to-primary/5">
+        <section className="py-16 bg-gradient-to-b from-background to-primary/5" aria-labelledby="apraih-heading">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <AnimatedSection animation="fadeInUp">
               <div className="text-center mb-12">
-                <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+                <h2 id="apraih-heading" className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
                   Au profit de l&apos;APRAIH
                 </h2>
                 <p className="text-lg text-muted-foreground max-w-3xl mx-auto">

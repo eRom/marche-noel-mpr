@@ -108,7 +108,7 @@ export default function SharePage() {
                 <div className="bg-white p-4 rounded-lg shadow-lg">
                   <Image
                     src="/qr-code.png"
-                    alt="QR code pour le Marché de Noël MPR"
+                    alt="QR code - Scannez pour accéder au site du Marché de Noël du MPR"
                     width={128}
                     height={128}
                     className="w-32 h-32"

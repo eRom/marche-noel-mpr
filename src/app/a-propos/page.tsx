@@ -29,7 +29,7 @@ export default function APropos() {
     <div className="min-h-screen bg-background">
       <Header />
       
-      <main id="main-content">
+      <main id="main-content" role="main">
         {/* Magic Snowflakes for Hunt Game */}
         <MagicSnowflake id={9} page="a-propos" />
         <MagicSnowflake id={10} page="a-propos" />

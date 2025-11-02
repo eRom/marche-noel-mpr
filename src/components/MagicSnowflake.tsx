@@ -75,15 +75,7 @@ export default function MagicSnowflake({ id, page }: MagicSnowflakeProps) {
         transition: "all 0.3s ease",
       }}
       onClick={handleClick}
-      onKeyDown={(e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          handleClick();
-        }
-      }}
-      role="button"
-      tabIndex={0}
-      aria-label={`Flocon magique ${id}`}
+      aria-hidden="true"
     >
       ❄️
     </div>

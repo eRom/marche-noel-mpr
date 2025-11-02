@@ -35,7 +35,7 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-background/95 backdrop-blur-sm border-b border-border sticky top-0 z-50">
+    <header className="bg-background/95 backdrop-blur-sm border-b border-border sticky top-0 z-50" role="banner">
       <nav 
         className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" 
         aria-label="Navigation principale"
