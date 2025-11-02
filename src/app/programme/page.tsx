@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import VideoSection from "@/components/VideoSection";
+import CalendarReminder from "@/components/CalendarReminder";
 import { Calendar, Clock, MapPin, Users } from "lucide-react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
@@ -84,10 +85,13 @@ export default function Programme() {
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                 Le 27 nov. - 11, 13 et 16 déc.
               </p>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-6">
                 Découvrez un programme riche en animations,
                 concerts et activités pour toute la famille.
               </p>
+              <div className="flex justify-center mt-6">
+                <CalendarReminder variant="default" size="default" />
+              </div>
             </AnimatedSection>
           </div>
         </section>
