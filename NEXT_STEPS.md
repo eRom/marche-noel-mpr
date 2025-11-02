@@ -88,6 +88,25 @@
   - [x] Hauteur uniforme (min-h-[60px])
   - [x] 4 plateformes : Facebook, WhatsApp, Twitter, LinkedIn
 
+### Fonctionnalités complémentaires
+- [x] **Plan d'accès interactif** (Leaflet) - Localisation + itinéraire
+- [x] **Toggle Dark Mode** - Réactiver le ThemeToggle (déjà en place)
+- [x] **Mini-jeux / Easter Eggs** - Pour l'esprit de Noël
+- [x] **Konami Code de Noël** ✅
+  - Séquence : ↑ ↑ ↓ ↓ ← → ← → Enter
+  - Animation : Explosion de flocons + emojis de Noël + message "Ho Ho Ho !"
+  - Son : Arpège festif Do→Mi→Sol→Do ascendant cristallin
+  - Cooldown : 30 secondes pour éviter le spam
+  - Impact : Easter egg classique, fun pour les geeks
+- [x] **Chasse aux flocons magiques** ✅
+  - 11 flocons cachés : 2 par page (accueil, programme, galerie, plan, à propos) + 1 sur auteur
+  - Positions aléatoires à chaque visite (pas de sauvegarde)
+  - Sons générés avec Web Audio API (Ding simple à la collecte, accord Do+Mi à la victoire)
+  - Compteur dans le footer (desktop uniquement)
+  - Animation "sparkle" + explosion de félicitations
+  - Desktop uniquement (< 768px = désactivé)
+  - Impact : Encourage l'exploration du site, ludique et immersif
+  
 ### 6. 🔍 SEO et métadonnées ✅
 - [x] Meta descriptions optimisées
 - [x] OpenGraph tags
@@ -139,26 +158,7 @@
   - [ ] Déployer sur Vercel
 
 ## 💡 Idées futures (Nice to have)
-
-### Fonctionnalités à etudier
-- [x] **Plan d'accès interactif** (Leaflet) - Localisation + itinéraire
-- [x] **Toggle Dark Mode** - Réactiver le ThemeToggle (déjà en place)
 - [ ] **Notifications Push PWA** - Rappels événements (opt-in)
-- [x] **Mini-jeux / Easter Eggs** - Pour l'esprit de Noël
-- [x] **Konami Code de Noël** ✅
-  - Séquence : ↑ ↑ ↓ ↓ ← → ← → Enter
-  - Animation : Explosion de flocons + emojis de Noël + message "Ho Ho Ho !"
-  - Son : Arpège festif Do→Mi→Sol→Do ascendant cristallin
-  - Cooldown : 30 secondes pour éviter le spam
-  - Impact : Easter egg classique, fun pour les geeks
-  - [x] **Chasse aux flocons magiques** ✅
-    - 11 flocons cachés : 2 par page (accueil, programme, galerie, plan, à propos) + 1 sur auteur
-    - Positions aléatoires à chaque visite (pas de sauvegarde)
-    - Sons générés avec Web Audio API (Ding simple à la collecte, accord Do+Mi à la victoire)
-    - Compteur dans le footer (desktop uniquement)
-    - Animation "sparkle" + explosion de félicitations
-    - Desktop uniquement (< 768px = désactivé)
-    - Impact : Encourage l'exploration du site, ludique et immersif
 
 ### Fonctionnalités mise de coté
 - [ ] **Formulaire de contact** (/contact) - Questions générales, contact APRAIH
