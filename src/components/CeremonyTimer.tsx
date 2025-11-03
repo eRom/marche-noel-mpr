@@ -103,7 +103,7 @@ export default function CeremonyTimer() {
         {blocks.map((b) => (
           <motion.div
             key={b.label}
-            className="bg-noel-snow dark:bg-gray-800/95 backdrop-blur rounded-xl px-5 py-4 sm:px-6 sm:py-6 shadow-lg dark:shadow-2xl border-red-100/70 min-w-[110px] text-center"
+            className="bg-noel-snow dark:bg-gray-800/95 backdrop-blur rounded-xl px-5 py-4 sm:px-6 sm:py-6 shadow-lg dark:shadow-2xl min-w-[110px] text-center"
             whileHover={{ scale: 1.05, rotate: 1 }}
             transition={{ type: 'spring', stiffness: 300 }}
           >
