@@ -158,7 +158,7 @@
   - [ ] Déployer sur Vercel
 
 ## 💡 Idées futures (Nice to have)
-- [ ] **Notifications Push PWA** - Rappels événements (opt-in)
+- [x] **Notifications Push PWA** - Rappels événements (opt-in) - Rappel ICS (pas de Push)
 
 ### Fonctionnalités mise de coté
 - [ ] **Formulaire de contact** (/contact) - Questions générales, contact APRAIH
