@@ -74,21 +74,21 @@ export default function CeremonyTimer() {
 
   if (isFinished) return null;
 
-  const blocks: Array<{ label: string; value: number; color: string; icon: string }> = [
-    { label: 'Jours', value: timeLeft.days, color: 'text-red-600', icon: '🎄' },
-    { label: 'Heures', value: timeLeft.hours, color: 'text-green-600', icon: '🎁' },
-    { label: 'Minutes', value: timeLeft.minutes, color: 'text-yellow-600', icon: '⭐' },
-    { label: 'Secondes', value: timeLeft.seconds, color: 'text-blue-600', icon: '✨' },
+  const blocks: Array<{ label: string; value: number; color: string; darkColor: string; icon: string }> = [
+    { label: 'Jours', value: timeLeft.days, color: 'text-red-600', darkColor: 'dark:text-red-400', icon: '🎄' },
+    { label: 'Heures', value: timeLeft.hours, color: 'text-green-600', darkColor: 'dark:text-green-400', icon: '🎁' },
+    { label: 'Minutes', value: timeLeft.minutes, color: 'text-orange-600', darkColor: 'dark:text-orange-400', icon: '⭐' },
+    { label: 'Secondes', value: timeLeft.seconds, color: 'text-blue-600', darkColor: 'dark:text-blue-400', icon: '✨' },
   ];
 
   return (
-    <div className="relative overflow-hidden rounded-2xl p-6 sm:p-8 shadow-xl bg-transparent">
+    <div className="relative overflow-hidden rounded-2xl p-6 sm:p-8 shadow-xl bg-transparent dark:bg-gray-900/20">
       {/* Flocons animés en arrière-plan */}
       <div className="absolute inset-0 pointer-events-none">
         {snowflakes.map((flake, i) => (
           <motion.div
             key={i}
-            className="absolute text-blue-200/70 dark:text-blue-300/20 text-xl"
+            className="absolute text-blue-200/70 dark:text-blue-400/50 text-xl"
             initial={{ y: -20, x: flake.initialX }}
             animate={{ y: 600, x: flake.targetX, rotate: 360 }}
             transition={{ duration: flake.duration, repeat: Infinity, ease: 'linear' }}
@@ -103,12 +103,12 @@ export default function CeremonyTimer() {
         {blocks.map((b) => (
           <motion.div
             key={b.label}
-            className="bg-white/90 dark:bg-white/10 backdrop-blur rounded-xl px-5 py-4 sm:px-6 sm:py-6 shadow-lg border border-red-100/70 dark:border-white/10 min-w-[110px] text-center"
+            className="bg-noel-snow dark:bg-gray-800/95 backdrop-blur rounded-xl px-5 py-4 sm:px-6 sm:py-6 shadow-lg dark:shadow-2xl border-red-100/70 min-w-[110px] text-center"
             whileHover={{ scale: 1.05, rotate: 1 }}
             transition={{ type: 'spring', stiffness: 300 }}
           >
             <motion.div
-              className={`text-4xl sm:text-5xl font-bold tracking-tight ${b.color}`}
+              className={`text-4xl sm:text-5xl font-bold tracking-tight ${b.color} ${b.darkColor}`}
               style={{ fontFamily: 'Inter, Poppins, Montserrat, ui-sans-serif, system-ui' }}
               key={`${b.label}-${b.value}`}
               initial={{ scale: 1.15, opacity: 0 }}
@@ -118,9 +118,6 @@ export default function CeremonyTimer() {
               {b.value.toString().padStart(2, '0')}
             </motion.div>
             
-            <div className="text-lg sm:text-xl mt-1 sm:mt-2" aria-hidden>
-              {b.icon}
-            </div>
           </motion.div>
         ))}
 

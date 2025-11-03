@@ -6,6 +6,7 @@ import { getGalleryImages } from '@/lib/galleryData';
 import type { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
+import MagicSnowflake from '@/components/MagicSnowflake';
 
 const AnimatedSection = dynamic(() => import('@/components/AnimatedSection'), {
   loading: () => <div />,
@@ -33,7 +34,11 @@ export default async function GalleriePage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-red-50 to-white dark:from-gray-900 dark:to-gray-800">
       <Header />
-      <main>
+      <main id="main-content" role="main">
+        {/* Magic Snowflakes for Hunt Game */}
+        <MagicSnowflake id={5} page="galerie" />
+        <MagicSnowflake id={6} page="galerie" />
+        
         <section className="py-12">
           <div className="container mx-auto px-4">
             <AnimatedSection animation="fadeInUp">

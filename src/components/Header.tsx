@@ -1,16 +1,17 @@
 "use client";
 
+import ThemeToggle from "@/components/ThemeToggle";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import ThemeToggle from "./ThemeToggle";
 
 const navigation = [
   { name: "Accueil", href: "/" },
   { name: "Programme", href: "/programme" },
   { name: "Galerie", href: "/galerie" },
+  { name: "Plan", href: "/plan" },
   { name: "À propos", href: "/a-propos" },
 ];
 
@@ -34,48 +35,14 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-background/95 backdrop-blur-sm border-b border-border sticky top-0 z-50">
+    <header className="bg-background/95 backdrop-blur-sm border-b border-border sticky top-0 z-50" role="banner">
       <nav 
         className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" 
         aria-label="Navigation principale"
       >
         <div className="flex justify-between items-center h-16">
-          <div className="flex items-center">
-            <Link href="/" className="flex items-center space-x-2">
-              <Image
-                src="/icon-192.png"
-                alt="Logo Marché de Noël du MPR"
-                width={32}
-                height={32}
-                className="w-8 h-8"
-              />
-              <span className="font-bold text-lg text-primary pt-1">Marché de Noël</span>
-            </Link>
-          </div>
-          
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className={cn(
-                  "px-3 py-2 rounded-md text-sm font-medium transition-colors",
-                  pathname === item.href
-                    ? "text-primary bg-primary/10"
-                    : "text-muted-foreground hover:text-primary hover:bg-primary/10"
-                )}
-                aria-current={pathname === item.href ? "page" : undefined}
-              >
-                {item.name}
-              </Link>
-            ))}
-            <ThemeToggle />
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="md:hidden flex items-center space-x-2">
-            <ThemeToggle />
+          {/* Mobile menu button - Left */}
+          <div className="md:hidden">
             <button
               type="button"
               onClick={toggleMobileMenu}
@@ -95,6 +62,48 @@ export default function Header() {
               </svg>
             </button>
           </div>
+
+          {/* Logo/Title - Center on mobile, Left on desktop */}
+          <div className="absolute left-1/2 -translate-x-1/2 md:relative md:left-auto md:translate-x-0 flex items-center">
+            <Link href="/" className="flex items-center space-x-2">
+              <Image
+                src="/icon-192.png"
+                alt="Logo Marché de Noël du MPR"
+                width={32}
+                height={32}
+                className="w-8 h-8 hidden md:block"
+                loading="lazy"
+              />
+              <span className="font-bold text-lg text-primary pt-1">Marché de Noël</span>
+            </Link>
+          </div>
+          
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-8">
+            {navigation.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className={cn(
+                  "px-3 py-2 text-sm font-medium transition-all duration-200 border-b-2",
+                  pathname === item.href
+                    ? "text-primary border-primary"
+                    : "text-muted-foreground border-transparent hover:text-primary hover:border-primary"
+                )}
+                aria-current={pathname === item.href ? "page" : undefined}
+              >
+                {item.name}
+              </Link>
+            ))}
+            
+            {/* Theme Toggle - Desktop */}
+            <ThemeToggle />
+          </div>
+
+          {/* Theme Toggle - Mobile (Right) */}
+          <div className="md:hidden">
+            <ThemeToggle />
+          </div>
         </div>
 
         {/* Mobile Navigation Menu */}
@@ -112,10 +121,10 @@ export default function Header() {
                 href={item.href}
                 onClick={closeMobileMenu}
                 className={cn(
-                  "block px-3 py-2 rounded-md text-base font-medium transition-all duration-200",
+                  "block px-3 py-2 text-base font-medium transition-all duration-200 border-l-4",
                   pathname === item.href
-                    ? "text-primary bg-primary/10"
-                    : "text-muted-foreground hover:text-primary hover:bg-primary/10 hover:scale-105"
+                    ? "text-primary border-primary"
+                    : "text-muted-foreground border-transparent hover:text-primary hover:border-primary hover:scale-105"
                 )}
                 aria-current={pathname === item.href ? "page" : undefined}
               >

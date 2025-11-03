@@ -1,9 +1,12 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import SnowflakeCounter from "@/components/SnowflakeCounter";
 
 export default function Footer() {
   return (
-    <footer className="bg-card text-card-foreground border-t">
+    <footer className="bg-card text-card-foreground border-t" role="contentinfo">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Logo and description */}
@@ -22,6 +25,9 @@ export default function Footer() {
               Marché de Noël du MPR de Nantes<br />
               27 nov. - 11, 13 et 16 déc. 2025
             </p>
+            
+            {/* Snowflake Hunt Counter */}
+            <SnowflakeCounter />
           </div>
 
           {/* Quick links */}
@@ -61,14 +67,12 @@ export default function Footer() {
             </p>
            
             <div className="mt-4 md:mt-0">
-            <a
-                href="https://fr.tipeee.com/rebondir-apres-lavc-ma-carriere-dans-la-tech/"
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/auteur"
                 className="text-muted-foreground text-sm hover:text-card-foreground transition-colors"
               >
                 Fait avec ❤️ pour la communauté
-              </a>
+              </Link>
             </div>
           </div>
         </div>

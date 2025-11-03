@@ -6,7 +6,6 @@ const CACHE_NAME = 'marche-noel-mpr-v1';
 const urlsToCache = [
   '/',
   '/programme',
-  '/boutique',
   '/merci',
   '/share',
   '/manifest.json'

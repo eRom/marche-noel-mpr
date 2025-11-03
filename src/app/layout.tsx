@@ -1,12 +1,22 @@
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 import { Geist, Geist_Mono } from "next/font/google";
+import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
+import SnowfallEffect from "@/components/SnowfallEffect";
+import ChristmasLights from "@/components/ChristmasLights";
+import SmoothScroll from "@/components/SmoothScroll";
+import SkipLink from "@/components/SkipLink";
+import KonamiCode from "@/components/KonamiCode";
+import SnowflakeVictory from "@/components/SnowflakeVictory";
+import { SnowflakeHuntProvider } from "@/contexts/SnowflakeHuntContext";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
-  display: 'swap',
+  display: 'optional',
   preload: true,
 });
 
@@ -81,20 +91,54 @@ export default function RootLayout({
   return (
     <html lang="fr" suppressHydrationWarning>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* Preload hero images for better LCP */}
+        <link
+          rel="preload"
+          as="image"
+          href="/hero-placeholder-sm.webp"
+          type="image/webp"
+          media="(max-width: 640px)"
+          fetchPriority="high"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="/hero-placeholder-md.webp"
+          type="image/webp"
+          media="(min-width: 641px) and (max-width: 768px)"
+          fetchPriority="high"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="/hero-placeholder.webp"
+          type="image/webp"
+          media="(min-width: 769px)"
+          fetchPriority="high"
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
+        <SkipLink />
+        <KonamiCode />
+        <ServiceWorkerRegistration />
+        <SmoothScroll />
+        <ChristmasLights />
+        <SnowfallEffect />
+        <SnowflakeHuntProvider>
+          <SnowflakeVictory />
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="light"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
+        </SnowflakeHuntProvider>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

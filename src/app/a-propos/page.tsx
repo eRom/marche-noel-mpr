@@ -3,6 +3,7 @@ import { Separator } from "@/components/ui/separator";
 import { Gift, Heart, Users } from "lucide-react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
+import MagicSnowflake from "@/components/MagicSnowflake";
 
 // Lazy load non-critical components
 const Header = dynamic(() => import("@/components/Header"), {
@@ -28,7 +29,11 @@ export default function APropos() {
     <div className="min-h-screen bg-background">
       <Header />
       
-      <main>
+      <main id="main-content" role="main">
+        {/* Magic Snowflakes for Hunt Game */}
+        <MagicSnowflake id={9} page="a-propos" />
+        <MagicSnowflake id={10} page="a-propos" />
+        
         {/* Hero Section */}
         <section className="py-16">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">

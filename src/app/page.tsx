@@ -4,6 +4,10 @@ import { Calendar, Heart, ShoppingBag } from "lucide-react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
+import MagicSnowflake from "@/components/MagicSnowflake";
+
+// Import StaggerItem for animations
+import { StaggerItem } from "@/components/AnimatedSection";
 
 // Lazy load all non-critical components
 const Header = dynamic(() => import("@/components/Header"), {
@@ -40,7 +44,11 @@ export default function Home() {
     <div className="min-h-screen bg-background">
       <Header />
       
-      <main>
+      <main id="main-content" role="main">
+        {/* Magic Snowflakes for Hunt Game */}
+        <MagicSnowflake id={1} page="home" />
+        <MagicSnowflake id={2} page="home" />
+        
         {/* Hero Section */}
         <HeroSection
           title="Bienvenue au Marché de Noël du MPR de Nantes"
@@ -53,7 +61,7 @@ export default function Home() {
         />
 
         {/* Ceremony Timer Section (no title/description) */}
-        <section className="bg-background">
+        <section className="bg-background" aria-label="Compte à rebours avant l'événement">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
             <AnimatedSection animation="fadeInUp">
               <CeremonyTimer />
@@ -62,11 +70,11 @@ export default function Home() {
         </section>
 
         {/* Features Section */}
-        <section className="py-16 bg-noel-snow">
+        <section className="py-16 bg-noel-snow" aria-labelledby="features-heading">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <AnimatedSection animation="fadeInUp">
               <div className="text-center mb-12">
-                <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+                <h2 id="features-heading" className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
                   Pourquoi nous choisir ?
                 </h2>
                 <p className="text-lg text-muted-foreground max-w-2xl mx-auto"> 
@@ -75,60 +83,62 @@ export default function Home() {
               </div>
             </AnimatedSection>
 
+            <AnimatedSection staggerChildren staggerDelay={0.15}>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <AnimatedSection animation="fadeInLeft" delay={200}>
+                <StaggerItem>
                 <Link href="/programme" className="block">
-                  <Card className="text-center p-6 hover:shadow-lg cursor-pointer hover:bg-primary/10 transition-all duration-300 bg-card border-border focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2">
+                    <Card className="card-3d text-center p-6 cursor-pointer hover:bg-primary/10 bg-card border-border focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2 h-full">
                     <CardContent className="pt-6">
                       <Calendar className="w-12 h-12 text-primary mx-auto mb-4" aria-hidden="true" />
-                      <h3 className="text-xl font-semibold text-card-foreground mb-2">
+                      <h2 className="text-xl font-semibold text-card-foreground mb-2">
                         Programme riche
-                      </h3>
+                      </h2>
                       <p className="text-muted-foreground">
                         Des animations quotidiennes et des ateliers pour toute la famille.
                       </p>
                     </CardContent>
                   </Card>
                 </Link>
-              </AnimatedSection>
+                </StaggerItem>
 
-              <AnimatedSection animation="fadeInUp" delay={400}>
-                <Card className="text-center p-6 bg-card border-border">
+                <StaggerItem>
+                  <Card className="card-3d text-center p-6 bg-card border-border h-full">
                   <CardContent className="pt-6">
                     <ShoppingBag className="w-12 h-12 text-secondary mx-auto mb-4" aria-hidden="true" />
-                    <h3 className="text-xl font-semibold text-card-foreground mb-2">
+                    <h2 className="text-xl font-semibold text-card-foreground mb-2">
                       Artisans patients
-                    </h3>
+                    </h2>
                     <p className="text-muted-foreground">
                       Découvrez des créateurs talentueux et des produits uniques de notre région.
                     </p>
                   </CardContent>
                 </Card>
-              </AnimatedSection>
+                </StaggerItem>
 
-              <AnimatedSection animation="fadeInRight" delay={600}>
+                <StaggerItem>
                 <Link href="/a-propos" className="block">
-                  <Card className="text-center p-6 hover:shadow-lg cursor-pointer hover:bg-accent/10 transition-all duration-300 bg-card border-border focus-within:ring-2 focus-within:ring-accent focus-within:ring-offset-2">
+                    <Card className="card-3d text-center p-6 cursor-pointer hover:bg-accent/10 bg-card border-border focus-within:ring-2 focus-within:ring-accent focus-within:ring-offset-2 h-full">
                     <CardContent className="pt-6">
                       <Heart className="w-12 h-12 text-accent mx-auto mb-4" aria-hidden="true" />
-                      <h3 className="text-xl font-semibold text-card-foreground mb-2">
+                      <h2 className="text-xl font-semibold text-card-foreground mb-2">
                         Esprit de Noël
-                      </h3>
+                      </h2>
                       <p className="text-muted-foreground">
                         Une ambiance chaleureuse et festive pour créer des souvenirs inoubliables.
                       </p>
                     </CardContent>
                   </Card>
                 </Link>
+                </StaggerItem>
+              </div>
               </AnimatedSection>
-            </div>
           </div>
         </section>
 
         
 
         {/* CTA Section */}
-        <section className="py-16 bg-gradient-to-r from-primary to-primary-dark">
+        <section className="py-16 bg-gradient-to-r from-primary to-primary-dark" aria-label="Appel à l'action">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
             <AnimatedSection animation="fadeInUp">
               <h2 className="text-3xl sm:text-4xl font-bold text-primary-foreground mb-4">
@@ -156,11 +166,11 @@ export default function Home() {
         </section>
 
         {/* APRAIH Section */}
-        <section className="py-16 bg-gradient-to-b from-background to-primary/5">
+        <section className="py-16 bg-gradient-to-b from-background to-primary/5" aria-labelledby="apraih-heading">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <AnimatedSection animation="fadeInUp">
               <div className="text-center mb-12">
-                <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+                <h2 id="apraih-heading" className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
                   Au profit de l&apos;APRAIH
                 </h2>
                 <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
@@ -180,6 +190,7 @@ export default function Home() {
                     width={300}
                     height={205}
                     className="w-64 h-auto mx-auto"
+                    loading="lazy"
                   />
                 </div>
               </AnimatedSection>
