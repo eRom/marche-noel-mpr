@@ -1,0 +1,94 @@
+---
+alwaysApply: true
+---
+All components and functions must be optimized for performance.
+
+### Image Optimization with Next.js
+
+```typescript
+import Image from "next/image"
+
+// Good: Using Next.js Image component
+export function OptimizedImage() {
+  return (
+    <Image
+      src="/images/hero.jpg"
+      alt="Hero section image describing the main feature"
+      width={1200}
+      height={600}
+      priority={false}
+      loading="lazy"
+      quality={80}
+    />
+  )
+}
+
+// Bad: Using HTML img tag
+// ❌ <img src="/images/hero.jpg" alt="Hero" />
+```
+
+### Component Memoization
+
+```typescript
+import { memo, useMemo, useCallback } from "react"
+
+// Memoize expensive components
+export const ExpensiveCard = memo(function ExpensiveCard({ 
+  data 
+}: { 
+  data: UserData 
+}) {
+  return (
+    <div>
+      <h3>{data.name}</h3>
+      <p>{data.email}</p>
+    </div>
+  )
+})
+
+// Memoize callbacks
+export function UserList({ users }: { users: UserData[] }) {
+  const handleDelete = useCallback((id: string) => {
+    // Delete user
+  }, [])
+
+  // Memoize expensive computations
+  const sortedUsers = useMemo(
+    () => users.sort((a, b) => a.name.localeCompare(b.name)),
+    [users]
+  )
+
+  return (
+    <ul>
+      {sortedUsers.map(user => (
+        <ExpensiveCard 
+          key={user.id} 
+          data={user}
+        />
+      ))}
+    </ul>
+  )
+}
+```
+
+### Bundle Size Optimization
+
+```typescript
+// Good: Lazy loading for heavy components
+import dynamic from "next/dynamic"
+
+const HeavyComponent = dynamic(
+  () => import("@/components/HeavyComponent"),
+  { 
+    loading: () => <div>Loading...</div>,
+    ssr: false // Disable SSR if client-side only
+  }
+)
+
+// Good: Tree-shaking friendly exports
+export { Button } from "@/components/ui/button"
+export { Input } from "@/components/ui/input"
+
+// Bad: Namespace imports (not tree-shakeable)
+// ❌ import * as Components from "@/components/ui"
+```
