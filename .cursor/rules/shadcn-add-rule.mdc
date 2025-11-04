@@ -1,0 +1,24 @@
+---
+description: When adding shadcn/ui components to the project, always use the command:
+alwaysApply: true
+---
+When adding shadcn/ui components to the project, always use the command:
+
+```bash
+npx shadcn@latest add [component_name]
+```
+
+**Examples:**
+```bash
+npx shadcn@latest add button
+npx shadcn@latest add card
+npx shadcn@latest add dialog
+npx shadcn@latest add form
+```
+
+**Important Notes:**
+- Replace `[component_name]` with the actual component name (e.g., button, card, dialog)
+- Ensure you're in the project root directory before running the command
+- The command will automatically configure the component according to your project's setup
+- Components will be installed in the configured components directory (usually `./components/ui/`)
+

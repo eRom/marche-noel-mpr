@@ -1,0 +1,396 @@
+---
+alwaysApply: true
+---
+All client-side TypeScript implementations must comply with ARIA (Accessible Rich Internet Applications) standards and WCAG guidelines. All shadcn/ui components must include proper accessibility attributes.
+
+### shadcn/ui Button Component with ARIA
+
+```typescript
+import { Button } from "@/components/ui/button"
+
+// Close button with aria-label
+<Button 
+  variant="ghost" 
+  size="icon"
+  aria-label="Close dialog"
+  onClick={handleClose}
+>
+  ✕
+</Button>
+
+// Icon button with aria-label
+<Button 
+  variant="outline" 
+  size="icon"
+  aria-label="Toggle dark mode"
+  aria-pressed={isDarkMode}
+  onClick={toggleDarkMode}
+>
+  <MoonIcon className="h-4 w-4" />
+</Button>
+
+// Loading button with aria-busy
+<Button 
+  disabled={isLoading}
+  aria-busy={isLoading}
+  aria-label={isLoading ? "Submitting form..." : "Submit form"}
+>
+  {isLoading ? "Loading..." : "Submit"}
+</Button>
+```
+
+### shadcn/ui Input Component with ARIA
+
+```typescript
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+
+// Email input with validation
+<div className="space-y-2">
+  <Label htmlFor="email">Email Address *</Label>
+  <Input 
+    id="email"
+    type="email"
+    placeholder="your@email.com"
+    aria-label="Email address"
+    aria-required="true"
+    aria-invalid={hasEmailError}
+    aria-describedby={hasEmailError ? "email-error" : undefined}
+    disabled={isLoading}
+  />
+  {hasEmailError && (
+    <span id="email-error" role="alert" className="text-sm text-red-600">
+      Please enter a valid email address
+    </span>
+  )}
+</div>
+
+// Search input
+<Input 
+  type="search"
+  placeholder="Search products..."
+  aria-label="Search products by name or SKU"
+  onChange={handleSearch}
+/>
+```
+
+### shadcn/ui Select Component with ARIA
+
+```typescript
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+
+// Country selector
+<div className="space-y-2">
+  <Label htmlFor="country">Country *</Label>
+  <Select value={country} onValueChange={setCountry}>
+    <SelectTrigger 
+      id="country"
+      aria-label="Select your country"
+      aria-required="true"
+    >
+      <SelectValue placeholder="Choose a country" />
+    </SelectTrigger>
+    <SelectContent>
+      <SelectItem value="fr">France</SelectItem>
+      <SelectItem value="de">Germany</SelectItem>
+      <SelectItem value="es">Spain</SelectItem>
+    </SelectContent>
+  </Select>
+</div>
+```
+
+### shadcn/ui Dialog Component with ARIA
+
+```typescript
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+
+// Confirmation dialog
+<Dialog open={isOpen} onOpenChange={setIsOpen}>
+  <DialogTrigger asChild>
+    <Button aria-label="Delete this item">Delete</Button>
+  </DialogTrigger>
+  <DialogContent 
+    aria-labelledby="dialog-title"
+    aria-describedby="dialog-description"
+  >
+    <DialogHeader>
+      <DialogTitle id="dialog-title">Confirm Deletion</DialogTitle>
+      <DialogDescription id="dialog-description">
+        This action cannot be undone. Are you sure?
+      </DialogDescription>
+    </DialogHeader>
+    <div className="flex gap-2">
+      <Button 
+        variant="destructive"
+        aria-label="Confirm and delete item"
+        onClick={handleDelete}
+      >
+        Delete
+      </Button>
+      <Button 
+        variant="outline"
+        aria-label="Cancel deletion"
+        onClick={() => setIsOpen(false)}
+      >
+        Cancel
+      </Button>
+    </div>
+  </DialogContent>
+</Dialog>
+```
+
+### shadcn/ui Form Component with ARIA
+
+```typescript
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+import { useForm } from "react-hook-form"
+
+// Form with validation
+const { control, formState: { errors } } = useForm()
+
+<Form {...form}>
+  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+    <FormField
+      control={control}
+      name="username"
+      render={({ field }) => (
+        <FormItem>
+          <FormLabel htmlFor="username">Username *</FormLabel>
+          <FormControl>
+            <Input 
+              {...field}
+              id="username"
+              type="text"
+              placeholder="Enter your username"
+              aria-label="Username"
+              aria-required="true"
+              aria-invalid={!!errors.username}
+              aria-describedby={errors.username ? "username-error" : undefined}
+            />
+          </FormControl>
+          <FormDescription>
+            3-20 characters, letters and numbers only
+          </FormDescription>
+          {errors.username && (
+            <FormMessage id="username-error" role="alert">
+              {errors.username.message}
+            </FormMessage>
+          )}
+        </FormItem>
+      )}
+    />
+  </form>
+</Form>
+```
+
+### shadcn/ui Tabs Component with ARIA
+
+```typescript
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+
+// Tab navigation
+<Tabs 
+  defaultValue="overview"
+  aria-label="Content tabs"
+>
+  <TabsList role="tablist">
+    <TabsTrigger 
+      value="overview"
+      aria-label="View overview content"
+      aria-selected={activeTab === "overview"}
+      role="tab"
+    >
+      Overview
+    </TabsTrigger>
+    <TabsTrigger 
+      value="details"
+      aria-label="View product details"
+      aria-selected={activeTab === "details"}
+      role="tab"
+    >
+      Details
+    </TabsTrigger>
+  </TabsList>
+  <TabsContent value="overview" role="tabpanel">
+    {/* Overview content */}
+  </TabsContent>
+  <TabsContent value="details" role="tabpanel">
+    {/* Details content */}
+  </TabsContent>
+</Tabs>
+```
+
+### shadcn/ui Alert Component with ARIA
+
+```typescript
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { AlertCircle, CheckCircle2, Info } from "lucide-react"
+
+// Error alert
+<Alert 
+  variant="destructive"
+  role="alert"
+  aria-live="assertive"
+  aria-atomic="true"
+>
+  <AlertCircle className="h-4 w-4" />
+  <AlertTitle>Error</AlertTitle>
+  <AlertDescription>
+    An error occurred while processing your request
+  </AlertDescription>
+</Alert>
+
+// Success alert
+<Alert 
+  variant="default"
+  role="status"
+  aria-live="polite"
+  aria-atomic="true"
+>
+  <CheckCircle2 className="h-4 w-4" />
+  <AlertTitle>Success</AlertTitle>
+  <AlertDescription>
+    Your changes have been saved successfully
+  </AlertDescription>
+</Alert>
+
+// Information alert
+<Alert 
+  role="status"
+  aria-live="polite"
+>
+  <Info className="h-4 w-4" />
+  <AlertTitle>Information</AlertTitle>
+  <AlertDescription>
+    Please note that this action is reversible
+  </AlertDescription>
+</Alert>
+```
+
+### shadcn/ui Card Component with ARIA
+
+```typescript
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+
+// Product card with accessible structure
+<Card 
+  role="article"
+  aria-labelledby="product-title"
+  aria-describedby="product-desc"
+>
+  <CardHeader>
+    <CardTitle id="product-title">Premium Headphones</CardTitle>
+    <CardDescription id="product-desc">
+      High-quality audio with noise cancellation
+    </CardDescription>
+  </CardHeader>
+  <CardContent>
+    <p className="text-2xl font-bold">$299.99</p>
+    <Button 
+      className="mt-4"
+      aria-label="Add Premium Headphones to cart"
+    >
+      Add to Cart
+    </Button>
+  </CardContent>
+</Card>
+```
+
+### shadcn/ui Toast/Sonner with ARIA
+
+```typescript
+import { useToast } from "@/components/ui/use-toast"
+
+// Toast notifications with accessibility
+const { toast } = useToast()
+
+const showSuccessToast = () => {
+  toast({
+    title: "Success",
+    description: "Operation completed successfully",
+    variant: "default",
+    // Built-in accessibility with aria-live
+  })
+}
+
+const showErrorToast = () => {
+  toast({
+    title: "Error",
+    description: "An error occurred during the operation",
+    variant: "destructive",
+    // Interrupts user with assertive aria-live
+  })
+}
+```
+
+### shadcn/ui Badge Component with ARIA
+
+```typescript
+import { Badge } from "@/components/ui/badge"
+
+// Status badges with aria-label for clarity
+<div className="flex gap-2">
+  <Badge 
+    variant="default"
+    aria-label="Status: Active"
+  >
+    Active
+  </Badge>
+  <Badge 
+    variant="secondary"
+    aria-label="Priority: High"
+  >
+    High Priority
+  </Badge>
+</div>
+```
+
+### Minimum Requirements Checklist for shadcn/ui
+
+- ✓ All `Button` components have `aria-label` when icon-only or contain only icon
+- ✓ All `Input` components have associated `Label` with `htmlFor` or `aria-label`
+- ✓ Required fields have `aria-required="true"`
+- ✓ Invalid fields have `aria-invalid="true"` and `aria-describedby`
+- ✓ `Dialog` components have `aria-labelledby` and `aria-describedby`
+- ✓ `Tabs` have proper `role="tablist"`, `role="tab"`, and `role="tabpanel"`
+- ✓ `Alert` components have `role="alert"` or `role="status"` with `aria-live`
+- ✓ `Card` components wrapping articles have `role="article"` and `aria-labelledby`
+- ✓ `Select` components have `aria-label` and `aria-required` when needed
+- ✓ Interactive elements trigger `aria-busy` during loading states
+
+### ARIA Roles Reference for shadcn Components
+
+| Component | Primary Role | ARIA Attributes |
+|-----------|--------------|-----------------|
+| Button | button | aria-label, aria-pressed, aria-busy, aria-disabled |
+| Input | textbox | aria-label, aria-required, aria-invalid, aria-describedby |
+| Select | combobox | aria-label, aria-required, aria-expanded |
+| Dialog | dialog | aria-labelledby, aria-describedby, aria-modal |
+| Tabs | tablist/tab/tabpanel | role, aria-selected, aria-controls |
+| Alert | alert/status | role, aria-live, aria-atomic |
+| Card | article/region | aria-labelledby, aria-describedby |
+| Badge | status | aria-label |
+
+### aria-live Values in shadcn Context
+
+- `polite` - Use for success messages and status updates (default in Toast)
+- `assertive` - Use for error alerts and urgent warnings (destructive Toast)
+- `off` - Use for non-urgent UI updates (default)
+
+### Best Practices with shadcn/ui
+
+1. **Use Label component**: Always pair `Input` with shadcn `Label` using `htmlFor`
+2. **Semantic structure**: Use `Card`, `Dialog`, and `Alert` components as provided
+3. **FormField wrapper**: Always use shadcn `FormField` with proper field configuration
+4. **Icon accessibility**: Always provide `aria-label` for icon-only buttons
+5. **Error handling**: Use `FormMessage` with `role="alert"` for validation errors
+6. **Loading states**: Use `aria-busy` on buttons and `aria-live` on status messages
+7. **Test with screen readers**: Verify shadcn components with NVDA/VoiceOver
+
+### Testing Standards
+
+- Validate against WCAG 2.1 Level AA standards
+- Test shadcn components with at least one screen reader (NVDA, JAWS, VoiceOver)
+- Use browser accessibility inspector to verify ARIA tree
+- Ensure keyboard navigation works for all interactive shadcn elements
+- Verify `Tab` order through components
