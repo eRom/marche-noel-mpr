@@ -1,7 +1,7 @@
+import MagicSnowflake from "@/components/MagicSnowflake";
 import MapSection from "@/components/MapSection";
 import { Separator } from "@/components/ui/separator";
 import dynamic from "next/dynamic";
-import MagicSnowflake from "@/components/MagicSnowflake";
 
 // Lazy load non-critical components
 const Header = dynamic(() => import("@/components/Header"), {
@@ -45,6 +45,9 @@ export default function PlanPage() {
               </p>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto mt-2">
                 85 Rue Saint-Jacques, 44093 Nantes Cedex 1
+              </p>
+              <p className="text-lg font-bold text-muted-foreground max-w-2xl mx-auto mt-2">
+                MPR - Hall d&apos;intégration
               </p>
             </AnimatedSection>
           </div>

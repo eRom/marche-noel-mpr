@@ -1,11 +1,11 @@
+import CalendarReminder from "@/components/CalendarReminder";
+import MagicSnowflake from "@/components/MagicSnowflake";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import VideoSection from "@/components/VideoSection";
-import CalendarReminder from "@/components/CalendarReminder";
 import { Calendar, Clock, MapPin, Users } from "lucide-react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import MagicSnowflake from "@/components/MagicSnowflake";
 
 // Lazy load non-critical components
 const Header = dynamic(() => import("@/components/Header"), {
@@ -33,35 +33,45 @@ export default function Programme() {
       title: "Ouverture officielle",
       time: "16h00",
       description: "Découvrez les animations et les ateliers de Noël",
-      type: "Cérémonie"
+      type: "Cérémonie",
+      bg: "bg-primary",
+      color: "text-destructive-foreground"
     },
     {
       day: "27 novembre",
       title: "Marché des artisans",
       time: "16h00 - 19h00",
       description: "Vente de décorations de Noël, créations artisanales",
-      type: "Marché"
+      type: "Marché",
+      bg: "bg-accent",
+      color: "text-accent-foreground"
     },
     {
       day: "11 décembre",
       title: "TODO_TITLE",
       time: "16h00 - 19h00",
       description: "TODO_DESCRIPTION",
-      type: "Concert"
+      type: "Concert",
+      bg: "bg-accent",
+      color: "text-accent-foreground"
     },
     {
       day: "13 décembre",
       title: "Marché de Noël",
       time: "14h00 - 18h00",
       description: "TODO_DESCRIPTION",
-      type: "Marché"
+      type: "Marché",
+      bg: "bg-accent",
+      color: "text-accent-foreground"
     },
     {
       day: "16 décembre",
       title: "TODO_TITLE",
       time: "16h00 - 19h00",
       description: "TODO_DESCRIPTION",
-      type: "Concert"
+      type: "Concert",
+      bg: "bg-secondary",
+      color: "text-accent-foreground"
     },
   ];
 
@@ -123,7 +133,9 @@ export default function Programme() {
                         <CardTitle className="text-lg text-primary">
                           {event.day}
                         </CardTitle>
-                        <span className="text-xs bg-accent text-accent-foreground px-2 py-1 rounded-full">
+                        <span 
+                          className={`text-xs px-2 py-1 rounded-full ${event.bg} ${event.color}`}
+                        >
                           {event.type}
                         </span>
                       </div>
