@@ -30,10 +30,10 @@ export default function Programme() {
   const events = [
     {
       day: "27 novembre",
-      title: "Ouverture officielle",
+      title: "Ouverture de marché de noël",
       time: "16h00",
       description: "Découvrez les animations et les ateliers de Noël",
-      type: "Cérémonie",
+      type: "Ouverture",
       bg: "bg-primary",
       color: "text-destructive-foreground"
     },
@@ -48,40 +48,41 @@ export default function Programme() {
     },
     {
       day: "11 décembre",
-      title: "TODO_TITLE",
+      title: "Marché de noël",
       time: "16h00 - 19h00",
-      description: "TODO_DESCRIPTION",
+      description: "Décorations, petits cadeaux, bijoux",
       type: "Marché",
       bg: "bg-accent",
+      color: "text-accent-foreground"
+    },
+    {
+      day: "11 décembre",
+      title: "Gouter, concerts",
+      time: "16h00 - 19h00",
+      description: "Goûter et concert organisés par le service animation",
+      type: "Événement",
+      bg: "bg-secondary",
       color: "text-accent-foreground"
     },
     {
       day: "13 décembre",
       title: "Marché de Noël",
       time: "14h00 - 18h00",
-      description: "TODO_DESCRIPTION",
+      description: "Décorations, petits cadeaux, bijoux",
       type: "Marché",
       bg: "bg-accent",
       color: "text-accent-foreground"
     },
     {
       day: "16 décembre",
-      title: "TODO_TITLE",
+      title: "Marché & Pâtisseries",
       time: "16h00 - 19h00",
-      description: "TODO_DESCRIPTION",
-      type: "Concert",
+      description: "Vente de pâtisseries faites par les patients et l’équipe d'ergothérapie",
+      type: "Événement",
       bg: "bg-secondary",
       color: "text-accent-foreground"
     },
-    {
-      day: "16 décembre",
-      title: "Fermeture officielle",
-      time: "19h00",
-      description: "Fermeture officielle du Marché de Noël",
-      type: "Cérémonie",
-      bg: "bg-primary",
-      color: "text-destructive-foreground"
-    },
+   
   ];
 
   return (
