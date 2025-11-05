@@ -39,9 +39,9 @@ export default function Programme() {
     },
     {
       day: "27 novembre",
-      title: "Marché des artisans",
+      title: "Marché des créations",
       time: "16h00 - 19h00",
-      description: "Vente de décorations de Noël, créations artisanales",
+      description: "Vente de décorations de Noël, créations patients",
       type: "Marché",
       bg: "bg-accent",
       color: "text-accent-foreground"
@@ -51,7 +51,7 @@ export default function Programme() {
       title: "TODO_TITLE",
       time: "16h00 - 19h00",
       description: "TODO_DESCRIPTION",
-      type: "Concert",
+      type: "Marché",
       bg: "bg-accent",
       color: "text-accent-foreground"
     },
@@ -72,6 +72,15 @@ export default function Programme() {
       type: "Concert",
       bg: "bg-secondary",
       color: "text-accent-foreground"
+    },
+    {
+      day: "16 décembre",
+      title: "Fermeture officielle",
+      time: "19h00",
+      description: "Fermeture officielle du Marché de Noël",
+      type: "Cérémonie",
+      bg: "bg-primary",
+      color: "text-destructive-foreground"
     },
   ];
 

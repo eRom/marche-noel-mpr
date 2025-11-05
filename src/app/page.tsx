@@ -1,10 +1,10 @@
 import CeremonyTimer from "@/components/CeremonyTimer";
+import MagicSnowflake from "@/components/MagicSnowflake";
 import { Card, CardContent } from "@/components/ui/card";
 import { Calendar, Heart, ShoppingBag } from "lucide-react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
-import MagicSnowflake from "@/components/MagicSnowflake";
 
 // Import StaggerItem for animations
 import { StaggerItem } from "@/components/AnimatedSection";
@@ -109,7 +109,7 @@ export default function Home() {
                       Artisans patients
                     </h2>
                     <p className="text-muted-foreground">
-                      Découvrez des créateurs talentueux et des produits uniques de notre région.
+                      Découvrez des créateurs talentueux et des patients volontaires.
                     </p>
                   </CardContent>
                 </Card>
@@ -150,13 +150,13 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
                   href="/programme"
-                  className="bg-background text-primary hover:bg-transparent hover:border-2 hover:border-primary hover:text-foreground px-8 py-3 rounded-lg font-semibold text-lg transition-colors focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                  className="bg-white text-red-600 hover:bg-transparent hover:border hover:border-white hover:text-white px-8 py-3 rounded-lg font-semibold text-lg transition-colors focus:ring-2 focus:ring-red-600 focus:ring-offset-2"
                 >
                   Voir le programme complet
                 </a>
                 <a
                   href="/a-propos"
-                  className="border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary-dark px-8 py-3 rounded-lg font-semibold text-lg transition-colors"
+                  className="border border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary-dark px-8 py-3 rounded-lg font-semibold text-lg transition-colors"
                 >
                   À propos
                 </a>

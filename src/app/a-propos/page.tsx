@@ -150,9 +150,7 @@ export default function APropos() {
                       Équipe organisatrice
                     </h3>
                     <ul className="space-y-2 text-muted-foreground">
-                      <li>• TODO_NAME</li>
-                      <li>• TODO_NAME</li>
-                      <li>• TODO_NAME</li>
+                      <li>• Toute l&apos;équipe d&apos;ergothérapeutes du MPR</li>
                     </ul>
                   </CardContent>
                 </Card>

@@ -75,10 +75,10 @@ export default function CeremonyTimer() {
   if (isFinished) return null;
 
   const blocks: Array<{ label: string; value: number; color: string; darkColor: string; icon: string }> = [
-    { label: 'Jours', value: timeLeft.days, color: 'text-red-600', darkColor: 'dark:text-red-400', icon: '🎄' },
-    { label: 'Heures', value: timeLeft.hours, color: 'text-green-600', darkColor: 'dark:text-green-400', icon: '🎁' },
-    { label: 'Minutes', value: timeLeft.minutes, color: 'text-orange-600', darkColor: 'dark:text-orange-400', icon: '⭐' },
-    { label: 'Secondes', value: timeLeft.seconds, color: 'text-blue-600', darkColor: 'dark:text-blue-400', icon: '✨' },
+    { label: 'Jours', value: timeLeft.days, color: 'text-red-600', darkColor: 'dark:text-red-400', icon: 'jour(s)' },
+    { label: 'Heures', value: timeLeft.hours, color: 'text-green-600', darkColor: 'dark:text-green-400', icon: 'heure(s)' },
+    { label: 'Minutes', value: timeLeft.minutes, color: 'text-orange-600', darkColor: 'dark:text-orange-400', icon: 'minute(s)' },
+    { label: 'Secondes', value: timeLeft.seconds, color: 'text-blue-600', darkColor: 'dark:text-blue-400', icon: 'seconde(s)' },
   ];
 
   return (
@@ -117,7 +117,9 @@ export default function CeremonyTimer() {
             >
               {b.value.toString().padStart(2, '0')}
             </motion.div>
-            
+            <div className="text-xs text-muted-foreground" aria-hidden>
+              {b.icon}
+            </div>
           </motion.div>
         ))}
 
