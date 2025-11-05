@@ -232,7 +232,7 @@ export default function Programme() {
                 <Link href="/plan" className="h-full">
                   <Card className="text-center p-6 h-full flex flex-col bg-card border-border hover:shadow-lg transition-shadow cursor-pointer">
                     <CardContent className="pt-6 flex-1 flex flex-col justify-center">
-                      <MapPin className="w-12 h-12 text-primary mx-auto mb-4" aria-hidden="true" />
+                      <MapPin className="w-12 h-12 text-[#3b82f6] mx-auto mb-4" aria-hidden="true" />
                       <h3 className="text-lg font-semibold text-card-foreground mb-2">
                         Plan
                       </h3>
