@@ -1,0 +1,87 @@
+---
+alwaysApply: true
+---
+
+# Règle : Cartes de Hauteur Égale dans les Grilles
+
+Lors de l'implémentation de cartes (Card component) dans des grilles CSS Grid, **toujours** appliquer les classes nécessaires pour garantir que toutes les cartes aient la même hauteur.
+
+## Règles d'implémentation
+
+### 1. Structure de base requise
+
+Pour toute grille de cartes, la structure doit suivre ce pattern :
+
+```tsx
+<div className="grid grid-cols-1 gap-X md:grid-cols-Y lg:grid-cols-Z">
+  <WrapperComponent className="flex">
+    <Card className="flex h-full w-full flex-col">
+      <CardContent>
+        {/* Contenu */}
+      </CardContent>
+    </Card>
+  </WrapperComponent>
+</div>
+```
+
+### 2. Classes à appliquer
+
+#### Sur le composant wrapper (AnimatedSection, StaggerItem, Link, etc.)
+- **Ajouter** : `className="flex"`
+- Si la classe existe déjà, **étendre** avec `flex`
+
+#### Sur le composant Card
+- **Ajouter** : `flex h-full w-full flex-col`
+- Si les classes existent déjà, **étendre** en ajoutant les manquantes
+
+### 3. Exemples d'implémentation
+
+#### ✅ CORRECT - StaggerItem avec Link et Card
+
+```tsx
+<StaggerItem className="flex">
+  <Link href="/route" className="flex w-full">
+    <Card className="flex h-full w-full cursor-pointer flex-col p-6">
+      <CardContent className="pt-6">
+        <h3>Titre</h3>
+        <p>Description</p>
+      </CardContent>
+    </Card>
+  </Link>
+</StaggerItem>
+```
+
+#### ❌ INCORRECT - Sans les classes flex
+
+```tsx
+<AnimatedSection animation="fadeInUp" delay={200}>
+  <Card className="bg-card border-border p-6 text-center">
+    <CardContent className="pt-6">
+      <h3>Titre</h3>
+      <p>Description</p>
+    </CardContent>
+  </Card>
+</AnimatedSection>
+```
+
+## Pourquoi cette règle ?
+
+1. **Cohérence visuelle** : Toutes les cartes dans une même ligne ont la même hauteur
+2. **UX améliorée** : L'interface paraît plus professionnelle et équilibrée
+3. **Flexibilité** : Fonctionne quelle que soit la longueur du contenu
+
+## Application automatique
+
+Cette règle s'applique à :
+- Toutes les implémentations de cartes dans des grilles CSS Grid
+- Les composants shadcn/ui Card
+- Les wrappers AnimatedSection, StaggerItem
+- Les liens (Link) contenant des cartes cliquables
+
+## Vérification
+
+Avant de valider toute implémentation de grille de cartes, vérifier :
+- [ ] Le wrapper a `className="flex"`
+- [ ] La Card a `flex h-full w-full flex-col`
+- [ ] Si Link est présent, il a `className="flex w-full"`
+- [ ] Toutes les cartes de la grille suivent le même pattern
