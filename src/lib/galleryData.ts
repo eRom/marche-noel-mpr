@@ -1,66 +1,74 @@
-import type { GalleryImage } from '@/types/gallery';
-import { list } from '@vercel/blob';
+import type { GalleryImage } from "@/types/gallery";
+import { list } from "@vercel/blob";
 
 export async function getGalleryImages(): Promise<GalleryImage[]> {
   try {
     const { blobs } = await list({
       token: process.env.BLOB_READ_WRITE_TOKEN!,
-      prefix: 'gallery/',
+      prefix: "gallery/",
     });
 
     const images: GalleryImage[] = blobs
       .filter((blob) => {
         // Filtrer uniquement les fichiers valides (pas les dossiers vides)
-        const hasValidPath = blob.pathname.startsWith('gallery/');
-        const hasValidUrl = blob.url && blob.url.startsWith('https://');
-        
+        const hasValidPath = blob.pathname.startsWith("gallery/");
+        const hasValidUrl = blob.url && blob.url.startsWith("https://");
+
         // Vérifier qu'il y a bien un nom de fichier (pas juste un dossier)
-        const parts = blob.pathname.split('/');
+        const parts = blob.pathname.split("/");
         const hasThreeParts = parts.length === 3; // gallery/category/filename
         const hasFilename = parts[2] && parts[2].length > 0;
-        const notEndingWithSlash = !blob.pathname.endsWith('/');
-        
-        return hasValidPath && hasValidUrl && hasThreeParts && hasFilename && notEndingWithSlash;
+        const notEndingWithSlash = !blob.pathname.endsWith("/");
+
+        return (
+          hasValidPath &&
+          hasValidUrl &&
+          hasThreeParts &&
+          hasFilename &&
+          notEndingWithSlash
+        );
       })
       .map((blob) => {
         // Parser metadata depuis pathname : gallery/category/filename.ext
-        const parts = blob.pathname.split('/');
-        const category = parts[1] as GalleryImage['category'];
-        const filenameWithExt = parts[2] || '';
-        
+        const parts = blob.pathname.split("/");
+        const category = parts[1] as GalleryImage["category"];
+        const filenameWithExt = parts[2] || "";
+
         // Extraire le titre depuis le filename
-        let title = 'Photo';
-        const filenameWithoutExt = filenameWithExt.replace(/\.[^/.]+$/, '');
-        const filenameParts = filenameWithoutExt.split('-');
-        
+        let title = "Photo";
+        const filenameWithoutExt = filenameWithExt.replace(/\.[^/.]+$/, "");
+        const filenameParts = filenameWithoutExt.split("-");
+
         // Nouveau format: slug-timestamp-base64Title
         // Ancien format: slug-timestamp
         if (filenameParts.length >= 3) {
           const lastPart = filenameParts[filenameParts.length - 1];
           const secondLastPart = filenameParts[filenameParts.length - 2];
-          
+
           // Vérifier si c'est le nouveau format (dernière partie = base64)
           // et avant-dernière partie = timestamp (13 chiffres)
           if (/^\d{13}$/.test(secondLastPart)) {
             try {
               // Décoder le titre depuis base64url
-              title = Buffer.from(lastPart, 'base64url').toString('utf-8');
+              title = Buffer.from(lastPart, "base64url").toString("utf-8");
             } catch {
               // Si le décodage échoue, c'est l'ancien format
               // Retirer le timestamp et formater depuis le slug
-              const titleSlug = filenameWithoutExt.replace(/-\d{13}$/, '');
-              title = titleSlug
-                .split('-')
-                .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-                .join(' ') || 'Photo';
+              const titleSlug = filenameWithoutExt.replace(/-\d{13}$/, "");
+              title =
+                titleSlug
+                  .split("-")
+                  .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                  .join(" ") || "Photo";
             }
           } else {
             // Ancien format : formater depuis le slug
-            const titleSlug = filenameWithoutExt.replace(/-\d{13}$/, '');
-            title = titleSlug
-              .split('-')
-              .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-              .join(' ') || 'Photo';
+            const titleSlug = filenameWithoutExt.replace(/-\d{13}$/, "");
+            title =
+              titleSlug
+                .split("-")
+                .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                .join(" ") || "Photo";
           }
         }
 
@@ -68,11 +76,11 @@ export async function getGalleryImages(): Promise<GalleryImage[]> {
           id: blob.pathname,
           url: blob.url,
           title: title,
-          category: category || 'ambiance',
-          date: new Date(blob.uploadedAt).toLocaleDateString('fr-FR', {
-            day: 'numeric',
-            month: 'long',
-            year: 'numeric',
+          category: category || "ambiance",
+          date: new Date(blob.uploadedAt).toLocaleDateString("fr-FR", {
+            day: "numeric",
+            month: "long",
+            year: "numeric",
           }),
           alt: `Photo ${category} - Marché de Noël MPR`,
         };
@@ -86,9 +94,7 @@ export async function getGalleryImages(): Promise<GalleryImage[]> {
 
     return images;
   } catch (error) {
-    console.error('Erreur récupération images:', error);
+    console.error("Erreur récupération images:", error);
     return [];
   }
 }
-
-

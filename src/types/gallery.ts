@@ -2,7 +2,7 @@ export interface GalleryImage {
   id: string;
   url: string;
   title: string;
-  category: 'stands' | 'animations' | 'visiteurs' | 'ambiance' | 'MPR' | 'IA';
+  category: "stands" | "animations" | "visiteurs" | "ambiance" | "MPR" | "IA";
   date: string;
   alt: string;
 }
@@ -14,4 +14,3 @@ export interface LightboxProps {
   currentIndex: number;
   onNavigate: (index: number) => void;
 }
-

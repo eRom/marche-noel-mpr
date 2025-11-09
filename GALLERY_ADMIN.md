@@ -15,8 +15,11 @@ Bienvenue ! Ce guide vous explique comment ajouter et gérer les photos du March
 ---
 
 ## ➕ Ajouter une nouvelle photo (onglet « Upload »)
+
 ### Étape 1 : Choisir la catégorie
+
 Comme mettre un livre dans le bon rayon d'une bibliothèque ! Sélectionnez où votre photo doit aller :
+
 - **Stands** : photos des stands du marché
 - **Animations** : spectacles, animations, activités
 - **Visiteurs** : les gens qui visitent le marché
@@ -25,18 +28,19 @@ Comme mettre un livre dans le bon rayon d'une bibliothèque ! Sélectionnez où 
 - **IA** : images générées par intelligence artificielle
 
 ### Étape 2 : Choisir votre photo
+
 **Option 1 - Glisser-déposer** (le plus rapide)
+
 1. Ouvrez le dossier où se trouve votre photo sur votre ordinateur
 2. Prenez la photo avec la souris
 3. Glissez-la dans la grande zone grise qui dit "glissez-déposez une image"
 4. Relâchez !
 
 **Option 2 - Cliquer pour choisir**
-1 running. Cliquez sur "Cliquez pour choisir"
-2. Naviguez dans vos dossiers pour trouver votre photo
-3. Double-cliquez sur la photo
+1 running. Cliquez sur "Cliquez pour choisir" 2. Naviguez dans vos dossiers pour trouver votre photo 3. Double-cliquez sur la photo
 
 ### Étape 3 : Donner un titre
+
 Un titre aide les visiteurs à comprendre ce qu'ils voient.
 
 - Cliquez dans la case "Titre de l'image"
@@ -46,6 +50,7 @@ Un titre aide les visiteurs à comprendre ce qu'ils voient.
 ⚠️ **Le titre est obligatoire** - vous ne pourrez pas uploader sans !
 
 ### Étape 4 : Uploader !
+
 1. Regardez l'aperçu pour vérifier que c'est la bonne photo
 2. Si besoin, cliquez sur "Annuler" pour en choisir une autre
 3. Cliquez sur **"Uploader l'image"**
@@ -53,6 +58,7 @@ Un titre aide les visiteurs à comprendre ce qu'ils voient.
 💡 **Pendant l'upload**, vous verrez une petite animation qui tourne. Ne fermez pas la page !
 
 ### Étape 5 : C'est fait !
+
 ✅ Vous verrez "Image uploadée avec succès"
 ⏱️ La photo apparaîtra dans la galerie publique dans environ 1 minute (le temps que le site se mette à jour)
 
@@ -63,13 +69,16 @@ Un titre aide les visiteurs à comprendre ce qu'ils voient.
 Sur cette page, vous voyez toutes les photos déjà dans la galerie.
 
 ### Voir toutes les photos
+
 Elles sont organisées en petit tableau avec :
+
 - L'image (miniature)
 - La catégorie (en haut)
 - Le titre
 - La date d'ajout
 
 ### Renommer une photo
+
 Parfois on veut changer le titre d'une photo après l'avoir uploadée.
 
 1. Trouvez la photo dans la liste
@@ -78,6 +87,7 @@ Parfois on veut changer le titre d'une photo après l'avoir uploadée.
 4. Cliquez sur le **✓** pour valider ou sur **✗** pour annuler
 
 ### Supprimer une photo
+
 Vous avez mis la mauvaise photo ? Pas de souci, on peut la supprimer.
 
 1. Trouvez la photo à supprimer
@@ -86,7 +96,9 @@ Vous avez mis la mauvaise photo ? Pas de souci, on peut la supprimer.
 4. ⚠️ **Attention** : cette action est définitive ! La photo sera supprimée du site.
 
 ### Actualiser la liste
+
 Si vous venez d'uploader une photo et que vous ne la voyez pas encore :
+
 - Cliquez sur le bouton **"Actualiser"** en haut à droite
 - La liste se mettra à jour
 
@@ -95,19 +107,24 @@ Si vous venez d'uploader une photo et que vous ne la voyez pas encore :
 ## 💡 Astuces et informations utiles
 
 ### Formats de photos acceptés
+
 ✅ **JPG, PNG, WebP** - comme vos photos d'appareil photo ou de téléphone
 
 ### Taille des fichiers
+
 ✅ **Maximum 10 Mo par photo** - c'est très large, la plupart des photos rentrent dedans !
 
 ### Traitement automatique
+
 🔧 **Petit secret** : quand vous uploadez une photo, le site fait automatiquement :
+
 - La redimensionne si elle est trop grande (pour que le site reste rapide)
 - La convertit en WebP (un format moderne qui charge plus vite)
 
 Vous n'avez rien à faire, c'est automatique ! 🎉
 
 ### À propos des catégories
+
 Pensez à la catégorie avant d'uploader. Les visiteurs du site peuvent filtrer les photos par catégorie, donc c'est important de bien les classer dès le départ.
 
 ---
@@ -137,6 +154,7 @@ R : Après environ 1 minute. Si vous ne la voyez pas, attendez un peu et recharg
 ## 🆘 Besoin d'aide ?
 
 Si vous rencontrez un problème :
+
 1. Vérifiez que vous êtes bien connecté avec le bon mot de passe
 2. Vérifiez que votre photo fait moins de 10 Mo
 3. Vérifiez que le format est bien JPG, PNG ou WebP
@@ -145,4 +163,3 @@ Si vous rencontrez un problème :
 ---
 
 **Bon upload ! 📸✨**
-

@@ -5,6 +5,7 @@ Ce projet utilise `axe-core/cli` pour tester l'accessibilité du site du Marché
 ## Scripts disponibles
 
 ### Tests de base
+
 ```bash
 # Test rapide sur localhost:3000
 npm run axe:dev
@@ -22,6 +23,7 @@ npm run axe:ci
 ## Configuration
 
 Le fichier `axe.config.js` contient :
+
 - **URLs à tester** : `/`, `/programme`, `/merci`
 - **Règles WCAG 2.1 AA** : Contrastes, navigation clavier, ARIA, etc.
 - **Rapports** : Sauvegardés dans `./axe-reports/`
@@ -29,6 +31,7 @@ Le fichier `axe.config.js` contient :
 ## Règles testées
 
 ### Critiques pour un site événementiel
+
 - ✅ **Contraste de couleurs** : Vérifie les contrastes sur votre thème Noël
 - ✅ **Navigation clavier** : Teste la navigation avec Tab/Enter
 - ✅ **Attributs ARIA** : Valide les rôles et propriétés ARIA
@@ -37,6 +40,7 @@ Le fichier `axe.config.js` contient :
 - ✅ **Structure** : Valide les titres et la hiérarchie
 
 ### Spécifiques aux composants interactifs
+
 - ✅ **Boutons** : Vérifie les noms accessibles
 - ✅ **Menus** : Teste les états expanded/collapsed
 - ✅ **Focus** : Contrôle la gestion du focus
@@ -45,6 +49,7 @@ Le fichier `axe.config.js` contient :
 ## Intégration dans le workflow
 
 ### Développement
+
 ```bash
 # Démarrer le serveur de dev
 npm run dev
@@ -54,6 +59,7 @@ npm run axe:dev
 ```
 
 ### CI/CD
+
 ```bash
 # Build et test d'accessibilité
 npm run build
@@ -63,6 +69,7 @@ npm run axe:ci
 ## Rapports
 
 Les rapports sont générés dans `./axe-reports/` au format JSON, permettant :
+
 - Analyse détaillée des violations
 - Suivi des améliorations
 - Intégration dans des outils de monitoring

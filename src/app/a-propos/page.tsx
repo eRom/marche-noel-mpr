@@ -7,45 +7,47 @@ import Image from "next/image";
 
 // Lazy load non-critical components
 const Header = dynamic(() => import("@/components/Header"), {
-  loading: () => <div className="h-16 bg-background" />
+  loading: () => <div className="bg-background h-16" />,
 });
 
 const Footer = dynamic(() => import("@/components/Footer"), {
-  loading: () => <div className="h-32 bg-muted" />
+  loading: () => <div className="bg-muted h-32" />,
 });
 
 const AnimatedSection = dynamic(() => import("@/components/AnimatedSection"), {
   loading: () => <div />,
-  ssr: true
+  ssr: true,
 });
 
 export const metadata = {
   title: "À propos - Marché de Noël MPR Nantes 2025",
-  description: "À propos du Marché de Noël du MPR. Découvrez les équipes soignantes, les patients volontaires et les partenaires qui rendent cet événement possible.",
+  description:
+    "À propos du Marché de Noël du MPR. Découvrez les équipes soignantes, les patients volontaires et les partenaires qui rendent cet événement possible.",
 };
 
 export default function APropos() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="bg-background min-h-screen">
       <Header />
-      
+
       <main id="main-content" role="main">
         {/* Magic Snowflakes for Hunt Game */}
         <MagicSnowflake id={9} page="a-propos" />
         <MagicSnowflake id={10} page="a-propos" />
-        
+
         {/* Hero Section */}
         <section className="py-16">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+          <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
             <AnimatedSection animation="fadeInUp">
-              <h1 className="text-4xl sm:text-5xl font-bold text-foreground">
+              <h1 className="text-foreground text-4xl font-bold sm:text-5xl">
                 À propos
               </h1>
-              <Separator className="my-6 mx-auto w-24" />
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                Un grand merci à tous ceux qui ont rendu ce Marché de Noël possible.
+              <Separator className="mx-auto my-6 w-24" />
+              <p className="text-muted-foreground mx-auto max-w-2xl text-xl">
+                Un grand merci à tous ceux qui ont rendu ce Marché de Noël
+                possible.
               </p>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-muted-foreground mx-auto max-w-2xl text-xl">
                 Votre participation fait la magie de cet événement.
               </p>
             </AnimatedSection>
@@ -53,27 +55,31 @@ export default function APropos() {
         </section>
 
         {/* Thank You Message */}
-        <section className="py-16 bg-noel-snow">
+        <section className="bg-noel-snow py-16">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <AnimatedSection animation="fadeInUp">
-              <div className="text-center mb-12">
-                <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6">
+              <div className="mb-12 text-center">
+                <h2 className="text-foreground mb-6 text-3xl font-bold sm:text-4xl">
                   Un événement possible grâce à vous
                 </h2>
-                <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                Le Marché de Noël du MPR 2025 est rendu possible grâce à l&apos;engagement exceptionnel 
-                de nos équipes soignantes et à la participation active de nos patients. 
-                Votre collaboration et votre détermination font la magie de cet événement.  
+                <p className="text-muted-foreground mx-auto max-w-3xl text-lg leading-relaxed">
+                  Le Marché de Noël du MPR 2025 est rendu possible grâce à
+                  l&apos;engagement exceptionnel de nos équipes soignantes et à
+                  la participation active de nos patients. Votre collaboration
+                  et votre détermination font la magie de cet événement.
                 </p>
               </div>
             </AnimatedSection>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6 mb-12">
+            <div className="mb-12 grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-3">
               <AnimatedSection animation="fadeInLeft" delay={200}>
-                <Card className="text-center p-6 bg-card border-border">
+                <Card className="bg-card border-border p-6 text-center">
                   <CardContent className="pt-6">
-                    <Users className="w-12 h-12 text-primary mx-auto mb-4" aria-hidden="true" />
-                    <h3 className="text-lg font-semibold text-card-foreground mb-2">
+                    <Users
+                      className="text-primary mx-auto mb-4 h-12 w-12"
+                      aria-hidden="true"
+                    />
+                    <h3 className="text-card-foreground mb-2 text-lg font-semibold">
                       Soignants
                     </h3>
                     <p className="text-muted-foreground text-sm">
@@ -84,24 +90,27 @@ export default function APropos() {
               </AnimatedSection>
 
               <AnimatedSection animation="fadeInUp" delay={400}>
-                <Card className="text-center p-6 bg-card border-border">
+                <Card className="bg-card border-border p-6 text-center">
                   <CardContent className="pt-6">
-                    <Gift className="w-12 h-12 text-secondary mx-auto mb-4" aria-hidden="true" />
-                    <h3 className="text-lg font-semibold text-card-foreground mb-2">
+                    <Gift
+                      className="text-secondary mx-auto mb-4 h-12 w-12"
+                      aria-hidden="true"
+                    />
+                    <h3 className="text-card-foreground mb-2 text-lg font-semibold">
                       Patients
                     </h3>
                     <p className="text-muted-foreground text-sm">
-                      Les patients vontontaires du MPR 
+                      Les patients vontontaires du MPR
                     </p>
                   </CardContent>
                 </Card>
               </AnimatedSection>
 
               <AnimatedSection animation="fadeInUp" delay={600}>
-                <Card className="text-center p-6 bg-card border-border">
+                <Card className="bg-card border-border p-6 text-center">
                   <CardContent className="pt-6">
-                    <Heart className="w-12 h-12 text-accent mx-auto mb-4" />
-                    <h3 className="text-lg font-semibold text-card-foreground mb-2">
+                    <Heart className="text-accent mx-auto mb-4 h-12 w-12" />
+                    <h3 className="text-card-foreground mb-2 text-lg font-semibold">
                       Partenaires
                     </h3>
                     <p className="text-muted-foreground text-sm">
@@ -110,32 +119,34 @@ export default function APropos() {
                   </CardContent>
                 </Card>
               </AnimatedSection>
-
-            
             </div>
           </div>
         </section>
 
         {/* Acknowledgments */}
-        <section className="py-16 bg-background">
+        <section className="bg-background py-16">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <AnimatedSection animation="fadeInUp">
-              <div className="text-center mb-12">
-                <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6">
+              <div className="mb-12 text-center">
+                <h2 className="text-foreground mb-6 text-3xl font-bold sm:text-4xl">
                   Remerciements
                 </h2>
               </div>
             </AnimatedSection>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
-              <AnimatedSection animation="fadeInLeft" delay={200} className="h-full">
-                <Card className="p-6 bg-card border-border h-full flex flex-col">
-                  <CardContent className="pt-6 flex-1">
-                    <h3 className="text-xl font-semibold text-card-foreground mb-4">
+            <div className="grid grid-cols-1 items-stretch gap-8 md:grid-cols-2">
+              <AnimatedSection
+                animation="fadeInLeft"
+                delay={200}
+                className="h-full"
+              >
+                <Card className="bg-card border-border flex h-full flex-col p-6">
+                  <CardContent className="flex-1 pt-6">
+                    <h3 className="text-card-foreground mb-4 text-xl font-semibold">
                       Nos partenaires
                     </h3>
-                    <ul className="space-y-2 text-muted-foreground">
-                    <li>• CHU de Nantes</li>
+                    <ul className="text-muted-foreground space-y-2">
+                      <li>• CHU de Nantes</li>
                       <li>• MPR de Nantes</li>
                       <li>• APRAIH</li>
                     </ul>
@@ -143,14 +154,20 @@ export default function APropos() {
                 </Card>
               </AnimatedSection>
 
-              <AnimatedSection animation="fadeInRight" delay={400} className="h-full">
-                <Card className="p-6 bg-card border-border h-full flex flex-col">
-                  <CardContent className="pt-6 flex-1">
-                    <h3 className="text-xl font-semibold text-card-foreground mb-4">
+              <AnimatedSection
+                animation="fadeInRight"
+                delay={400}
+                className="h-full"
+              >
+                <Card className="bg-card border-border flex h-full flex-col p-6">
+                  <CardContent className="flex-1 pt-6">
+                    <h3 className="text-card-foreground mb-4 text-xl font-semibold">
                       Équipe organisatrice
                     </h3>
-                    <ul className="space-y-2 text-muted-foreground">
-                      <li>• Toute l&apos;équipe d&apos;ergothérapeutes du MPR</li>
+                    <ul className="text-muted-foreground space-y-2">
+                      <li>
+                        • Toute l&apos;équipe d&apos;ergothérapeutes du MPR
+                      </li>
                     </ul>
                   </CardContent>
                 </Card>
@@ -160,22 +177,23 @@ export default function APropos() {
         </section>
 
         {/* APRAIH Section */}
-        <section className="py-16 bg-gradient-to-br from-red-50 via-red-100 to-red-200 dark:from-red-950 dark:via-red-900 dark:to-red-800">
+        <section className="bg-gradient-to-br from-red-50 via-red-100 to-red-200 py-16 dark:from-red-950 dark:via-red-900 dark:to-red-800">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <AnimatedSection animation="fadeInUp">
-              <div className="text-center mb-12">
-                <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+              <div className="mb-12 text-center">
+                <h2 className="text-foreground mb-4 text-3xl font-bold sm:text-4xl">
                   Au profit de l&apos;APRAIH
                 </h2>
-                <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-                  L&apos;Association pour la Promotion de la Réadaptation et l&apos;Accompagnement 
-                  des personnes en situation de Handicap accompagne depuis 30 ans les personnes 
-                  touchées par les accidents de la vie vers le retour à leur quotidien.
+                <p className="text-muted-foreground mx-auto max-w-3xl text-lg">
+                  L&apos;Association pour la Promotion de la Réadaptation et
+                  l&apos;Accompagnement des personnes en situation de Handicap
+                  accompagne depuis 30 ans les personnes touchées par les
+                  accidents de la vie vers le retour à leur quotidien.
                 </p>
               </div>
             </AnimatedSection>
 
-            <div className="flex flex-col lg:flex-row items-center justify-center gap-12">
+            <div className="flex flex-col items-center justify-center gap-12 lg:flex-row">
               <AnimatedSection animation="fadeInLeft" delay={200}>
                 <div className="flex-shrink-0">
                   <Image
@@ -183,36 +201,52 @@ export default function APropos() {
                     alt="Logo APRAIH - Association pour la Promotion de la Réadaptation"
                     width={300}
                     height={205}
-                    className="w-64 h-auto mx-auto"
+                    className="mx-auto h-auto w-64"
                     loading="lazy"
                   />
                 </div>
               </AnimatedSection>
 
               <AnimatedSection animation="fadeInRight" delay={400}>
-                <div className="text-center lg:text-left max-w-2xl">
-                  <h3 className="text-2xl font-bold text-foreground mb-6">
+                <div className="max-w-2xl text-center lg:text-left">
+                  <h3 className="text-foreground mb-6 text-2xl font-bold">
                     Une association dévouée
                   </h3>
-                  <div className="space-y-4 text-muted-foreground">
+                  <div className="text-muted-foreground space-y-4">
                     <p>
-                    Encadrée par une équipe de bénévoles dévoués, de soignants et rééducateurs, l&apos;APRAIH propose aux 
-                    patients hospitalisés de participer à des activités variées pour rompre l&apos;isolement et favoriser la socialisation.
+                      Encadrée par une équipe de bénévoles dévoués, de soignants
+                      et rééducateurs, l&apos;APRAIH propose aux patients
+                      hospitalisés de participer à des activités variées pour
+                      rompre l&apos;isolement et favoriser la socialisation.
                     </p>
                     <p>
-                    Sorties concerts, ateliers cuisine, soirées cinéma, et sorties exceptionnelles comme assister à un match de foot à Paris, 
-                    découvrir les Jeux Paralympiques, ou participer à des séjours thérapeutiques de plusieurs jours à la montagne.
+                      Sorties concerts, ateliers cuisine, soirées cinéma, et
+                      sorties exceptionnelles comme assister à un match de foot
+                      à Paris, découvrir les Jeux Paralympiques, ou participer à
+                      des séjours thérapeutiques de plusieurs jours à la
+                      montagne.
                     </p>
                     <div className="pt-4">
                       <a
                         href="https://www.apraih.fr/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center px-6 py-3 bg-[#3d6db4] text-primary-foreground rounded-lg font-semibold hover:bg-[#2d4d84] transition-colors"
+                        className="text-primary-foreground inline-flex items-center rounded-lg bg-[#3d6db4] px-6 py-3 font-semibold transition-colors hover:bg-[#2d4d84]"
                       >
                         Découvrir l&apos;APRAIH
-                        <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        <svg
+                          className="ml-2 h-4 w-4"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          aria-hidden="true"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                          />
                         </svg>
                       </a>
                     </div>
@@ -245,11 +279,9 @@ export default function APropos() {
             </AnimatedSection>
           </div>
         </section> */}
-
       </main>
 
       <Footer />
     </div>
   );
 }
-

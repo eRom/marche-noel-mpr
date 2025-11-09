@@ -5,6 +5,7 @@ Ce projet inclut maintenant des scripts automatisés pour tester les performance
 ## 📦 Installation
 
 Les dépendances sont déjà installées :
+
 - `lighthouse` - Bibliothèque principale
 - `chrome-launcher` - Lanceur Chrome headless
 
@@ -37,14 +38,18 @@ node scripts/lighthouse-test.js https://votre-site.com mobile
 ## 📊 Résultats
 
 ### Affichage Console
+
 Le script affiche en temps réel :
+
 - 🎯 **Scores par catégorie** (Performance, SEO, Accessibility, Best Practices)
 - 🚀 **Core Web Vitals** (LCP, FID, CLS)
 - ⚡ **Métriques de Performance** (FCP, Speed Index, TBT, TTI)
 - 💡 **Recommandations** principales avec économies estimées
 
 ### Rapports Sauvegardés
+
 Les rapports complets sont sauvegardés dans :
+
 ```
 lighthouse-reports/
 ├── lighthouse-desktop-2024-10-20T04-30-00-000Z.json
@@ -54,12 +59,14 @@ lighthouse-reports/
 ## 🎨 Configuration
 
 ### Throttling Desktop
+
 - RTT: 40ms
 - Throughput: 10 Mbps
 - CPU: 1x slowdown
 - Écran: 1350x940
 
 ### Throttling Mobile
+
 - RTT: 150ms
 - Throughput: 1.6 Mbps
 - CPU: 4x slowdown
@@ -68,6 +75,7 @@ lighthouse-reports/
 ## 🔧 Personnalisation
 
 Modifiez `scripts/lighthouse-test.js` pour :
+
 - Ajuster les configurations de throttling
 - Ajouter/supprimer des audits
 - Modifier les seuils de scores

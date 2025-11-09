@@ -9,12 +9,14 @@ interface SnowflakeHuntContextType {
   hasFoundAll: boolean;
 }
 
-const SnowflakeHuntContext = createContext<SnowflakeHuntContextType | undefined>(
-  undefined
-);
+const SnowflakeHuntContext = createContext<
+  SnowflakeHuntContextType | undefined
+>(undefined);
 
 export function SnowflakeHuntProvider({ children }: { children: ReactNode }) {
-  const [foundSnowflakes, setFoundSnowflakes] = useState<Set<number>>(new Set());
+  const [foundSnowflakes, setFoundSnowflakes] = useState<Set<number>>(
+    new Set()
+  );
   const totalSnowflakes = 11;
 
   const collectSnowflake = (id: number) => {
@@ -44,8 +46,9 @@ export function SnowflakeHuntProvider({ children }: { children: ReactNode }) {
 export function useSnowflakeHunt() {
   const context = useContext(SnowflakeHuntContext);
   if (context === undefined) {
-    throw new Error("useSnowflakeHunt must be used within a SnowflakeHuntProvider");
+    throw new Error(
+      "useSnowflakeHunt must be used within a SnowflakeHuntProvider"
+    );
   }
   return context;
 }
-

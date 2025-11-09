@@ -11,10 +11,10 @@ export default function SnowflakeVictory() {
   useEffect(() => {
     if (hasFoundAll) {
       setShowVictory(true);
-      
+
       // Jouer le son de victoire
       playVictorySound();
-      
+
       // Hide after 5 seconds
       const timer = setTimeout(() => {
         setShowVictory(false);
@@ -27,12 +27,12 @@ export default function SnowflakeVictory() {
   if (!showVictory) return null;
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-[9999] overflow-hidden">
+    <div className="pointer-events-none fixed inset-0 z-[9999] overflow-hidden">
       {/* Explosion de flocons magiques */}
       {Array.from({ length: 80 }).map((_, i) => (
         <div
           key={`victory-snow-${i}`}
-          className="absolute text-3xl animate-ping"
+          className="absolute animate-ping text-3xl"
           style={{
             left: `${Math.random() * 100}%`,
             top: `${Math.random() * 100}%`,
@@ -44,12 +44,12 @@ export default function SnowflakeVictory() {
           ❄️
         </div>
       ))}
-      
+
       {/* Étoiles scintillantes */}
       {Array.from({ length: 40 }).map((_, i) => (
         <div
           key={`victory-star-${i}`}
-          className="absolute text-2xl animate-bounce"
+          className="absolute animate-bounce text-2xl"
           style={{
             left: `${Math.random() * 100}%`,
             top: `${Math.random() * 100}%`,
@@ -60,25 +60,25 @@ export default function SnowflakeVictory() {
           ⭐
         </div>
       ))}
-      
+
       {/* Message de félicitation */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
-        <div className="bg-primary/95 text-primary-foreground px-12 py-8 rounded-3xl shadow-2xl animate-bounce backdrop-blur-sm border-4 border-white/30">
-          <p className="text-4xl md:text-6xl font-bold mb-4">🎉 Bravo ! 🎊</p>
+        <div className="bg-primary/95 text-primary-foreground animate-bounce rounded-3xl border-4 border-white/30 px-12 py-8 shadow-2xl backdrop-blur-sm">
+          <p className="mb-4 text-4xl font-bold md:text-6xl">🎉 Bravo ! 🎊</p>
           <p className="text-xl md:text-2xl">
             Tous les flocons magiques trouvés !
           </p>
-          <p className="text-lg md:text-xl mt-2 text-primary-foreground/90">
+          <p className="text-primary-foreground/90 mt-2 text-lg md:text-xl">
             ❄️ 11/11 ❄️
           </p>
         </div>
       </div>
-      
+
       {/* Confettis qui tombent */}
       {Array.from({ length: 50 }).map((_, i) => {
         const colors = ["🔴", "🟢", "🔵", "🟡", "🟣", "🟠"];
         const color = colors[Math.floor(Math.random() * colors.length)];
-        
+
         return (
           <div
             key={`confetti-${i}`}
@@ -97,4 +97,3 @@ export default function SnowflakeVictory() {
     </div>
   );
 }
-

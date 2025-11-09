@@ -99,3 +99,6 @@ pnpm-lock.yaml
 # Generated files
 *.min.js
 *.min.css
+
+# Template files (markdown with .js extension)
+public/sw-template.js

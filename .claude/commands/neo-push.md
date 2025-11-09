@@ -3,6 +3,7 @@ description: Commit & push branch
 ---
 
 ## Instruction
+
 - Check working changes `git status`
 - Stage files `git add .`
 - Create a commit `git commit -m "descriptive message"` (the message must be commitizen compliant)

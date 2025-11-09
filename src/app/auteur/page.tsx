@@ -3,7 +3,11 @@ import CinematicVideo from "@/components/CinematicVideo";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import TechShowcase from "@/components/TechShowcase";
-import { faGithub, faLinkedin, faXTwitter } from "@fortawesome/free-brands-svg-icons";
+import {
+  faGithub,
+  faLinkedin,
+  faXTwitter,
+} from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Globe } from "lucide-react";
 import { Metadata } from "next";
@@ -11,7 +15,8 @@ import MagicSnowflake from "@/components/MagicSnowflake";
 
 export const metadata: Metadata = {
   title: "Romain Ecarnot — Créateur du Marché de Noël du MPR",
-  description: "Architecte de solutions digitales, Romain Ecarnot conçoit des expériences web modernes et performantes. Découvrez l'expertise technique derrière ce site.",
+  description:
+    "Architecte de solutions digitales, Romain Ecarnot conçoit des expériences web modernes et performantes. Découvrez l'expertise technique derrière ce site.",
 };
 
 export default function AuteurPage() {
@@ -21,28 +26,26 @@ export default function AuteurPage() {
       <main id="main-content" className="min-h-screen pt-16" role="main">
         {/* Magic Snowflake for Hunt Game */}
         <MagicSnowflake id={11} page="auteur" />
-        
+
         {/* Hero Section */}
         <section className="bg-background">
-          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-12">
+          <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
             <AnimatedSection animation="fadeInUp" className="">
-              <div className="text-center space-y-1">
-                <h1 className="text-3xl md:text-4xl font-bold">
+              <div className="space-y-1 text-center">
+                <h1 className="text-3xl font-bold md:text-4xl">
                   Romain Ecarnot
                 </h1>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-muted-foreground text-lg">
                   Solutions digitales
                 </p>
               </div>
-
-              
             </AnimatedSection>
           </div>
         </section>
 
         {/* Video Section */}
         <section className="bg-muted/30">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+          <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
             <AnimatedSection animation="fadeInUp">
               <CinematicVideo />
             </AnimatedSection>
@@ -51,13 +54,13 @@ export default function AuteurPage() {
 
         {/* Support Section - Tipeee */}
         <section className="relative overflow-hidden bg-gradient-to-br from-red-600 via-red-800 to-gray-900">
-          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-16">
+          <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
             <AnimatedSection animation="fadeInUp">
-              <div className="text-center space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold text-white">
+              <div className="space-y-6 text-center">
+                <h2 className="text-3xl font-bold text-white md:text-4xl">
                   Soutenez mon parcours
                 </h2>
-                <p className="text-lg text-white/90 max-w-2xl mx-auto">
+                <p className="mx-auto max-w-2xl text-lg text-white/90">
                   Rebondir après un AVC et continuer ma carrière dans la tech.
                   <br />
                   Votre soutien fait la différence.
@@ -67,10 +70,10 @@ export default function AuteurPage() {
                     href="https://fr.tipeee.com/rebondir-apres-lavc-ma-carriere-dans-la-tech/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 bg-white text-red-600 hover:bg-red-50 px-8 py-4 rounded-full font-semibold text-lg shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
+                    className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-lg font-semibold text-red-600 shadow-xl transition-all duration-300 hover:scale-105 hover:bg-red-50 hover:shadow-2xl"
                   >
                     <svg
-                      className="w-6 h-6"
+                      className="h-6 w-6"
                       fill="currentColor"
                       viewBox="0 0 24 24"
                       aria-hidden="true"
@@ -83,15 +86,21 @@ export default function AuteurPage() {
               </div>
             </AnimatedSection>
           </div>
-          
+
           {/* Decorative elements */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" aria-hidden="true" />
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-red-900/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" aria-hidden="true" />
+          <div
+            className="absolute top-0 right-0 h-64 w-64 translate-x-1/2 -translate-y-1/2 rounded-full bg-white/5 blur-3xl"
+            aria-hidden="true"
+          />
+          <div
+            className="absolute bottom-0 left-0 h-96 w-96 -translate-x-1/2 translate-y-1/2 rounded-full bg-red-900/20 blur-3xl"
+            aria-hidden="true"
+          />
         </section>
 
         {/* Tech Showcase */}
         <section className="bg-background">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+          <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
             <AnimatedSection animation="fadeInUp">
               <TechShowcase />
             </AnimatedSection>
@@ -99,30 +108,30 @@ export default function AuteurPage() {
         </section>
 
         {/* CTA Section - Réseaux sociaux */}
-        <section className="bg-gradient-to-b from-noel-snow-light to-noel-snow">
-          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-16">
+        <section className="from-noel-snow-light to-noel-snow bg-gradient-to-b">
+          <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
             <AnimatedSection animation="fadeInUp">
-              <div className="text-center space-y-8">
-                <h2 className="text-3xl md:text-4xl font-bold">
+              <div className="space-y-8 text-center">
+                <h2 className="text-3xl font-bold md:text-4xl">
                   Retrouvez-moi
                 </h2>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-muted-foreground text-lg">
                   Suivez mon parcours et restons connectés
                 </p>
 
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-4 ">
+                <div className="grid grid-cols-2 gap-6 pt-4 md:grid-cols-4">
                   {/* Linktree / Site perso */}
                   <a
                     href="https://www.romain-ecarnot.com/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex flex-col items-center gap-3 p-6 rounded-xl bg-noel-snow hover:bg-primary/10 transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                    className="group bg-noel-snow hover:bg-primary/10 flex flex-col items-center gap-3 rounded-xl p-6 transition-all duration-300 hover:scale-105 hover:shadow-lg"
                     aria-label="Visiter mon site web personnel"
                   >
-                    <div className="w-12 h-12 rounded-full bg-primary/10 group-hover:bg-primary flex items-center justify-center transition-colors">
-                      <Globe className="w-6 h-6 text-primary group-hover:text-primary-foreground transition-colors" />
+                    <div className="bg-primary/10 group-hover:bg-primary flex h-12 w-12 items-center justify-center rounded-full transition-colors">
+                      <Globe className="text-primary group-hover:text-primary-foreground h-6 w-6 transition-colors" />
                     </div>
-                    <span className="font-semibold text-sm">Site Web</span>
+                    <span className="text-sm font-semibold">Site Web</span>
                   </a>
 
                   {/* X (Twitter) */}
@@ -130,16 +139,18 @@ export default function AuteurPage() {
                     href="https://x.com/CloudinNantes"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex flex-col items-center gap-3 p-6 rounded-xl bg-noel-snow hover:bg-black transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                    className="group bg-noel-snow flex flex-col items-center gap-3 rounded-xl p-6 transition-all duration-300 hover:scale-105 hover:bg-black hover:shadow-lg"
                     aria-label="Suivez-moi sur X (Twitter)"
                   >
-                    <div className="w-12 h-12 rounded-full bg-black/10 group-hover:bg-white flex items-center justify-center transition-colors">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-black/10 transition-colors group-hover:bg-white">
                       <FontAwesomeIcon
                         icon={faXTwitter}
-                        className="text-2xl text-black group-hover:text-black transition-colors"
+                        className="text-2xl text-black transition-colors group-hover:text-black"
                       />
                     </div>
-                    <span className="font-semibold text-sm group-hover:text-white">X (Twitter)</span>
+                    <span className="text-sm font-semibold group-hover:text-white">
+                      X (Twitter)
+                    </span>
                   </a>
 
                   {/* LinkedIn */}
@@ -147,16 +158,18 @@ export default function AuteurPage() {
                     href="https://www.linkedin.com/in/romainecarnot/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex flex-col items-center gap-3 p-6 rounded-xl bg-noel-snow hover:bg-[#0A66C2] transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                    className="group bg-noel-snow flex flex-col items-center gap-3 rounded-xl p-6 transition-all duration-300 hover:scale-105 hover:bg-[#0A66C2] hover:shadow-lg"
                     aria-label="Connectez-vous avec moi sur LinkedIn"
                   >
-                    <div className="w-12 h-12 rounded-full bg-[#0A66C2]/10 group-hover:bg-white flex items-center justify-center transition-colors">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#0A66C2]/10 transition-colors group-hover:bg-white">
                       <FontAwesomeIcon
                         icon={faLinkedin}
                         className="text-2xl text-[#0A66C2] transition-colors"
                       />
                     </div>
-                    <span className="font-semibold text-sm group-hover:text-white">LinkedIn</span>
+                    <span className="text-sm font-semibold group-hover:text-white">
+                      LinkedIn
+                    </span>
                   </a>
 
                   {/* GitHub */}
@@ -164,16 +177,18 @@ export default function AuteurPage() {
                     href="https://github.com/eRom"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex flex-col items-center gap-3 p-6 rounded-xl bg-noel-snow hover:bg-gray-800 dark:hover:bg-white transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                    className="group bg-noel-snow flex flex-col items-center gap-3 rounded-xl p-6 transition-all duration-300 hover:scale-105 hover:bg-gray-800 hover:shadow-lg dark:hover:bg-white"
                     aria-label="Consultez mes projets sur GitHub"
                   >
-                    <div className="w-12 h-12 rounded-full bg-gray-800/10 dark:bg-white/10 group-hover:bg-white dark:group-hover:bg-gray-800 flex items-center justify-center transition-colors">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-800/10 transition-colors group-hover:bg-white dark:bg-white/10 dark:group-hover:bg-gray-800">
                       <FontAwesomeIcon
                         icon={faGithub}
-                        className="text-2xl dark:text-white group-hover:text-gray-800 dark:group-hover:text-white transition-colors"
+                        className="text-2xl transition-colors group-hover:text-gray-800 dark:text-white dark:group-hover:text-white"
                       />
                     </div>
-                    <span className="font-semibold text-sm group-hover:text-white dark:group-hover:text-gray-800">GitHub</span>
+                    <span className="text-sm font-semibold group-hover:text-white dark:group-hover:text-gray-800">
+                      GitHub
+                    </span>
                   </a>
                 </div>
               </div>
@@ -185,4 +200,3 @@ export default function AuteurPage() {
     </>
   );
 }
-

@@ -1,27 +1,27 @@
-import Footer from '@/components/Footer';
-import { GalleryGrid } from '@/components/GalleryGrid';
-import Header from '@/components/Header';
-import { Separator } from '@/components/ui/separator';
-import { getGalleryImages } from '@/lib/galleryData';
-import type { Metadata } from 'next';
-import dynamic from 'next/dynamic';
-import Link from 'next/link';
-import MagicSnowflake from '@/components/MagicSnowflake';
+import Footer from "@/components/Footer";
+import { GalleryGrid } from "@/components/GalleryGrid";
+import Header from "@/components/Header";
+import { Separator } from "@/components/ui/separator";
+import { getGalleryImages } from "@/lib/galleryData";
+import type { Metadata } from "next";
+import dynamic from "next/dynamic";
+import Link from "next/link";
+import MagicSnowflake from "@/components/MagicSnowflake";
 
-const AnimatedSection = dynamic(() => import('@/components/AnimatedSection'), {
+const AnimatedSection = dynamic(() => import("@/components/AnimatedSection"), {
   loading: () => <div />,
   ssr: true,
 });
 
 export const metadata: Metadata = {
-  title: 'Galerie Photos - Marché de Noël du MPR',
+  title: "Galerie Photos - Marché de Noël du MPR",
   description:
-    'Découvrez les moments magiques capturés lors du marché de Noël du MPR à Nantes. Photos des stands, animations, visiteurs et ambiance festive.',
+    "Découvrez les moments magiques capturés lors du marché de Noël du MPR à Nantes. Photos des stands, animations, visiteurs et ambiance festive.",
   openGraph: {
-    title: 'Galerie Photos - Marché de Noël du MPR',
+    title: "Galerie Photos - Marché de Noël du MPR",
     description:
-      'Revivez les moments magiques du Marché de Noël du MPR à travers notre galerie photo.',
-    type: 'website',
+      "Revivez les moments magiques du Marché de Noël du MPR à travers notre galerie photo.",
+    type: "website",
   },
 };
 
@@ -38,28 +38,29 @@ export default async function GalleriePage() {
         {/* Magic Snowflakes for Hunt Game */}
         <MagicSnowflake id={5} page="galerie" />
         <MagicSnowflake id={6} page="galerie" />
-        
+
         <section className="py-12">
           <div className="container mx-auto px-4">
             <AnimatedSection animation="fadeInUp">
-              <header className="text-center mb-6">
-                <h1 className="text-4xl md:text-5xl font-bold text-red-700 dark:text-red-500">
+              <header className="mb-6 text-center">
+                <h1 className="text-4xl font-bold text-red-700 md:text-5xl dark:text-red-500">
                   Galerie Photos
                 </h1>
-                <Separator className="my-6 mx-auto w-24" />
+                <Separator className="mx-auto my-6 w-24" />
                 <p className="text-lg text-gray-600 dark:text-gray-300">
                   Vivez les moments magiques du Marché de Noël du MPR
                 </p>
                 {images.length > 0 && (
-                  <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
-                    {images.length} photo{images.length > 1 ? 's' : ''} disponible
-                    {images.length > 1 ? 's' : ''}
+                  <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+                    {images.length} photo{images.length > 1 ? "s" : ""}{" "}
+                    disponible
+                    {images.length > 1 ? "s" : ""}
                   </p>
                 )}
-                {process.env.NODE_ENV === 'development' && (
+                {process.env.NODE_ENV === "development" && (
                   <Link
                     href="/galerie/admin"
-                    className="inline-block mt-4 text-sm text-red-600 dark:text-red-400 hover:underline"
+                    className="mt-4 inline-block text-sm text-red-600 hover:underline dark:text-red-400"
                   >
                     → Administration (dev)
                   </Link>
@@ -77,4 +78,3 @@ export default async function GalleriePage() {
     </div>
   );
 }
-

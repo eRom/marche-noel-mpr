@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 interface CircularProgressProps {
   value: number; // 0-100
@@ -25,9 +25,9 @@ export default function CircularProgress({
 
   // Déterminer la couleur selon le score
   const getColor = (score: number) => {
-    if (score >= 90) return '#22c55e'; // green-500
-    if (score >= 50) return '#eab308'; // yellow-500
-    return '#ef4444'; // red-500
+    if (score >= 90) return "#22c55e"; // green-500
+    if (score >= 50) return "#eab308"; // yellow-500
+    return "#ef4444"; // red-500
   };
 
   const scoreColor = getColor(value);
@@ -52,7 +52,7 @@ export default function CircularProgress({
 
   return (
     <div className="relative inline-flex items-center justify-center">
-      <svg width={size} height={size} className="transform -rotate-90">
+      <svg width={size} height={size} className="-rotate-90 transform">
         {/* Background circle */}
         <circle
           cx={size / 2}
@@ -82,9 +82,10 @@ export default function CircularProgress({
       {/* Center text */}
       <div className="absolute inset-0 flex flex-col items-center justify-center">
         <span className="text-3xl font-bold">{displayValue}</span>
-        {label && <span className="text-xs text-muted-foreground mt-1">{label}</span>}
+        {label && (
+          <span className="text-muted-foreground mt-1 text-xs">{label}</span>
+        )}
       </div>
     </div>
   );
 }
-

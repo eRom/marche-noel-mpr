@@ -15,44 +15,48 @@ export interface CalendarEvent {
 
 const CALENDAR_EVENTS: CalendarEvent[] = [
   {
-    uid: 'marche-noel-mpr-2025-11-27@mpr-noel.com',
-    start: '20251127T160000',
-    end: '20251127T190000',
-    summary: 'Marché de Noël du MPR de Nantes',
+    uid: "marche-noel-mpr-2025-11-27@mpr-noel.com",
+    start: "20251127T160000",
+    end: "20251127T190000",
+    summary: "Marché de Noël du MPR de Nantes",
     description:
-      'Découvrez la magie de Noël au sein du pôle MPR du CHU de Nantes. Artisans patients, animations, ambiance festive !\\n\\nPlus d\'infos : https://mpr-noel.romain-ecarnot.com',
-    location: 'Hôpital Saint-Jacques - CHU de Nantes, 85 Rue Saint-Jacques, 44093 Nantes',
-    url: 'https://mpr-noel.romain-ecarnot.com',
+      "Découvrez la magie de Noël au sein du pôle MPR du CHU de Nantes. Artisans patients, animations, ambiance festive !\\n\\nPlus d'infos : https://mpr-noel.romain-ecarnot.com",
+    location:
+      "Hôpital Saint-Jacques - CHU de Nantes, 85 Rue Saint-Jacques, 44093 Nantes",
+    url: "https://mpr-noel.romain-ecarnot.com",
   },
   {
-    uid: 'marche-noel-mpr-2025-12-11@mpr-noel.com',
-    start: '20251211T160000',
-    end: '20251211T190000',
-    summary: 'Marché de Noël du MPR de Nantes',
+    uid: "marche-noel-mpr-2025-12-11@mpr-noel.com",
+    start: "20251211T160000",
+    end: "20251211T190000",
+    summary: "Marché de Noël du MPR de Nantes",
     description:
-      'Découvrez la magie de Noël au sein du pôle MPR du CHU de Nantes. Artisans patients, animations, ambiance festive !\\n\\nPlus d\'infos : https://mpr-noel.romain-ecarnot.com',
-    location: 'Hôpital Saint-Jacques - CHU de Nantes, 85 Rue Saint-Jacques, 44093 Nantes',
-    url: 'https://mpr-noel.romain-ecarnot.com',
+      "Découvrez la magie de Noël au sein du pôle MPR du CHU de Nantes. Artisans patients, animations, ambiance festive !\\n\\nPlus d'infos : https://mpr-noel.romain-ecarnot.com",
+    location:
+      "Hôpital Saint-Jacques - CHU de Nantes, 85 Rue Saint-Jacques, 44093 Nantes",
+    url: "https://mpr-noel.romain-ecarnot.com",
   },
   {
-    uid: 'marche-noel-mpr-2025-12-13@mpr-noel.com',
-    start: '20251213T140000',
-    end: '20251213T180000',
-    summary: 'Marché de Noël du MPR de Nantes',
+    uid: "marche-noel-mpr-2025-12-13@mpr-noel.com",
+    start: "20251213T140000",
+    end: "20251213T180000",
+    summary: "Marché de Noël du MPR de Nantes",
     description:
-      'Découvrez la magie de Noël au sein du pôle MPR du CHU de Nantes. Artisans patients, animations, ambiance festive !\\n\\nPlus d\'infos : https://mpr-noel.romain-ecarnot.com',
-    location: 'Hôpital Saint-Jacques - CHU de Nantes, 85 Rue Saint-Jacques, 44093 Nantes',
-    url: 'https://mpr-noel.romain-ecarnot.com',
+      "Découvrez la magie de Noël au sein du pôle MPR du CHU de Nantes. Artisans patients, animations, ambiance festive !\\n\\nPlus d'infos : https://mpr-noel.romain-ecarnot.com",
+    location:
+      "Hôpital Saint-Jacques - CHU de Nantes, 85 Rue Saint-Jacques, 44093 Nantes",
+    url: "https://mpr-noel.romain-ecarnot.com",
   },
   {
-    uid: 'marche-noel-mpr-2025-12-16@mpr-noel.com',
-    start: '20251216T160000',
-    end: '20251216T190000',
-    summary: 'Marché de Noël du MPR de Nantes',
+    uid: "marche-noel-mpr-2025-12-16@mpr-noel.com",
+    start: "20251216T160000",
+    end: "20251216T190000",
+    summary: "Marché de Noël du MPR de Nantes",
     description:
-      'Découvrez la magie de Noël au sein du pôle MPR du CHU de Nantes. Artisans patients, animations, ambiance festive !\\n\\nPlus d\'infos : https://mpr-noel.romain-ecarnot.com',
-    location: 'Hôpital Saint-Jacques - CHU de Nantes, 85 Rue Saint-Jacques, 44093 Nantes',
-    url: 'https://mpr-noel.romain-ecarnot.com',
+      "Découvrez la magie de Noël au sein du pôle MPR du CHU de Nantes. Artisans patients, animations, ambiance festive !\\n\\nPlus d'infos : https://mpr-noel.romain-ecarnot.com",
+    location:
+      "Hôpital Saint-Jacques - CHU de Nantes, 85 Rue Saint-Jacques, 44093 Nantes",
+    url: "https://mpr-noel.romain-ecarnot.com",
   },
 ];
 
@@ -60,7 +64,7 @@ const CALENDAR_EVENTS: CalendarEvent[] = [
  * Génère un fichier iCalendar (.ics) avec tous les événements
  */
 export function generateICS(): string {
-  const now = new Date().toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+  const now = new Date().toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
 
   let ics = `BEGIN:VCALENDAR
 VERSION:2.0
@@ -112,7 +116,7 @@ END:VEVENT
 `;
   });
 
-  ics += 'END:VCALENDAR';
+  ics += "END:VCALENDAR";
 
   return ics;
 }
@@ -122,12 +126,12 @@ END:VEVENT
  */
 export function downloadICS(): void {
   const icsContent = generateICS();
-  const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+  const blob = new Blob([icsContent], { type: "text/calendar;charset=utf-8" });
   const url = URL.createObjectURL(blob);
 
-  const link = document.createElement('a');
+  const link = document.createElement("a");
   link.href = url;
-  link.download = 'marche-noel-mpr-2025.ics';
+  link.download = "marche-noel-mpr-2025.ics";
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
@@ -141,17 +145,17 @@ export function downloadICS(): void {
  */
 export function generateGoogleCalendarURL(): string {
   const firstEvent = CALENDAR_EVENTS[0];
-  
+
   // Format: YYYYMMDDTHHmmSS / YYYYMMDDTHHmmSS
   const dates = `${firstEvent.start}/${firstEvent.end}`;
-  
+
   const params = new URLSearchParams({
-    action: 'TEMPLATE',
+    action: "TEMPLATE",
     text: firstEvent.summary,
     dates: dates,
-    details: firstEvent.description.replace(/\\n/g, '\n'),
+    details: firstEvent.description.replace(/\\n/g, "\n"),
     location: firstEvent.location,
-    ctz: 'Europe/Paris',
+    ctz: "Europe/Paris",
   });
 
   return `https://calendar.google.com/calendar/render?${params.toString()}`;
@@ -162,10 +166,9 @@ export function generateGoogleCalendarURL(): string {
  */
 export function getEventDates(): Array<{ date: string; time: string }> {
   return [
-    { date: '27 novembre 2025', time: '16h - 19h' },
-    { date: '11 décembre 2025', time: '16h - 19h' },
-    { date: '13 décembre 2025', time: '14h - 18h' },
-    { date: '16 décembre 2025', time: '16h - 19h' },
+    { date: "27 novembre 2025", time: "16h - 19h" },
+    { date: "11 décembre 2025", time: "16h - 19h" },
+    { date: "13 décembre 2025", time: "14h - 18h" },
+    { date: "16 décembre 2025", time: "16h - 19h" },
   ];
 }
-

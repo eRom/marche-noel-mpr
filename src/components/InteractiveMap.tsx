@@ -20,10 +20,9 @@ const Marker = dynamic(
   { ssr: false }
 );
 
-const Popup = dynamic(
-  () => import("react-leaflet").then((mod) => mod.Popup),
-  { ssr: false }
-);
+const Popup = dynamic(() => import("react-leaflet").then((mod) => mod.Popup), {
+  ssr: false,
+});
 
 // Coordonnées de l'Hôpital Saint-Jacques, Nantes 47.197298025581624, -1.5335702623423675
 const HOSPITAL_LAT = 47.197298025581624;
@@ -54,22 +53,30 @@ export default function InteractiveMap({ className }: InteractiveMapProps) {
     // Configurer les icônes de marqueur pour Next.js
     import("leaflet").then((L) => {
       // Fix pour les icônes Leaflet avec Next.js
-      const iconPrototype = L.Icon.Default.prototype as unknown as Record<string, unknown>;
+      const iconPrototype = L.Icon.Default.prototype as unknown as Record<
+        string,
+        unknown
+      >;
       if (iconPrototype._getIconUrl) {
         delete iconPrototype._getIconUrl;
       }
       L.Icon.Default.mergeOptions({
-        iconRetinaUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon-2x.png",
-        iconUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon.png",
-        shadowUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png",
+        iconRetinaUrl:
+          "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon-2x.png",
+        iconUrl:
+          "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon.png",
+        shadowUrl:
+          "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png",
       });
     });
   }, [isClient]);
 
   // Alternative textuelle pour l'accessibilité
   const addressText = (
-    <div className="text-sm text-muted-foreground space-y-2 p-4 bg-card rounded-lg border border-border">
-      <h3 className="font-semibold text-foreground mb-2">Hôpital Saint-Jacques – CHU de Nantes</h3>
+    <div className="text-muted-foreground bg-card border-border space-y-2 rounded-lg border p-4 text-sm">
+      <h3 className="text-foreground mb-2 font-semibold">
+        Hôpital Saint-Jacques – CHU de Nantes
+      </h3>
       <p>85 Rue Saint-Jacques</p>
       <p>44093 Nantes Cedex 1</p>
       <p className="mt-4 text-xs">
@@ -81,9 +88,9 @@ export default function InteractiveMap({ className }: InteractiveMapProps) {
   if (!isClient || !shouldLoadLeaflet) {
     return (
       <div className={className}>
-        <div className="w-full h-[400px] md:h-[600px] bg-muted rounded-lg flex items-center justify-center">
+        <div className="bg-muted flex h-[400px] w-full items-center justify-center rounded-lg md:h-[600px]">
           <div className="text-center">
-            <div className="animate-pulse text-muted-foreground">
+            <div className="text-muted-foreground animate-pulse">
               Chargement de la carte...
             </div>
           </div>
@@ -96,8 +103,8 @@ export default function InteractiveMap({ className }: InteractiveMapProps) {
 
   return (
     <div className={className}>
-      <div 
-        className="w-full h-[400px] md:h-[600px] rounded-lg overflow-hidden border border-border"
+      <div
+        className="border-border h-[400px] w-full overflow-hidden rounded-lg border md:h-[600px]"
         aria-label="Carte interactive de localisation de l'Hôpital Saint-Jacques"
       >
         <MapContainer
@@ -115,10 +122,10 @@ export default function InteractiveMap({ className }: InteractiveMapProps) {
           <Marker position={[HOSPITAL_LAT, HOSPITAL_LNG]}>
             <Popup>
               <div className="text-sm">
-                <h3 className="font-semibold mb-2">Hôpital Saint-Jacques</h3>
+                <h3 className="mb-2 font-semibold">Hôpital Saint-Jacques</h3>
                 <p className="mb-1">85 Rue Saint-Jacques</p>
                 <p className="mb-1">44093 Nantes Cedex 1</p>
-                <p className="text-xs text-muted-foreground mt-2">
+                <p className="text-muted-foreground mt-2 text-xs">
                   Marché de Noël du MPR
                 </p>
               </div>

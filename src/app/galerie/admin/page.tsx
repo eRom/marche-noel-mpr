@@ -1,30 +1,30 @@
-'use client';
+"use client";
 
-import { GalleryManager } from '@/components/GalleryManager';
-import { GalleryUpload } from '@/components/GalleryUpload';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowLeft, Lock, Settings, Upload } from 'lucide-react';
-import Link from 'next/link';
-import { useState } from 'react';
+import { GalleryManager } from "@/components/GalleryManager";
+import { GalleryUpload } from "@/components/GalleryUpload";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ArrowLeft, Lock, Settings, Upload } from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
 
-type TabType = 'upload' | 'manage';
+type TabType = "upload" | "manage";
 
 export default function GalleryAdminPage() {
-  const [password, setPassword] = useState('');
+  const [password, setPassword] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [error, setError] = useState('');
-  const [activeTab, setActiveTab] = useState<TabType>('upload');
+  const [error, setError] = useState("");
+  const [activeTab, setActiveTab] = useState<TabType>("upload");
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError('');
+    setError("");
 
     try {
-      const response = await fetch('/api/gallery/auth', {
-        method: 'POST',
+      const response = await fetch("/api/gallery/auth", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ password }),
       });
@@ -34,20 +34,20 @@ export default function GalleryAdminPage() {
       if (response.ok && data.success) {
         setIsAuthenticated(true);
       } else {
-        setError(data.error || 'Mot de passe incorrect');
+        setError(data.error || "Mot de passe incorrect");
       }
     } catch (error) {
-      console.error('Erreur de connexion:', error);
-      setError('Erreur de connexion');
+      console.error("Erreur de connexion:", error);
+      setError("Erreur de connexion");
     }
   };
 
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-950 flex items-center justify-center p-4">
+      <div className="flex min-h-screen items-center justify-center bg-gray-50 p-4 dark:bg-gray-950">
         <Card className="w-full max-w-md">
           <CardHeader>
-            <CardTitle className="text-2xl text-center flex items-center justify-center gap-2">
+            <CardTitle className="flex items-center justify-center gap-2 text-center text-2xl">
               <Lock className="h-6 w-6 text-gray-600 dark:text-gray-400" />
               Administration Galerie
             </CardTitle>
@@ -57,7 +57,7 @@ export default function GalleryAdminPage() {
               <div>
                 <label
                   htmlFor="password"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                  className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
                 >
                   Mot de passe
                 </label>
@@ -66,17 +66,15 @@ export default function GalleryAdminPage() {
                   id="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+                  className="w-full rounded-lg border border-gray-300 bg-white px-4 py-2 text-gray-900 focus:ring-2 focus:ring-gray-500 focus:outline-none dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100"
                   placeholder="Entrez le mot de passe"
                   required
                 />
-                {error && (
-                  <p className="text-red-600 text-sm mt-2">{error}</p>
-                )}
+                {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
               </div>
               <Button
                 type="submit"
-                className="w-full bg-gray-900 hover:bg-gray-800 dark:bg-gray-100 dark:hover:bg-gray-200 text-white dark:text-gray-900"
+                className="w-full bg-gray-900 text-white hover:bg-gray-800 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-200"
               >
                 Se connecter
               </Button>
@@ -84,7 +82,7 @@ export default function GalleryAdminPage() {
             <div className="mt-6 text-center">
               <Link
                 href="/galerie"
-                className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100"
+                className="text-sm text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100"
               >
                 ← Retour à la galerie
               </Link>
@@ -98,11 +96,11 @@ export default function GalleryAdminPage() {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
       <div className="container mx-auto px-4 py-8">
-        <div className="max-w-7xl mx-auto">
+        <div className="mx-auto max-w-7xl">
           {/* Header */}
           <div className="mb-8 flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">
+              <h1 className="mb-2 text-3xl font-bold text-gray-900 dark:text-gray-100">
                 Administration Galerie
               </h1>
               <p className="text-gray-600 dark:text-gray-400">
@@ -118,25 +116,25 @@ export default function GalleryAdminPage() {
           </div>
 
           {/* Tabs */}
-          <div className="border-b border-gray-200 dark:border-gray-700 mb-8">
+          <div className="mb-8 border-b border-gray-200 dark:border-gray-700">
             <div className="flex gap-4">
               <button
-                onClick={() => setActiveTab('upload')}
-                className={`px-6 py-3 font-medium text-sm transition-colors flex items-center gap-2 border-b-2 ${
-                  activeTab === 'upload'
-                    ? 'border-gray-900 dark:border-gray-100 text-gray-900 dark:text-gray-100'
-                    : 'border-transparent text-gray-500 hover:text-gray-700 dark:hover:text-gray-300'
+                onClick={() => setActiveTab("upload")}
+                className={`flex items-center gap-2 border-b-2 px-6 py-3 text-sm font-medium transition-colors ${
+                  activeTab === "upload"
+                    ? "border-gray-900 text-gray-900 dark:border-gray-100 dark:text-gray-100"
+                    : "border-transparent text-gray-500 hover:text-gray-700 dark:hover:text-gray-300"
                 }`}
               >
                 <Upload size={18} />
                 Upload
               </button>
               <button
-                onClick={() => setActiveTab('manage')}
-                className={`px-6 py-3 font-medium text-sm transition-colors flex items-center gap-2 border-b-2 ${
-                  activeTab === 'manage'
-                    ? 'border-gray-900 dark:border-gray-100 text-gray-900 dark:text-gray-100'
-                    : 'border-transparent text-gray-500 hover:text-gray-700 dark:hover:text-gray-300'
+                onClick={() => setActiveTab("manage")}
+                className={`flex items-center gap-2 border-b-2 px-6 py-3 text-sm font-medium transition-colors ${
+                  activeTab === "manage"
+                    ? "border-gray-900 text-gray-900 dark:border-gray-100 dark:text-gray-100"
+                    : "border-transparent text-gray-500 hover:text-gray-700 dark:hover:text-gray-300"
                 }`}
               >
                 <Settings size={18} />
@@ -147,12 +145,11 @@ export default function GalleryAdminPage() {
 
           {/* Content */}
           <div className="space-y-6">
-            {activeTab === 'upload' && <GalleryUpload password={password} />}
-            {activeTab === 'manage' && <GalleryManager password={password} />}
+            {activeTab === "upload" && <GalleryUpload password={password} />}
+            {activeTab === "manage" && <GalleryManager password={password} />}
           </div>
         </div>
       </div>
     </div>
   );
 }
-

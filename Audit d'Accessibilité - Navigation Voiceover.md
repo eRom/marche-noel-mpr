@@ -11,7 +11,7 @@
 
 **Score VoiceOver : 75/100 → Potentiel 90+/100 avec corrections**
 
-***
+---
 
 ## Analyse Détaillée
 
@@ -51,7 +51,7 @@ Les H3 "Artisans patients" et "Esprit de Noël" n'ont pas de H2 parent - ils son
 
 **Impact** : Structure logique affectée pour les utilisateurs | **Effort** : 2-5 minutes
 
-***
+---
 
 **🟡 PROBLÈME #3 : COMPTEUR DYNAMIQUE SANS NOTIFICATION (PRIORITÉ MOYENNE)**
 
@@ -63,7 +63,7 @@ Les H3 "Artisans patients" et "Esprit de Noël" n'ont pas de H2 parent - ils son
 
 **Impact** : Notifications en temps réel | **Effort** : 1 minute
 
-***
+---
 
 **🟡 PROBLÈME #4 : BOUTONS RÉSEAUX SOCIAUX MANQUENT DE CONTEXTE (PRIORITÉ MOYENNE)**
 
@@ -75,19 +75,19 @@ Facebook, WhatsApp, Twitter, LinkedIn sont énoncés sans contexte. Ajouter `ari
 
 **Impact** : Clarté de l'intention | **Effort** : 2-3 minutes
 
-***
+---
 
 **🟡 PROBLÈME #5 : ALT TEXT GÉNÉRIQUE POUR QR CODE (PRIORITÉ MOYENNE)**
 
 "Image du Marché de Noël MPR" ne précise pas que c'est un QR code. Améliorer :
 
 ```html
-<img alt="Code QR pour accéder au site du Marché de Noël depuis votre mobile">
+<img alt="Code QR pour accéder au site du Marché de Noël depuis votre mobile" />
 ```
 
 **Impact** : Utilisateurs comprennent le purpose | **Effort** : 1 minute
 
-***
+---
 
 **🟢 PROBLÈME #6 : BOUTON MODE SOMBRE SANS LABEL (PRIORITÉ BASSE)**
 
@@ -97,35 +97,31 @@ Facebook, WhatsApp, Twitter, LinkedIn sont énoncés sans contexte. Ajouter `ari
 
 ## Conformité WCAG 2.1 AA
 
-| Critère | Niveau | Status | Notes |
-|---------|--------|--------|-------|
-| 1.1.1 Contenu non textuel | A | ✓ Conforme | Alt text présent |
-| 1.3.1 Info et Relations | AA | ⚠️ Partiel | H3 orphelins |
-| 2.4.1 Contourner des blocs | A | ✓ Conforme | Skip link OK |
-| 2.4.6 En-têtes et étiquettes | AA | ⚠️ Partiel | Hiérarchie incohérente |
-| 4.1.2 Nom, rôle, valeur | A | ⚠️ Partiel | aria-labels manquants |
+| Critère                      | Niveau | Status     | Notes                  |
+| ---------------------------- | ------ | ---------- | ---------------------- |
+| 1.1.1 Contenu non textuel    | A      | ✓ Conforme | Alt text présent       |
+| 1.3.1 Info et Relations      | AA     | ⚠️ Partiel | H3 orphelins           |
+| 2.4.1 Contourner des blocs   | A      | ✓ Conforme | Skip link OK           |
+| 2.4.6 En-têtes et étiquettes | AA     | ⚠️ Partiel | Hiérarchie incohérente |
+| 4.1.2 Nom, rôle, valeur      | A      | ⚠️ Partiel | aria-labels manquants  |
 
-***
+---
 
 ## Plan d'Action (20-30 minutes)
 
 **Phase 1 - Urgent (15 min)**
+
 1. Ajouter `aria-hidden="true"` aux flocons
 2. Ajouter `aria-live="polite"` au compteur
 3. Ajouter `aria-label` aux boutons réseaux
 
-**Phase 2 - Optimisation (5-10 min)**
-4. Améliorer alt text QR code
-5. Corriger hiérarchie des titres
-6. Ajouter aria-label au bouton mode sombre
+**Phase 2 - Optimisation (5-10 min)** 4. Améliorer alt text QR code 5. Corriger hiérarchie des titres 6. Ajouter aria-label au bouton mode sombre
 
 ---
 
 ## Rapport Complet
 
-
-
-***
+---
 
 ## Conclusion
 

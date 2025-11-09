@@ -1,6 +1,6 @@
-const sharp = require('sharp');
-const fs = require('fs');
-const path = require('path');
+const sharp = require("sharp");
+const fs = require("fs");
+const path = require("path");
 
 /**
  * Scan recursively for PNG/JPG files in a directory
@@ -18,7 +18,7 @@ function findImageFiles(dir) {
       results.push(...findImageFiles(filePath));
     } else if (stat.isFile()) {
       const ext = path.extname(file).toLowerCase();
-      if (ext === '.png' || ext === '.jpg' || ext === '.jpeg') {
+      if (ext === ".png" || ext === ".jpg" || ext === ".jpeg") {
         results.push(filePath);
       }
     }
@@ -48,20 +48,26 @@ async function convertToWebP(inputPath, webpDir) {
     // Ensure webp directory exists
     fs.mkdirSync(webpDir, { recursive: true });
 
-    console.log(`\n📸 Processing ${path.basename(inputPath)} (${originalSizeKB}KB)...`);
+    console.log(
+      `\n📸 Processing ${path.basename(inputPath)} (${originalSizeKB}KB)...`
+    );
 
     // Convert to WebP
     await sharp(inputPath)
-      .webp({ 
-        quality: 90
+      .webp({
+        quality: 90,
       })
       .toFile(outputPath);
 
     const webpStats = fs.statSync(outputPath);
     const webpSizeKB = Math.round(webpStats.size / 1024);
-    const savings = Math.round(((originalSizeKB - webpSizeKB) / originalSizeKB) * 100);
+    const savings = Math.round(
+      ((originalSizeKB - webpSizeKB) / originalSizeKB) * 100
+    );
 
-    console.log(`✅ Created ${path.basename(outputPath)} (${webpSizeKB}KB, ${savings}% smaller)`);
+    console.log(
+      `✅ Created ${path.basename(outputPath)} (${webpSizeKB}KB, ${savings}% smaller)`
+    );
 
     return { originalSizeKB, webpSizeKB, savings };
   } catch (error) {
@@ -78,9 +84,9 @@ async function main() {
   const directory = process.argv[2];
 
   if (!directory) {
-    console.error('❌ Please provide a directory path as an argument');
-    console.error('Usage: npm run convert:webp <directory>');
-    console.error('Example: npm run convert:webp maquette/gallery/MPR');
+    console.error("❌ Please provide a directory path as an argument");
+    console.error("Usage: npm run convert:webp <directory>");
+    console.error("Example: npm run convert:webp maquette/gallery/MPR");
     process.exit(1);
   }
 
@@ -98,18 +104,18 @@ async function main() {
     process.exit(1);
   }
 
-  console.log('🚀 Starting WebP conversion...');
+  console.log("🚀 Starting WebP conversion...");
   console.log(`📁 Target directory: ${fullPath}`);
-  console.log(`📁 WebP output directory: ${path.join(fullPath, 'webp')}\n`);
+  console.log(`📁 WebP output directory: ${path.join(fullPath, "webp")}\n`);
 
   // Create webp subdirectory
-  const webpDir = path.join(fullPath, 'webp');
+  const webpDir = path.join(fullPath, "webp");
 
   // Find all PNG/JPG files
   const imageFiles = findImageFiles(fullPath);
 
   if (imageFiles.length === 0) {
-    console.log('⚠️  No PNG or JPG files found in the directory');
+    console.log("⚠️  No PNG or JPG files found in the directory");
     process.exit(0);
   }
 
@@ -128,20 +134,21 @@ async function main() {
   if (results.length > 0) {
     const totalOriginal = results.reduce((sum, r) => sum + r.originalSizeKB, 0);
     const totalWebp = results.reduce((sum, r) => sum + r.webpSizeKB, 0);
-    const totalSavings = Math.round(((totalOriginal - totalWebp) / totalOriginal) * 100);
+    const totalSavings = Math.round(
+      ((totalOriginal - totalWebp) / totalOriginal) * 100
+    );
 
-    console.log('\n' + '='.repeat(50));
-    console.log('🎉 Conversion complete!');
+    console.log("\n" + "=".repeat(50));
+    console.log("🎉 Conversion complete!");
     console.log(`📊 Summary:`);
     console.log(`   - Files converted: ${results.length}`);
     console.log(`   - Original size: ${totalOriginal}KB`);
     console.log(`   - WebP size: ${totalWebp}KB`);
     console.log(`   - Total savings: ${totalSavings}%`);
-    console.log('='.repeat(50));
+    console.log("=".repeat(50));
   } else {
-    console.log('\n⚠️  No files were converted');
+    console.log("\n⚠️  No files were converted");
   }
 }
 
 main().catch(console.error);
-

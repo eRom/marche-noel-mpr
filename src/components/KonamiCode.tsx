@@ -5,14 +5,14 @@ import { playKonamiSound } from "@/lib/snowflakeSound";
 
 const KONAMI_SEQUENCE = [
   "ArrowUp",
-  "ArrowUp", 
+  "ArrowUp",
   "ArrowDown",
   "ArrowDown",
   "ArrowLeft",
   "ArrowRight",
   "ArrowLeft",
   "ArrowRight",
-  "Enter"
+  "Enter",
 ];
 
 const COOLDOWN_DURATION = 30000; // 30 secondes en millisecondes
@@ -31,29 +31,29 @@ export default function KonamiCode() {
       }
 
       // Ajouter la touche pressee
-      setKeys(prev => {
+      setKeys((prev) => {
         const newKeys = [...prev, e.key];
-        
+
         // Garder seulement les dernieres touches (longueur de la sequence)
         if (newKeys.length > KONAMI_SEQUENCE.length) {
           newKeys.shift();
         }
-        
+
         // Verifier si la sequence est complete
         if (newKeys.join(",") === KONAMI_SEQUENCE.join(",")) {
           setActivated(true);
           setLastActivation(Date.now());
-          
+
           // 🎵 Jouer le son "Ho Ho Ho !"
           playKonamiSound();
-          
+
           // Desactiver l'animation apres 5 secondes
           setTimeout(() => setActivated(false), 5000);
-          
+
           // Reset les touches
           return [];
         }
-        
+
         return newKeys;
       });
     };
@@ -65,7 +65,7 @@ export default function KonamiCode() {
   if (!activated) return null;
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-[9999] overflow-hidden">
+    <div className="pointer-events-none fixed inset-0 z-[9999] overflow-hidden">
       {/* Explosion de flocons */}
       {Array.from({ length: 50 }).map((_, i) => (
         <div
@@ -81,16 +81,16 @@ export default function KonamiCode() {
           ❄️
         </div>
       ))}
-      
+
       {/* Emojis de Noel qui tombent */}
       {Array.from({ length: 30 }).map((_, i) => {
         const emojis = ["🎁", "🎄", "⭐", "🎅", "🔔", "🕯️"];
         const emoji = emojis[Math.floor(Math.random() * emojis.length)];
-        
+
         return (
           <div
             key={`emoji-${i}`}
-            className="absolute text-4xl animate-bounce"
+            className="absolute animate-bounce text-4xl"
             style={{
               left: `${Math.random() * 100}%`,
               top: `-50px`,
@@ -102,15 +102,18 @@ export default function KonamiCode() {
           </div>
         );
       })}
-      
+
       {/* Message de felicitation */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
-        <div className="bg-primary/90 text-primary-foreground px-8 py-6 rounded-2xl shadow-2xl animate-bounce backdrop-blur-sm border-4 border-white/20">
-          <p className="text-3xl md:text-5xl font-bold mb-2">🎄 Ho Ho Ho ! 🎅</p>
-          <p className="text-lg md:text-xl">Joyeux Noël ! Vous avez trouvé l&apos;Easter Egg !</p>
+        <div className="bg-primary/90 text-primary-foreground animate-bounce rounded-2xl border-4 border-white/20 px-8 py-6 shadow-2xl backdrop-blur-sm">
+          <p className="mb-2 text-3xl font-bold md:text-5xl">
+            🎄 Ho Ho Ho ! 🎅
+          </p>
+          <p className="text-lg md:text-xl">
+            Joyeux Noël ! Vous avez trouvé l&apos;Easter Egg !
+          </p>
         </div>
       </div>
     </div>
   );
 }
-

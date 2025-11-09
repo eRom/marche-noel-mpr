@@ -84,15 +84,17 @@ Les fichiers séparés (`base.css`, `default.css`) sont présentés ici pour la 
 
 /* Transitions smooth pour les changements de thème */
 :root {
-  transition: background-color 0.15s ease,
-              color 0.15s ease,
-              border-color 0.15s ease;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
 }
 
 * {
-  transition: background-color 0.15s ease,
-              color 0.15s ease,
-              border-color 0.15s ease;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
 }
 
 /* Exclure les transitions pour les éléments animés et interactifs */
@@ -109,7 +111,9 @@ select {
 /* Réactiver les transitions pour les états hover/focus sur les éléments interactifs */
 button:not([class*="animate-"]),
 a:not([class*="animate-"]) {
-  transition: opacity 0.15s ease, transform 0.15s ease !important;
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease !important;
 }
 
 @layer base {
@@ -165,14 +169,19 @@ a:not([class*="animate-"]) {
   --font-mono: ui-monospace, monospace;
 
   --radius: 0.625rem;
-  
+
   --shadow-2xs: 0px 1px 2px 0px hsl(0 0% 0% / 0.05);
   --shadow-xs: 0px 1px 2px 0px hsl(0 0% 0% / 0.05);
-  --shadow-sm: 0px 1px 3px 0px hsl(0 0% 0% / 0.10), 0px 1px 2px -1px hsl(0 0% 0% / 0.10);
-  --shadow: 0px 1px 3px 0px hsl(0 0% 0% / 0.10), 0px 1px 2px -1px hsl(0 0% 0% / 0.10);
-  --shadow-md: 0px 4px 6px -1px hsl(0 0% 0% / 0.10), 0px 2px 4px -2px hsl(0 0% 0% / 0.10);
-  --shadow-lg: 0px 10px 15px -3px hsl(0 0% 0% / 0.10), 0px 4px 6px -4px hsl(0 0% 0% / 0.10);
-  --shadow-xl: 0px 20px 25px -5px hsl(0 0% 0% / 0.10), 0px 8px 10px -6px hsl(0 0% 0% / 0.10);
+  --shadow-sm:
+    0px 1px 3px 0px hsl(0 0% 0% / 0.1), 0px 1px 2px -1px hsl(0 0% 0% / 0.1);
+  --shadow:
+    0px 1px 3px 0px hsl(0 0% 0% / 0.1), 0px 1px 2px -1px hsl(0 0% 0% / 0.1);
+  --shadow-md:
+    0px 4px 6px -1px hsl(0 0% 0% / 0.1), 0px 2px 4px -2px hsl(0 0% 0% / 0.1);
+  --shadow-lg:
+    0px 10px 15px -3px hsl(0 0% 0% / 0.1), 0px 4px 6px -4px hsl(0 0% 0% / 0.1);
+  --shadow-xl:
+    0px 20px 25px -5px hsl(0 0% 0% / 0.1), 0px 8px 10px -6px hsl(0 0% 0% / 0.1);
   --shadow-2xl: 0px 25px 50px -12px hsl(0 0% 0% / 0.25);
 }
 
@@ -279,7 +288,8 @@ export function loadThemeCSS(theme: ThemeConfig): Promise<void> {
     link.rel = "stylesheet";
     link.href = theme.cssFile;
     link.onload = () => resolve();
-    link.onerror = () => reject(new Error(`Failed to load theme CSS: ${theme.cssFile}`));
+    link.onerror = () =>
+      reject(new Error(`Failed to load theme CSS: ${theme.cssFile}`));
     document.head.appendChild(link);
   });
 }
@@ -442,7 +452,7 @@ export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
 
         // Les CSS sont déjà dans globals.css, on applique juste l'attribut
         applyThemeAttribute(themeToLoad.id);
-        
+
         // Charger les Google Fonts si nécessaire
         if (themeToLoad.fonts.googleFonts.length > 0) {
           preloadThemeFonts(themeToLoad);
@@ -480,12 +490,12 @@ export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
     try {
       // Les CSS sont déjà dans globals.css, on change juste l'attribut
       applyThemeAttribute(newTheme.id);
-      
+
       // Charger les Google Fonts si nécessaire
       if (newTheme.fonts.googleFonts.length > 0) {
         await loadGoogleFonts(newTheme);
       }
-      
+
       setColorThemeState(newTheme);
       localStorage.setItem(COLOR_THEME_STORAGE_KEY, newTheme.id);
     } catch (error) {
@@ -530,6 +540,7 @@ export function useColorThemeContext() {
 ```
 
 **Changements clés** :
+
 - ❌ Plus de `loadCompleteTheme()` ou `switchTheme()`
 - ✅ Simple `applyThemeAttribute()` (changement d'attribut HTML)
 - ✅ Chargement Google Fonts uniquement si nécessaire
@@ -665,7 +676,7 @@ export function ThemeSelector() {
             <label className="text-sm font-medium">Thème de couleur</label>
             <Badge variant="outline">{colorTheme.name}</Badge>
           </div>
-          
+
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="outline" className="w-full justify-between">
@@ -908,15 +919,17 @@ Remplacez le contenu de `src/app/globals.css` par :
 
 /* Transitions smooth pour les changements de thème */
 :root {
-  transition: background-color 0.15s ease,
-              color 0.15s ease,
-              border-color 0.15s ease;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
 }
 
 * {
-  transition: background-color 0.15s ease,
-              color 0.15s ease,
-              border-color 0.15s ease;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
 }
 
 /* Exclure les transitions pour les éléments animés et interactifs */
@@ -933,7 +946,9 @@ select {
 /* Réactiver les transitions pour les états hover/focus sur les éléments interactifs */
 button:not([class*="animate-"]),
 a:not([class*="animate-"]) {
-  transition: opacity 0.15s ease, transform 0.15s ease !important;
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease !important;
 }
 
 @layer base {
@@ -989,14 +1004,19 @@ a:not([class*="animate-"]) {
   --font-mono: ui-monospace, monospace;
 
   --radius: 0.625rem;
-  
+
   --shadow-2xs: 0px 1px 2px 0px hsl(0 0% 0% / 0.05);
   --shadow-xs: 0px 1px 2px 0px hsl(0 0% 0% / 0.05);
-  --shadow-sm: 0px 1px 3px 0px hsl(0 0% 0% / 0.10), 0px 1px 2px -1px hsl(0 0% 0% / 0.10);
-  --shadow: 0px 1px 3px 0px hsl(0 0% 0% / 0.10), 0px 1px 2px -1px hsl(0 0% 0% / 0.10);
-  --shadow-md: 0px 4px 6px -1px hsl(0 0% 0% / 0.10), 0px 2px 4px -2px hsl(0 0% 0% / 0.10);
-  --shadow-lg: 0px 10px 15px -3px hsl(0 0% 0% / 0.10), 0px 4px 6px -4px hsl(0 0% 0% / 0.10);
-  --shadow-xl: 0px 20px 25px -5px hsl(0 0% 0% / 0.10), 0px 8px 10px -6px hsl(0 0% 0% / 0.10);
+  --shadow-sm:
+    0px 1px 3px 0px hsl(0 0% 0% / 0.1), 0px 1px 2px -1px hsl(0 0% 0% / 0.1);
+  --shadow:
+    0px 1px 3px 0px hsl(0 0% 0% / 0.1), 0px 1px 2px -1px hsl(0 0% 0% / 0.1);
+  --shadow-md:
+    0px 4px 6px -1px hsl(0 0% 0% / 0.1), 0px 2px 4px -2px hsl(0 0% 0% / 0.1);
+  --shadow-lg:
+    0px 10px 15px -3px hsl(0 0% 0% / 0.1), 0px 4px 6px -4px hsl(0 0% 0% / 0.1);
+  --shadow-xl:
+    0px 20px 25px -5px hsl(0 0% 0% / 0.1), 0px 8px 10px -6px hsl(0 0% 0% / 0.1);
   --shadow-2xl: 0px 25px 50px -12px hsl(0 0% 0% / 0.25);
 }
 
@@ -1087,6 +1107,7 @@ export default function RootLayout({
 ```
 
 **Pourquoi c'est essentiel** :
+
 - ✅ Le script s'exécute **avant** le rendu
 - ✅ Applique le thème sauvegardé **immédiatement**
 - ✅ Évite le flash de contenu non stylé (FOUC)
@@ -1140,16 +1161,22 @@ import { ThemeSelector, ThemeModeToggle, ColorThemeDropdown } from "@/components
 **⚠️ IMPORTANT** : Ajouter le thème dans `globals.css`, PAS dans un fichier séparé.
 
 1. **Ajouter à la fin de `src/app/globals.css`** :
+
 ```css
 /* ============================================ */
 /* THÈME MON-THEME */
 /* ============================================ */
 
-[data-color-theme="mon-theme"] { /* light mode - 36 variables + fonts + radius + shadows */ }
-[data-color-theme="mon-theme"].dark { /* dark mode - 36 variables */ }
+[data-color-theme="mon-theme"] {
+  /* light mode - 36 variables + fonts + radius + shadows */
+}
+[data-color-theme="mon-theme"].dark {
+  /* dark mode - 36 variables */
+}
 ```
 
 2. **Ajouter dans `src/config/themes.ts`** :
+
 ```typescript
 {
   id: "mon-theme",
@@ -1172,6 +1199,7 @@ Chaque thème DOIT définir toutes ces variables pour light et dark mode.
 ## Points Critiques ✅
 
 ### 1. Script Inline dans Layout (OBLIGATOIRE)
+
 ```typescript
 <html data-color-theme="default">
   <head>
@@ -1187,20 +1215,28 @@ Chaque thème DOIT définir toutes ces variables pour light et dark mode.
     }} />
   </head>
 ```
+
 **Pourquoi** : Applique le thème AVANT le rendu, évite le FOUC (flash de contenu non stylé).
 
 ### 2. Tous les Thèmes dans globals.css (OBLIGATOIRE)
+
 ```css
 /* Ne PAS utiliser @import pour les thèmes */
 /* ❌ @import "../styles/themes/default.css"; */
 
 /* ✅ Directement dans globals.css */
-[data-color-theme="default"] { /* ... */ }
-[data-color-theme="amethyst"] { /* ... */ }
+[data-color-theme="default"] {
+  /* ... */
+}
+[data-color-theme="amethyst"] {
+  /* ... */
+}
 ```
+
 **Pourquoi** : Les `@import` relatifs ne fonctionnent pas avec Tailwind v4.
 
 ### 3. Provider Simplifié (PAS de chargement dynamique)
+
 ```typescript
 // ❌ Ne PAS utiliser
 await loadCompleteTheme(theme);
@@ -1208,8 +1244,9 @@ await switchTheme(oldTheme, newTheme);
 
 // ✅ Utiliser
 applyThemeAttribute(theme.id);
-await loadGoogleFonts(theme);  // Seulement si googleFonts.length > 0
+await loadGoogleFonts(theme); // Seulement si googleFonts.length > 0
 ```
+
 **Pourquoi** : Les CSS sont déjà chargés, on change juste l'attribut HTML.
 
 ## Architecture Finale
@@ -1252,17 +1289,19 @@ src/
 ## Dépannage
 
 ### Problème : Le thème ne s'applique pas
+
 ✅ Vérifier que `data-color-theme` est présent sur `<html>`
 ✅ Vérifier que le CSS est dans `globals.css`
 ✅ Vérifier le sélecteur `[data-color-theme="..."]`
 
 ### Problème : Flash de contenu non stylé (FOUC)
+
 ✅ Ajouter le script inline dans le `<head>`
 ✅ Ajouter `data-color-theme="default"` sur `<html>`
 
 ### Problème : Les thèmes ne se chargent pas
+
 ✅ Ne PAS utiliser `@import` pour les thèmes
 ✅ Mettre tous les thèmes dans `globals.css`
 
 Le système est maintenant opérationnel ! 🎉
-

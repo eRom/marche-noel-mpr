@@ -97,7 +97,13 @@ export default function AnimatedSection({
 }
 
 // Composant pour les enfants stagger
-export function StaggerItem({ children, className }: { children: React.ReactNode; className?: string }) {
+export function StaggerItem({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
   return (
     <motion.div
       variants={{

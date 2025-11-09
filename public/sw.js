@@ -1,22 +1,22 @@
 // Service Worker - Marché de Noël MPR
 // Version 1.0.0
 
-const CACHE_VERSION = 'marche-noel-mpr-v1';
+const CACHE_VERSION = "marche-noel-mpr-v1";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const DYNAMIC_CACHE = `${CACHE_VERSION}-dynamic`;
 const IMAGE_CACHE = `${CACHE_VERSION}-images`;
 
 // Ressources à mettre en cache immédiatement
 const STATIC_ASSETS = [
-  '/',
-  '/programme',
-  '/galerie',
-  '/a-propos',
-  '/merci',
-  '/manifest.json',
-  '/icon-192.png',
-  '/icon-512.png',
-  '/favicon.ico',
+  "/",
+  "/programme",
+  "/galerie",
+  "/a-propos",
+  "/merci",
+  "/manifest.json",
+  "/icon-192.png",
+  "/icon-512.png",
+  "/favicon.ico",
 ];
 
 // Limites de cache
@@ -34,13 +34,14 @@ async function limitCacheSize(cacheName, maxSize) {
 }
 
 // Installation du Service Worker
-self.addEventListener('install', (event) => {
-  console.log('[SW] Installation...');
-  
+self.addEventListener("install", (event) => {
+  console.log("[SW] Installation...");
+
   event.waitUntil(
-    caches.open(STATIC_CACHE)
+    caches
+      .open(STATIC_CACHE)
       .then((cache) => {
-        console.log('[SW] Mise en cache des assets statiques');
+        console.log("[SW] Mise en cache des assets statiques");
         return cache.addAll(STATIC_ASSETS);
       })
       .then(() => self.skipWaiting())
@@ -48,17 +49,23 @@ self.addEventListener('install', (event) => {
 });
 
 // Activation du Service Worker
-self.addEventListener('activate', (event) => {
-  console.log('[SW] Activation...');
-  
+self.addEventListener("activate", (event) => {
+  console.log("[SW] Activation...");
+
   event.waitUntil(
-    caches.keys()
+    caches
+      .keys()
       .then((cacheNames) => {
         return Promise.all(
           cacheNames
-            .filter((name) => name !== STATIC_CACHE && name !== DYNAMIC_CACHE && name !== IMAGE_CACHE)
+            .filter(
+              (name) =>
+                name !== STATIC_CACHE &&
+                name !== DYNAMIC_CACHE &&
+                name !== IMAGE_CACHE
+            )
             .map((name) => {
-              console.log('[SW] Suppression ancien cache:', name);
+              console.log("[SW] Suppression ancien cache:", name);
               return caches.delete(name);
             })
         );
@@ -75,7 +82,7 @@ const cacheStrategies = {
     if (cachedResponse) {
       return cachedResponse;
     }
-    
+
     try {
       const networkResponse = await fetch(request);
       if (networkResponse && networkResponse.status === 200) {
@@ -84,7 +91,7 @@ const cacheStrategies = {
       }
       return networkResponse;
     } catch (error) {
-      console.log('[SW] Fetch failed:', error);
+      console.log("[SW] Fetch failed:", error);
       throw error;
     }
   },
@@ -102,12 +109,12 @@ const cacheStrategies = {
     } catch (error) {
       const cachedResponse = await caches.match(request);
       if (cachedResponse) {
-        console.log('[SW] Serving from cache:', request.url);
+        console.log("[SW] Serving from cache:", request.url);
         return cachedResponse;
       }
-      
+
       // Page hors ligne de fallback
-      if (request.mode === 'navigate') {
+      if (request.mode === "navigate") {
         return new Response(
           `<!DOCTYPE html>
           <html lang="fr">
@@ -170,11 +177,11 @@ const cacheStrategies = {
           </body>
           </html>`,
           {
-            headers: { 'Content-Type': 'text/html' },
+            headers: { "Content-Type": "text/html" },
           }
         );
       }
-      
+
       throw error;
     }
   },
@@ -182,7 +189,7 @@ const cacheStrategies = {
   // Stale While Revalidate: Pour les images
   staleWhileRevalidate: async (request) => {
     const cachedResponse = await caches.match(request);
-    
+
     const fetchPromise = fetch(request).then((networkResponse) => {
       if (networkResponse && networkResponse.status === 200) {
         const cache = caches.open(IMAGE_CACHE);
@@ -193,46 +200,62 @@ const cacheStrategies = {
       }
       return networkResponse;
     });
-    
+
     return cachedResponse || fetchPromise;
   },
 };
 
 // Interception des requêtes
-self.addEventListener('fetch', (event) => {
+self.addEventListener("fetch", (event) => {
   const { request } = event;
   const url = new URL(request.url);
 
   // Ignorer les requêtes non-GET
-  if (request.method !== 'GET') {
+  if (request.method !== "GET") {
     return;
   }
 
   // Ignorer les requêtes vers d'autres domaines (sauf les fonts et images)
-  if (url.origin !== location.origin && !url.pathname.match(/\.(woff2?|ttf|eot|svg|png|jpg|jpeg|webp|avif|gif)$/)) {
+  if (
+    url.origin !== location.origin &&
+    !url.pathname.match(/\.(woff2?|ttf|eot|svg|png|jpg|jpeg|webp|avif|gif)$/)
+  ) {
     return;
   }
 
   // Stratégie pour les images
-  if (request.destination === 'image' || url.pathname.match(/\.(png|jpg|jpeg|webp|avif|gif|svg)$/)) {
+  if (
+    request.destination === "image" ||
+    url.pathname.match(/\.(png|jpg|jpeg|webp|avif|gif|svg)$/)
+  ) {
     event.respondWith(cacheStrategies.staleWhileRevalidate(request));
     return;
   }
 
   // Stratégie pour les fonts
-  if (request.destination === 'font' || url.pathname.match(/\.(woff2?|ttf|eot)$/)) {
+  if (
+    request.destination === "font" ||
+    url.pathname.match(/\.(woff2?|ttf|eot)$/)
+  ) {
     event.respondWith(cacheStrategies.cacheFirst(request));
     return;
   }
 
   // Stratégie pour les assets statiques (CSS, JS)
-  if (request.destination === 'style' || request.destination === 'script' || url.pathname.match(/\.(css|js)$/)) {
+  if (
+    request.destination === "style" ||
+    request.destination === "script" ||
+    url.pathname.match(/\.(css|js)$/)
+  ) {
     event.respondWith(cacheStrategies.cacheFirst(request));
     return;
   }
 
   // Stratégie pour les pages HTML et API
-  if (request.destination === 'document' || request.headers.get('accept')?.includes('text/html')) {
+  if (
+    request.destination === "document" ||
+    request.headers.get("accept")?.includes("text/html")
+  ) {
     event.respondWith(cacheStrategies.networkFirst(request));
     return;
   }
@@ -242,24 +265,21 @@ self.addEventListener('fetch', (event) => {
 });
 
 // Message handler pour les communications avec le client
-self.addEventListener('message', (event) => {
-  if (event.data && event.data.type === 'SKIP_WAITING') {
+self.addEventListener("message", (event) => {
+  if (event.data && event.data.type === "SKIP_WAITING") {
     self.skipWaiting();
   }
-  
-  if (event.data && event.data.type === 'CLEAR_CACHE') {
+
+  if (event.data && event.data.type === "CLEAR_CACHE") {
     event.waitUntil(
       caches.keys().then((cacheNames) => {
-        return Promise.all(
-          cacheNames.map((name) => caches.delete(name))
-        );
+        return Promise.all(cacheNames.map((name) => caches.delete(name)));
       })
     );
   }
 });
 
 // Notification de mise à jour disponible
-self.addEventListener('controllerchange', () => {
-  console.log('[SW] Nouvelle version disponible');
+self.addEventListener("controllerchange", () => {
+  console.log("[SW] Nouvelle version disponible");
 });
-

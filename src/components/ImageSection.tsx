@@ -2,10 +2,10 @@ import Image from "next/image";
 
 export default function ImageSection() {
   return (
-    <section className="py-16 bg-background">
+    <section className="bg-background py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="relative w-full h-auto">
-          <div className="relative w-full aspect-[2/1] rounded-2xl overflow-hidden shadow-xl">
+        <div className="relative h-auto w-full">
+          <div className="relative aspect-[2/1] w-full overflow-hidden rounded-2xl shadow-xl">
             <Image
               src="/maquette-image.webp"
               alt="Image du Marché de Noël MPR"

@@ -16,27 +16,41 @@ import "./globals.css";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
-  display: 'optional',
+  display: "optional",
   preload: true,
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
-  display: 'swap',
+  display: "swap",
   preload: false, // Only preload the primary font
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://mpr-noel.romain-ecarnot.com'),
+  metadataBase: new URL("https://mpr-noel.romain-ecarnot.com"),
   title: "Marché de Noël du MPR - Nantes 2025",
-  description: "Découvrez la magie de Noël au cœur de Nantes ! Marché traditionnel au sein du pôle de Médecine Physique et de Réadaptation du CHU de Nantes. Produits authentiques, animations festives et ambiance chaleureuse vous attendent.",
+  description:
+    "Découvrez la magie de Noël au cœur de Nantes ! Marché traditionnel au sein du pôle de Médecine Physique et de Réadaptation du CHU de Nantes. Produits authentiques, animations festives et ambiance chaleureuse vous attendent.",
   manifest: "/manifest.json",
-  keywords: ["marché de noël", "nantes", "mpr", "artisans", "décembre 2025", "événement", "tradition", "cadeaux", "produits locaux", "médecine physique", "réadaptation"],
+  keywords: [
+    "marché de noël",
+    "nantes",
+    "mpr",
+    "artisans",
+    "décembre 2025",
+    "événement",
+    "tradition",
+    "cadeaux",
+    "produits locaux",
+    "médecine physique",
+    "réadaptation",
+  ],
   authors: [{ name: "Romain Ecarnot" }],
   openGraph: {
     title: "Marché de Noël du MPR - Nantes 2025",
-    description: "Découvrez la magie de Noël au cœur de Nantes ! Marché traditionnel au sein du pôle de Médecine Physique et de Réadaptation du CHU de Nantes. Produits authentiques, animations festives et ambiance chaleureuse vous attendent.",
+    description:
+      "Découvrez la magie de Noël au cœur de Nantes ! Marché traditionnel au sein du pôle de Médecine Physique et de Réadaptation du CHU de Nantes. Produits authentiques, animations festives et ambiance chaleureuse vous attendent.",
     type: "website",
     locale: "fr_FR",
     siteName: "Marché de Noël du MPR",
@@ -52,7 +66,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Marché de Noël du MPR - Nantes 2025",
-    description: "Découvrez la magie de Noël au cœur de Nantes ! Marché traditionnel au sein du pôle de Médecine Physique et de Réadaptation du CHU de Nantes. Produits authentiques, animations festives et ambiance chaleureuse vous attendent.",
+    description:
+      "Découvrez la magie de Noël au cœur de Nantes ! Marché traditionnel au sein du pôle de Médecine Physique et de Réadaptation du CHU de Nantes. Produits authentiques, animations festives et ambiance chaleureuse vous attendent.",
     images: ["/og.webp"],
   },
   icons: {

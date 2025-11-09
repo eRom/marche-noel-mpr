@@ -18,7 +18,9 @@ export default function CinematicVideo() {
   useEffect(() => {
     const updateVideoSrc = () => {
       const isMobile = window.innerWidth < 640;
-      setVideoSrc(isMobile ? "/medias/cinematic-portrait.mp4" : "/medias/cinematic.mp4");
+      setVideoSrc(
+        isMobile ? "/medias/cinematic-portrait.mp4" : "/medias/cinematic.mp4"
+      );
     };
 
     // Initialisation
@@ -72,12 +74,14 @@ export default function CinematicVideo() {
   };
 
   return (
-    <div className="relative w-full max-w-5xl mx-auto">
-      <div className={`relative overflow-hidden rounded-lg bg-foreground/10 shadow-2xl ${videoSrc.includes('portrait') ? 'aspect-[9/16]' : 'aspect-video'}`}>
+    <div className="relative mx-auto w-full max-w-5xl">
+      <div
+        className={`bg-foreground/10 relative overflow-hidden rounded-lg shadow-2xl ${videoSrc.includes("portrait") ? "aspect-[9/16]" : "aspect-video"}`}
+      >
         {videoSrc && (
           <video
             ref={videoRef}
-            className="w-full h-full object-cover"
+            className="h-full w-full object-cover"
             muted={isMuted}
             preload="metadata"
             playsInline
@@ -85,10 +89,10 @@ export default function CinematicVideo() {
             key={videoSrc}
           >
             <source src={videoSrc} type="video/mp4" />
-            <track 
-              kind="captions" 
-              src="/medias/cinematic-subtitles.vtt" 
-              srcLang="fr" 
+            <track
+              kind="captions"
+              src="/medias/cinematic-subtitles.vtt"
+              srcLang="fr"
               label="Français"
             />
             Votre navigateur ne supporte pas la lecture de vidéos.
@@ -96,16 +100,19 @@ export default function CinematicVideo() {
         )}
 
         {/* Contrôles */}
-        <div className="absolute inset-0 flex items-center justify-center md:items-center" style={{ paddingTop: 'clamp(0px, 8vh, 100px)' }}>
+        <div
+          className="absolute inset-0 flex items-center justify-center md:items-center"
+          style={{ paddingTop: "clamp(0px, 8vh, 100px)" }}
+        >
           {/* Play/Pause Button - Center on desktop, lower on mobile */}
           {!isPlaying && (
             <Button
               onClick={togglePlay}
               size="lg"
-              className="bg-primary/90 hover:bg-primary rounded-full shadow-2xl text-primary-foreground border-2 border-white/20 px-8 py-6 backdrop-blur-sm md:mt-0 mt-12"
+              className="bg-primary/90 hover:bg-primary text-primary-foreground mt-12 rounded-full border-2 border-white/20 px-8 py-6 shadow-2xl backdrop-blur-sm md:mt-0"
               aria-label="Lire la vidéo"
             >
-              <Play className="h-8 w-8 mr-2" aria-hidden="true" />
+              <Play className="mr-2 h-8 w-8" aria-hidden="true" />
               <span className="font-semibold">Lire la vidéo</span>
             </Button>
           )}
@@ -117,7 +124,7 @@ export default function CinematicVideo() {
             onClick={toggleMute}
             variant="secondary"
             size="icon"
-            className="bg-black/50 hover:bg-black/70 rounded-full shadow-lg text-white backdrop-blur-sm"
+            className="rounded-full bg-black/50 text-white shadow-lg backdrop-blur-sm hover:bg-black/70"
             aria-label={isMuted ? "Activer le son" : "Désactiver le son"}
             aria-live="polite"
           >
@@ -133,7 +140,7 @@ export default function CinematicVideo() {
               onClick={togglePlay}
               variant="secondary"
               size="icon"
-              className="bg-black/50 hover:bg-black/70 rounded-full shadow-lg text-white backdrop-blur-sm"
+              className="rounded-full bg-black/50 text-white shadow-lg backdrop-blur-sm hover:bg-black/70"
               aria-label="Mettre en pause"
             >
               <svg
@@ -156,10 +163,9 @@ export default function CinematicVideo() {
 
         {/* Gradient overlay for better button visibility */}
         {!isPlaying && (
-          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20 pointer-events-none" />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20" />
         )}
       </div>
     </div>
   );
 }
-

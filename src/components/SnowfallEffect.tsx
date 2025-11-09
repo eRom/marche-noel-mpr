@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 interface Snowflake {
   id: number;
@@ -36,7 +36,7 @@ export default function SnowfallEffect() {
 
   return (
     <div
-      className="fixed inset-0 pointer-events-none z-50 overflow-hidden"
+      className="pointer-events-none fixed inset-0 z-50 overflow-hidden"
       aria-hidden="true"
     >
       {snowflakes.map((flake) => (
@@ -45,13 +45,13 @@ export default function SnowfallEffect() {
           className="absolute rounded-full bg-white opacity-70"
           style={{
             left: `${flake.left}%`,
-            top: '-5%',
+            top: "-5%",
             width: `${flake.size}px`,
             height: `${flake.size}px`,
-            filter: 'blur(1px)',
+            filter: "blur(1px)",
           }}
           animate={{
-            y: ['0vh', '105vh'],
+            y: ["0vh", "105vh"],
             x: [0, flake.targetX, flake.targetX * 0.5, flake.targetX],
             opacity: [0, 0.7, 0.7, 0],
           }}
@@ -59,11 +59,10 @@ export default function SnowfallEffect() {
             duration: flake.duration,
             delay: flake.delay,
             repeat: Infinity,
-            ease: 'linear',
+            ease: "linear",
           }}
         />
       ))}
     </div>
   );
 }
-

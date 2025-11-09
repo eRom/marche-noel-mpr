@@ -11,44 +11,44 @@ import { StaggerItem } from "@/components/AnimatedSection";
 
 // Lazy load all non-critical components
 const Header = dynamic(() => import("@/components/Header"), {
-  loading: () => <div className="h-16 bg-background" />
+  loading: () => <div className="bg-background h-16" />,
 });
 
 const Footer = dynamic(() => import("@/components/Footer"), {
-  loading: () => <div className="h-32 bg-muted" />
+  loading: () => <div className="bg-muted h-32" />,
 });
 
 const HeroSection = dynamic(() => import("@/components/HeroSection"), {
-  loading: () => <div className="h-96 bg-muted animate-pulse" />
+  loading: () => <div className="bg-muted h-96 animate-pulse" />,
 });
 
 const AnimatedSection = dynamic(() => import("@/components/AnimatedSection"), {
   loading: () => <div />,
-  ssr: true
+  ssr: true,
 });
 
 const QRCodeSection = dynamic(() => import("@/components/QRCodeSection"), {
-  loading: () => <div className="h-32 bg-muted animate-pulse rounded-lg" />
+  loading: () => <div className="bg-muted h-32 animate-pulse rounded-lg" />,
 });
 
 const ImageSection = dynamic(() => import("@/components/ImageSection"), {
-  loading: () => <div className="h-64 bg-muted animate-pulse rounded-2xl" />
+  loading: () => <div className="bg-muted h-64 animate-pulse rounded-2xl" />,
 });
 
 const ShareSection = dynamic(() => import("@/components/ShareSection"), {
-  loading: () => <div className="h-32 bg-muted animate-pulse rounded-lg" />
+  loading: () => <div className="bg-muted h-32 animate-pulse rounded-lg" />,
 });
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="bg-background min-h-screen">
       <Header />
-      
+
       <main id="main-content" role="main">
         {/* Magic Snowflakes for Hunt Game */}
         <MagicSnowflake id={1} page="home" />
         <MagicSnowflake id={2} page="home" />
-        
+
         {/* Hero Section */}
         <HeroSection
           title="Bienvenue au Marché de Noël du MPR de Nantes"
@@ -61,7 +61,10 @@ export default function Home() {
         />
 
         {/* Ceremony Timer Section (no title/description) */}
-        <section className="bg-background" aria-label="Compte à rebours avant l'événement">
+        <section
+          className="bg-background"
+          aria-label="Compte à rebours avant l'événement"
+        >
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
             <AnimatedSection animation="fadeInUp">
               <CeremonyTimer />
@@ -70,93 +73,115 @@ export default function Home() {
         </section>
 
         {/* Features Section */}
-        <section className="py-16 bg-noel-snow" aria-labelledby="features-heading">
+        <section
+          className="bg-noel-snow py-16"
+          aria-labelledby="features-heading"
+        >
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <AnimatedSection animation="fadeInUp">
-              <div className="text-center mb-12">
-                <h2 id="features-heading" className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+              <div className="mb-12 text-center">
+                <h2
+                  id="features-heading"
+                  className="text-foreground mb-4 text-3xl font-bold sm:text-4xl"
+                >
                   Pourquoi nous choisir ?
                 </h2>
-                <p className="text-lg text-muted-foreground max-w-2xl mx-auto"> 
-                Un marché de Noël de l&apos;exemplarité, où l&apos;accompagnement, la réadaptation et la créativité sont partagés par les patients, les soignants et la communauté. 
+                <p className="text-muted-foreground mx-auto max-w-2xl text-lg">
+                  Un marché de Noël de l&apos;exemplarité, où
+                  l&apos;accompagnement, la réadaptation et la créativité sont
+                  partagés par les patients, les soignants et la communauté.
                 </p>
               </div>
             </AnimatedSection>
 
             <AnimatedSection staggerChildren staggerDelay={0.15}>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
                 <StaggerItem>
-                <Link href="/programme" className="block">
-                    <Card className="card-3d text-center p-6 cursor-pointer hover:bg-primary/10 bg-card border-border focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2 h-full">
-                    <CardContent className="pt-6">
-                      <Calendar className="w-12 h-12 text-primary mx-auto mb-4" aria-hidden="true" />
-                      <h2 className="text-xl font-semibold text-card-foreground mb-2">
-                        Programme riche
-                      </h2>
-                      <p className="text-muted-foreground">
-                        Des animations quotidiennes et des ateliers pour toute la famille.
-                      </p>
-                    </CardContent>
-                  </Card>
-                </Link>
+                  <Link href="/programme" className="block">
+                    <Card className="card-3d hover:bg-primary/10 bg-card border-border focus-within:ring-primary h-full cursor-pointer p-6 text-center focus-within:ring-2 focus-within:ring-offset-2">
+                      <CardContent className="pt-6">
+                        <Calendar
+                          className="text-primary mx-auto mb-4 h-12 w-12"
+                          aria-hidden="true"
+                        />
+                        <h2 className="text-card-foreground mb-2 text-xl font-semibold">
+                          Programme riche
+                        </h2>
+                        <p className="text-muted-foreground">
+                          Des animations quotidiennes et des ateliers pour toute
+                          la famille.
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </Link>
                 </StaggerItem>
 
                 <StaggerItem>
-                  <Card className="card-3d text-center p-6 bg-card border-border h-full">
-                  <CardContent className="pt-6">
-                    <ShoppingBag className="w-12 h-12 text-secondary mx-auto mb-4" aria-hidden="true" />
-                    <h2 className="text-xl font-semibold text-card-foreground mb-2">
-                      Artisans patients
-                    </h2>
-                    <p className="text-muted-foreground">
-                      Découvrez des créateurs talentueux et des patients volontaires.
-                    </p>
-                  </CardContent>
-                </Card>
-                </StaggerItem>
-
-                <StaggerItem>
-                <Link href="/a-propos" className="block">
-                    <Card className="card-3d text-center p-6 cursor-pointer hover:bg-accent/10 bg-card border-border focus-within:ring-2 focus-within:ring-accent focus-within:ring-offset-2 h-full">
+                  <Card className="card-3d bg-card border-border h-full p-6 text-center">
                     <CardContent className="pt-6">
-                      <Heart className="w-12 h-12 text-accent mx-auto mb-4" aria-hidden="true" />
-                      <h2 className="text-xl font-semibold text-card-foreground mb-2">
-                        Esprit de Noël
+                      <ShoppingBag
+                        className="text-secondary mx-auto mb-4 h-12 w-12"
+                        aria-hidden="true"
+                      />
+                      <h2 className="text-card-foreground mb-2 text-xl font-semibold">
+                        Artisans patients
                       </h2>
                       <p className="text-muted-foreground">
-                        Une ambiance chaleureuse et festive pour créer des souvenirs inoubliables.
+                        Découvrez des créateurs talentueux et des patients
+                        volontaires.
                       </p>
                     </CardContent>
                   </Card>
-                </Link>
+                </StaggerItem>
+
+                <StaggerItem>
+                  <Link href="/a-propos" className="block">
+                    <Card className="card-3d hover:bg-accent/10 bg-card border-border focus-within:ring-accent h-full cursor-pointer p-6 text-center focus-within:ring-2 focus-within:ring-offset-2">
+                      <CardContent className="pt-6">
+                        <Heart
+                          className="text-accent mx-auto mb-4 h-12 w-12"
+                          aria-hidden="true"
+                        />
+                        <h2 className="text-card-foreground mb-2 text-xl font-semibold">
+                          Esprit de Noël
+                        </h2>
+                        <p className="text-muted-foreground">
+                          Une ambiance chaleureuse et festive pour créer des
+                          souvenirs inoubliables.
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </Link>
                 </StaggerItem>
               </div>
-              </AnimatedSection>
+            </AnimatedSection>
           </div>
         </section>
 
-        
-
         {/* CTA Section */}
-        <section className="py-16 bg-gradient-to-r from-primary to-primary-dark" aria-label="Appel à l'action">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+        <section
+          className="from-primary to-primary-dark bg-gradient-to-r py-16"
+          aria-label="Appel à l'action"
+        >
+          <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
             <AnimatedSection animation="fadeInUp">
-              <h2 className="text-3xl sm:text-4xl font-bold text-primary-foreground mb-4">
+              <h2 className="text-primary-foreground mb-4 text-3xl font-bold sm:text-4xl">
                 Prêt à vivre la magie de Noël ?
               </h2>
-              <p className="text-xl text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
-                Rejoignez-nous le 27 nov. - 11, 13 et 16 déc. pour une expérience inoubliable au cœur du MPR
+              <p className="text-primary-foreground/90 mx-auto mb-8 max-w-2xl text-xl">
+                Rejoignez-nous le 27 nov. - 11, 13 et 16 déc. pour une
+                expérience inoubliable au cœur du MPR
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col justify-center gap-4 sm:flex-row">
                 <a
                   href="/programme"
-                  className="bg-white text-red-600 hover:bg-transparent hover:border hover:border-white hover:text-white px-8 py-3 rounded-lg font-semibold text-lg transition-colors focus:ring-2 focus:ring-red-600 focus:ring-offset-2"
+                  className="rounded-lg bg-white px-8 py-3 text-lg font-semibold text-red-600 transition-colors hover:border hover:border-white hover:bg-transparent hover:text-white focus:ring-2 focus:ring-red-600 focus:ring-offset-2"
                 >
                   Voir le programme complet
                 </a>
                 <a
                   href="/a-propos"
-                  className="border border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary-dark px-8 py-3 rounded-lg font-semibold text-lg transition-colors"
+                  className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary-dark rounded-lg border px-8 py-3 text-lg font-semibold transition-colors"
                 >
                   À propos
                 </a>
@@ -166,22 +191,29 @@ export default function Home() {
         </section>
 
         {/* APRAIH Section */}
-        <section className="py-16 bg-gradient-to-b from-background to-primary/5" aria-labelledby="apraih-heading">
+        <section
+          className="from-background to-primary/5 bg-gradient-to-b py-16"
+          aria-labelledby="apraih-heading"
+        >
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <AnimatedSection animation="fadeInUp">
-              <div className="text-center mb-12">
-                <h2 id="apraih-heading" className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+              <div className="mb-12 text-center">
+                <h2
+                  id="apraih-heading"
+                  className="text-foreground mb-4 text-3xl font-bold sm:text-4xl"
+                >
                   Au profit de l&apos;APRAIH
                 </h2>
-                <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-                  L&apos;Association pour la Promotion de la Réadaptation et l&apos;Accompagnement 
-                  des personnes en situation de Handicap accompagne depuis 30 ans les personnes 
-                  touchées par les accidents de la vie vers le retour à leur quotidien.
+                <p className="text-muted-foreground mx-auto max-w-3xl text-lg">
+                  L&apos;Association pour la Promotion de la Réadaptation et
+                  l&apos;Accompagnement des personnes en situation de Handicap
+                  accompagne depuis 30 ans les personnes touchées par les
+                  accidents de la vie vers le retour à leur quotidien.
                 </p>
               </div>
             </AnimatedSection>
 
-            <div className="flex flex-col lg:flex-row items-center justify-center gap-12">
+            <div className="flex flex-col items-center justify-center gap-12 lg:flex-row">
               <AnimatedSection animation="fadeInLeft" delay={200}>
                 <div className="flex-shrink-0">
                   <Image
@@ -189,36 +221,52 @@ export default function Home() {
                     alt="Logo APRAIH - Association pour la Promotion de la Réadaptation"
                     width={300}
                     height={205}
-                    className="w-64 h-auto mx-auto"
+                    className="mx-auto h-auto w-64"
                     loading="lazy"
                   />
                 </div>
               </AnimatedSection>
 
               <AnimatedSection animation="fadeInRight" delay={400}>
-                <div className="text-center lg:text-left max-w-2xl">
-                  <h3 className="text-2xl font-bold text-foreground mb-6">
+                <div className="max-w-2xl text-center lg:text-left">
+                  <h3 className="text-foreground mb-6 text-2xl font-bold">
                     Une association dévouée
                   </h3>
-                  <div className="space-y-4 text-muted-foreground">
+                  <div className="text-muted-foreground space-y-4">
                     <p>
-                    Encadrée par une équipe de bénévoles dévoués, de soignants et rééducateurs, l&apos;APRAIH propose aux 
-                    patients hospitalisés de participer à des activités variées pour rompre l&apos;isolement et favoriser la socialisation.
+                      Encadrée par une équipe de bénévoles dévoués, de soignants
+                      et rééducateurs, l&apos;APRAIH propose aux patients
+                      hospitalisés de participer à des activités variées pour
+                      rompre l&apos;isolement et favoriser la socialisation.
                     </p>
                     <p>
-                    Sorties concerts, ateliers cuisine, soirées cinéma, et sorties exceptionnelles comme assister à un match de foot à Paris, 
-                    découvrir les Jeux Paralympiques, ou participer à des séjours thérapeutiques de plusieurs jours à la montagne.
+                      Sorties concerts, ateliers cuisine, soirées cinéma, et
+                      sorties exceptionnelles comme assister à un match de foot
+                      à Paris, découvrir les Jeux Paralympiques, ou participer à
+                      des séjours thérapeutiques de plusieurs jours à la
+                      montagne.
                     </p>
                     <div className="pt-4">
                       <a
                         href="https://www.apraih.fr/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center px-6 py-3 bg-[#3d6db4] text-primary-foreground rounded-lg font-semibold hover:bg-[#2d4d84] transition-colors"
+                        className="text-primary-foreground inline-flex items-center rounded-lg bg-[#3d6db4] px-6 py-3 font-semibold transition-colors hover:bg-[#2d4d84]"
                       >
                         Découvrir l&apos;APRAIH
-                        <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        <svg
+                          className="ml-2 h-4 w-4"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          aria-hidden="true"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                          />
                         </svg>
                       </a>
                     </div>
@@ -237,8 +285,6 @@ export default function Home() {
 
         {/* Image Section */}
         <ImageSection />
-
-        
       </main>
 
       <Footer />

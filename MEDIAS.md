@@ -5,26 +5,28 @@ Ce document décrit le système de gestion des médias et icônes pour l'applica
 ## 📁 Structure des fichiers
 
 ### Logo source
+
 - **Fichier** : `logo.png` (racine du projet)
 - **Usage** : Source unique pour générer toutes les icônes
 
 ### Icônes générées (dossier `public/`)
 
-| Fichier | Type | Taille | Description | Usage |
-|---------|------|--------|-------------|-------|
-| `apple-touch-icon.png` | PNG | 180x180 | Icône Apple Touch | iOS Safari, ajout à l'écran d'accueil |
-| `favicon-16x16.png` | PNG | 16x16 | Favicon petit | Navigateurs modernes |
-| `favicon-32x32.png` | PNG | 32x32 | Favicon moyen | Navigateurs modernes |
-| `favicon.ico` | PNG | 32x32 | Favicon classique | Compatibilité navigateurs |
-| `icon-192.png` | PNG | 192x192 | Icône PWA | Progressive Web App |
-| `icon-512.png` | PNG | 512x512 | Icône PWA | Progressive Web App |
-| `icon.png` | PNG | 64x64 | Icône standard | Interface générale |
-| `icon.svg` | SVG | 64x64 | Icône vectorielle | Interface moderne |
-| `logo.svg` | SVG | 64x64 | Logo vectoriel | Branding |
+| Fichier                | Type | Taille  | Description       | Usage                                 |
+| ---------------------- | ---- | ------- | ----------------- | ------------------------------------- |
+| `apple-touch-icon.png` | PNG  | 180x180 | Icône Apple Touch | iOS Safari, ajout à l'écran d'accueil |
+| `favicon-16x16.png`    | PNG  | 16x16   | Favicon petit     | Navigateurs modernes                  |
+| `favicon-32x32.png`    | PNG  | 32x32   | Favicon moyen     | Navigateurs modernes                  |
+| `favicon.ico`          | PNG  | 32x32   | Favicon classique | Compatibilité navigateurs             |
+| `icon-192.png`         | PNG  | 192x192 | Icône PWA         | Progressive Web App                   |
+| `icon-512.png`         | PNG  | 512x512 | Icône PWA         | Progressive Web App                   |
+| `icon.png`             | PNG  | 64x64   | Icône standard    | Interface générale                    |
+| `icon.svg`             | SVG  | 64x64   | Icône vectorielle | Interface moderne                     |
+| `logo.svg`             | SVG  | 64x64   | Logo vectoriel    | Branding                              |
 
 ## 🚀 Commandes disponibles
 
 ### Génération des icônes
+
 ```bash
 # Générer toutes les icônes
 npm run icons
@@ -34,6 +36,7 @@ npm run icons:watch
 ```
 
 ### Script manuel
+
 ```bash
 node scripts/generate-icons.js
 ```
@@ -41,11 +44,13 @@ node scripts/generate-icons.js
 ## ⚙️ Configuration
 
 ### Manifest PWA (`public/manifest.json`)
+
 - Configuration complète pour Progressive Web App
 - Référence toutes les icônes nécessaires
 - Métadonnées optimisées pour le marché de Noël
 
 ### Layout Next.js (`src/app/layout.tsx`)
+
 - Métadonnées complètes intégrées
 - Support Apple Web App
 - Configuration viewport optimisée
@@ -54,15 +59,18 @@ node scripts/generate-icons.js
 ## 🔧 Personnalisation
 
 ### Modifier les icônes
+
 1. Remplacez le fichier `logo.png` à la racine
 2. Exécutez `npm run icons`
 3. Toutes les icônes seront régénérées automatiquement
 
 ### Ajuster les tailles
+
 Modifiez le fichier `scripts/generate-icons.js` :
+
 ```javascript
 const iconConfigs = [
-  { name: 'apple-touch-icon.png', size: 180, format: 'png' },
+  { name: "apple-touch-icon.png", size: 180, format: "png" },
   // Ajoutez ou modifiez les configurations ici
 ];
 ```
@@ -84,6 +92,7 @@ const iconConfigs = [
 ## 🔍 Vérification
 
 Pour vérifier que toutes les icônes sont correctement générées :
+
 ```bash
 ls -la public/ | grep -E "\.(png|svg|ico)$"
 ```

@@ -1,10 +1,17 @@
 "use client";
 
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 
 export default function ChristmasLights() {
   // Générer des lumières avec des couleurs de Noël
-  const colors = ['#dc2626', '#16a34a', '#eab308', '#3b82f6', '#dc2626', '#16a34a'];
+  const colors = [
+    "#dc2626",
+    "#16a34a",
+    "#eab308",
+    "#3b82f6",
+    "#dc2626",
+    "#16a34a",
+  ];
   const lights = Array.from({ length: 20 }, (_, i) => ({
     id: i,
     color: colors[i % colors.length],
@@ -12,10 +19,13 @@ export default function ChristmasLights() {
   }));
 
   return (
-    <div className="hidden md:block fixed top-0 left-0 right-0 z-[60] pointer-events-none overflow-hidden h-8" aria-hidden="true">
+    <div
+      className="pointer-events-none fixed top-0 right-0 left-0 z-[60] hidden h-8 overflow-hidden md:block"
+      aria-hidden="true"
+    >
       {/* Fil de guirlande */}
       <svg
-        className="absolute top-0 left-0 w-full h-8"
+        className="absolute top-0 left-0 h-8 w-full"
         preserveAspectRatio="none"
         viewBox="0 0 1200 50"
       >
@@ -29,7 +39,7 @@ export default function ChristmasLights() {
       </svg>
 
       {/* Lumières */}
-      <div className="flex justify-between items-start px-4 pt-1">
+      <div className="flex items-start justify-between px-4 pt-1">
         {lights.map((light) => (
           <motion.div
             key={light.id}
@@ -47,20 +57,18 @@ export default function ChristmasLights() {
           >
             {/* Bulbe de lumière */}
             <div
-              className="w-3 h-4 rounded-b-full relative"
+              className="relative h-4 w-3 rounded-b-full"
               style={{
                 backgroundColor: light.color,
                 boxShadow: `0 0 10px ${light.color}, 0 0 20px ${light.color}`,
               }}
             >
               {/* Reflet */}
-              <div
-                className="absolute top-0 left-1/2 w-1 h-2 bg-white/40 rounded-full transform -translate-x-1/2"
-              />
+              <div className="absolute top-0 left-1/2 h-2 w-1 -translate-x-1/2 transform rounded-full bg-white/40" />
             </div>
 
             {/* Douille */}
-            <div className="w-2 h-1 mx-auto bg-gray-600 rounded-t-sm" />
+            <div className="mx-auto h-1 w-2 rounded-t-sm bg-gray-600" />
 
             {/* Glow effect */}
             <motion.div
@@ -84,4 +92,3 @@ export default function ChristmasLights() {
     </div>
   );
 }
-

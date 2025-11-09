@@ -1,23 +1,20 @@
-import { del } from '@vercel/blob';
-import { NextRequest, NextResponse } from 'next/server';
+import { del } from "@vercel/blob";
+import { NextRequest, NextResponse } from "next/server";
 
 export async function DELETE(request: NextRequest) {
   try {
     // Vérifier le token d'authentification
-    const authHeader = request.headers.get('authorization');
-    const adminPassword = process.env.ADMIN_PASSWORD || 'admin123';
+    const authHeader = request.headers.get("authorization");
+    const adminPassword = process.env.ADMIN_PASSWORD || "admin123";
 
     if (!authHeader || authHeader !== `Bearer ${adminPassword}`) {
-      return NextResponse.json({ error: 'Non autorisé' }, { status: 401 });
+      return NextResponse.json({ error: "Non autorisé" }, { status: 401 });
     }
 
     const { pathname } = await request.json();
 
-    if (!pathname || typeof pathname !== 'string') {
-      return NextResponse.json(
-        { error: 'Pathname requis' },
-        { status: 400 }
-      );
+    if (!pathname || typeof pathname !== "string") {
+      return NextResponse.json({ error: "Pathname requis" }, { status: 400 });
     }
 
     // Supprimer le blob
@@ -27,14 +24,13 @@ export async function DELETE(request: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      message: 'Image supprimée avec succès',
+      message: "Image supprimée avec succès",
     });
   } catch (error) {
-    console.error('Erreur suppression:', error);
+    console.error("Erreur suppression:", error);
     return NextResponse.json(
       { error: "Erreur lors de la suppression" },
       { status: 500 }
     );
   }
 }
-

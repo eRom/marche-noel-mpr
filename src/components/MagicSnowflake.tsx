@@ -19,7 +19,7 @@ export default function MagicSnowflake({ id, page }: MagicSnowflakeProps) {
   const { foundSnowflakes, collectSnowflake } = useSnowflakeHunt();
   const [isCollecting, setIsCollecting] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  
+
   const isFound = foundSnowflakes.has(id);
 
   // Detect mobile devices
@@ -27,16 +27,16 @@ export default function MagicSnowflake({ id, page }: MagicSnowflakeProps) {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768); // md breakpoint
     };
-    
+
     checkMobile();
     window.addEventListener("resize", checkMobile);
-    
+
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   // Generate consistent random position for this snowflake
   const position = useMemo(() => {
-    const seed = (page.charCodeAt(0) * 1000) + id;
+    const seed = page.charCodeAt(0) * 1000 + id;
     const left = 10 + seededRandom(seed) * 80; // 10-90%
     const top = 20 + seededRandom(seed + 1) * 60; // 20-80%
     return { left: `${left}%`, top: `${top}%` };
@@ -44,13 +44,13 @@ export default function MagicSnowflake({ id, page }: MagicSnowflakeProps) {
 
   const handleClick = () => {
     if (isFound || isCollecting) return;
-    
+
     setIsCollecting(true);
     collectSnowflake(id);
-    
+
     // Jouer le son
     playSnowflakeCollectSound();
-    
+
     // Animation duration before removal
     setTimeout(() => {
       setIsCollecting(false);
@@ -81,4 +81,3 @@ export default function MagicSnowflake({ id, page }: MagicSnowflakeProps) {
     </div>
   );
 }
-

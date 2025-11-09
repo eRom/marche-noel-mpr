@@ -1,13 +1,16 @@
 # Prompt Cursor - Page Galerie Photos Marché de Noël du MPR (Vercel Blob)
 
 ## Contexte
+
 Je veux ajouter une page `/galerie` à mon site Next.js du Marché de Noël du MPR hébergé sur Vercel.
 Stack technique : Next.js 15, Tailwind CSS, TypeScript, Vercel.
 
 **STOCKAGE IMAGES : Vercel Blob Storage** (< 50 images)
 
 ## Objectif
+
 Créer une page galerie photo simple et efficace pour afficher les photos du marché avec :
+
 - Grille responsive (masonry/Pinterest style)
 - Lightbox plein écran pour voir les photos en détail
 - Navigation clavier et souris
@@ -22,6 +25,7 @@ Créer une page galerie photo simple et efficace pour afficher les photos du mar
 **Route** : `/app/galerie/page.tsx`
 
 **Header simple** :
+
 - Titre : "Galerie Photos"
 - Sous-titre : "Vivez les moments magiques du Marché de Noël du MPR"
 - Pas de filtres
@@ -30,33 +34,36 @@ Créer une page galerie photo simple et efficace pour afficher les photos du mar
 ### 2. Configuration Next.js pour Vercel Blob
 
 **`next.config.js`** :
+
 ```javascript
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: '*.public.blob.vercel-storage.com',
+        protocol: "https",
+        hostname: "*.public.blob.vercel-storage.com",
       },
     ],
-    formats: ['image/avif', 'image/webp'],
+    formats: ["image/avif", "image/webp"],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
 ```
 
 ### 3. Grille de photos (Masonry layout)
 
 **Disposition responsive** :
+
 - Mobile (< 768px) : 1 colonne
 - Tablette (768px - 1024px) : 2 colonnes
 - Desktop (> 1024px) : 3-4 colonnes
 
 **Chaque carte photo doit avoir** :
+
 - Image avec lazy loading (Next.js Image component)
 - Badge de catégorie (top-right) : "Stands", "Animations", "Visiteurs", "Ambiance", "MPR"
 - Hover effect : zoom smooth (scale 1.05) + overlay sombre
@@ -69,12 +76,14 @@ module.exports = nextConfig
 ### 4. Lightbox/Modal
 
 **Comportement** :
+
 - Click sur photo → ouvre lightbox en fullscreen
 - Backdrop sombre (bg-black/95)
 - Animation fade-in smooth
 - Empêche le scroll du body
 
 **Contenu** :
+
 - Image centrée et responsive (max-w-7xl, max-h-[90vh])
 - Bouton fermer (X) en top-right
 - Flèches navigation (< >) sur les côtés (gauche/droite)
@@ -83,6 +92,7 @@ module.exports = nextConfig
 - Compteur position : "3 / 24" en bas au centre
 
 **Interactions** :
+
 - Clavier : Escape = fermer, Flèche gauche = photo précédente, Flèche droite = photo suivante
 - Souris : Clic backdrop = fermer, Clic X = fermer
 - Les flèches de navigation s'affichent/masquent selon la position
@@ -90,6 +100,7 @@ module.exports = nextConfig
 ### 5. Structure des données et Vercel Blob
 
 **Structure JSON pour chaque photo** :
+
 ```json
 {
   "id": "gallery/stands/photo-001.jpg",
@@ -102,6 +113,7 @@ module.exports = nextConfig
 ```
 
 **Organisation Vercel Blob** :
+
 ```
 /gallery/
   /stands/
@@ -120,6 +132,7 @@ module.exports = nextConfig
 ### 6. Variables d'environnement
 
 **`.env.local`** :
+
 ```bash
 BLOB_READ_WRITE_TOKEN=vercel_blob_xxx
 ```
@@ -127,14 +140,17 @@ BLOB_READ_WRITE_TOKEN=vercel_blob_xxx
 ### 7. Design & Styling
 
 **Couleurs** :
+
 - Prendre les couleurs de l'app (global.css)
 
 **Typographie** :
+
 - Titre : text-4xl md:text-5xl font-bold text-red-700
 - Sous-titre : text-lg text-gray-600
 - Info photo : text-sm opacity-80
 
 **Thème festif** :
+
 - Dégradé background : from-red-50 to-white
 - Animations smooth avec framer-motion
 - Effets hover fluides
@@ -161,48 +177,47 @@ BLOB_READ_WRITE_TOKEN=vercel_blob_xxx
 ### 1. **`lib/galleryData.ts`** - Récupération des images depuis Vercel Blob
 
 ```typescript
-import { list } from '@vercel/blob'
+import { list } from "@vercel/blob";
 
 export interface GalleryImage {
-  id: string
-  url: string
-  title: string
-  category: 'stands' | 'animations' | 'visiteurs' | 'ambiance'
-  date: string
-  alt: string
+  id: string;
+  url: string;
+  title: string;
+  category: "stands" | "animations" | "visiteurs" | "ambiance";
+  date: string;
+  alt: string;
 }
 
 export async function getGalleryImages(): Promise<GalleryImage[]> {
   try {
     const { blobs } = await list({
       token: process.env.BLOB_READ_WRITE_TOKEN!,
-      prefix: 'gallery/',
-    })
+      prefix: "gallery/",
+    });
 
     const images: GalleryImage[] = blobs
-      .filter(blob => blob.pathname.startsWith('gallery/'))
+      .filter((blob) => blob.pathname.startsWith("gallery/"))
       .map((blob) => {
         // Parser metadata depuis pathname : gallery/stands/photo-001.jpg
-        const parts = blob.pathname.split('/')
-        const category = parts[1] as GalleryImage['category']
-        const filename = parts[2]?.replace(/\.[^/.]+$/, '') || 'Photo'
+        const parts = blob.pathname.split("/");
+        const category = parts[1] as GalleryImage["category"];
+        const filename = parts[2]?.replace(/\.[^/.]+$/, "") || "Photo";
 
         return {
           id: blob.pathname,
           url: blob.url,
-          title: filename.replace(/-/g, ' '),
-          category: category || 'ambiance',
-          date: new Date(blob.uploadedAt).toLocaleDateString('fr-FR'),
-          alt: `Photo ${category} - Marché de Noël MPR`
-        }
+          title: filename.replace(/-/g, " "),
+          category: category || "ambiance",
+          date: new Date(blob.uploadedAt).toLocaleDateString("fr-FR"),
+          alt: `Photo ${category} - Marché de Noël MPR`,
+        };
       })
-      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
-    return images
-
+    return images;
   } catch (error) {
-    console.error('Erreur récupération images:', error)
-    return []
+    console.error("Erreur récupération images:", error);
+    return [];
   }
 }
 ```
@@ -270,12 +285,12 @@ export function GalleryGrid({ images }: { images: GalleryImage[] }) {
                 quality={85}
                 loading="lazy"
               />
-              
+
               {/* Badge catégorie */}
               <span className="absolute top-3 right-3 bg-red-600 text-white text-xs px-3 py-1 rounded-full capitalize">
                 {image.category}
               </span>
-              
+
               {/* Overlay info */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
                 <div className="absolute bottom-3 left-3 text-white">
@@ -321,10 +336,10 @@ export function Lightbox({ image, onClose, images, currentIndex, onNavigate }: L
       if (e.key === 'ArrowLeft' && currentIndex > 0) onNavigate(currentIndex - 1)
       if (e.key === 'ArrowRight' && currentIndex < images.length - 1) onNavigate(currentIndex + 1)
     }
-    
+
     window.addEventListener('keydown', handleKeyDown)
     document.body.style.overflow = 'hidden' // Empêcher scroll
-    
+
     return () => {
       window.removeEventListener('keydown', handleKeyDown)
       document.body.style.overflow = 'unset'
@@ -370,7 +385,7 @@ export function Lightbox({ image, onClose, images, currentIndex, onNavigate }: L
       )}
 
       {/* Image principale */}
-      <div 
+      <div
         className="relative max-w-7xl max-h-[90vh] w-full mx-4"
         onClick={(e) => e.stopPropagation()}
       >
@@ -383,7 +398,7 @@ export function Lightbox({ image, onClose, images, currentIndex, onNavigate }: L
           quality={90}
           priority
         />
-        
+
         {/* Info panel */}
         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 text-white">
           <h3 className="text-xl font-semibold mb-1">{image.title}</h3>
@@ -393,7 +408,7 @@ export function Lightbox({ image, onClose, images, currentIndex, onNavigate }: L
               {image.category}
             </span>
           </div>
-          
+
           <div className="flex gap-3">
             <button
               onClick={handleShare}
@@ -437,45 +452,51 @@ export function Lightbox({ image, onClose, images, currentIndex, onNavigate }: L
 ### 5. **`app/api/galerie/upload/route.ts`** - API pour uploader
 
 ```typescript
-import { put } from '@vercel/blob'
-import { NextRequest, NextResponse } from 'next/server'
+import { put } from "@vercel/blob";
+import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
   try {
-    const formData = await request.formData()
-    const file = formData.get('file') as File
-    const category = formData.get('category') as string
-    const title = formData.get('title') as string
+    const formData = await request.formData();
+    const file = formData.get("file") as File;
+    const category = formData.get("category") as string;
+    const title = formData.get("title") as string;
 
     if (!file) {
-      return NextResponse.json({ error: 'Aucun fichier fourni' }, { status: 400 })
+      return NextResponse.json(
+        { error: "Aucun fichier fourni" },
+        { status: 400 }
+      );
     }
 
     // Créer filename sécurisé
-    const safeTitle = title.toLowerCase()
-      .replace(/[^a-z0-9\s-]/g, '')
-      .replace(/\s+/g, '-')
-    const extension = file.name.split('.').pop()
-    const filename = `${safeTitle}.${extension}`
-    
+    const safeTitle = title
+      .toLowerCase()
+      .replace(/[^a-z0-9\s-]/g, "")
+      .replace(/\s+/g, "-");
+    const extension = file.name.split(".").pop();
+    const filename = `${safeTitle}.${extension}`;
+
     // Structure : gallery/category/filename
-    const pathname = `gallery/${category}/${filename}`
+    const pathname = `gallery/${category}/${filename}`;
 
     // Upload vers Vercel Blob
     const blob = await put(pathname, file, {
-      access: 'public',
+      access: "public",
       token: process.env.BLOB_READ_WRITE_TOKEN!,
-    })
+    });
 
     return NextResponse.json({
       success: true,
       url: blob.url,
-      pathname: blob.pathname
-    })
-
+      pathname: blob.pathname,
+    });
   } catch (error) {
-    console.error('Erreur upload:', error)
-    return NextResponse.json({ error: 'Erreur lors de l\'upload' }, { status: 500 })
+    console.error("Erreur upload:", error);
+    return NextResponse.json(
+      { error: "Erreur lors de l'upload" },
+      { status: 500 }
+    );
   }
 }
 ```
@@ -484,20 +505,20 @@ export async function POST(request: NextRequest) {
 
 ```typescript
 export interface GalleryImage {
-  id: string
-  url: string
-  title: string
-  category: 'stands' | 'animations' | 'visiteurs' | 'ambiance'
-  date: string
-  alt: string
+  id: string;
+  url: string;
+  title: string;
+  category: "stands" | "animations" | "visiteurs" | "ambiance";
+  date: string;
+  alt: string;
 }
 
 export interface LightboxProps {
-  image: GalleryImage
-  onClose: () => void
-  images: GalleryImage[]
-  currentIndex: number
-  onNavigate: (index: number) => void
+  image: GalleryImage;
+  onClose: () => void;
+  images: GalleryImage[];
+  currentIndex: number;
+  onNavigate: (index: number) => void;
 }
 ```
 
@@ -515,4 +536,3 @@ npm install @vercel/blob framer-motion lucide-react
 - Token Vercel Blob nécessaire en variable d'environnement
 - Photos organisées par catégorie dans Vercel Blob
 - Quality 85 pour équilibre performance/qualité
-

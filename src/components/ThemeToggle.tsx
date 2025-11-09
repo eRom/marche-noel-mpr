@@ -13,24 +13,23 @@ export default function ThemeToggle() {
   }, []);
 
   if (!mounted) {
-    return (
-      <div className="w-9 h-9 rounded-full bg-muted animate-pulse" />
-    );
+    return <div className="bg-muted h-9 w-9 animate-pulse rounded-full" />;
   }
 
   return (
     <button
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="w-9 h-9 rounded-full bg-muted hover:bg-muted/80 flex items-center justify-center transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-      aria-label={theme === "dark" ? "Passer en mode clair" : "Passer en mode sombre"}
+      className="bg-muted hover:bg-muted/80 focus:ring-primary flex h-9 w-9 items-center justify-center rounded-full transition-colors focus:ring-2 focus:ring-offset-2 focus:outline-none"
+      aria-label={
+        theme === "dark" ? "Passer en mode clair" : "Passer en mode sombre"
+      }
       aria-pressed={theme === "dark" ? "true" : "false"}
     >
       {theme === "dark" ? (
-        <Sun className="h-5 w-5 text-foreground" aria-hidden="true" />
+        <Sun className="text-foreground h-5 w-5" aria-hidden="true" />
       ) : (
-        <Moon className="h-5 w-5 text-foreground" aria-hidden="true" />
+        <Moon className="text-foreground h-5 w-5" aria-hidden="true" />
       )}
     </button>
   );
 }
-

@@ -19,12 +19,14 @@
 ## ⚡ Raccourcis Disponibles
 
 ### Sur Mobile
+
 - **Appui long** sur l'icône de l'app
 - **Sélectionnez** le raccourci désiré :
   - 📅 **Programme** : Accès direct au programme
   - 💝 **Merci** : Accès direct aux remerciements
 
 ### Sur Desktop
+
 - **Clic droit** sur l'icône de l'app
 - **Sélectionnez** le raccourci dans le menu contextuel
 
@@ -51,21 +53,25 @@
 Accédez à la page de partage pour :
 
 #### 🔗 Partager le Lien
+
 - Partage natif du site
 - Copie automatique dans le presse-papiers
 - Support Web Share API
 
 #### 📷 Partager des Photos
+
 - Sélection de fichiers image
 - Upload et partage
 - Support multi-fichiers
 
 #### 💬 Partager un Avis
+
 - Saisie de témoignages
 - Partage automatique
 - Support des réseaux sociaux
 
 #### 📱 QR Code
+
 - Accès rapide via QR code
 - Partage offline
 - Compatible tous appareils
@@ -73,11 +79,13 @@ Accédez à la page de partage pour :
 ## 🎨 Personnalisation
 
 ### Thème Sombre/Clair
+
 - **Basculement automatique** selon les préférences système
 - **Bouton de basculement** dans l'interface
 - **Persistance** des préférences
 
 ### Orientation
+
 - **Portrait privilégié** pour mobile
 - **Adaptation automatique** desktop
 - **Support complet** des rotations
@@ -140,6 +148,7 @@ npm run lighthouse:both
 ### Configuration Puppeteer
 
 Le script de screenshots utilise :
+
 - **Configuration mobile** : iPhone 12 (390x844)
 - **Configuration desktop** : HD (1280x720)
 - **Qualité optimale** : PNG 100%
@@ -150,38 +159,43 @@ Le script de screenshots utilise :
 ### Problèmes Courants
 
 #### Installation Impossible
+
 - ✅ Vérifiez que HTTPS est activé
 - ✅ Vérifiez que le manifest.json est accessible
 - ✅ Vérifiez la console pour les erreurs
 
 #### Raccourcis Non Disponibles
+
 - ✅ Vérifiez la version du navigateur
 - ✅ Vérifiez la configuration du manifest
 - ✅ Testez sur différents appareils
 
 #### Partage Non Fonctionnel
+
 - ✅ Vérifiez la page /share
 - ✅ Vérifiez les permissions
 - ✅ Testez avec différents contenus
 
 ### Support Navigateur
 
-| Navigateur | Installation | Raccourcis | Partage |
-|------------|-------------|------------|---------|
-| Chrome | ✅ | ✅ | ✅ |
-| Edge | ✅ | ✅ | ✅ |
-| Firefox | ✅ | ⚠️ | ⚠️ |
-| Safari | ✅ | ✅ | ⚠️ |
-| Samsung Internet | ✅ | ✅ | ✅ |
+| Navigateur       | Installation | Raccourcis | Partage |
+| ---------------- | ------------ | ---------- | ------- |
+| Chrome           | ✅           | ✅         | ✅      |
+| Edge             | ✅           | ✅         | ✅      |
+| Firefox          | ✅           | ⚠️         | ⚠️      |
+| Safari           | ✅           | ✅         | ⚠️      |
+| Samsung Internet | ✅           | ✅         | ✅      |
 
 ## 📚 Ressources
 
 ### Documentation Officielle
+
 - [Web App Manifest](https://developer.mozilla.org/en-US/docs/Web/Manifest)
 - [PWA Checklist](https://web.dev/pwa-checklist/)
 - [Lighthouse PWA](https://web.dev/lighthouse-pwa/)
 
 ### Outils de Test
+
 - [Lighthouse](https://developers.google.com/web/tools/lighthouse)
 - [PWA Builder](https://www.pwabuilder.com/)
 - [Web App Manifest Validator](https://manifest-validator.appspot.com/)
@@ -196,6 +210,6 @@ Votre **Marché de Noël MPR** est maintenant une **PWA complète** avec :
 ✅ **Raccourcis intelligents** pour un accès rapide  
 ✅ **Partage natif** depuis d'autres applications  
 ✅ **Performance optimale** avec Lighthouse 100/100  
-✅ **Expérience utilisateur** de niveau application native  
+✅ **Expérience utilisateur** de niveau application native
 
 **Profitez d'une expérience utilisateur exceptionnelle !** 🚀

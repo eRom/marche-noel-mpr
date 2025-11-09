@@ -9,16 +9,19 @@ Le Service Worker implémente une stratégie de cache intelligente pour amélior
 ### 1. **Stratégies de Cache**
 
 #### 🎯 Cache First (Assets Statiques)
+
 - **Utilisation**: CSS, JavaScript, Fonts
 - **Fonctionnement**: Sert depuis le cache si disponible, sinon depuis le réseau
 - **Avantages**: Chargement ultra-rapide des assets statiques
 
 #### 🌐 Network First (Pages HTML & API)
+
 - **Utilisation**: Pages HTML, routes API
 - **Fonctionnement**: Essaie le réseau d'abord, fallback sur le cache
 - **Avantages**: Contenu toujours à jour quand en ligne, disponible hors ligne
 
 #### 🔄 Stale While Revalidate (Images)
+
 - **Utilisation**: Toutes les images (PNG, JPG, WEBP, AVIF, etc.)
 - **Fonctionnement**: Sert le cache immédiatement, met à jour en arrière-plan
 - **Avantages**: Chargement instantané + contenu frais
@@ -26,6 +29,7 @@ Le Service Worker implémente une stratégie de cache intelligente pour amélior
 ### 2. **Mode Hors Ligne**
 
 Quand l'utilisateur est hors ligne :
+
 - ✅ Pages visitées précédemment accessibles
 - ✅ Images en cache disponibles
 - ✅ Page de fallback élégante avec bouton "Réessayer"
@@ -55,22 +59,22 @@ src/
 
 ```javascript
 const STATIC_ASSETS = [
-  '/',
-  '/programme',
-  '/galerie',
-  '/a-propos',
-  '/merci',
-  '/manifest.json',
-  '/icon-192.png',
-  '/icon-512.png',
-  '/favicon.ico',
+  "/",
+  "/programme",
+  "/galerie",
+  "/a-propos",
+  "/merci",
+  "/manifest.json",
+  "/icon-192.png",
+  "/icon-512.png",
+  "/favicon.ico",
 ];
 ```
 
 ### Versions de Cache
 
 ```javascript
-const CACHE_VERSION = 'marche-noel-mpr-v1';
+const CACHE_VERSION = "marche-noel-mpr-v1";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const DYNAMIC_CACHE = `${CACHE_VERSION}-dynamic`;
 const IMAGE_CACHE = `${CACHE_VERSION}-images`;
@@ -90,7 +94,11 @@ Le Service Worker s'enregistre automatiquement en production :
 ### Fonctions Utilitaires
 
 ```typescript
-import { registerServiceWorker, unregisterServiceWorker, clearCache } from '@/app/register-sw';
+import {
+  registerServiceWorker,
+  unregisterServiceWorker,
+  clearCache,
+} from "@/app/register-sw";
 
 // Enregistrer le Service Worker
 registerServiceWorker();
@@ -105,32 +113,36 @@ clearCache();
 ## 🔄 Cycle de Vie
 
 ### 1. Installation
+
 - Téléchargement du Service Worker
 - Mise en cache des assets statiques
 - `skipWaiting()` pour activation immédiate
 
 ### 2. Activation
+
 - Suppression des anciens caches
 - Prise de contrôle des clients existants
 
 ### 3. Fetch (Interception)
+
 - Application des stratégies de cache selon le type de ressource
 - Gestion des erreurs réseau
 
 ### 4. Mise à Jour
+
 - Vérification automatique toutes les heures
 - Notification à l'utilisateur si nouvelle version disponible
 - Option de rechargement immédiat
 
 ## 📊 Stratégie par Type de Ressource
 
-| Type de Ressource | Stratégie | Cache | Limite |
-|-------------------|-----------|-------|--------|
-| HTML (pages) | Network First | Dynamic | 50 |
-| CSS / JS | Cache First | Static | ∞ |
-| Images | Stale While Revalidate | Images | 100 |
-| Fonts | Cache First | Static | ∞ |
-| API | Network First | Dynamic | 50 |
+| Type de Ressource | Stratégie              | Cache   | Limite |
+| ----------------- | ---------------------- | ------- | ------ |
+| HTML (pages)      | Network First          | Dynamic | 50     |
+| CSS / JS          | Cache First            | Static  | ∞      |
+| Images            | Stale While Revalidate | Images  | 100    |
+| Fonts             | Cache First            | Static  | ∞      |
+| API               | Network First          | Dynamic | 50     |
 
 ## 🧪 Tests
 
@@ -148,7 +160,7 @@ clearCache();
 ```javascript
 // Console DevTools
 caches.keys().then(console.log); // Liste des caches
-caches.open('marche-noel-mpr-v1-static').then(cache => {
+caches.open("marche-noel-mpr-v1-static").then((cache) => {
   cache.keys().then(console.log); // Contenu du cache
 });
 ```
@@ -157,7 +169,7 @@ caches.open('marche-noel-mpr-v1-static').then(cache => {
 
 ```javascript
 // Console DevTools
-navigator.serviceWorker.getRegistration().then(reg => {
+navigator.serviceWorker.getRegistration().then((reg) => {
   reg.update(); // Force la vérification de mise à jour
 });
 ```
@@ -205,8 +217,8 @@ Le Service Worker logge ses actions :
 
 ```javascript
 // Mesurer l'efficacité du cache
-caches.open('marche-noel-mpr-v1-images').then(cache => {
-  cache.keys().then(keys => {
+caches.open("marche-noel-mpr-v1-images").then((cache) => {
+  cache.keys().then((keys) => {
     console.log(`Images en cache: ${keys.length}`);
   });
 });
@@ -238,4 +250,3 @@ caches.open('marche-noel-mpr-v1-images').then(cache => {
 **Version**: 1.0.0  
 **Dernière mise à jour**: Novembre 2025  
 **Compatibilité**: Chrome 40+, Firefox 44+, Safari 11.1+, Edge 17+
-

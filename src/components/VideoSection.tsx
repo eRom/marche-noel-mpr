@@ -18,7 +18,7 @@ export default function VideoSection() {
       setIsVideoEnded(true);
     };
 
-    video.addEventListener('ended', handleVideoEnded);
+    video.addEventListener("ended", handleVideoEnded);
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -46,7 +46,7 @@ export default function VideoSection() {
     observer.observe(video);
 
     return () => {
-      video.removeEventListener('ended', handleVideoEnded);
+      video.removeEventListener("ended", handleVideoEnded);
       observer.disconnect();
     };
   }, [hasPlayedOnce]);
@@ -67,22 +67,22 @@ export default function VideoSection() {
   };
 
   return (
-    <div className="relative w-full max-w-5xl mx-auto">
-      <div className="relative aspect-video overflow-hidden rounded-lg bg-foreground/10">
+    <div className="relative mx-auto w-full max-w-5xl">
+      <div className="bg-foreground/10 relative aspect-video overflow-hidden rounded-lg">
         <video
           ref={videoRef}
-          className="w-full h-full object-cover"
+          className="h-full w-full object-cover"
           muted={isMuted}
           preload="metadata"
           playsInline
           aria-label="Animation ludique du marché de Noël MPR avec musique de fond"
         >
           <source src="/medias/video.mp4" type="video/mp4" />
-          <track 
-            kind="captions" 
-            src="/medias/video-subtitles.vtt" 
-            srcLang="fr" 
-            label="Français" 
+          <track
+            kind="captions"
+            src="/medias/video-subtitles.vtt"
+            srcLang="fr"
+            label="Français"
           />
           Votre navigateur ne supporte pas la lecture de vidéos.
         </video>
@@ -93,7 +93,7 @@ export default function VideoSection() {
             onClick={toggleMute}
             variant="secondary"
             size="icon"
-            className="bg-transparent hover:bg-white/10 rounded-full shadow-lg text-white"
+            className="rounded-full bg-transparent text-white shadow-lg hover:bg-white/10"
             aria-label={isMuted ? "Activer le son" : "Désactiver le son"}
             aria-live="polite"
           >
@@ -107,14 +107,14 @@ export default function VideoSection() {
 
         {/* Replay Button - Shows when video has ended */}
         {isVideoEnded && (
-          <div className="absolute inset-0 flex items-center justify-center z-10 bg-black/20 backdrop-blur-sm">
+          <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/20 backdrop-blur-sm">
             <Button
               onClick={replayVideo}
               size="lg"
-              className="bg-primary/90 hover:bg-primary rounded-full shadow-lg text-foreground border border-foreground/10 px-6"
+              className="bg-primary/90 hover:bg-primary text-foreground border-foreground/10 rounded-full border px-6 shadow-lg"
               aria-label="Relancer la vidéo"
             >
-              <Play className="h-6 w-6 mr-2" aria-hidden="true" />
+              <Play className="mr-2 h-6 w-6" aria-hidden="true" />
               Revoir
             </Button>
           </div>
@@ -123,4 +123,3 @@ export default function VideoSection() {
     </div>
   );
 }
-

@@ -19,11 +19,7 @@
     "toolOptions": {
       "runOnly": {
         "type": "tag",
-        "values": [
-          "wcag2a",
-          "wcag2aa",
-          "wcag21aa"
-        ]
+        "values": ["wcag2a", "wcag2aa", "wcag21aa"]
       },
       "reporter": "v1"
     },
@@ -55,13 +51,7 @@
       {
         "id": "aria-braille-equivalent",
         "impact": null,
-        "tags": [
-          "cat.aria",
-          "wcag2a",
-          "wcag412",
-          "EN-301-549",
-          "EN-9.4.1.2"
-        ],
+        "tags": ["cat.aria", "wcag2a", "wcag412", "EN-301-549", "EN-9.4.1.2"],
         "description": "Ensure aria-braillelabel and aria-brailleroledescription have a non-braille equivalent",
         "help": "aria-braille attributes must have a non-braille equivalent",
         "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/aria-braille-equivalent?application=webdriverjs",
@@ -198,13 +188,7 @@
       {
         "id": "aria-tooltip-name",
         "impact": null,
-        "tags": [
-          "cat.aria",
-          "wcag2a",
-          "wcag412",
-          "EN-301-549",
-          "EN-9.4.1.2"
-        ],
+        "tags": ["cat.aria", "wcag2a", "wcag412", "EN-301-549", "EN-9.4.1.2"],
         "description": "Ensure every ARIA tooltip node has an accessible name",
         "help": "ARIA tooltip nodes must have an accessible name",
         "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/aria-tooltip-name?application=webdriverjs",
@@ -827,9 +811,7 @@
             ],
             "impact": null,
             "html": "<nav class=\"mx-auto max-w-7xl px-4 sm:px-6 lg:px-8\" aria-label=\"Navigation principale\">",
-            "target": [
-              "nav[aria-label=\"Navigation principale\"]"
-            ]
+            "target": ["nav[aria-label=\"Navigation principale\"]"]
           },
           {
             "any": [],
@@ -879,9 +861,7 @@
             ],
             "impact": null,
             "html": "<button type=\"button\" class=\"text-muted-foreground hover:text-primary focus:outline-none focus:text-primary transition-colors\" aria-label=\"Ouvrir le menu\" aria-expanded=\"false\" aria-controls=\"mobile-menu\" aria-haspopup=\"menu\">",
-            "target": [
-              ".focus\\:outline-none"
-            ]
+            "target": [".focus\\:outline-none"]
           },
           {
             "any": [],
@@ -905,9 +885,7 @@
             ],
             "impact": null,
             "html": "<a class=\"block px-3 py-2 rounded-md text-base font-medium transition-all duration-200 text-primary bg-primary/10\" aria-current=\"page\" href=\"/\">Accueil</a>",
-            "target": [
-              ".bg-primary\\/10.text-base[aria-current=\"page\"]"
-            ]
+            "target": [".bg-primary\\/10.text-base[aria-current=\"page\"]"]
           },
           {
             "any": [],
@@ -931,9 +909,7 @@
             ],
             "impact": null,
             "html": "<nav class=\"space-y-2\" aria-label=\"Liens du pied de page\">",
-            "target": [
-              "nav[aria-label=\"Liens du pied de page\"]"
-            ]
+            "target": ["nav[aria-label=\"Liens du pied de page\"]"]
           },
           {
             "any": [],
@@ -957,12 +933,7 @@
             ],
             "impact": null,
             "html": "<div aria-live=\"assertive\" id=\"__next-route-announcer__\" role=\"alert\" style=\"position: absolute; border: 0px; height: 1px; margin: -1px; padding: 0px; width: 1px; clip: rect(0px, 0px, 0px, 0px); overflow: hidden; white-space: nowrap; overflow-wrap: normal;\"></div>",
-            "target": [
-              [
-                "next-route-announcer",
-                "#__next-route-announcer__"
-              ]
-            ]
+            "target": [["next-route-announcer", "#__next-route-announcer__"]]
           }
         ]
       },
@@ -996,9 +967,7 @@
             "none": [],
             "impact": null,
             "html": "<nav class=\"mx-auto max-w-7xl px-4 sm:px-6 lg:px-8\" aria-label=\"Navigation principale\">",
-            "target": [
-              "nav[aria-label=\"Navigation principale\"]"
-            ]
+            "target": ["nav[aria-label=\"Navigation principale\"]"]
           },
           {
             "any": [],
@@ -1032,9 +1001,7 @@
             "none": [],
             "impact": null,
             "html": "<button type=\"button\" class=\"text-muted-foreground hover:text-primary focus:outline-none focus:text-primary transition-colors\" aria-label=\"Ouvrir le menu\" aria-expanded=\"false\" aria-controls=\"mobile-menu\" aria-haspopup=\"menu\">",
-            "target": [
-              ".focus\\:outline-none"
-            ]
+            "target": [".focus\\:outline-none"]
           },
           {
             "any": [],
@@ -1050,9 +1017,7 @@
             "none": [],
             "impact": null,
             "html": "<a class=\"block px-3 py-2 rounded-md text-base font-medium transition-all duration-200 text-primary bg-primary/10\" aria-current=\"page\" href=\"/\">Accueil</a>",
-            "target": [
-              ".bg-primary\\/10.text-base[aria-current=\"page\"]"
-            ]
+            "target": [".bg-primary\\/10.text-base[aria-current=\"page\"]"]
           },
           {
             "any": [],
@@ -1068,9 +1033,7 @@
             "none": [],
             "impact": null,
             "html": "<nav class=\"space-y-2\" aria-label=\"Liens du pied de page\">",
-            "target": [
-              "nav[aria-label=\"Liens du pied de page\"]"
-            ]
+            "target": ["nav[aria-label=\"Liens du pied de page\"]"]
           },
           {
             "any": [],
@@ -1086,12 +1049,7 @@
             "none": [],
             "impact": null,
             "html": "<div aria-live=\"assertive\" id=\"__next-route-announcer__\" role=\"alert\" style=\"position: absolute; border: 0px; height: 1px; margin: -1px; padding: 0px; width: 1px; clip: rect(0px, 0px, 0px, 0px); overflow: hidden; white-space: nowrap; overflow-wrap: normal;\"></div>",
-            "target": [
-              [
-                "next-route-announcer",
-                "#__next-route-announcer__"
-              ]
-            ]
+            "target": [["next-route-announcer", "#__next-route-announcer__"]]
           }
         ]
       },
@@ -1125,12 +1083,7 @@
             ],
             "impact": null,
             "html": "<div aria-live=\"assertive\" id=\"__next-route-announcer__\" role=\"alert\" style=\"position: absolute; border: 0px; height: 1px; margin: -1px; padding: 0px; width: 1px; clip: rect(0px, 0px, 0px, 0px); overflow: hidden; white-space: nowrap; overflow-wrap: normal;\"></div>",
-            "target": [
-              [
-                "next-route-announcer",
-                "#__next-route-announcer__"
-              ]
-            ]
+            "target": [["next-route-announcer", "#__next-route-announcer__"]]
           }
         ]
       },
@@ -1166,9 +1119,7 @@
             "none": [],
             "impact": null,
             "html": "<body class=\"geist_9c1fd2b9-module__We3PEq__variable geist_mono_c932d54b-module__LyTxPG__variable antialiased\">",
-            "target": [
-              "body"
-            ]
+            "target": ["body"]
           }
         ]
       },
@@ -1282,9 +1233,7 @@
             "none": [],
             "impact": null,
             "html": "<svg class=\"h-6 w-6\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\" aria-hidden=\"true\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 6h16M4 12h16M4 18h16\"></path></svg>",
-            "target": [
-              ".h-6.w-6[viewBox=\"0 0 24 24\"]"
-            ]
+            "target": [".h-6.w-6[viewBox=\"0 0 24 24\"]"]
           },
           {
             "any": [],
@@ -1314,9 +1263,7 @@
             "none": [],
             "impact": null,
             "html": "<div class=\"absolute -top-4 -right-4 w-8 h-8 bg-noel-gold rounded-full animate-twinkle\" aria-hidden=\"true\"></div>",
-            "target": [
-              ".-top-4"
-            ]
+            "target": [".-top-4"]
           },
           {
             "any": [],
@@ -1346,9 +1293,7 @@
             "none": [],
             "impact": null,
             "html": "<div class=\"absolute -bottom-4 -left-4 w-6 h-6 bg-noel-red rounded-full animate-twinkle\" style=\"animation-delay:1s\" aria-hidden=\"true\"></div>",
-            "target": [
-              ".-bottom-4"
-            ]
+            "target": [".-bottom-4"]
           },
           {
             "any": [],
@@ -1378,9 +1323,7 @@
             "none": [],
             "impact": null,
             "html": "<div class=\"absolute top-1/2 -left-8 w-4 h-4 bg-noel-green rounded-full animate-twinkle\" style=\"animation-delay:2s\" aria-hidden=\"true\"></div>",
-            "target": [
-              ".top-1\\/2"
-            ]
+            "target": [".top-1\\/2"]
           },
           {
             "any": [],
@@ -1410,9 +1353,7 @@
             "none": [],
             "impact": null,
             "html": "<div class=\"absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none\" aria-hidden=\"true\">",
-            "target": [
-              ".left-0"
-            ]
+            "target": [".left-0"]
           },
           {
             "any": [],
@@ -1442,9 +1383,7 @@
             "none": [],
             "impact": null,
             "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-calendar w-12 h-12 text-primary mx-auto mb-4\" aria-hidden=\"true\">",
-            "target": [
-              ".lucide-calendar"
-            ]
+            "target": [".lucide-calendar"]
           },
           {
             "any": [],
@@ -1474,9 +1413,7 @@
             "none": [],
             "impact": null,
             "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-shopping-bag w-12 h-12 text-secondary mx-auto mb-4\" aria-hidden=\"true\">",
-            "target": [
-              ".lucide-shopping-bag"
-            ]
+            "target": [".lucide-shopping-bag"]
           },
           {
             "any": [],
@@ -1506,9 +1443,7 @@
             "none": [],
             "impact": null,
             "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-heart w-12 h-12 text-accent mx-auto mb-4\" aria-hidden=\"true\">",
-            "target": [
-              ".lucide-heart"
-            ]
+            "target": [".lucide-heart"]
           },
           {
             "any": [],
@@ -1538,9 +1473,7 @@
             "none": [],
             "impact": null,
             "html": "<svg class=\"ml-2 w-4 h-4\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14\"></path></svg>",
-            "target": [
-              ".ml-2"
-            ]
+            "target": [".ml-2"]
           },
           {
             "any": [],
@@ -1570,12 +1503,7 @@
             "none": [],
             "impact": null,
             "html": "<div aria-hidden=\"true\" data-dot=\"true\"></div>",
-            "target": [
-              [
-                "nextjs-portal",
-                "div[data-dot=\"true\"]"
-              ]
-            ]
+            "target": [["nextjs-portal", "div[data-dot=\"true\"]"]]
           }
         ]
       },
@@ -1609,9 +1537,7 @@
             ],
             "impact": null,
             "html": "<nav class=\"mx-auto max-w-7xl px-4 sm:px-6 lg:px-8\" aria-label=\"Navigation principale\">",
-            "target": [
-              "nav[aria-label=\"Navigation principale\"]"
-            ]
+            "target": ["nav[aria-label=\"Navigation principale\"]"]
           },
           {
             "any": [],
@@ -1645,9 +1571,7 @@
             ],
             "impact": null,
             "html": "<button type=\"button\" class=\"text-muted-foreground hover:text-primary focus:outline-none focus:text-primary transition-colors\" aria-label=\"Ouvrir le menu\" aria-expanded=\"false\" aria-controls=\"mobile-menu\" aria-haspopup=\"menu\">",
-            "target": [
-              ".focus\\:outline-none"
-            ]
+            "target": [".focus\\:outline-none"]
           },
           {
             "any": [],
@@ -1663,9 +1587,7 @@
             ],
             "impact": null,
             "html": "<a class=\"block px-3 py-2 rounded-md text-base font-medium transition-all duration-200 text-primary bg-primary/10\" aria-current=\"page\" href=\"/\">Accueil</a>",
-            "target": [
-              ".bg-primary\\/10.text-base[aria-current=\"page\"]"
-            ]
+            "target": [".bg-primary\\/10.text-base[aria-current=\"page\"]"]
           },
           {
             "any": [],
@@ -1681,9 +1603,7 @@
             ],
             "impact": null,
             "html": "<nav class=\"space-y-2\" aria-label=\"Liens du pied de page\">",
-            "target": [
-              "nav[aria-label=\"Liens du pied de page\"]"
-            ]
+            "target": ["nav[aria-label=\"Liens du pied de page\"]"]
           },
           {
             "any": [],
@@ -1699,12 +1619,7 @@
             ],
             "impact": null,
             "html": "<div aria-live=\"assertive\" id=\"__next-route-announcer__\" role=\"alert\" style=\"position: absolute; border: 0px; height: 1px; margin: -1px; padding: 0px; width: 1px; clip: rect(0px, 0px, 0px, 0px); overflow: hidden; white-space: nowrap; overflow-wrap: normal;\"></div>",
-            "target": [
-              [
-                "next-route-announcer",
-                "#__next-route-announcer__"
-              ]
-            ]
+            "target": [["next-route-announcer", "#__next-route-announcer__"]]
           }
         ]
       },
@@ -1738,12 +1653,7 @@
             "none": [],
             "impact": null,
             "html": "<div aria-live=\"assertive\" id=\"__next-route-announcer__\" role=\"alert\" style=\"position: absolute; border: 0px; height: 1px; margin: -1px; padding: 0px; width: 1px; clip: rect(0px, 0px, 0px, 0px); overflow: hidden; white-space: nowrap; overflow-wrap: normal;\"></div>",
-            "target": [
-              [
-                "next-route-announcer",
-                "#__next-route-announcer__"
-              ]
-            ]
+            "target": [["next-route-announcer", "#__next-route-announcer__"]]
           }
         ]
       },
@@ -1791,12 +1701,7 @@
             ],
             "impact": null,
             "html": "<div aria-live=\"assertive\" id=\"__next-route-announcer__\" role=\"alert\" style=\"position: absolute; border: 0px; height: 1px; margin: -1px; padding: 0px; width: 1px; clip: rect(0px, 0px, 0px, 0px); overflow: hidden; white-space: nowrap; overflow-wrap: normal;\"></div>",
-            "target": [
-              [
-                "next-route-announcer",
-                "#__next-route-announcer__"
-              ]
-            ]
+            "target": [["next-route-announcer", "#__next-route-announcer__"]]
           }
         ]
       },
@@ -1844,9 +1749,7 @@
             "none": [],
             "impact": null,
             "html": "<nav class=\"mx-auto max-w-7xl px-4 sm:px-6 lg:px-8\" aria-label=\"Navigation principale\">",
-            "target": [
-              "nav[aria-label=\"Navigation principale\"]"
-            ]
+            "target": ["nav[aria-label=\"Navigation principale\"]"]
           },
           {
             "any": [],
@@ -1908,9 +1811,7 @@
             "none": [],
             "impact": null,
             "html": "<a class=\"block px-3 py-2 rounded-md text-base font-medium transition-all duration-200 text-primary bg-primary/10\" aria-current=\"page\" href=\"/\">Accueil</a>",
-            "target": [
-              ".bg-primary\\/10.text-base[aria-current=\"page\"]"
-            ]
+            "target": [".bg-primary\\/10.text-base[aria-current=\"page\"]"]
           },
           {
             "any": [],
@@ -1940,9 +1841,7 @@
             "none": [],
             "impact": null,
             "html": "<nav class=\"space-y-2\" aria-label=\"Liens du pied de page\">",
-            "target": [
-              "nav[aria-label=\"Liens du pied de page\"]"
-            ]
+            "target": ["nav[aria-label=\"Liens du pied de page\"]"]
           },
           {
             "any": [],
@@ -1972,12 +1871,7 @@
             "none": [],
             "impact": null,
             "html": "<div aria-live=\"assertive\" id=\"__next-route-announcer__\" role=\"alert\" style=\"position: absolute; border: 0px; height: 1px; margin: -1px; padding: 0px; width: 1px; clip: rect(0px, 0px, 0px, 0px); overflow: hidden; white-space: nowrap; overflow-wrap: normal;\"></div>",
-            "target": [
-              [
-                "next-route-announcer",
-                "#__next-route-announcer__"
-              ]
-            ]
+            "target": [["next-route-announcer", "#__next-route-announcer__"]]
           }
         ]
       },
@@ -2011,9 +1905,7 @@
             "none": [],
             "impact": null,
             "html": "<nav class=\"mx-auto max-w-7xl px-4 sm:px-6 lg:px-8\" aria-label=\"Navigation principale\">",
-            "target": [
-              "nav[aria-label=\"Navigation principale\"]"
-            ]
+            "target": ["nav[aria-label=\"Navigation principale\"]"]
           },
           {
             "any": [
@@ -2047,9 +1939,7 @@
             "none": [],
             "impact": null,
             "html": "<button type=\"button\" class=\"text-muted-foreground hover:text-primary focus:outline-none focus:text-primary transition-colors\" aria-label=\"Ouvrir le menu\" aria-expanded=\"false\" aria-controls=\"mobile-menu\" aria-haspopup=\"menu\">",
-            "target": [
-              ".focus\\:outline-none"
-            ]
+            "target": [".focus\\:outline-none"]
           },
           {
             "any": [
@@ -2065,9 +1955,7 @@
             "none": [],
             "impact": null,
             "html": "<a class=\"block px-3 py-2 rounded-md text-base font-medium transition-all duration-200 text-primary bg-primary/10\" aria-current=\"page\" href=\"/\">Accueil</a>",
-            "target": [
-              ".bg-primary\\/10.text-base[aria-current=\"page\"]"
-            ]
+            "target": [".bg-primary\\/10.text-base[aria-current=\"page\"]"]
           },
           {
             "any": [
@@ -2083,9 +1971,7 @@
             "none": [],
             "impact": null,
             "html": "<nav class=\"space-y-2\" aria-label=\"Liens du pied de page\">",
-            "target": [
-              "nav[aria-label=\"Liens du pied de page\"]"
-            ]
+            "target": ["nav[aria-label=\"Liens du pied de page\"]"]
           },
           {
             "any": [
@@ -2101,12 +1987,7 @@
             "none": [],
             "impact": null,
             "html": "<div aria-live=\"assertive\" id=\"__next-route-announcer__\" role=\"alert\" style=\"position: absolute; border: 0px; height: 1px; margin: -1px; padding: 0px; width: 1px; clip: rect(0px, 0px, 0px, 0px); overflow: hidden; white-space: nowrap; overflow-wrap: normal;\"></div>",
-            "target": [
-              [
-                "next-route-announcer",
-                "#__next-route-announcer__"
-              ]
-            ]
+            "target": [["next-route-announcer", "#__next-route-announcer__"]]
           }
         ]
       },
@@ -2153,9 +2034,7 @@
             "none": [],
             "impact": null,
             "html": "<html lang=\"fr\" class=\"light\" style=\"color-scheme: light;\">",
-            "target": [
-              "html"
-            ]
+            "target": ["html"]
           },
           {
             "any": [],
@@ -2185,9 +2064,7 @@
             "none": [],
             "impact": null,
             "html": "<img alt=\"Logo Marché de Noël ...\" loading=\"lazy\" width=\"32\" height=\"32\" decoding=\"async\" data-nimg=\"1\" class=\"w-8 h-8\" style=\"color:transparent\" srcset=\"/_next/image?url=%2F...\" src=\"/_next/image?url=%2F...\">",
-            "target": [
-              "img[alt=\"Logo Marché de Noël du MPR\"]"
-            ]
+            "target": ["img[alt=\"Logo Marché de Noël du MPR\"]"]
           },
           {
             "any": [],
@@ -2249,9 +2126,7 @@
             "none": [],
             "impact": null,
             "html": "<img alt=\"Image du Marché de N...\" loading=\"lazy\" decoding=\"async\" data-nimg=\"fill\" class=\"object-cover\" style=\"position:absolute;he...\" sizes=\"(max-width: 768px) 1...\" srcset=\"/_next/image?url=%2F...\" src=\"/_next/image?url=%2F...\">",
-            "target": [
-              "img[alt=\"Image du Marché de Noël MPR\"]"
-            ]
+            "target": ["img[alt=\"Image du Marché de Noël MPR\"]"]
           },
           {
             "any": [],
@@ -2281,9 +2156,7 @@
             "none": [],
             "impact": null,
             "html": "<img alt=\"Logo Marché de Noël ...\" loading=\"lazy\" width=\"32\" height=\"32\" decoding=\"async\" data-nimg=\"1\" class=\"w-8 h-8\" style=\"color:transparent\" srcset=\"/_next/image?url=%2F...\" src=\"/_next/image?url=%2F...\">",
-            "target": [
-              "img[alt=\"Logo Marché de Noël MPR\"]"
-            ]
+            "target": ["img[alt=\"Logo Marché de Noël MPR\"]"]
           },
           {
             "any": [],
@@ -2313,9 +2186,7 @@
             "none": [],
             "impact": null,
             "html": "<next-route-announcer style=\"position: absolute;\"></next-route-announcer>",
-            "target": [
-              "next-route-announcer"
-            ]
+            "target": ["next-route-announcer"]
           }
         ]
       },
@@ -2386,9 +2257,7 @@
             "none": [],
             "impact": null,
             "html": "<button type=\"button\" class=\"text-muted-foreground hover:text-primary focus:outline-none focus:text-primary transition-colors\" aria-label=\"Ouvrir le menu\" aria-expanded=\"false\" aria-controls=\"mobile-menu\" aria-haspopup=\"menu\">",
-            "target": [
-              ".focus\\:outline-none"
-            ]
+            "target": [".focus\\:outline-none"]
           }
         ]
       },
@@ -2420,9 +2289,7 @@
                 "relatedNodes": [
                   {
                     "html": "<h1 class=\"text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-tight\">Bienvenue au Marché de Noël du MPR de Nantes</h1>",
-                    "target": [
-                      "h1"
-                    ]
+                    "target": ["h1"]
                   },
                   {
                     "html": "<h2 class=\"text-3xl sm:text-4xl font-bold text-foreground mb-4\">Pourquoi nous choisir ?</h2>",
@@ -2462,21 +2329,15 @@
                   },
                   {
                     "html": "<h3 class=\"text-2xl font-bold text-foreground mb-6\">Une association dévouée</h3>",
-                    "target": [
-                      ".text-2xl"
-                    ]
+                    "target": [".text-2xl"]
                   },
                   {
                     "html": "<h3 class=\"font-semibold text-lg\">Liens rapides</h3>",
-                    "target": [
-                      ".space-y-4:nth-child(2) > h3"
-                    ]
+                    "target": [".space-y-4:nth-child(2) > h3"]
                   },
                   {
                     "html": "<h3 class=\"font-semibold text-lg\">Contact</h3>",
-                    "target": [
-                      ".space-y-4:nth-child(3) > h3"
-                    ]
+                    "target": [".space-y-4:nth-child(3) > h3"]
                   }
                 ],
                 "impact": "serious",
@@ -2488,9 +2349,7 @@
                 "relatedNodes": [
                   {
                     "html": "<main>",
-                    "target": [
-                      "main"
-                    ]
+                    "target": ["main"]
                   }
                 ],
                 "impact": "serious",
@@ -2501,9 +2360,7 @@
             "none": [],
             "impact": null,
             "html": "<html lang=\"fr\" class=\"light\" style=\"color-scheme: light;\">",
-            "target": [
-              "html"
-            ]
+            "target": ["html"]
           }
         ]
       },
@@ -2547,9 +2404,7 @@
             "none": [],
             "impact": null,
             "html": "<span class=\"font-bold text-lg text-primary pt-1\">Marché de Noël</span>",
-            "target": [
-              ".pt-1"
-            ]
+            "target": [".pt-1"]
           },
           {
             "any": [
@@ -2572,9 +2427,7 @@
             "none": [],
             "impact": null,
             "html": "<a data-slot=\"button\" class=\"inline-flex items-ce...\" href=\"/programme\">",
-            "target": [
-              ".gap-2"
-            ]
+            "target": [".gap-2"]
           },
           {
             "any": [
@@ -2622,9 +2475,7 @@
             "none": [],
             "impact": null,
             "html": "<p class=\"text-muted-foreground text-sm\">Marché de Noël du MPR de Nantes<br>27 nov. - 11, 13 et 16 déc. 2025</p>",
-            "target": [
-              ".space-y-4:nth-child(1) > .text-sm"
-            ]
+            "target": [".space-y-4:nth-child(1) > .text-sm"]
           },
           {
             "any": [
@@ -2647,9 +2498,7 @@
             "none": [],
             "impact": null,
             "html": "<h3 class=\"font-semibold text-lg\">Liens rapides</h3>",
-            "target": [
-              ".space-y-4:nth-child(2) > h3"
-            ]
+            "target": [".space-y-4:nth-child(2) > h3"]
           },
           {
             "any": [
@@ -2672,9 +2521,7 @@
             "none": [],
             "impact": null,
             "html": "<a class=\"block text-muted-foreground hover:text-card-foreground transition-colors\" href=\"/\">Accueil</a>",
-            "target": [
-              ".hover\\:text-card-foreground.block[href=\"/\"]"
-            ]
+            "target": [".hover\\:text-card-foreground.block[href=\"/\"]"]
           },
           {
             "any": [
@@ -2722,9 +2569,7 @@
             "none": [],
             "impact": null,
             "html": "<a class=\"block text-muted-foreground hover:text-card-foreground transition-colors\" href=\"/merci\">Merci</a>",
-            "target": [
-              ".hover\\:text-card-foreground.block[href$=\"merci\"]"
-            ]
+            "target": [".hover\\:text-card-foreground.block[href$=\"merci\"]"]
           },
           {
             "any": [
@@ -2747,9 +2592,7 @@
             "none": [],
             "impact": null,
             "html": "<h3 class=\"font-semibold text-lg\">Contact</h3>",
-            "target": [
-              ".space-y-4:nth-child(3) > h3"
-            ]
+            "target": [".space-y-4:nth-child(3) > h3"]
           },
           {
             "any": [
@@ -2847,9 +2690,7 @@
             "none": [],
             "impact": null,
             "html": "<p class=\"text-muted-foreground text-sm\">© 2025 MPR de Nantes. Tous droits réservés.</p>",
-            "target": [
-              ".md\\:flex-row > .text-sm"
-            ]
+            "target": [".md\\:flex-row > .text-sm"]
           },
           {
             "any": [
@@ -2911,9 +2752,7 @@
             "none": [],
             "impact": null,
             "html": "<html lang=\"fr\" class=\"light\" style=\"color-scheme: light;\">",
-            "target": [
-              "html"
-            ]
+            "target": ["html"]
           }
         ]
       },
@@ -2947,9 +2786,7 @@
             "none": [],
             "impact": null,
             "html": "<div id=\"mobile-menu\" class=\"md:hidden overflow-hidden transition-all duration-300 ease-in-out max-h-0 opacity-0\">",
-            "target": [
-              "#mobile-menu"
-            ]
+            "target": ["#mobile-menu"]
           }
         ]
       },
@@ -2986,9 +2823,7 @@
             "none": [],
             "impact": null,
             "html": "<html lang=\"fr\" class=\"light\" style=\"color-scheme: light;\">",
-            "target": [
-              "html"
-            ]
+            "target": ["html"]
           }
         ]
       },
@@ -3025,9 +2860,7 @@
             ],
             "impact": null,
             "html": "<html lang=\"fr\" class=\"light\" style=\"color-scheme: light;\">",
-            "target": [
-              "html"
-            ]
+            "target": ["html"]
           }
         ]
       },
@@ -3075,9 +2908,7 @@
             ],
             "impact": null,
             "html": "<img alt=\"Logo Marché de Noël ...\" loading=\"lazy\" width=\"32\" height=\"32\" decoding=\"async\" data-nimg=\"1\" class=\"w-8 h-8\" style=\"color:transparent\" srcset=\"/_next/image?url=%2F...\" src=\"/_next/image?url=%2F...\">",
-            "target": [
-              "img[alt=\"Logo Marché de Noël du MPR\"]"
-            ]
+            "target": ["img[alt=\"Logo Marché de Noël du MPR\"]"]
           },
           {
             "any": [
@@ -3127,9 +2958,7 @@
             ],
             "impact": null,
             "html": "<img alt=\"Logo APRAIH - Associ...\" loading=\"lazy\" width=\"300\" height=\"205\" decoding=\"async\" data-nimg=\"1\" class=\"w-64 h-auto mx-auto\" style=\"color:transparent\" srcset=\"/_next/image?url=%2F...\" src=\"/_next/image?url=%2F...\">",
-            "target": [
-              "img[width=\"300\"]"
-            ]
+            "target": ["img[width=\"300\"]"]
           },
           {
             "any": [
@@ -3153,9 +2982,7 @@
             ],
             "impact": null,
             "html": "<img alt=\"Image du Marché de N...\" loading=\"lazy\" decoding=\"async\" data-nimg=\"fill\" class=\"object-cover\" style=\"position:absolute;he...\" sizes=\"(max-width: 768px) 1...\" srcset=\"/_next/image?url=%2F...\" src=\"/_next/image?url=%2F...\">",
-            "target": [
-              "img[alt=\"Image du Marché de Noël MPR\"]"
-            ]
+            "target": ["img[alt=\"Image du Marché de Noël MPR\"]"]
           },
           {
             "any": [
@@ -3179,9 +3006,7 @@
             ],
             "impact": null,
             "html": "<img alt=\"Logo Marché de Noël ...\" loading=\"lazy\" width=\"32\" height=\"32\" decoding=\"async\" data-nimg=\"1\" class=\"w-8 h-8\" style=\"color:transparent\" srcset=\"/_next/image?url=%2F...\" src=\"/_next/image?url=%2F...\">",
-            "target": [
-              "img[alt=\"Logo Marché de Noël MPR\"]"
-            ]
+            "target": ["img[alt=\"Logo Marché de Noël MPR\"]"]
           }
         ]
       },
@@ -3230,9 +3055,7 @@
             ],
             "impact": null,
             "html": "<a class=\"flex items-center space-x-2\" href=\"/\">",
-            "target": [
-              ".space-x-2.items-center[href=\"/\"]"
-            ]
+            "target": [".space-x-2.items-center[href=\"/\"]"]
           },
           {
             "any": [
@@ -3256,9 +3079,7 @@
             ],
             "impact": null,
             "html": "<a class=\"block px-3 py-2 rounded-md text-base font-medium transition-all duration-200 text-primary bg-primary/10\" aria-current=\"page\" href=\"/\">Accueil</a>",
-            "target": [
-              ".bg-primary\\/10.text-base[aria-current=\"page\"]"
-            ]
+            "target": [".bg-primary\\/10.text-base[aria-current=\"page\"]"]
           },
           {
             "any": [
@@ -3282,9 +3103,7 @@
             ],
             "impact": null,
             "html": "<a class=\"block px-3 py-2 rounded-md text-base font-medium transition-all duration-200 text-muted-foreground hover:text-primary hover:bg-primary/10 hover:scale-105\" href=\"/programme\">Programme</a>",
-            "target": [
-              ".hover\\:scale-105.text-base.duration-200:nth-child(2)"
-            ]
+            "target": [".hover\\:scale-105.text-base.duration-200:nth-child(2)"]
           },
           {
             "any": [
@@ -3308,9 +3127,7 @@
             ],
             "impact": null,
             "html": "<a class=\"block px-3 py-2 rounded-md text-base font-medium transition-all duration-200 text-muted-foreground hover:text-primary hover:bg-primary/10 hover:scale-105\" href=\"/merci\">Merci</a>",
-            "target": [
-              ".hover\\:scale-105.text-base.duration-200:nth-child(3)"
-            ]
+            "target": [".hover\\:scale-105.text-base.duration-200:nth-child(3)"]
           },
           {
             "any": [
@@ -3334,9 +3151,7 @@
             ],
             "impact": null,
             "html": "<a data-slot=\"button\" class=\"inline-flex items-ce...\" href=\"/programme\">",
-            "target": [
-              ".gap-2"
-            ]
+            "target": [".gap-2"]
           },
           {
             "any": [
@@ -3412,9 +3227,7 @@
             ],
             "impact": null,
             "html": "<a href=\"/programme\" class=\"bg-background text-primary hover:bg-transparent hover:border-2 hover:border-primary hover:text-primary px-8 py-3 rounded-lg font-semibold text-lg transition-colors focus:ring-2 focus:ring-primary focus:ring-offset-2\">Voir le programme complet</a>",
-            "target": [
-              ".hover\\:bg-transparent"
-            ]
+            "target": [".hover\\:bg-transparent"]
           },
           {
             "any": [
@@ -3438,9 +3251,7 @@
             ],
             "impact": null,
             "html": "<a href=\"/merci\" class=\"border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary-dark px-8 py-3 rounded-lg font-semibold text-lg transition-colors\">Remerciements</a>",
-            "target": [
-              ".border-2"
-            ]
+            "target": [".border-2"]
           },
           {
             "any": [
@@ -3464,9 +3275,7 @@
             ],
             "impact": null,
             "html": "<a href=\"https://www.apraih.fr/\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center px-6 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary-dark transition-colors\">",
-            "target": [
-              ".bg-primary"
-            ]
+            "target": [".bg-primary"]
           },
           {
             "any": [
@@ -3490,9 +3299,7 @@
             ],
             "impact": null,
             "html": "<a class=\"block text-muted-foreground hover:text-card-foreground transition-colors\" href=\"/\">Accueil</a>",
-            "target": [
-              ".hover\\:text-card-foreground.block[href=\"/\"]"
-            ]
+            "target": [".hover\\:text-card-foreground.block[href=\"/\"]"]
           },
           {
             "any": [
@@ -3542,9 +3349,7 @@
             ],
             "impact": null,
             "html": "<a class=\"block text-muted-foreground hover:text-card-foreground transition-colors\" href=\"/merci\">Merci</a>",
-            "target": [
-              ".hover\\:text-card-foreground.block[href$=\"merci\"]"
-            ]
+            "target": [".hover\\:text-card-foreground.block[href$=\"merci\"]"]
           },
           {
             "any": [
@@ -3605,9 +3410,7 @@
             "none": [],
             "impact": null,
             "html": "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, user-scalable=yes\">",
-            "target": [
-              "meta[name=\"viewport\"]"
-            ]
+            "target": ["meta[name=\"viewport\"]"]
           }
         ]
       },
@@ -3643,9 +3446,7 @@
             "none": [],
             "impact": null,
             "html": "<img alt=\"Logo Marché de Noël ...\" loading=\"lazy\" width=\"32\" height=\"32\" decoding=\"async\" data-nimg=\"1\" class=\"w-8 h-8\" style=\"color:transparent\" srcset=\"/_next/image?url=%2F...\" src=\"/_next/image?url=%2F...\">",
-            "target": [
-              "img[alt=\"Logo Marché de Noël du MPR\"]"
-            ]
+            "target": ["img[alt=\"Logo Marché de Noël du MPR\"]"]
           },
           {
             "any": [
@@ -3679,9 +3480,7 @@
             "none": [],
             "impact": null,
             "html": "<button type=\"button\" class=\"text-muted-foreground hover:text-primary focus:outline-none focus:text-primary transition-colors\" aria-label=\"Ouvrir le menu\" aria-expanded=\"false\" aria-controls=\"mobile-menu\" aria-haspopup=\"menu\">",
-            "target": [
-              ".focus\\:outline-none"
-            ]
+            "target": [".focus\\:outline-none"]
           },
           {
             "any": [
@@ -3715,9 +3514,7 @@
             "none": [],
             "impact": null,
             "html": "<img alt=\"Logo APRAIH - Associ...\" loading=\"lazy\" width=\"300\" height=\"205\" decoding=\"async\" data-nimg=\"1\" class=\"w-64 h-auto mx-auto\" style=\"color:transparent\" srcset=\"/_next/image?url=%2F...\" src=\"/_next/image?url=%2F...\">",
-            "target": [
-              "img[width=\"300\"]"
-            ]
+            "target": ["img[width=\"300\"]"]
           },
           {
             "any": [
@@ -3733,9 +3530,7 @@
             "none": [],
             "impact": null,
             "html": "<img alt=\"Image du Marché de N...\" loading=\"lazy\" decoding=\"async\" data-nimg=\"fill\" class=\"object-cover\" style=\"position:absolute;he...\" sizes=\"(max-width: 768px) 1...\" srcset=\"/_next/image?url=%2F...\" src=\"/_next/image?url=%2F...\">",
-            "target": [
-              "img[alt=\"Image du Marché de Noël MPR\"]"
-            ]
+            "target": ["img[alt=\"Image du Marché de Noël MPR\"]"]
           },
           {
             "any": [
@@ -3751,9 +3546,7 @@
             "none": [],
             "impact": null,
             "html": "<img alt=\"Logo Marché de Noël ...\" loading=\"lazy\" width=\"32\" height=\"32\" decoding=\"async\" data-nimg=\"1\" class=\"w-8 h-8\" style=\"color:transparent\" srcset=\"/_next/image?url=%2F...\" src=\"/_next/image?url=%2F...\">",
-            "target": [
-              "img[alt=\"Logo Marché de Noël MPR\"]"
-            ]
+            "target": ["img[alt=\"Logo Marché de Noël MPR\"]"]
           }
         ]
       }
@@ -3792,9 +3585,7 @@
             "none": [],
             "impact": "critical",
             "html": "<button type=\"button\" class=\"text-muted-foreground hover:text-primary focus:outline-none focus:text-primary transition-colors\" aria-label=\"Ouvrir le menu\" aria-expanded=\"false\" aria-controls=\"mobile-menu\" aria-haspopup=\"menu\">",
-            "target": [
-              ".focus\\:outline-none"
-            ],
+            "target": [".focus\\:outline-none"],
             "failureSummary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"mobile-menu\""
           }
         ]
@@ -3832,9 +3623,7 @@
                 "relatedNodes": [
                   {
                     "html": "<section class=\"relative bg-gradient-to-br from-noel-snow to-background overflow-hidden\">",
-                    "target": [
-                      ".bg-gradient-to-br"
-                    ]
+                    "target": [".bg-gradient-to-br"]
                   }
                 ],
                 "impact": "serious",
@@ -3845,9 +3634,7 @@
             "none": [],
             "impact": "serious",
             "html": "<h1 class=\"text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-tight\">Bienvenue au Marché de Noël du MPR de Nantes</h1>",
-            "target": [
-              "h1"
-            ],
+            "target": ["h1"],
             "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
           },
           {
@@ -3864,9 +3651,7 @@
                 "relatedNodes": [
                   {
                     "html": "<section class=\"relative bg-gradient-to-br from-noel-snow to-background overflow-hidden\">",
-                    "target": [
-                      ".bg-gradient-to-br"
-                    ]
+                    "target": [".bg-gradient-to-br"]
                   }
                 ],
                 "impact": "serious",
@@ -3877,9 +3662,7 @@
             "none": [],
             "impact": "serious",
             "html": "<p class=\"text-xl sm:text-2xl text-primary font-semibold\">Le 27 nov. - 11, 13 et 16 déc. 2025</p>",
-            "target": [
-              ".sm\\:text-2xl"
-            ],
+            "target": [".sm\\:text-2xl"],
             "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
           },
           {
@@ -3896,9 +3679,7 @@
                 "relatedNodes": [
                   {
                     "html": "<section class=\"relative bg-gradient-to-br from-noel-snow to-background overflow-hidden\">",
-                    "target": [
-                      ".bg-gradient-to-br"
-                    ]
+                    "target": [".bg-gradient-to-br"]
                   }
                 ],
                 "impact": "serious",
@@ -3909,9 +3690,7 @@
             "none": [],
             "impact": "serious",
             "html": "<p class=\"text-lg text-muted-foreground leading-relaxed\">Découvrez la magie de Noël au cœur de Nantes/Saint Jacques, avec notre marché traditionnel. Patients, soignants, produits authentiques et ambiance festive vous attendent.</p>",
-            "target": [
-              ".leading-relaxed"
-            ],
+            "target": [".leading-relaxed"],
             "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
           }
         ]

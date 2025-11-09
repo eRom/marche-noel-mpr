@@ -226,8 +226,16 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, 
-    'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  font-family:
+    var(--font-geist-sans),
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    sans-serif;
 }
 
 /* Christmas animations */
@@ -265,7 +273,8 @@ body {
 }
 
 @keyframes twinkle {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
   }
   50% {
@@ -307,7 +316,7 @@ body {
 
 .card-3d:hover {
   transform: translateY(-8px) scale(1.02);
-  box-shadow: 
+  box-shadow:
     0 20px 40px -10px rgba(0, 0, 0, 0.15),
     0 0 20px rgba(220, 38, 38, 0.1);
 }
@@ -328,7 +337,8 @@ body {
 
 /* Chasse aux flocons magiques - Animations */
 @keyframes float-magic {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0) rotate(0deg) scale(1);
   }
   25% {

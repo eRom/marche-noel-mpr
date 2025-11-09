@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { useEffect, useMemo, useState } from 'react';
+import { motion } from "framer-motion";
+import { useEffect, useMemo, useState } from "react";
 
 type TimeLeft = {
   days: number;
@@ -52,15 +52,14 @@ function getTimeLeft(target: Date): TimeLeft {
 
 export default function CeremonyTimer() {
   // Ouverture officielle: 27 novembre 2025, 16:00 (heure locale)
-  // new Date(2025, 10, 27, 16, 0, 0) 
+  // new Date(2025, 10, 27, 16, 0, 0)
   const targetDate = useMemo(() => new Date(2025, 10, 27, 16, 0, 0), []); // month is 0-indexed
-  const [timeLeft, setTimeLeft] = useState<TimeLeft>(() => getTimeLeft(targetDate));
+  const [timeLeft, setTimeLeft] = useState<TimeLeft>(() =>
+    getTimeLeft(targetDate)
+  );
 
   // Créer les flocons avant tout return conditionnel (règles des hooks React)
-  const snowflakes = useMemo(
-    () => createSnowflakes(SNOWFLAKE_COUNT),
-    []
-  ); // deterministic values prevent hydration mismatches
+  const snowflakes = useMemo(() => createSnowflakes(SNOWFLAKE_COUNT), []); // deterministic values prevent hydration mismatches
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -70,28 +69,65 @@ export default function CeremonyTimer() {
   }, [targetDate]);
 
   const isFinished =
-    timeLeft.days === 0 && timeLeft.hours === 0 && timeLeft.minutes === 0 && timeLeft.seconds === 0;
+    timeLeft.days === 0 &&
+    timeLeft.hours === 0 &&
+    timeLeft.minutes === 0 &&
+    timeLeft.seconds === 0;
 
   if (isFinished) return null;
 
-  const blocks: Array<{ label: string; value: number; color: string; darkColor: string; icon: string }> = [
-    { label: 'Jours', value: timeLeft.days, color: 'text-red-600', darkColor: 'dark:text-red-400', icon: 'jour(s)' },
-    { label: 'Heures', value: timeLeft.hours, color: 'text-green-600', darkColor: 'dark:text-green-400', icon: 'heure(s)' },
-    { label: 'Minutes', value: timeLeft.minutes, color: 'text-orange-600', darkColor: 'dark:text-orange-400', icon: 'minute(s)' },
-    { label: 'Secondes', value: timeLeft.seconds, color: 'text-blue-600', darkColor: 'dark:text-blue-400', icon: 'seconde(s)' },
+  const blocks: Array<{
+    label: string;
+    value: number;
+    color: string;
+    darkColor: string;
+    icon: string;
+  }> = [
+    {
+      label: "Jours",
+      value: timeLeft.days,
+      color: "text-red-600",
+      darkColor: "dark:text-red-400",
+      icon: "jour(s)",
+    },
+    {
+      label: "Heures",
+      value: timeLeft.hours,
+      color: "text-green-600",
+      darkColor: "dark:text-green-400",
+      icon: "heure(s)",
+    },
+    {
+      label: "Minutes",
+      value: timeLeft.minutes,
+      color: "text-orange-600",
+      darkColor: "dark:text-orange-400",
+      icon: "minute(s)",
+    },
+    {
+      label: "Secondes",
+      value: timeLeft.seconds,
+      color: "text-blue-600",
+      darkColor: "dark:text-blue-400",
+      icon: "seconde(s)",
+    },
   ];
 
   return (
-    <div className="relative overflow-hidden rounded-2xl p-6 sm:p-8 shadow-xl bg-transparent dark:bg-gray-900/20">
+    <div className="relative overflow-hidden rounded-2xl bg-transparent p-6 shadow-xl sm:p-8 dark:bg-gray-900/20">
       {/* Flocons animés en arrière-plan */}
-      <div className="absolute inset-0 pointer-events-none">
+      <div className="pointer-events-none absolute inset-0">
         {snowflakes.map((flake, i) => (
           <motion.div
             key={i}
-            className="absolute text-blue-200/70 dark:text-blue-400/50 text-xl"
+            className="absolute text-xl text-blue-200/70 dark:text-blue-400/50"
             initial={{ y: -20, x: flake.initialX }}
             animate={{ y: 600, x: flake.targetX, rotate: 360 }}
-            transition={{ duration: flake.duration, repeat: Infinity, ease: 'linear' }}
+            transition={{
+              duration: flake.duration,
+              repeat: Infinity,
+              ease: "linear",
+            }}
           >
             ❄️
           </motion.div>
@@ -99,25 +135,28 @@ export default function CeremonyTimer() {
       </div>
 
       {/* Timer principal */}
-      <div className="relative z-10 flex flex-wrap gap-4 sm:gap-6 justify-center items-stretch">
+      <div className="relative z-10 flex flex-wrap items-stretch justify-center gap-4 sm:gap-6">
         {blocks.map((b) => (
           <motion.div
             key={b.label}
-            className="bg-noel-snow dark:bg-gray-800/95 backdrop-blur rounded-xl px-5 py-4 sm:px-6 sm:py-6 shadow-lg dark:shadow-2xl min-w-[110px] text-center"
+            className="bg-noel-snow min-w-[110px] rounded-xl px-5 py-4 text-center shadow-lg backdrop-blur sm:px-6 sm:py-6 dark:bg-gray-800/95 dark:shadow-2xl"
             whileHover={{ scale: 1.05, rotate: 1 }}
-            transition={{ type: 'spring', stiffness: 300 }}
+            transition={{ type: "spring", stiffness: 300 }}
           >
             <motion.div
-              className={`text-4xl sm:text-5xl font-bold tracking-tight ${b.color} ${b.darkColor}`}
-              style={{ fontFamily: 'Inter, Poppins, Montserrat, ui-sans-serif, system-ui' }}
+              className={`text-4xl font-bold tracking-tight sm:text-5xl ${b.color} ${b.darkColor}`}
+              style={{
+                fontFamily:
+                  "Inter, Poppins, Montserrat, ui-sans-serif, system-ui",
+              }}
               key={`${b.label}-${b.value}`}
               initial={{ scale: 1.15, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.25 }}
             >
-              {b.value.toString().padStart(2, '0')}
+              {b.value.toString().padStart(2, "0")}
             </motion.div>
-            <div className="text-xs text-muted-foreground" aria-hidden>
+            <div className="text-muted-foreground text-xs" aria-hidden>
               {b.icon}
             </div>
           </motion.div>
@@ -132,8 +171,12 @@ export default function CeremonyTimer() {
         {[...Array(10)].map((_, i) => (
           <motion.div
             key={i}
-            className="w-2.5 h-2.5 rounded-full"
-            style={{ backgroundColor: ['#ef4444', '#22c55e', '#eab308', '#3b82f6'][i % 4] }}
+            className="h-2.5 w-2.5 rounded-full"
+            style={{
+              backgroundColor: ["#ef4444", "#22c55e", "#eab308", "#3b82f6"][
+                i % 4
+              ],
+            }}
             animate={{ opacity: [0.3, 1, 0.3], scale: [0.85, 1.15, 0.85] }}
             transition={{ duration: 1.4, repeat: Infinity, delay: i * 0.1 }}
           />

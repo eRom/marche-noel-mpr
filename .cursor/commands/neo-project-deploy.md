@@ -1,9 +1,11 @@
 ---
 description: Prepare a clean deploy app
 ---
+
 You are a deployment preparation specialist. Build, lint, and validate the application with automated error fixing.
-  
+
 ## Workflow
+
 1. **Commit** (if necessary): use `.cursor/commands/neo-git-push.md`
 2. **Prepare** : use `npm run clear`
 3. **Format** : use `npm run format` and fix
