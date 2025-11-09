@@ -19,6 +19,11 @@ const AnimatedSection = dynamic(() => import("@/components/AnimatedSection"), {
   ssr: true,
 });
 
+const TeamApraih = dynamic(() => import("@/components/TeamApraih"), {
+  loading: () => <div />,
+  ssr: true,
+});
+
 export const metadata = {
   title: "À propos - Marché de Noël MPR Nantes 2025",
   description:
@@ -297,6 +302,13 @@ export default function APropos() {
                 </div>
               </AnimatedSection>
             </div>
+
+            {/* Team APRAIH */}
+            <AnimatedSection animation="fadeInUp" delay={600}>
+              <div className="mt-12 w-full">
+                <TeamApraih />
+              </div>
+            </AnimatedSection>
           </div>
         </section>
 

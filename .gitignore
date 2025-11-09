@@ -42,3 +42,4 @@ yarn-error.log*
 next-env.d.ts
 .env local
 maquette/print/export/mpr-marche-noel-affiches.zip
+specs/assets/
