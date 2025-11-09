@@ -182,7 +182,7 @@ export default function APropos() {
         </section>
 
         {/* APRAIH Section */}
-        <section className="bg-gradient-to-br from-red-50 via-red-100 to-red-200 py-16 dark:from-red-950 dark:via-red-900 dark:to-red-800">
+        <section className="bg-noel-snow py-16">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <AnimatedSection animation="fadeInUp">
               <div className="mb-12 text-center">
