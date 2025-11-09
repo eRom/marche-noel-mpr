@@ -90,14 +90,11 @@ export default function TeamApraih() {
       staggerDelay={0.1}
       className="w-full"
     >
-      <div className="flex flex-col justify-center gap-3 md:flex-row md:flex-nowrap md:gap-4">
+      <div className="flex w-full flex-col justify-center gap-3 md:flex-row">
         {teamMembers.map((member, index) => (
-          <StaggerItem
-            key={`${member.name}-${index}`}
-            className="w-full md:w-auto"
-          >
+          <StaggerItem key={`${member.name}-${index}`} className="w-full">
             <Card
-              className="bg-card border-border flex h-full w-full flex-col items-center gap-2 p-3 py-3 text-center transition-shadow hover:shadow-lg md:w-36"
+              className="bg-card border-border flex h-full w-full flex-col items-center gap-2 p-3 py-3 text-center transition-shadow hover:shadow-lg"
               role="article"
               aria-label={`${member.name}, ${member.role}`}
             >

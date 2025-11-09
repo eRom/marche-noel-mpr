@@ -1,7 +1,15 @@
 import MagicSnowflake from "@/components/MagicSnowflake";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { Facebook, Gift, Heart, Mail, Users, Youtube } from "lucide-react";
+import {
+  ExternalLink,
+  Facebook,
+  Gift,
+  Heart,
+  Mail,
+  Users,
+  Youtube,
+} from "lucide-react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 
@@ -232,34 +240,21 @@ export default function APropos() {
                       montagne.
                     </p>
                     <div className="flex flex-col gap-4 pt-4">
-                      {/* Ligne 1 - Desktop: seul, Mobile: empilé */}
-                      <div className="flex justify-center lg:justify-start">
+                      {/* Ligne 2 - Desktop: 4 boutons côte à côte, Mobile: empilés */}
+                      <div className="flex flex-col gap-4 lg:flex-row lg:justify-start">
                         <a
-                          href="https://www.apraih.fr/"
+                          href="https://apraih.fr/"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-primary-foreground inline-flex w-full items-center justify-center rounded-lg bg-[#3d6db4] px-6 py-3 font-semibold transition-colors hover:bg-[#2d4d84] lg:w-auto"
-                          aria-label="Découvrir le site web de l'APRAIH"
+                          aria-label="Visiter le site web de l'APRAIH"
                         >
-                          Découvrir l&apos;APRAIH
-                          <svg
-                            className="ml-2 h-4 w-4"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
+                          <ExternalLink
+                            className="mr-2 h-5 w-5"
                             aria-hidden="true"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                            />
-                          </svg>
+                          />
+                          Site Web
                         </a>
-                      </div>
-                      {/* Ligne 2 - Desktop: 3 boutons côte à côte, Mobile: empilés */}
-                      <div className="flex flex-col gap-4 lg:flex-row lg:justify-start">
                         <a
                           href="https://www.youtube.com/@apraih7979"
                           target="_blank"
@@ -302,14 +297,14 @@ export default function APropos() {
                 </div>
               </AnimatedSection>
             </div>
-
-            {/* Team APRAIH */}
-            <AnimatedSection animation="fadeInUp" delay={600}>
-              <div className="mt-12 w-full">
-                <TeamApraih />
-              </div>
-            </AnimatedSection>
           </div>
+
+          {/* Team APRAIH - Full Width */}
+          <AnimatedSection animation="fadeInUp" delay={600}>
+            <div className="mt-12 px-4 sm:px-6 lg:px-8">
+              <TeamApraih />
+            </div>
+          </AnimatedSection>
         </section>
 
         {/* Next Year - Cachée temporairement */}
