@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "clean": "rm -rf .next out dist",
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
