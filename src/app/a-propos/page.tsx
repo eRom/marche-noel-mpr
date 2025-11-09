@@ -85,8 +85,8 @@ export default function APropos() {
             </AnimatedSection>
 
             <div className="mb-12 grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-3">
-              <AnimatedSection animation="fadeInLeft" delay={200}>
-                <Card className="bg-card border-border p-6 text-center">
+              <AnimatedSection animation="fadeInLeft" delay={200} className="flex">
+                <Card className="bg-card border-border flex h-full w-full flex-col p-6 text-center">
                   <CardContent className="pt-6">
                     <Users
                       className="text-primary mx-auto mb-4 h-12 w-12"
@@ -102,8 +102,8 @@ export default function APropos() {
                 </Card>
               </AnimatedSection>
 
-              <AnimatedSection animation="fadeInUp" delay={400}>
-                <Card className="bg-card border-border p-6 text-center">
+              <AnimatedSection animation="fadeInUp" delay={400} className="flex">
+                <Card className="bg-card border-border flex h-full w-full flex-col p-6 text-center">
                   <CardContent className="pt-6">
                     <Gift
                       className="text-secondary mx-auto mb-4 h-12 w-12"
@@ -119,8 +119,8 @@ export default function APropos() {
                 </Card>
               </AnimatedSection>
 
-              <AnimatedSection animation="fadeInUp" delay={600}>
-                <Card className="bg-card border-border p-6 text-center">
+              <AnimatedSection animation="fadeInUp" delay={600} className="flex">
+                <Card className="bg-card border-border flex h-full w-full flex-col p-6 text-center">
                   <CardContent className="pt-6">
                     <Heart className="text-accent mx-auto mb-4 h-12 w-12" />
                     <h3 className="text-card-foreground mb-2 text-lg font-semibold">

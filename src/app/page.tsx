@@ -96,9 +96,9 @@ export default function Home() {
 
             <AnimatedSection staggerChildren staggerDelay={0.15}>
               <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-                <StaggerItem>
-                  <Link href="/programme" className="block">
-                    <Card className="card-3d hover:bg-primary/10 bg-card border-border focus-within:ring-primary h-full cursor-pointer p-6 text-center focus-within:ring-2 focus-within:ring-offset-2">
+                <StaggerItem className="flex">
+                  <Link href="/programme" className="flex w-full">
+                    <Card className="card-3d hover:bg-primary/10 bg-card border-border focus-within:ring-primary flex h-full w-full cursor-pointer flex-col p-6 text-center focus-within:ring-2 focus-within:ring-offset-2">
                       <CardContent className="pt-6">
                         <Calendar
                           className="text-primary mx-auto mb-4 h-12 w-12"
@@ -116,8 +116,8 @@ export default function Home() {
                   </Link>
                 </StaggerItem>
 
-                <StaggerItem>
-                  <Card className="card-3d bg-card border-border h-full p-6 text-center">
+                <StaggerItem className="flex">
+                  <Card className="card-3d bg-card border-border flex h-full w-full flex-col p-6 text-center">
                     <CardContent className="pt-6">
                       <ShoppingBag
                         className="text-secondary mx-auto mb-4 h-12 w-12"
@@ -134,9 +134,9 @@ export default function Home() {
                   </Card>
                 </StaggerItem>
 
-                <StaggerItem>
-                  <Link href="/a-propos" className="block">
-                    <Card className="card-3d hover:bg-accent/10 bg-card border-border focus-within:ring-accent h-full cursor-pointer p-6 text-center focus-within:ring-2 focus-within:ring-offset-2">
+                <StaggerItem className="flex">
+                  <Link href="/a-propos" className="flex w-full">
+                    <Card className="card-3d hover:bg-accent/10 bg-card border-border focus-within:ring-accent flex h-full w-full cursor-pointer flex-col p-6 text-center focus-within:ring-2 focus-within:ring-offset-2">
                       <CardContent className="pt-6">
                         <Heart
                           className="text-accent mx-auto mb-4 h-12 w-12"
