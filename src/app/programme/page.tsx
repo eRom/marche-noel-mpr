@@ -269,7 +269,7 @@ export default function Programme() {
         <section className="bg-noel-snow py-16">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <AnimatedSection animation="fadeInUp">
-              <VideoSection />
+              <VideoSection showSoundToggle={false} />
             </AnimatedSection>
           </div>
         </section>

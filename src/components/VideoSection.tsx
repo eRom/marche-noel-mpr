@@ -4,7 +4,13 @@ import { Button } from "@/components/ui/button";
 import { Play, Volume2, VolumeX } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
-export default function VideoSection() {
+interface VideoSectionProps {
+  showSoundToggle?: boolean;
+}
+
+export default function VideoSection({
+  showSoundToggle = true,
+}: VideoSectionProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isMuted, setIsMuted] = useState(true);
   const [hasPlayedOnce, setHasPlayedOnce] = useState(false);
@@ -88,22 +94,24 @@ export default function VideoSection() {
         </video>
 
         {/* Sound Toggle Button */}
-        <div className="absolute top-4 right-4 z-10">
-          <Button
-            onClick={toggleMute}
-            variant="secondary"
-            size="icon"
-            className="rounded-full bg-transparent text-white shadow-lg hover:bg-white/10"
-            aria-label={isMuted ? "Activer le son" : "Désactiver le son"}
-            aria-live="polite"
-          >
-            {isMuted ? (
-              <VolumeX className="h-5 w-5" aria-hidden="true" />
-            ) : (
-              <Volume2 className="h-5 w-5" aria-hidden="true" />
-            )}
-          </Button>
-        </div>
+        {showSoundToggle && (
+          <div className="absolute top-4 right-4 z-10">
+            <Button
+              onClick={toggleMute}
+              variant="secondary"
+              size="icon"
+              className="rounded-full bg-transparent text-white shadow-lg hover:bg-white/10"
+              aria-label={isMuted ? "Activer le son" : "Désactiver le son"}
+              aria-live="polite"
+            >
+              {isMuted ? (
+                <VolumeX className="h-5 w-5" aria-hidden="true" />
+              ) : (
+                <Volume2 className="h-5 w-5" aria-hidden="true" />
+              )}
+            </Button>
+          </div>
+        )}
 
         {/* Replay Button - Shows when video has ended */}
         {isVideoEnded && (
