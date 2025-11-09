@@ -58,7 +58,7 @@ export default function Programme() {
     },
     {
       day: "11 décembre",
-      title: "Gouter, concerts",
+      title: "Gouter, concert",
       time: "16h00 - 19h00",
       description: "Goûter et concert organisés par le service animation",
       type: "Événement",
@@ -107,8 +107,7 @@ export default function Programme() {
                 Le 27 nov. - 11, 13 et 16 déc.
               </p>
               <p className="text-muted-foreground mx-auto mb-6 max-w-2xl text-xl">
-                Découvrez un programme riche en animations, concerts et
-                activités pour toute la famille.
+                Découvrez un programme riche en animations et en activités.
               </p>
               <div className="mt-6 flex justify-center">
                 <CalendarReminder variant="default" size="default" />

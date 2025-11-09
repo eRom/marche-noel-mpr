@@ -1,7 +1,7 @@
 import MagicSnowflake from "@/components/MagicSnowflake";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { Gift, Heart, Users } from "lucide-react";
+import { Facebook, Gift, Heart, Mail, Users, Youtube } from "lucide-react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 
@@ -226,29 +226,72 @@ export default function APropos() {
                       des séjours thérapeutiques de plusieurs jours à la
                       montagne.
                     </p>
-                    <div className="pt-4">
-                      <a
-                        href="https://www.apraih.fr/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-primary-foreground inline-flex items-center rounded-lg bg-[#3d6db4] px-6 py-3 font-semibold transition-colors hover:bg-[#2d4d84]"
-                      >
-                        Découvrir l&apos;APRAIH
-                        <svg
-                          className="ml-2 h-4 w-4"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                          aria-hidden="true"
+                    <div className="flex flex-col gap-4 pt-4">
+                      {/* Ligne 1 - Desktop: seul, Mobile: empilé */}
+                      <div className="flex justify-center lg:justify-start">
+                        <a
+                          href="https://www.apraih.fr/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-primary-foreground inline-flex w-full items-center justify-center rounded-lg bg-[#3d6db4] px-6 py-3 font-semibold transition-colors hover:bg-[#2d4d84] lg:w-auto"
+                          aria-label="Découvrir le site web de l'APRAIH"
                         >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                          Découvrir l&apos;APRAIH
+                          <svg
+                            className="ml-2 h-4 w-4"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                            />
+                          </svg>
+                        </a>
+                      </div>
+                      {/* Ligne 2 - Desktop: 3 boutons côte à côte, Mobile: empilés */}
+                      <div className="flex flex-col gap-4 lg:flex-row lg:justify-start">
+                        <a
+                          href="https://www.youtube.com/@apraih7979"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-primary-foreground inline-flex w-full items-center justify-center rounded-lg bg-[#FF0000] px-6 py-3 font-semibold transition-colors hover:bg-[#CC0000] lg:w-auto"
+                          aria-label="Suivre l'APRAIH sur YouTube"
+                        >
+                          <Youtube
+                            className="mr-2 h-5 w-5"
+                            aria-hidden="true"
                           />
-                        </svg>
-                      </a>
+                          YouTube
+                        </a>
+                        <a
+                          href="https://www.facebook.com/profile.php?id=100064394481247"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-primary-foreground inline-flex w-full items-center justify-center rounded-lg bg-[#1877F2] px-6 py-3 font-semibold transition-colors hover:bg-[#1565C0] lg:w-auto"
+                          aria-label="Suivre l'APRAIH sur Facebook"
+                        >
+                          <Facebook
+                            className="mr-2 h-5 w-5"
+                            aria-hidden="true"
+                          />
+                          Facebook
+                        </a>
+                        <a
+                          href="https://apraih.fr/contact/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-primary-foreground inline-flex w-full items-center justify-center rounded-lg bg-[#10b981] px-6 py-3 font-semibold transition-colors hover:bg-[#059669] lg:w-auto"
+                          aria-label="Contacter l'APRAIH"
+                        >
+                          <Mail className="mr-2 h-5 w-5" aria-hidden="true" />
+                          Contact
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
