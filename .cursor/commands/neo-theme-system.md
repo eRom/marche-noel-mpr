@@ -18,7 +18,11 @@ npx shadcn@latest add dropdown-menu card badge button
 
 ## Étape 2: Structure des Fichiers CSS
 
-### Créer `src/styles/themes/base.css`
+**⚠️ IMPORTANT** : Cette section décrit la structure théorique. En pratique, **tout sera consolidé dans `globals.css`** (voir Étape 8).
+
+Les fichiers séparés (`base.css`, `default.css`) sont présentés ici pour la compréhension, mais **ne doivent PAS être créés**.
+
+### Structure théorique de `base.css` (sera dans globals.css)
 
 ```css
 /* Base configuration commune à tous les thèmes */
@@ -386,6 +390,8 @@ export async function switchTheme(
 
 ### Créer `src/providers/theme-provider.tsx`
 
+**Note** : Version simplifiée car les CSS sont dans `globals.css` (pas de chargement dynamique nécessaire).
+
 ```typescript
 "use client";
 
@@ -394,10 +400,9 @@ import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { defaultTheme, getThemeById, getAllThemes } from "@/config/themes";
 import type { ThemeConfig } from "@/config/themes";
 import {
-  loadCompleteTheme,
-  switchTheme,
   applyThemeAttribute,
   preloadThemeFonts,
+  loadGoogleFonts,
 } from "@/lib/theme-utils";
 
 const COLOR_THEME_STORAGE_KEY = "color-theme";
@@ -428,16 +433,21 @@ export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
   useEffect(() => {
     if (typeof window === "undefined" || isInitialized) return;
 
-    const initializeTheme = async () => {
+    const initializeTheme = () => {
       try {
         const savedThemeId = localStorage.getItem(COLOR_THEME_STORAGE_KEY);
         const themeToLoad = savedThemeId
           ? getThemeById(savedThemeId) || defaultTheme
           : defaultTheme;
 
-        preloadThemeFonts(themeToLoad);
+        // Les CSS sont déjà dans globals.css, on applique juste l'attribut
         applyThemeAttribute(themeToLoad.id);
-        await loadCompleteTheme(themeToLoad);
+        
+        // Charger les Google Fonts si nécessaire
+        if (themeToLoad.fonts.googleFonts.length > 0) {
+          preloadThemeFonts(themeToLoad);
+          loadGoogleFonts(themeToLoad);
+        }
 
         setColorThemeState(themeToLoad);
         setIsInitialized(true);
@@ -468,7 +478,14 @@ export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
     setIsLoading(true);
 
     try {
-      await switchTheme(colorTheme, newTheme);
+      // Les CSS sont déjà dans globals.css, on change juste l'attribut
+      applyThemeAttribute(newTheme.id);
+      
+      // Charger les Google Fonts si nécessaire
+      if (newTheme.fonts.googleFonts.length > 0) {
+        await loadGoogleFonts(newTheme);
+      }
+      
       setColorThemeState(newTheme);
       localStorage.setItem(COLOR_THEME_STORAGE_KEY, newTheme.id);
     } catch (error) {
@@ -511,6 +528,12 @@ export function useColorThemeContext() {
   return context;
 }
 ```
+
+**Changements clés** :
+- ❌ Plus de `loadCompleteTheme()` ou `switchTheme()`
+- ✅ Simple `applyThemeAttribute()` (changement d'attribut HTML)
+- ✅ Chargement Google Fonts uniquement si nécessaire
+- ✅ Plus rapide et plus fiable
 
 ## Étape 6: Hook Personnalisé
 
@@ -818,23 +841,209 @@ export function ColorThemeDropdown() {
 
 ## Étape 8: Mise à Jour de globals.css
 
+**IMPORTANT** : Les thèmes doivent être consolidés directement dans `globals.css` pour éviter les problèmes de chargement avec Tailwind v4.
+
 Remplacez le contenu de `src/app/globals.css` par :
 
 ```css
 /* Imports principaux */
 @import "tailwindcss";
-@import "tw-animate-css";
 
-/* Configuration de base des thèmes */
-@import "../styles/themes/base.css";
+/* Base configuration commune à tous les thèmes */
+@custom-variant dark (&:is(.dark *));
 
-/* Thème par défaut (chargé immédiatement) */
-@import "../styles/themes/default.css";
+/* Mapping des variables CSS vers les utilitaires Tailwind */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-serif: var(--font-serif);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --shadow-2xs: var(--shadow-2xs);
+  --shadow-xs: var(--shadow-xs);
+  --shadow-sm: var(--shadow-sm);
+  --shadow: var(--shadow);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-xl: var(--shadow-xl);
+  --shadow-2xl: var(--shadow-2xl);
+}
+
+/* Transitions smooth pour les changements de thème */
+:root {
+  transition: background-color 0.15s ease,
+              color 0.15s ease,
+              border-color 0.15s ease;
+}
+
+* {
+  transition: background-color 0.15s ease,
+              color 0.15s ease,
+              border-color 0.15s ease;
+}
+
+/* Exclure les transitions pour les éléments animés et interactifs */
+*[class*="animate-"],
+*[class*="transition-"],
+button,
+a,
+input,
+textarea,
+select {
+  transition: none !important;
+}
+
+/* Réactiver les transitions pour les états hover/focus sur les éléments interactifs */
+button:not([class*="animate-"]),
+a:not([class*="animate-"]) {
+  transition: opacity 0.15s ease, transform 0.15s ease !important;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* ============================================ */
+/* THÈME PAR DÉFAUT - DEFAULT THEME */
+/* ============================================ */
+
+/* Mode Light */
+[data-color-theme="default"] {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+
+  --font-sans: system-ui, -apple-system, sans-serif;
+  --font-serif: Georgia, serif;
+  --font-mono: ui-monospace, monospace;
+
+  --radius: 0.625rem;
+  
+  --shadow-2xs: 0px 1px 2px 0px hsl(0 0% 0% / 0.05);
+  --shadow-xs: 0px 1px 2px 0px hsl(0 0% 0% / 0.05);
+  --shadow-sm: 0px 1px 3px 0px hsl(0 0% 0% / 0.10), 0px 1px 2px -1px hsl(0 0% 0% / 0.10);
+  --shadow: 0px 1px 3px 0px hsl(0 0% 0% / 0.10), 0px 1px 2px -1px hsl(0 0% 0% / 0.10);
+  --shadow-md: 0px 4px 6px -1px hsl(0 0% 0% / 0.10), 0px 2px 4px -2px hsl(0 0% 0% / 0.10);
+  --shadow-lg: 0px 10px 15px -3px hsl(0 0% 0% / 0.10), 0px 4px 6px -4px hsl(0 0% 0% / 0.10);
+  --shadow-xl: 0px 20px 25px -5px hsl(0 0% 0% / 0.10), 0px 8px 10px -6px hsl(0 0% 0% / 0.10);
+  --shadow-2xl: 0px 25px 50px -12px hsl(0 0% 0% / 0.25);
+}
+
+/* Mode Dark */
+[data-color-theme="default"].dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
 ```
+
+**Note** : Les `@import` relatifs vers des fichiers séparés ne fonctionnent pas correctement avec Tailwind v4. Tous les thèmes doivent être dans `globals.css`.
 
 ## Étape 9: Mise à Jour du Layout
 
-Dans `src/app/layout.tsx`, remplacez par :
+**CRITIQUE** : Le layout doit inclure un script inline pour appliquer `data-color-theme` avant le premier rendu.
+
+Dans `src/app/layout.tsx`, utilisez cette structure :
 
 ```typescript
 import type { Metadata } from "next";
@@ -852,7 +1061,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" suppressHydrationWarning>
+    <html lang="fr" suppressHydrationWarning data-color-theme="default">
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                const savedTheme = localStorage.getItem('color-theme') || 'default';
+                document.documentElement.setAttribute('data-color-theme', savedTheme);
+              } catch (e) {
+                document.documentElement.setAttribute('data-color-theme', 'default');
+              }
+            `,
+          }}
+        />
+      </head>
       <body className="antialiased">
         <ThemeProvider>
           {children}
@@ -862,6 +1085,12 @@ export default function RootLayout({
   );
 }
 ```
+
+**Pourquoi c'est essentiel** :
+- ✅ Le script s'exécute **avant** le rendu
+- ✅ Applique le thème sauvegardé **immédiatement**
+- ✅ Évite le flash de contenu non stylé (FOUC)
+- ✅ L'attribut `data-color-theme="default"` sert de fallback pendant le SSR
 
 ## Étape 10: Utilisation
 
@@ -908,26 +1137,132 @@ import { ThemeSelector, ThemeModeToggle, ColorThemeDropdown } from "@/components
 
 ## Ajouter un Nouveau Thème
 
-1. Créer `src/styles/themes/mon-theme.css` avec la structure :
+**⚠️ IMPORTANT** : Ajouter le thème dans `globals.css`, PAS dans un fichier séparé.
+
+1. **Ajouter à la fin de `src/app/globals.css`** :
 ```css
-[data-color-theme="mon-theme"] { /* light mode */ }
-[data-color-theme="mon-theme"].dark { /* dark mode */ }
+/* ============================================ */
+/* THÈME MON-THEME */
+/* ============================================ */
+
+[data-color-theme="mon-theme"] { /* light mode - 36 variables + fonts + radius + shadows */ }
+[data-color-theme="mon-theme"].dark { /* dark mode - 36 variables */ }
 ```
 
-2. Ajouter dans `src/config/themes.ts` :
+2. **Ajouter dans `src/config/themes.ts`** :
 ```typescript
 {
   id: "mon-theme",
   name: "Mon Thème",
   description: "...",
-  cssFile: "/styles/themes/mon-theme.css",
-  fonts: { /* ... */ },
+  cssFile: "/styles/themes/mon-theme.css",  // Non utilisé mais gardé pour compatibilité
+  fonts: {
+    sans: "...",
+    serif: "...",
+    mono: "...",
+    googleFonts: ["..."],  // Uniquement les fonts Google, pas les fonts système
+  },
 }
 ```
 
 ## Variables CSS Obligatoires (36 couleurs + 3 fonts + radius + 8 shadows)
 
 Chaque thème DOIT définir toutes ces variables pour light et dark mode.
+
+## Points Critiques ✅
+
+### 1. Script Inline dans Layout (OBLIGATOIRE)
+```typescript
+<html data-color-theme="default">
+  <head>
+    <script dangerouslySetInnerHTML={{
+      __html: `
+        try {
+          const savedTheme = localStorage.getItem('color-theme') || 'default';
+          document.documentElement.setAttribute('data-color-theme', savedTheme);
+        } catch (e) {
+          document.documentElement.setAttribute('data-color-theme', 'default');
+        }
+      `
+    }} />
+  </head>
+```
+**Pourquoi** : Applique le thème AVANT le rendu, évite le FOUC (flash de contenu non stylé).
+
+### 2. Tous les Thèmes dans globals.css (OBLIGATOIRE)
+```css
+/* Ne PAS utiliser @import pour les thèmes */
+/* ❌ @import "../styles/themes/default.css"; */
+
+/* ✅ Directement dans globals.css */
+[data-color-theme="default"] { /* ... */ }
+[data-color-theme="amethyst"] { /* ... */ }
+```
+**Pourquoi** : Les `@import` relatifs ne fonctionnent pas avec Tailwind v4.
+
+### 3. Provider Simplifié (PAS de chargement dynamique)
+```typescript
+// ❌ Ne PAS utiliser
+await loadCompleteTheme(theme);
+await switchTheme(oldTheme, newTheme);
+
+// ✅ Utiliser
+applyThemeAttribute(theme.id);
+await loadGoogleFonts(theme);  // Seulement si googleFonts.length > 0
+```
+**Pourquoi** : Les CSS sont déjà chargés, on change juste l'attribut HTML.
+
+## Architecture Finale
+
+```
+src/
+├── app/
+│   ├── globals.css          ← TOUS les thèmes ici (base + default + autres)
+│   └── layout.tsx            ← Script inline + data-color-theme
+├── config/
+│   └── themes.ts             ← Configuration des thèmes
+├── providers/
+│   └── theme-provider.tsx    ← Provider simplifié (pas de chargement CSS)
+├── hooks/
+│   └── use-color-theme.ts    ← Hook personnalisé
+├── components/
+│   └── theme-selector.tsx    ← UI du sélecteur
+└── lib/
+    └── theme-utils.ts        ← Utilitaires (fonts, attributs)
+```
+
+## Workflow de Chargement
+
+```
+1. SSR (Serveur)
+   └─> <html data-color-theme="default">
+
+2. Script Inline (Navigateur - Immédiat)
+   └─> localStorage.getItem('color-theme')
+   └─> document.documentElement.setAttribute('data-color-theme', themeId)
+
+3. globals.css (Navigateur - Immédiat)
+   └─> [data-color-theme="..."] styles s'appliquent
+
+4. ThemeProvider (Navigateur - Après hydratation)
+   └─> Synchronise React state
+   └─> Charge Google Fonts si nécessaire
+```
+
+## Dépannage
+
+### Problème : Le thème ne s'applique pas
+✅ Vérifier que `data-color-theme` est présent sur `<html>`
+✅ Vérifier que le CSS est dans `globals.css`
+✅ Vérifier le sélecteur `[data-color-theme="..."]`
+
+### Problème : Flash de contenu non stylé (FOUC)
+✅ Ajouter le script inline dans le `<head>`
+✅ Ajouter `data-color-theme="default"` sur `<html>`
+
+### Problème : Les thèmes ne se chargent pas
+✅ Ne PAS utiliser `@import` pour les thèmes
+✅ Mettre tous les thèmes dans `globals.css`
 
 Le système est maintenant opérationnel ! 🎉
 

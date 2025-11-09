@@ -2,6 +2,18 @@
 
 Ajoute un nouveau thème au système multi-thèmes en convertissant automatiquement les CSS variables de Tweakcn.
 
+## ⚠️ IMPORTANT - Architecture Consolidée
+
+**Les thèmes sont maintenant consolidés dans `globals.css`** :
+- ✅ Ajouter le thème directement à la fin de `src/app/globals.css`
+- ✅ Mettre à jour `src/config/themes.ts`
+
+**Pourquoi cette approche ?**
+- ✅ Évite les problèmes de chargement avec Tailwind v4
+- ✅ Tous les thèmes chargés en une seule fois (pas de requêtes HTTP supplémentaires)
+- ✅ Changement de thème instantané (juste un attribut HTML)
+- ✅ Plus simple et plus fiable
+
 ## Instructions
 
 Vous devez créer un nouveau thème en suivant ces étapes EXACTES. L'utilisateur fournira :
@@ -54,9 +66,11 @@ Vous devez créer un nouveau thème en suivant ces étapes EXACTES. L'utilisateu
      - "Sunset!" → "sunset"
      - "My Theme" → "my-theme"
 
-### Étape 3: Créer le Fichier CSS
+### Étape 3: Ajouter le CSS dans globals.css
 
-Créer `src/styles/themes/{theme-id}.css` avec cette STRUCTURE EXACTE :
+**IMPORTANT** : Ne PAS créer de fichier séparé. Ajouter le thème directement dans `src/app/globals.css` à la fin du fichier.
+
+Ajouter cette STRUCTURE EXACTE à la fin de `globals.css` :
 
 ```css
 /* Thème {Theme Name} - {Description} */
@@ -214,15 +228,16 @@ Dans `src/config/themes.ts`, ajouter le nouveau thème dans le tableau `themes` 
 
 ### Étape 5: Vérification
 
-Après la création, vérifier :
+Après l'ajout, vérifier :
 
-1. ✅ Le fichier CSS existe dans `src/styles/themes/{theme-id}.css`
+1. ✅ Le thème est ajouté à la fin de `src/app/globals.css`
 2. ✅ Le thème est ajouté dans `src/config/themes.ts`
 3. ✅ Toutes les 36 variables de couleur sont présentes (light et dark)
 4. ✅ Les 3 variables de fonts sont présentes
 5. ✅ Le radius et les 8 shadows sont présents
 6. ✅ Les Google Fonts sont correctement listées (sans fonts système)
 7. ✅ Le format `[data-color-theme="id"]` est utilisé (pas `:root`)
+8. ✅ Le CSS est ajouté APRÈS le thème default dans globals.css
 
 ### Étape 6: Confirmation
 
@@ -231,9 +246,9 @@ Afficher un message de confirmation :
 ```
 ✅ Thème "{Theme Name}" ajouté avec succès !
 
-Fichiers créés/modifiés :
-- src/styles/themes/{theme-id}.css (nouveau)
-- src/config/themes.ts (mis à jour)
+Fichiers modifiés :
+- src/app/globals.css (thème ajouté à la fin)
+- src/config/themes.ts (configuration ajoutée)
 
 Le thème est maintenant disponible dans le sélecteur.
 Google Fonts à charger : {liste ou "Aucune (fonts système)"}
@@ -242,6 +257,8 @@ Pour tester :
 - Recharger l'application
 - Ouvrir le ThemeSelector
 - Sélectionner "{Theme Name}"
+
+Note : Le thème est déjà chargé (dans globals.css), pas de requête HTTP supplémentaire !
 ```
 
 ## Exemple Complet de Conversion
@@ -274,10 +291,14 @@ Pour tester :
 
 ### Output Attendu :
 
-**Fichier** : `src/styles/themes/ocean-blue.css`
-```css
-/* Thème Ocean Blue - Thème inspiré de l'océan */
+**Ajouter à la fin de** : `src/app/globals.css`
 
+```css
+/* ============================================ */
+/* THÈME OCEAN BLUE - INSPIRÉ DE L'OCÉAN */
+/* ============================================ */
+
+/* Mode Light */
 [data-color-theme="ocean-blue"] {
   --background: oklch(0.98 0.01 220);
   --foreground: oklch(0.15 0.02 220);
@@ -291,6 +312,7 @@ Pour tester :
   /* ... shadows ... */
 }
 
+/* Mode Dark */
 [data-color-theme="ocean-blue"].dark {
   --background: oklch(0.12 0.02 220);
   --foreground: oklch(0.95 0.01 220);
@@ -380,10 +402,19 @@ Pour tester :
 2. ✅ Demander les CSS variables de Tweakcn
 3. ✅ Parser et extraire toutes les variables
 4. ✅ Générer l'ID du thème
-5. ✅ Créer le fichier CSS avec la bonne structure
-6. ✅ Mettre à jour src/config/themes.ts
+5. ✅ **Ajouter le CSS à la fin de `src/app/globals.css`** (PAS de fichier séparé)
+6. ✅ Mettre à jour `src/config/themes.ts`
 7. ✅ Vérifier que tout est correct
 8. ✅ Afficher un message de confirmation
+
+**⚠️ RAPPEL CRITIQUE** :
+- ✅ TOUJOURS ajouter à la fin de `src/app/globals.css`
+- ✅ Utiliser des commentaires clairs pour séparer les thèmes :
+  ```css
+  /* ============================================ */
+  /* THÈME {THEME-ID} - {DESCRIPTION} */
+  /* ============================================ */
+  ```
 
 Le thème est maintenant opérationnel ! 🎨
 

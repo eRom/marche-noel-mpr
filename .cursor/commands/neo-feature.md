@@ -7,7 +7,7 @@ Systematically set up a new feature from initial planning through to implementat
 
 ## Steps
 1. **Create a Git branch** following this naming convention:
-   - Format: `feature/[feature-name]-[YYYY-MM-DD]`
+   - Format: `feature/[feature]-[YYYY-MM-DD]`
    - Use kebab-case for the feature name
    - Use today's date in ISO format
    - Example: `feature/user-authentication-2025-10-18`

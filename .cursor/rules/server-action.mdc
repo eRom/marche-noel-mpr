@@ -1,0 +1,437 @@
+---
+alwaysApply: true
+---
+Always prefer Server Actions over API Routes for data mutations and server-side operations in Next.js. Server Actions provide better type safety, simpler code, and improved performance.
+
+## Why Server Actions Over API Routes?
+
+### Benefits of Server Actions
+- **Type Safety**: Direct TypeScript types without manual serialization
+- **Simpler Code**: No need to create separate route handlers
+- **Better Performance**: Reduced client-side JavaScript bundle size
+- **Automatic Revalidation**: Built-in cache invalidation with `revalidatePath()` and `revalidateTag()`
+- **Progressive Enhancement**: Forms work without JavaScript
+- **SEO Friendly**: Better for server-side rendering and form submissions
+
+## When to Use Server Actions
+
+✅ **Use Server Actions for:**
+- Form submissions and data mutations (CREATE, UPDATE, DELETE)
+- Database operations (Prisma queries)
+- File uploads and processing
+- Email sending
+- Data validation and transformation
+- Any server-side logic that modifies data
+
+❌ **Use API Routes only for:**
+- Third-party webhooks (must be public endpoints)
+- OAuth callbacks (like `/api/auth/[...all]`)
+- Public APIs that need to be consumed by external services
+- Streaming responses (Server Actions don't support streaming)
+
+## Server Action Structure
+
+### Basic Server Action Pattern
+
+```typescript
+"use server"
+
+import { revalidatePath } from "next/cache"
+import { prisma } from "@/lib/prisma"
+import { z } from "zod"
+
+// Define validation schema
+const createItemSchema = z.object({
+  name: z.string().min(1),
+  email: z.string().email(),
+})
+
+// Define return type
+export type ActionResult<T> =
+  | { success: true; data: T }
+  | { success: false; error: string }
+
+// Server Action function
+export async function createItem(
+  formData: FormData,
+): Promise<ActionResult<Item>> {
+  try {
+    // Validate input
+    const validatedFields = createItemSchema.safeParse({
+      name: formData.get("name"),
+      email: formData.get("email"),
+    })
+
+    if (!validatedFields.success) {
+      return {
+        success: false,
+        error: "Validation failed",
+      }
+    }
+
+    // Perform database operation
+    const item = await prisma.item.create({
+      data: validatedFields.data,
+    })
+
+    // Revalidate cache
+    revalidatePath("/items")
+
+    return { success: true, data: item }
+  } catch (error) {
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : "Unknown error",
+    }
+  }
+}
+```
+
+### Server Action with Authentication
+
+```typescript
+"use server"
+
+import { auth } from "@/lib/auth"
+import { headers } from "next/headers"
+
+async function getCurrentUser() {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  })
+
+  if (!session?.user) {
+    return null
+  }
+
+  return session.user
+}
+
+export async function createProtectedItem(
+  formData: FormData,
+): Promise<ActionResult<Item>> {
+  const user = await getCurrentUser()
+  if (!user) {
+    return { success: false, error: "Non authentifié" }
+  }
+
+  // Continue with authenticated operation
+  // ...
+}
+```
+
+## Using Server Actions in Components
+
+### In Client Components with Forms
+
+```typescript
+"use client"
+
+import { useActionState } from "react"
+import { createItem } from "@/actions/item"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+
+export function CreateItemForm() {
+  const [state, formAction, isPending] = useActionState(createItem, null)
+
+  return (
+    <form action={formAction} className="space-y-4">
+      <div className="space-y-2">
+        <Label htmlFor="name">Name *</Label>
+        <Input
+          id="name"
+          name="name"
+          type="text"
+          required
+          aria-label="Item name"
+          aria-required="true"
+          disabled={isPending}
+        />
+      </div>
+
+      {state?.error && (
+        <div role="alert" className="text-sm text-red-600">
+          {state.error}
+        </div>
+      )}
+
+      <Button
+        type="submit"
+        disabled={isPending}
+        aria-busy={isPending}
+        aria-label={isPending ? "Creating item..." : "Create item"}
+      >
+        {isPending ? "Creating..." : "Create"}
+      </Button>
+    </form>
+  )
+}
+```
+
+### In Server Components (Direct Call)
+
+```typescript
+import { getItems } from "@/actions/item"
+
+export default async function ItemsPage() {
+  const result = await getItems()
+
+  if (!result.success) {
+    return <div>Error: {result.error}</div>
+  }
+
+  return (
+    <div>
+      {result.data.map((item) => (
+        <div key={item.id}>{item.name}</div>
+      ))}
+    </div>
+  )
+}
+```
+
+### With useTransition (Alternative to useActionState)
+
+```typescript
+"use client"
+
+import { useTransition } from "react"
+import { deleteItem } from "@/actions/item"
+import { Button } from "@/components/ui/button"
+
+export function DeleteItemButton({ itemId }: { itemId: string }) {
+  const [isPending, startTransition] = useTransition()
+
+  const handleDelete = () => {
+    startTransition(async () => {
+      const result = await deleteItem(itemId)
+      if (result.success) {
+        // Handle success
+      }
+    })
+  }
+
+  return (
+    <Button
+      onClick={handleDelete}
+      disabled={isPending}
+      aria-busy={isPending}
+      aria-label={isPending ? "Deleting item..." : "Delete item"}
+    >
+      {isPending ? "Deleting..." : "Delete"}
+    </Button>
+  )
+}
+```
+
+## Migration from API Routes to Server Actions
+
+### ❌ Bad: Using API Route
+
+```typescript
+// app/api/items/route.ts
+import { NextRequest, NextResponse } from "next/server"
+import { prisma } from "@/lib/prisma"
+
+export async function POST(request: NextRequest) {
+  try {
+    const body = await request.json()
+    const item = await prisma.item.create({
+      data: body,
+    })
+    return NextResponse.json({ success: true, data: item })
+  } catch (error) {
+    return NextResponse.json(
+      { success: false, error: "Failed to create" },
+      { status: 500 }
+    )
+  }
+}
+
+// Client component
+"use client"
+async function handleSubmit() {
+  const response = await fetch("/api/items", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name: "Item" }),
+  })
+  const data = await response.json()
+}
+```
+
+### ✅ Good: Using Server Action
+
+```typescript
+// actions/item.ts
+"use server"
+
+import { revalidatePath } from "next/cache"
+import { prisma } from "@/lib/prisma"
+
+export async function createItem(formData: FormData) {
+  try {
+    const name = formData.get("name") as string
+    const item = await prisma.item.create({
+      data: { name },
+    })
+    revalidatePath("/items")
+    return { success: true, data: item }
+  } catch (error) {
+    return { success: false, error: "Failed to create" }
+  }
+}
+
+// Client component
+"use client"
+import { createItem } from "@/actions/item"
+
+export function CreateForm() {
+  return (
+    <form action={createItem}>
+      <input name="name" />
+      <button type="submit">Create</button>
+    </form>
+  )
+}
+```
+
+## Best Practices
+
+### 1. Always Use "use server" Directive
+
+```typescript
+"use server" // Must be at the top of the file or function
+
+export async function myAction() {
+  // ...
+}
+```
+
+### 2. Validate Input with Zod
+
+```typescript
+import { z } from "zod"
+
+const schema = z.object({
+  name: z.string().min(1),
+  email: z.string().email(),
+})
+
+export async function createItem(formData: FormData) {
+  const result = schema.safeParse({
+    name: formData.get("name"),
+    email: formData.get("email"),
+  })
+
+  if (!result.success) {
+    return { success: false, error: "Invalid input" }
+  }
+  // ...
+}
+```
+
+### 3. Revalidate Cache After Mutations
+
+```typescript
+import { revalidatePath, revalidateTag } from "next/cache"
+
+export async function updateItem(id: string, formData: FormData) {
+  // ... update operation
+  revalidatePath("/items") // Revalidate specific path
+  revalidatePath("/items/[id]", "page") // Revalidate dynamic route
+  revalidateTag("items") // Revalidate by tag
+}
+```
+
+### 4. Handle Errors Gracefully
+
+```typescript
+export async function createItem(formData: FormData): Promise<ActionResult<Item>> {
+  try {
+    // ... operation
+  } catch (error) {
+    console.error("Error creating item:", error)
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : "Unknown error",
+    }
+  }
+}
+```
+
+### 5. Type Safety with ActionResult Pattern
+
+```typescript
+export type ActionResult<T> =
+  | { success: true; data: T }
+  | { success: false; error: string }
+
+export async function getItem(id: string): Promise<ActionResult<Item>> {
+  // ...
+}
+```
+
+### 6. Authentication Check Pattern
+
+```typescript
+import { auth } from "@/lib/auth"
+import { headers } from "next/headers"
+
+async function getCurrentUser() {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  })
+  return session?.user ?? null
+}
+
+export async function protectedAction(formData: FormData) {
+  const user = await getCurrentUser()
+  if (!user) {
+    return { success: false, error: "Non authentifié" }
+  }
+  // ... continue
+}
+```
+
+## File Organization
+
+```
+src/
+  actions/
+    item.ts          # Server Actions for items
+    user.ts          # Server Actions for users
+    releve.ts        # Server Actions for relevés
+    session.ts       # Server Actions for sessions
+    mesure.ts        # Server Actions for mesures
+    export.ts        # Server Actions for exports
+  app/
+    api/
+      auth/
+        [...all]/
+          route.ts   # Only for OAuth/webhooks (exception)
+```
+
+## Checklist
+
+- ✓ All data mutations use Server Actions, not API Routes
+- ✓ Server Actions are in `src/actions/` directory
+- ✓ All Server Actions have `"use server"` directive
+- ✓ Input validation with Zod schemas
+- ✓ Proper error handling with ActionResult pattern
+- ✓ Cache revalidation with `revalidatePath()` after mutations
+- ✓ Authentication checks for protected actions
+- ✓ Type safety with TypeScript types
+- ✓ Forms use `action={serverAction}` or `useActionState`
+- ✓ Loading states handled with `isPending` from `useActionState` or `useTransition`
+
+## Exceptions: When API Routes Are Acceptable
+
+- **OAuth/Auth callbacks**: `/api/auth/[...all]` (required by auth libraries)
+- **Webhooks**: Public endpoints for third-party services (Stripe, GitHub, etc.)
+- **Public APIs**: Endpoints consumed by external services
+- **Streaming**: When you need streaming responses (Server Actions don't support this)
+
+For all other cases, use Server Actions.

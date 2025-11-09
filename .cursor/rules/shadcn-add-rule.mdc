@@ -1,5 +1,4 @@
 ---
-description: When adding shadcn/ui components to the project, always use the command:
 alwaysApply: true
 ---
 When adding shadcn/ui components to the project, always use the command:

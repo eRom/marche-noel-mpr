@@ -1,0 +1,14 @@
+---
+alwaysApply: true
+---
+Always use Shadcn Sonner for all toast notifications and user feedback messages. Sonner provides accessible, theme-aware toast notifications that integrate seamlessly with the design system.
+
+## Why Sonner?
+
+- **Accessible**: Built-in ARIA support and screen reader compatibility
+- **Theme-aware**: Automatically adapts to light/dark theme
+- **Lightweight**: Minimal bundle size impact
+- **Customizable**: Easy to customize icons and styling
+- **Type-safe**: Full TypeScript support
+- **Server Actions compatible**: Works perfectly with Server Actions and form submissions
+
