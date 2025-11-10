@@ -85,7 +85,11 @@ export default function APropos() {
             </AnimatedSection>
 
             <div className="mb-12 grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-3">
-              <AnimatedSection animation="fadeInLeft" delay={200} className="flex">
+              <AnimatedSection
+                animation="fadeInLeft"
+                delay={200}
+                className="flex"
+              >
                 <Card className="bg-card border-border flex h-full w-full flex-col p-6 text-center">
                   <CardContent className="pt-6">
                     <Users
@@ -102,7 +106,11 @@ export default function APropos() {
                 </Card>
               </AnimatedSection>
 
-              <AnimatedSection animation="fadeInUp" delay={400} className="flex">
+              <AnimatedSection
+                animation="fadeInUp"
+                delay={400}
+                className="flex"
+              >
                 <Card className="bg-card border-border flex h-full w-full flex-col p-6 text-center">
                   <CardContent className="pt-6">
                     <Gift
@@ -119,7 +127,11 @@ export default function APropos() {
                 </Card>
               </AnimatedSection>
 
-              <AnimatedSection animation="fadeInUp" delay={600} className="flex">
+              <AnimatedSection
+                animation="fadeInUp"
+                delay={600}
+                className="flex"
+              >
                 <Card className="bg-card border-border flex h-full w-full flex-col p-6 text-center">
                   <CardContent className="pt-6">
                     <Heart className="text-accent mx-auto mb-4 h-12 w-12" />
@@ -178,9 +190,8 @@ export default function APropos() {
                       Équipe organisatrice
                     </h3>
                     <ul className="text-muted-foreground space-y-2">
-                      <li>
-                        • Toute l&apos;équipe d&apos;ergothérapeutes du MPR
-                      </li>
+                      <li>• Toute l&apos;équipe d&apos;ergothérapeutes</li>
+                      <li>• Tous les patients volontaires (ou pas 😂)</li>
                     </ul>
                   </CardContent>
                 </Card>
