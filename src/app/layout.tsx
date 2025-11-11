@@ -11,6 +11,7 @@ import SnowflakeVictory from "@/components/SnowflakeVictory";
 import { SnowflakeHuntProvider } from "@/contexts/SnowflakeHuntContext";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -154,6 +155,7 @@ export default function RootLayout({
         </SnowflakeHuntProvider>
         <Analytics />
         <SpeedInsights />
+        <Toaster />
       </body>
     </html>
   );
