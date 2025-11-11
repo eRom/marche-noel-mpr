@@ -3,8 +3,8 @@ export type DecorationStyle =
   | "Moderne"
   | "Industriel"
   | "Vintage"
-  | "Marché de Noël"
-  | "Nature & Végétal"
+  | "Noël"
+  | "Nature"
   | "Futuriste";
 
 export interface BuilderImage {

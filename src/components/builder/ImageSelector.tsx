@@ -178,8 +178,8 @@ export default function ImageSelector({
   return (
     <div className="space-y-4">
       <div className="grid grid-cols-1 gap-4 md:grid-cols-[200px_1fr] lg:grid-cols-[250px_1fr]">
-        {/* Vignettes en colonne à gauche sur desktop */}
-        <div className="flex flex-col gap-4 md:order-1 md:h-full">
+        {/* Vignettes en ligne sur mobile, colonne à gauche sur desktop */}
+        <div className="flex flex-row justify-between gap-4 overflow-x-auto pb-4 md:order-1 md:h-full md:flex-col md:overflow-x-visible md:pb-0">
           {AVAILABLE_IMAGES.map((image) => {
             const isSelected = selectedImage?.id === image.id;
             return (
@@ -187,6 +187,7 @@ export default function ImageSelector({
                 key={image.id}
                 className={cn(
                   "flex flex-col overflow-hidden !p-0 !py-0 transition-all duration-200 md:flex-1",
+                  "h-24 w-24 flex-shrink-0 md:h-auto md:w-auto",
                   isSelected
                     ? "ring-primary shadow-lg ring-2"
                     : "hover:shadow-md",

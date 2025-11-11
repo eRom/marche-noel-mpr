@@ -45,11 +45,11 @@ export default function StyleCarousel({
 
   return (
     <div className="space-y-4">
-      <h2 className="text-xl font-semibold">
+      <h2 className="text-center text-xl font-semibold">
         Choisissez un style de décoration
       </h2>
       <div
-        className="flex justify-between gap-3 pb-4"
+        className="grid grid-cols-3 gap-3 pb-4 md:flex md:justify-between"
         role="tablist"
         aria-label="Carrousel de styles de décoration"
       >
@@ -61,13 +61,13 @@ export default function StyleCarousel({
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: index * 0.05 }}
-              className="flex-1"
+              className="md:flex-1"
             >
               <Button
                 variant={isSelected ? "default" : "outline"}
                 size="lg"
                 className={cn(
-                  "w-full whitespace-nowrap transition-all duration-200",
+                  "w-full text-sm whitespace-nowrap transition-all duration-200 md:text-base",
                   isSelected && "shadow-lg",
                   focusedIndex === index && "ring-primary ring-2 ring-offset-2"
                 )}

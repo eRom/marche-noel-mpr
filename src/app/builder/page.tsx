@@ -114,7 +114,7 @@ export default function BuilderPage() {
     <div className="bg-background min-h-screen">
       <Header />
       <main id="main-content" role="main">
-        <section className="py-12">
+        <section className="py-8">
           <div className="container mx-auto px-4">
             <AnimatedSection animation="fadeInUp">
               <header className="mb-6 text-center">
