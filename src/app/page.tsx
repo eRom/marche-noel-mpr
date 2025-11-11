@@ -1,7 +1,7 @@
 import CeremonyTimer from "@/components/CeremonyTimer";
 import MagicSnowflake from "@/components/MagicSnowflake";
 import { Card, CardContent } from "@/components/ui/card";
-import { Calendar, Heart, ShoppingBag } from "lucide-react";
+import { Calendar, Heart, ShoppingBag, Sparkles } from "lucide-react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
@@ -187,6 +187,84 @@ export default function Home() {
                 </a>
               </div>
             </AnimatedSection>
+          </div>
+        </section>
+
+        {/* Mon MPR Section */}
+        <section
+          className="bg-noel-snow py-16"
+          aria-labelledby="mon-mpr-heading"
+        >
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col items-center justify-center gap-12 lg:flex-row">
+              <AnimatedSection animation="fadeInLeft" delay={200}>
+                <div className="flex-shrink-0">
+                  <Link href="/builder" className="block">
+                    <Image
+                      src="/builder.webp"
+                      alt="Mon MPR - Décorez votre espace avec l'intelligence artificielle"
+                      width={600}
+                      height={400}
+                      className="mx-auto h-auto w-full max-w-md rounded-lg shadow-lg transition-transform hover:scale-105"
+                      loading="lazy"
+                    />
+                  </Link>
+                </div>
+              </AnimatedSection>
+
+              <AnimatedSection animation="fadeInRight" delay={400}>
+                <div className="max-w-2xl text-center lg:text-left">
+                  <div className="mb-6 flex items-center justify-center gap-3 lg:justify-start">
+                    <Sparkles
+                      className="text-primary h-8 w-8"
+                      aria-hidden="true"
+                    />
+                    <h2
+                      id="mon-mpr-heading"
+                      className="text-foreground text-3xl font-bold sm:text-4xl"
+                    >
+                      Mon MPR
+                    </h2>
+                  </div>
+                  <div className="text-muted-foreground space-y-4">
+                    <p className="text-lg">
+                      Décorez votre espace de manière unique grâce à notre outil
+                      de décoration assisté par intelligence artificielle.
+                    </p>
+                    <p>
+                      Téléchargez une photo de votre chambre ou de votre espace
+                      au MPR et laissez l&apos;IA transformer votre
+                      environnement avec des décorations de Noël personnalisées.
+                      Choisissez parmi différents styles festifs et créez une
+                      ambiance magique qui vous ressemble.
+                    </p>
+                    <div className="pt-4">
+                      <Link
+                        href="/builder"
+                        className="text-primary-foreground bg-primary hover:bg-primary/90 focus:ring-primary inline-flex items-center rounded-lg px-6 py-3 font-semibold transition-colors focus:ring-2 focus:ring-offset-2"
+                        aria-label="Accéder à l'outil de décoration Mon MPR"
+                      >
+                        Décorez mon espace
+                        <svg
+                          className="ml-2 h-4 w-4"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          aria-hidden="true"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M13 7l5 5m0 0l-5 5m5-5H6"
+                          />
+                        </svg>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </AnimatedSection>
+            </div>
           </div>
         </section>
 
