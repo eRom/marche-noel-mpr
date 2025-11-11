@@ -188,8 +188,9 @@ export default function ImageSelector({
                 className={cn(
                   "flex flex-col overflow-hidden !p-0 !py-0 transition-all duration-200 md:flex-1",
                   "h-24 w-24 flex-shrink-0 md:h-auto md:w-auto",
+                  "rounded-xl border-0 bg-white shadow-sm",
                   isSelected
-                    ? "ring-primary shadow-lg ring-2"
+                    ? "ring-primary shadow-md ring-2"
                     : "hover:shadow-md",
                   isLoading ? "cursor-not-allowed opacity-50" : "cursor-pointer"
                 )}
@@ -259,7 +260,7 @@ export default function ImageSelector({
         {selectedImage ? (
           <div className="space-y-2 md:order-2">
             {error ? (
-              <div className="border-destructive relative aspect-video w-full overflow-hidden rounded-lg border-2 shadow-lg">
+              <div className="border-destructive relative aspect-video w-full overflow-hidden rounded-xl border bg-white shadow-sm">
                 <div className="bg-background/95 absolute inset-0 flex flex-col items-center justify-center gap-4 p-6">
                   {error === "RETRY_FAILED" ? (
                     <>
@@ -301,7 +302,7 @@ export default function ImageSelector({
                 </div>
               </div>
             ) : isLoading ? (
-              <div className="border-primary relative aspect-video w-full overflow-hidden rounded-lg border-2 shadow-lg">
+              <div className="border-primary relative aspect-video w-full overflow-hidden rounded-xl border bg-white shadow-sm">
                 <Image
                   src={selectedImage.url}
                   alt={`Hall du MPR sélectionné - ${selectedImage.filename}`}
@@ -323,7 +324,7 @@ export default function ImageSelector({
             ) : generatedImage ? (
               <div
                 className={cn(
-                  "border-primary relative aspect-video w-full overflow-hidden rounded-lg border-2 shadow-lg"
+                  "border-primary relative aspect-video w-full overflow-hidden rounded-xl border-2 bg-white shadow-sm"
                 )}
                 ref={containerRef}
                 role="application"
@@ -413,7 +414,7 @@ export default function ImageSelector({
                 </div>
               </div>
             ) : (
-              <div className="border-primary relative aspect-video w-full overflow-hidden rounded-lg border-2 shadow-lg">
+              <div className="border-primary relative aspect-video w-full overflow-hidden rounded-xl border bg-white shadow-sm">
                 <Image
                   src={selectedImage.url}
                   alt={`Hall du MPR sélectionné - ${selectedImage.filename}`}
