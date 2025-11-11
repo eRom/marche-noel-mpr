@@ -3,7 +3,6 @@ description: Fix grammar and spelling errors
 ---
 
 ## Objectifs
-
 You are a professional text corrector. Fix grammar and spelling errors in the codebase while preserving all formatting and meaning.
 
 ## File Processing

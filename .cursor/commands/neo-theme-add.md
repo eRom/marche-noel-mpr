@@ -5,12 +5,10 @@ Ajoute un nouveau thème au système multi-thèmes en convertissant automatiquem
 ## ⚠️ IMPORTANT - Architecture Consolidée
 
 **Les thèmes sont maintenant consolidés dans `globals.css`** :
-
 - ✅ Ajouter le thème directement à la fin de `src/app/globals.css`
 - ✅ Mettre à jour `src/config/themes.ts`
 
 **Pourquoi cette approche ?**
-
 - ✅ Évite les problèmes de chargement avec Tailwind v4
 - ✅ Tous les thèmes chargés en une seule fois (pas de requêtes HTTP supplémentaires)
 - ✅ Changement de thème instantané (juste un attribut HTML)
@@ -19,7 +17,6 @@ Ajoute un nouveau thème au système multi-thèmes en convertissant automatiquem
 ## Instructions
 
 Vous devez créer un nouveau thème en suivant ces étapes EXACTES. L'utilisateur fournira :
-
 - Le nom du thème (ex: "Ocean", "Sunset", "Forest")
 - Les CSS variables copiées depuis Tweakcn (format `:root` et `.dark`)
 
@@ -100,14 +97,14 @@ Ajouter cette STRUCTURE EXACTE à la fin de `globals.css` :
   --border: {valeur du :root};
   --input: {valeur du :root};
   --ring: {valeur du :root};
-
+  
   /* Charts */
   --chart-1: {valeur du :root};
   --chart-2: {valeur du :root};
   --chart-3: {valeur du :root};
   --chart-4: {valeur du :root};
   --chart-5: {valeur du :root};
-
+  
   /* Sidebar */
   --sidebar: {valeur du :root};
   --sidebar-foreground: {valeur du :root};
@@ -117,15 +114,15 @@ Ajouter cette STRUCTURE EXACTE à la fin de `globals.css` :
   --sidebar-accent-foreground: {valeur du :root};
   --sidebar-border: {valeur du :root};
   --sidebar-ring: {valeur du :root};
-
+  
   /* Fonts */
   --font-sans: {valeur du :root};
   --font-serif: {valeur du :root};
   --font-mono: {valeur du :root};
-
+  
   /* Radius */
   --radius: {valeur du :root};
-
+  
   /* Shadows */
   --shadow-2xs: {valeur du :root};
   --shadow-xs: {valeur du :root};
@@ -159,14 +156,14 @@ Ajouter cette STRUCTURE EXACTE à la fin de `globals.css` :
   --border: {valeur du .dark};
   --input: {valeur du .dark};
   --ring: {valeur du .dark};
-
+  
   /* Charts */
   --chart-1: {valeur du .dark};
   --chart-2: {valeur du .dark};
   --chart-3: {valeur du .dark};
   --chart-4: {valeur du .dark};
   --chart-5: {valeur du .dark};
-
+  
   /* Sidebar */
   --sidebar: {valeur du .dark};
   --sidebar-foreground: {valeur du .dark};
@@ -176,13 +173,12 @@ Ajouter cette STRUCTURE EXACTE à la fin de `globals.css` :
   --sidebar-accent-foreground: {valeur du .dark};
   --sidebar-border: {valeur du .dark};
   --sidebar-ring: {valeur du .dark};
-
+  
   /* Note: Fonts, radius et shadows ne changent pas en dark mode */
 }
 ```
 
 **IMPORTANT** :
-
 - Remplacer `{theme-id}` par l'ID généré
 - Copier les valeurs EXACTES de `:root` vers `[data-color-theme="{theme-id}"]`
 - Copier les valeurs EXACTES de `.dark` vers `[data-color-theme="{theme-id}"].dark`
@@ -209,7 +205,6 @@ Dans `src/config/themes.ts`, ajouter le nouveau thème dans le tableau `themes` 
 ```
 
 **Extraction des Google Fonts** :
-
 - Parser les variables `--font-sans`, `--font-serif`, `--font-mono`
 - Extraire uniquement les noms de fonts NON système
 - Exemple :
@@ -219,7 +214,6 @@ Dans `src/config/themes.ts`, ajouter le nouveau thème dans le tableau `themes` 
   - `--font-sans: system-ui, -apple-system, sans-serif;` → `[]` (pas de Google Fonts)
 
 **Fonts système à EXCLURE** :
-
 - system-ui
 - -apple-system
 - BlinkMacSystemFont
@@ -274,7 +268,6 @@ Note : Le thème est déjà chargé (dans globals.css), pas de requête HTTP sup
 **Nom** : Ocean Blue
 
 **CSS Tweakcn** :
-
 ```css
 :root {
   --background: oklch(0.98 0.01 220);
@@ -328,7 +321,6 @@ Note : Le thème est déjà chargé (dans globals.css), pas de requête HTTP sup
 ```
 
 **Config** : Ajout dans `src/config/themes.ts`
-
 ```typescript
 {
   id: "ocean-blue",
@@ -349,7 +341,6 @@ Note : Le thème est déjà chargé (dans globals.css), pas de requête HTTP sup
 ### Variables à EXTRAIRE (obligatoires) :
 
 **Couleurs (36)** :
-
 - background, foreground
 - card, card-foreground
 - popover, popover-foreground
@@ -363,44 +354,36 @@ Note : Le thème est déjà chargé (dans globals.css), pas de requête HTTP sup
 - sidebar, sidebar-foreground, sidebar-primary, sidebar-primary-foreground, sidebar-accent, sidebar-accent-foreground, sidebar-border, sidebar-ring
 
 **Fonts (3)** :
-
 - font-sans, font-serif, font-mono
 
 **Radius (1)** :
-
 - radius
 
 **Shadows (8)** :
-
 - shadow-2xs, shadow-xs, shadow-sm, shadow, shadow-md, shadow-lg, shadow-xl, shadow-2xl
 
 ### Variables à IGNORER (non utilisées par le système) :
-
 - shadow-x, shadow-y, shadow-blur, shadow-spread, shadow-opacity, shadow-color
-- tracking-normal, tracking-\* (autres valeurs)
+- tracking-normal, tracking-* (autres valeurs)
 - spacing
 - Toute autre variable personnalisée
 
 ## Gestion des Cas Particuliers
 
 ### Si une variable manque :
-
 - Utiliser une valeur par défaut sensée
 - Afficher un warning dans la console
 - Continuer le processus
 
 ### Si le nom contient des caractères spéciaux :
-
 - Les supprimer pour l'ID
 - Garder le nom original pour l'affichage
 
 ### Si aucune Google Font n'est détectée :
-
 - Laisser le tableau `googleFonts` vide : `[]`
 - C'est normal pour les thèmes utilisant des fonts système
 
 ### Si le fichier CSS existe déjà :
-
 - Demander confirmation à l'utilisateur
 - Proposer d'écraser ou de créer une variante (ex: theme-2)
 
@@ -425,7 +408,6 @@ Note : Le thème est déjà chargé (dans globals.css), pas de requête HTTP sup
 8. ✅ Afficher un message de confirmation
 
 **⚠️ RAPPEL CRITIQUE** :
-
 - ✅ TOUJOURS ajouter à la fin de `src/app/globals.css`
 - ✅ Utiliser des commentaires clairs pour séparer les thèmes :
   ```css
@@ -435,3 +417,4 @@ Note : Le thème est déjà chargé (dans globals.css), pas de requête HTTP sup
   ```
 
 Le thème est maintenant opérationnel ! 🎨
+
