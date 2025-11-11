@@ -229,14 +229,12 @@ export default function Home() {
                   <div className="text-muted-foreground space-y-4">
                     <p className="text-lg">
                       Décorez votre espace de manière unique grâce à notre outil
-                      de décoration assisté par intelligence artificielle.
+                      de décorations.
                     </p>
                     <p>
-                      Téléchargez une photo de votre chambre ou de votre espace
-                      au MPR et laissez l&apos;IA transformer votre
-                      environnement avec des décorations de Noël personnalisées.
-                      Choisissez parmi différents styles festifs et créez une
-                      ambiance magique qui vous ressemble.
+                      Transformez votre environnement et choisissez parmi
+                      différents styles et créez une ambiance qui vous
+                      ressemble.
                     </p>
                     <div className="pt-4">
                       <Link
@@ -244,7 +242,7 @@ export default function Home() {
                         className="text-primary-foreground bg-primary hover:bg-primary/90 focus:ring-primary inline-flex items-center rounded-lg px-6 py-3 font-semibold transition-colors focus:ring-2 focus:ring-offset-2"
                         aria-label="Accéder à l'outil de décoration Mon MPR"
                       >
-                        Décorez mon espace
+                        Décorer mon espace
                         <svg
                           className="ml-2 h-4 w-4"
                           fill="none"
