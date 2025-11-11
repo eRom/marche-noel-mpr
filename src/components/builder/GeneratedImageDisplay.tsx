@@ -77,12 +77,15 @@ export default function GeneratedImageDisplay({
     return (
       <Card className={className}>
         <CardContent className="flex flex-col items-center justify-center gap-4 py-8">
-          <AlertCircle className="h-12 w-12 text-destructive" aria-hidden="true" />
+          <AlertCircle
+            className="text-destructive h-12 w-12"
+            aria-hidden="true"
+          />
           <div className="text-center">
-            <h3 className="text-lg font-semibold text-destructive">
+            <h3 className="text-destructive text-lg font-semibold">
               Erreur de génération
             </h3>
-            <p className="mt-2 text-sm text-muted-foreground" role="alert">
+            <p className="text-muted-foreground mt-2 text-sm" role="alert">
               {error}
             </p>
           </div>
@@ -94,7 +97,7 @@ export default function GeneratedImageDisplay({
   if (!generatedImage && !isLoading) {
     return (
       <Card className={className}>
-        <CardContent className="py-8 text-center text-muted-foreground">
+        <CardContent className="text-muted-foreground py-8 text-center">
           <p>
             Sélectionnez un style ou utilisez le chat pour générer une
             décoration
@@ -136,10 +139,10 @@ export default function GeneratedImageDisplay({
         </div>
 
         {isLoading ? (
-          <div className="flex aspect-video w-full items-center justify-center rounded-lg border bg-muted">
+          <div className="bg-muted flex aspect-video w-full items-center justify-center rounded-lg border">
             <div className="text-center">
-              <div className="mb-4 inline-block h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent" />
-              <p className="text-sm text-muted-foreground">
+              <div className="border-primary mb-4 inline-block h-8 w-8 animate-spin rounded-full border-4 border-t-transparent" />
+              <p className="text-muted-foreground text-sm">
                 Génération en cours...
               </p>
             </div>
@@ -171,4 +174,3 @@ export default function GeneratedImageDisplay({
     </Card>
   );
 }
-

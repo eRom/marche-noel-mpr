@@ -44,7 +44,7 @@ export default function BuilderPage() {
     // Sauvegarder la position de scroll avant le changement
     scrollPositionRef.current = window.scrollY;
     shouldRestoreScrollRef.current = true;
-    
+
     setSelectedImage(image);
     setGeneratedImage(null);
     setSelectedStyle(null);
@@ -55,7 +55,7 @@ export default function BuilderPage() {
   const generateWithRetry = useCallback(
     async (imageUrl: string, style: DecorationStyle, attempt: number = 0) => {
       const MAX_RETRIES = 2;
-      
+
       try {
         const result = await generateStyledImage(imageUrl, style);
         if (result.success && result.data) {
@@ -74,9 +74,9 @@ export default function BuilderPage() {
             return false;
           }
         }
-      } catch (err) {
+      } catch {
         // Erreur réseau ou autre
-        if (attempt < MAX_RETRIES) {
+          if (attempt < MAX_RETRIES) {
           // Réessayer automatiquement
           await new Promise((resolve) => setTimeout(resolve, 1000)); // Attendre 1 seconde
           return await generateWithRetry(imageUrl, style, attempt + 1);
@@ -152,4 +152,3 @@ export default function BuilderPage() {
     </div>
   );
 }
-

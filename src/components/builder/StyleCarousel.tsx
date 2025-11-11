@@ -69,7 +69,7 @@ export default function StyleCarousel({
                 className={cn(
                   "w-full whitespace-nowrap transition-all duration-200",
                   isSelected && "shadow-lg",
-                  focusedIndex === index && "ring-2 ring-primary ring-offset-2"
+                  focusedIndex === index && "ring-primary ring-2 ring-offset-2"
                 )}
                 aria-label={`Appliquer le style ${style}`}
                 aria-pressed={isSelected}
@@ -97,4 +97,3 @@ export default function StyleCarousel({
     </div>
   );
 }
-

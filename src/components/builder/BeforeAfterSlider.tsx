@@ -147,9 +147,9 @@ export default function BeforeAfterSlider({
         onTouchStart={handleMouseDown}
         onKeyDown={handleKeyDown}
       >
-        <div className="absolute left-1/2 top-1/2 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-lg ring-2 ring-primary">
+        <div className="ring-primary absolute top-1/2 left-1/2 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-lg ring-2">
           <svg
-            className="h-6 w-6 text-primary"
+            className="text-primary h-6 w-6"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -166,10 +166,10 @@ export default function BeforeAfterSlider({
       </div>
 
       {/* Labels */}
-      <div className="absolute left-4 top-4 rounded bg-black/70 px-3 py-1.5 text-sm font-medium text-white">
+      <div className="absolute top-4 left-4 rounded bg-black/70 px-3 py-1.5 text-sm font-medium text-white">
         {beforeLabel}
       </div>
-      <div className="absolute right-4 top-4 rounded bg-black/70 px-3 py-1.5 text-sm font-medium text-white">
+      <div className="absolute top-4 right-4 rounded bg-black/70 px-3 py-1.5 text-sm font-medium text-white">
         {afterLabel}
       </div>
 
@@ -178,11 +178,8 @@ export default function BeforeAfterSlider({
         <span className="sr-only">
           Utilisez les flèches gauche/droite ou faites glisser pour comparer
         </span>
-        <span aria-hidden="true">
-          ← Glissez ou utilisez les flèches →
-        </span>
+        <span aria-hidden="true">← Glissez ou utilisez les flèches →</span>
       </div>
     </div>
   );
 }
-

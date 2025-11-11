@@ -38,4 +38,3 @@ export function getStyleDescription(style: DecorationStyle): string {
 export function isValidStyle(style: string): style is DecorationStyle {
   return style in STYLE_DESCRIPTIONS;
 }
-

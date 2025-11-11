@@ -10,22 +10,20 @@ import { z } from "zod";
 
 // Schémas de validation
 const generateImageSchema = z.object({
-  imageUrl: z.string().refine(
-    (url) => url.startsWith("http") || url.startsWith("/"),
-    {
+  imageUrl: z
+    .string()
+    .refine((url) => url.startsWith("http") || url.startsWith("/"), {
       message: "URL d'image invalide",
-    }
-  ),
+    }),
   style: z.string().min(1),
 });
 
 const chatGenerateSchema = z.object({
-  imageUrl: z.string().refine(
-    (url) => url.startsWith("http") || url.startsWith("/"),
-    {
+  imageUrl: z
+    .string()
+    .refine((url) => url.startsWith("http") || url.startsWith("/"), {
       message: "URL d'image invalide",
-    }
-  ),
+    }),
   prompt: z.string().min(1),
   conversationHistory: z
     .array(
@@ -69,7 +67,11 @@ export async function generateStyledImage(
         : "image/jpeg";
 
     // Générer l'image avec Gemini
-    const generatedImageData = await generateImage(base64Data, mimeType, prompt);
+    const generatedImageData = await generateImage(
+      base64Data,
+      mimeType,
+      prompt
+    );
 
     // Convertir l'image base64 en URL blob temporaire (côté client)
     const imageDataUrl = `data:${mimeType};base64,${generatedImageData}`;
@@ -111,11 +113,7 @@ export async function generateFromChat(
     }
 
     // Créer le prompt contextuel
-    const chatPrompt = createChatPrompt(
-      prompt,
-      imageUrl,
-      conversationHistory
-    );
+    const chatPrompt = createChatPrompt(prompt, imageUrl, conversationHistory);
 
     // Récupérer l'image en base64
     const base64Data = await fetchImageAsBase64(imageUrl);
@@ -155,7 +153,10 @@ export async function generateSurpriseImage(
   imageUrl: string
 ): Promise<ActionResult<{ imageUrl: string }>> {
   try {
-    if (!imageUrl || (!imageUrl.startsWith("http") && !imageUrl.startsWith("/"))) {
+    if (
+      !imageUrl ||
+      (!imageUrl.startsWith("http") && !imageUrl.startsWith("/"))
+    ) {
       return {
         success: false,
         error: "URL d'image invalide",
@@ -174,7 +175,11 @@ export async function generateSurpriseImage(
         : "image/jpeg";
 
     // Générer l'image avec Gemini
-    const generatedImageData = await generateImage(base64Data, mimeType, prompt);
+    const generatedImageData = await generateImage(
+      base64Data,
+      mimeType,
+      prompt
+    );
 
     const imageDataUrl = `data:${mimeType};base64,${generatedImageData}`;
 
@@ -199,13 +204,16 @@ async function fetchImageAsBase64(imageUrl: string): Promise<string> {
   try {
     // Si c'est déjà une URL locale (public/), on doit la récupérer depuis le serveur
     if (imageUrl.startsWith("/")) {
-      const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+      const baseUrl =
+        process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
       imageUrl = `${baseUrl}${imageUrl}`;
     }
 
     const response = await fetch(imageUrl);
     if (!response.ok) {
-      throw new Error(`Erreur lors de la récupération de l'image: ${response.statusText}`);
+      throw new Error(
+        `Erreur lors de la récupération de l'image: ${response.statusText}`
+      );
     }
 
     const arrayBuffer = await response.arrayBuffer();
@@ -216,4 +224,3 @@ async function fetchImageAsBase64(imageUrl: string): Promise<string> {
     throw error;
   }
 }
-
