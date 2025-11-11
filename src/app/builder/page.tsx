@@ -119,7 +119,7 @@ export default function BuilderPage() {
             <AnimatedSection animation="fadeInUp">
               <header className="mb-6 text-center">
                 <h1 className="text-4xl font-bold text-red-700 md:text-5xl dark:text-red-500">
-                  Mon MPR - Assistant IA de Décoration
+                  Mon MPR - Assistant de décoration
                 </h1>
               </header>
             </AnimatedSection>

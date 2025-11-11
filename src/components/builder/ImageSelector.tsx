@@ -186,13 +186,11 @@ export default function ImageSelector({
               <Card
                 key={image.id}
                 className={cn(
-                  "transition-all duration-200 md:flex-1 flex flex-col overflow-hidden !p-0 !py-0",
+                  "flex flex-col overflow-hidden !p-0 !py-0 transition-all duration-200 md:flex-1",
                   isSelected
-                    ? "ring-2 ring-primary shadow-lg"
+                    ? "ring-primary shadow-lg ring-2"
                     : "hover:shadow-md",
-                  isLoading
-                    ? "cursor-not-allowed opacity-50"
-                    : "cursor-pointer"
+                  isLoading ? "cursor-not-allowed opacity-50" : "cursor-pointer"
                 )}
                 role="button"
                 tabIndex={isLoading ? -1 : -1}
@@ -229,7 +227,7 @@ export default function ImageSelector({
                   e.preventDefault();
                 }}
               >
-                <CardContent className="!p-0 !px-0 h-full w-full flex-1 m-0">
+                <CardContent className="m-0 h-full w-full flex-1 !p-0 !px-0">
                   <div className="relative h-full w-full overflow-hidden rounded-xl">
                     <Image
                       src={image.url}
@@ -243,8 +241,8 @@ export default function ImageSelector({
                       loading="lazy"
                     />
                     {isSelected && (
-                      <div className="absolute inset-0 flex items-center justify-center bg-primary/20">
-                        <div className="rounded-full bg-primary px-2 py-1 text-xs font-medium text-primary-foreground">
+                      <div className="bg-primary/20 absolute inset-0 flex items-center justify-center">
+                        <div className="bg-primary text-primary-foreground rounded-full px-2 py-1 text-xs font-medium">
                           ✓
                         </div>
                       </div>
@@ -258,30 +256,42 @@ export default function ImageSelector({
 
         {/* Image sélectionnée en grand à droite sur desktop */}
         {selectedImage ? (
-          <div className="md:order-2 space-y-2">
+          <div className="space-y-2 md:order-2">
             {error ? (
-              <div className="relative aspect-video w-full overflow-hidden rounded-lg border-2 border-destructive shadow-lg">
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-background/95 p-6">
+              <div className="border-destructive relative aspect-video w-full overflow-hidden rounded-lg border-2 shadow-lg">
+                <div className="bg-background/95 absolute inset-0 flex flex-col items-center justify-center gap-4 p-6">
                   {error === "RETRY_FAILED" ? (
                     <>
-                      <Construction className="h-16 w-16 text-destructive" aria-hidden="true" />
-                      <div className="text-center space-y-2">
-                        <h3 className="text-xl font-semibold text-destructive">
+                      <Construction
+                        className="text-destructive h-16 w-16"
+                        aria-hidden="true"
+                      />
+                      <div className="space-y-2 text-center">
+                        <h3 className="text-destructive text-xl font-semibold">
                           Oups, les artisans sont en grève...
                         </h3>
-                        <p className="text-sm text-muted-foreground" role="alert">
+                        <p
+                          className="text-muted-foreground text-sm"
+                          role="alert"
+                        >
                           N&apos;hésitez pas à recommencer dans un court instant
                         </p>
                       </div>
                     </>
                   ) : (
                     <>
-                      <AlertCircle className="h-12 w-12 text-destructive" aria-hidden="true" />
+                      <AlertCircle
+                        className="text-destructive h-12 w-12"
+                        aria-hidden="true"
+                      />
                       <div className="text-center">
-                        <h3 className="text-lg font-semibold text-destructive">
+                        <h3 className="text-destructive text-lg font-semibold">
                           Erreur de génération
                         </h3>
-                        <p className="mt-2 text-sm text-muted-foreground" role="alert">
+                        <p
+                          className="text-muted-foreground mt-2 text-sm"
+                          role="alert"
+                        >
                           {error}
                         </p>
                       </div>
@@ -290,7 +300,7 @@ export default function ImageSelector({
                 </div>
               </div>
             ) : isLoading ? (
-              <div className="relative aspect-video w-full overflow-hidden rounded-lg border-2 border-primary shadow-lg">
+              <div className="border-primary relative aspect-video w-full overflow-hidden rounded-lg border-2 shadow-lg">
                 <Image
                   src={selectedImage.url}
                   alt={`Hall du MPR sélectionné - ${selectedImage.filename}`}
@@ -304,7 +314,7 @@ export default function ImageSelector({
                   <div className="text-center">
                     <div className="mb-4 inline-block h-8 w-8 animate-spin rounded-full border-4 border-white border-t-transparent" />
                     <p className="text-sm font-medium text-white">
-                      Génération en cours...
+                      Merci de laisser du temps à nos artisans...
                     </p>
                   </div>
                 </div>
@@ -312,7 +322,7 @@ export default function ImageSelector({
             ) : generatedImage ? (
               <div
                 className={cn(
-                  "relative aspect-video w-full overflow-hidden rounded-lg border-2 border-primary shadow-lg"
+                  "border-primary relative aspect-video w-full overflow-hidden rounded-lg border-2 shadow-lg"
                 )}
                 ref={containerRef}
                 role="application"
@@ -357,7 +367,10 @@ export default function ImageSelector({
                 {/* Slider handle */}
                 <div
                   className="absolute top-0 bottom-0 w-1 cursor-ew-resize bg-white shadow-lg"
-                  style={{ left: `${sliderPosition}%`, transform: "translateX(-50%)" }}
+                  style={{
+                    left: `${sliderPosition}%`,
+                    transform: "translateX(-50%)",
+                  }}
                   role="slider"
                   tabIndex={0}
                   aria-label="Comparaison avant/après"
@@ -369,9 +382,9 @@ export default function ImageSelector({
                   onTouchStart={handleMouseDown}
                   onKeyDown={handleKeyDown}
                 >
-                  <div className="absolute left-1/2 top-1/2 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-lg ring-2 ring-primary">
+                  <div className="ring-primary absolute top-1/2 left-1/2 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-lg ring-2">
                     <svg
-                      className="h-6 w-6 text-primary"
+                      className="text-primary h-6 w-6"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -390,7 +403,8 @@ export default function ImageSelector({
                 {/* Instructions */}
                 <div className="absolute bottom-4 left-1/2 -translate-x-1/2 rounded bg-black/70 px-4 py-2 text-xs text-white">
                   <span className="sr-only">
-                    Utilisez les flèches gauche/droite ou faites glisser pour comparer
+                    Utilisez les flèches gauche/droite ou faites glisser pour
+                    comparer
                   </span>
                   <span aria-hidden="true">
                     ← Glissez ou utilisez les flèches →
@@ -398,7 +412,7 @@ export default function ImageSelector({
                 </div>
               </div>
             ) : (
-              <div className="relative aspect-video w-full overflow-hidden rounded-lg border-2 border-primary shadow-lg">
+              <div className="border-primary relative aspect-video w-full overflow-hidden rounded-lg border-2 shadow-lg">
                 <Image
                   src={selectedImage.url}
                   alt={`Hall du MPR sélectionné - ${selectedImage.filename}`}
@@ -411,7 +425,7 @@ export default function ImageSelector({
             )}
           </div>
         ) : (
-          <div className="flex items-center justify-center rounded-lg border-2 border-dashed border-muted-foreground/30 aspect-video md:order-2">
+          <div className="border-muted-foreground/30 flex aspect-video items-center justify-center rounded-lg border-2 border-dashed md:order-2">
             <p className="text-muted-foreground p-8 text-center">
               Sélectionnez une image pour commencer
             </p>

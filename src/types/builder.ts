@@ -1,15 +1,11 @@
 export type DecorationStyle =
-  | "Accueil Festif"
   | "Scandinave"
   | "Moderne"
   | "Industriel"
-  | "Luxe"
   | "Vintage"
   | "Marché de Noël"
   | "Nature & Végétal"
-  | "Minimaliste"
-  | "Futuriste"
-  | "Lounge";
+  | "Futuriste";
 
 export interface BuilderImage {
   id: string;
@@ -29,4 +25,3 @@ export interface ChatMessage {
   content: string;
   timestamp: Date;
 }
-

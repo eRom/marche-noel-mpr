@@ -1,3 +1,5 @@
+import { getStyleDescription, STYLE_DESCRIPTIONS } from "@/lib/builder-styles";
+import type { DecorationStyle } from "@/types/builder";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const apiKey = process.env.GOOGLE_API_KEY;
@@ -18,10 +20,7 @@ export const chatModel = genAI.getGenerativeModel({
 });
 
 // Fonction utilitaire pour convertir un fichier en GenerativePart
-export function fileToGenerativePart(
-  base64Data: string,
-  mimeType: string
-) {
+export function fileToGenerativePart(base64Data: string, mimeType: string) {
   return {
     inlineData: {
       data: base64Data,
@@ -44,14 +43,14 @@ export async function generateImage(
   ]);
 
   const response = result.response;
-  
+
   // Debug: logger la structure de la réponse
   console.log("Response structure:", JSON.stringify(response, null, 2));
   console.log("Candidates:", response.candidates);
-  
+
   const firstCandidate = response.candidates?.[0];
   if (!firstCandidate) {
-    const errorMsg = response.promptFeedback?.blockReason 
+    const errorMsg = response.promptFeedback?.blockReason
       ? `Blocked: ${response.promptFeedback.blockReason}`
       : "No candidates in response";
     console.error("Error:", errorMsg);
@@ -75,57 +74,36 @@ export async function generateImage(
   // Chercher une partie avec inlineData (image générée)
   for (const part of parts) {
     // Vérifier inlineData
-    if ((part as any).inlineData?.data) {
-      return (part as any).inlineData.data;
+    const partWithInlineData = part as { inlineData?: { data?: string } };
+    if (partWithInlineData.inlineData?.data) {
+      return partWithInlineData.inlineData.data;
     }
     // Vérifier aussi la structure alternative
-    if (part.inlineData && (part.inlineData as any).data) {
-      return (part.inlineData as any).data;
+    if (part.inlineData) {
+      const inlineData = part.inlineData as { data?: string };
+      if (inlineData.data) {
+        return inlineData.data;
+      }
     }
     // Si c'est du texte, logger pour debug
-    if ((part as any).text) {
-      console.log("Text response instead of image:", (part as any).text);
+    const partWithText = part as { text?: string };
+    if (partWithText.text) {
+      console.log("Text response instead of image:", partWithText.text);
     }
   }
 
   // Si aucune image n'est trouvée, logger pour debug
   console.error("Response parts structure:", JSON.stringify(parts, null, 2));
   console.error("Full response:", JSON.stringify(response, null, 2));
-  
+
   throw new Error(
     "Failed to generate image. The model did not return image data. Check console for details."
   );
 }
 
-// Descriptions des styles pour les prompts
-const styleDescriptions: Record<string, string> = {
-  "Accueil Festif":
-    "Un hall d'accueil chaleureux et festif avec des décorations de Noël élégantes, des guirlandes lumineuses, un sapin décoré, une ambiance conviviale et accueillante avec des couleurs chaudes (rouge, or, vert).",
-  Scandinave:
-    "Un hall d'accueil de style scandinave avec un design épuré, des lignes minimalistes, des matériaux naturels (bois clair, pierre), une palette de couleurs douces (blanc, beige, gris clair), et une ambiance lumineuse et apaisante.",
-  Moderne:
-    "Un hall d'accueil moderne et contemporain avec un design épuré, des matériaux high-tech (verre, métal, béton), un comptoir d'accueil moderne, des éclairages LED intégrés, et une esthétique minimaliste et fonctionnelle.",
-  Industriel:
-    "Un hall d'accueil de style industriel avec des matériaux bruts (briques apparentes, métal, béton), des éclairages suspendus, des éléments vintage, une palette de couleurs neutres (gris, noir, beige), et une ambiance authentique et urbaine.",
-  Luxe:
-    "Un hall d'accueil luxueux et raffiné avec des matériaux nobles (marbre, cuir, bois précieux), des éclairages élégants, des éléments décoratifs sophistiqués, une palette de couleurs riches (or, bordeaux, noir), et une ambiance prestigieuse.",
-  Vintage:
-    "Un hall d'accueil de style vintage avec des meubles rétro, des éléments décoratifs d'époque, des couleurs chaudes et patinées, des textures authentiques, et une ambiance nostalgique et chaleureuse.",
-  "Marché de Noël":
-    "Un hall d'accueil transformé en marché de Noël avec des stands décoratifs, des sapins, des guirlandes, des lumières festives, une ambiance chaleureuse et conviviale, des couleurs traditionnelles de Noël (rouge, vert, or).",
-  "Nature & Végétal":
-    "Un hall d'accueil intégrant la nature avec des plantes vertes, des murs végétalisés, des matériaux naturels (bois, pierre), une lumière naturelle, une palette de couleurs vertes et terreuses, et une ambiance apaisante et biophilique.",
-  Minimaliste:
-    "Un hall d'accueil minimaliste avec un design épuré, peu d'éléments décoratifs, des lignes simples, une palette de couleurs neutres (blanc, gris, beige), beaucoup d'espace vide, et une ambiance calme et sereine.",
-  Futuriste:
-    "Un hall d'accueil futuriste avec des technologies intégrées, des écrans interactifs, des éclairages LED dynamiques, des matériaux innovants, des formes géométriques audacieuses, et une ambiance high-tech et innovante.",
-  Lounge:
-    "Un hall d'accueil de style lounge avec des canapés confortables, des espaces de détente, des éclairages tamisés, des matériaux doux (tissus, moquette), une palette de couleurs chaudes et apaisantes, et une ambiance relaxante et accueillante.",
-};
-
 // Fonction pour créer un prompt de style
 export function createStylePrompt(style: string, imageUrl: string): string {
-  const description = styleDescriptions[style] || style;
+  const description = getStyleDescription(style as DecorationStyle) || style;
   return `Tu es un expert en décoration d'intérieur. Transforme cette photo d'un hall d'accueil selon le style "${style}".
 
 Style demandé: ${description}
@@ -171,7 +149,7 @@ Instructions:
 
 // Fonction pour combinaison créative de styles (Surprenez-moi)
 export function createSurprisePrompt(imageUrl: string): string {
-  const styles = Object.keys(styleDescriptions);
+  const styles = Object.keys(STYLE_DESCRIPTIONS);
   const randomStyles = styles
     .sort(() => Math.random() - 0.5)
     .slice(0, 2)
@@ -187,4 +165,3 @@ Instructions:
 - Assure-toi que le résultat soit cohérent et visuellement attrayant
 - Sois audacieux mais élégant dans la combinaison`;
 }
-

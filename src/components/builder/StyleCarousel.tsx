@@ -1,24 +1,11 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { DECORATION_STYLES } from "@/lib/builder-styles";
 import { cn } from "@/lib/utils";
 import type { DecorationStyle } from "@/types/builder";
 import { motion } from "framer-motion";
 import { useState } from "react";
-
-const DECORATION_STYLES: DecorationStyle[] = [
-  "Accueil Festif",
-  "Scandinave",
-  "Moderne",
-  "Industriel",
-  "Luxe",
-  "Vintage",
-  "Marché de Noël",
-  "Nature & Végétal",
-  "Minimaliste",
-  "Futuriste",
-  "Lounge",
-];
 
 interface StyleCarouselProps {
   onStyleSelect: (style: DecorationStyle) => void;
