@@ -49,7 +49,7 @@ export default function StyleCarousel({
         Choisissez un style de décoration
       </h2>
       <div
-        className="flex gap-3 overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-primary scrollbar-track-transparent"
+        className="flex justify-between gap-3 pb-4"
         role="tablist"
         aria-label="Carrousel de styles de décoration"
       >
@@ -61,12 +61,13 @@ export default function StyleCarousel({
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: index * 0.05 }}
+              className="flex-1"
             >
               <Button
                 variant={isSelected ? "default" : "outline"}
                 size="lg"
                 className={cn(
-                  "whitespace-nowrap transition-all duration-200",
+                  "w-full whitespace-nowrap transition-all duration-200",
                   isSelected && "shadow-lg",
                   focusedIndex === index && "ring-2 ring-primary ring-offset-2"
                 )}

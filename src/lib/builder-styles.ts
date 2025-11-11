@@ -26,7 +26,7 @@ export const STYLE_DESCRIPTIONS: Record<DecorationStyle, string> = {
   "Nature & Végétal":
     "Un hall d'accueil intégrant la nature avec des plantes vertes, des murs végétalisés, des matériaux naturels (bois, pierre), une lumière naturelle, une palette de couleurs vertes et terreuses, et une ambiance apaisante et biophilique.",
   Futuriste:
-    "Un hall d'accueil futuriste avec des technologies intégrées, des écrans interactifs, des éclairages LED dynamiques, des matériaux innovants, des formes géométriques audacieuses, et une ambiance high-tech et innovante.",
+    "Un hall d’accueil inspiré du cyberpunk, mêlant technologies avancées et ambiance dystopique : enseignes et néons multicolores, hologrammes animés, écrans interactifs customisés, éclairages LED vifs avec dominantes violettes et bleues, matériaux métalliques et effets usés, câbles apparents, graffitis futuristes, mobilier aux formes angulaires, et une atmosphère urbaine high-tech entre exubérance et underground.",
 };
 
 // Fonction utilitaire pour obtenir la description d'un style
