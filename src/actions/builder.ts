@@ -202,23 +202,42 @@ export async function generateSurpriseImage(
 // Fonction utilitaire pour récupérer une image et la convertir en base64
 async function fetchImageAsBase64(imageUrl: string): Promise<string> {
   try {
-    // Si c'est déjà une URL locale (public/), on doit la récupérer depuis le serveur
+    // Si c'est un chemin local (public/), lire directement depuis le système de fichiers
     if (imageUrl.startsWith("/")) {
-      const baseUrl =
-        process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
-      imageUrl = `${baseUrl}${imageUrl}`;
+      const fs = await import("fs/promises");
+      const path = await import("path");
+      
+      // Construire le chemin vers le fichier dans public/
+      const publicPath = path.join(process.cwd(), "public", imageUrl);
+      
+      try {
+        const fileBuffer = await fs.readFile(publicPath);
+        return fileBuffer.toString("base64");
+      } catch (fsError) {
+        // Si la lecture du fichier échoue, essayer avec fetch en utilisant VERCEL_URL
+        const baseUrl =
+          process.env.VERCEL_URL
+            ? `https://${process.env.VERCEL_URL}`
+            : process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+        imageUrl = `${baseUrl}${imageUrl}`;
+      }
     }
 
-    const response = await fetch(imageUrl);
-    if (!response.ok) {
-      throw new Error(
-        `Erreur lors de la récupération de l'image: ${response.statusText}`
-      );
+    // Pour les URLs externes ou après construction de l'URL
+    if (imageUrl.startsWith("http")) {
+      const response = await fetch(imageUrl);
+      if (!response.ok) {
+        throw new Error(
+          `Erreur lors de la récupération de l'image: ${response.statusText}`
+        );
+      }
+
+      const arrayBuffer = await response.arrayBuffer();
+      const buffer = Buffer.from(arrayBuffer);
+      return buffer.toString("base64");
     }
 
-    const arrayBuffer = await response.arrayBuffer();
-    const buffer = Buffer.from(arrayBuffer);
-    return buffer.toString("base64");
+    throw new Error("URL d'image invalide");
   } catch (error) {
     console.error("Erreur conversion image en base64:", error);
     throw error;
