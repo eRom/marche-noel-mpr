@@ -60,13 +60,7 @@
       "purpose": "any"
     }
   ],
-  "categories": [
-    "shopping",
-    "business",
-    "lifestyle",
-    "entertainment",
-    "events"
-  ],
+  "categories": ["events", "entertainment", "shopping", "health", "lifestyle"],
   "lang": "fr",
   "dir": "ltr",
   "iarc_rating_id": "e84b072d-71b3-4d3e-86ae-31a8ce4e53b7",
@@ -101,10 +95,10 @@
       ]
     },
     {
-      "name": "Merci",
-      "short_name": "Merci",
-      "description": "Remerciements et informations sur l'événement",
-      "url": "/merci",
+      "name": "A propos",
+      "short_name": "A propos",
+      "description": "Informations sur l'événement",
+      "url": "/a-propos",
       "icons": [
         {
           "src": "/icon-192.png",
@@ -114,9 +108,9 @@
       ]
     },
     {
-      "name": "Auteur",
-      "short_name": "Auteur",
-      "description": "À propos de l'auteur du site",
+      "name": "Romain Ecarnot",
+      "short_name": "Romain Ecarnot",
+      "description": "À propos de Romain Ecarnot",
       "url": "/auteur",
       "icons": [
         {
@@ -131,6 +125,32 @@
       "short_name": "Médias",
       "description": "Découvrez les vidéos du marché de Noël",
       "url": "/medias",
+      "icons": [
+        {
+          "src": "/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Galerie",
+      "short_name": "Galerie",
+      "description": "Découvrez la galerie des photos du marché de Noël",
+      "url": "/galerie",
+      "icons": [
+        {
+          "src": "/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Builder",
+      "short_name": "Builder",
+      "description": "Builder du marché de Noël",
+      "url": "/builder",
       "icons": [
         {
           "src": "/icon-192.png",

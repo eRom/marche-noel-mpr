@@ -206,19 +206,18 @@ async function fetchImageAsBase64(imageUrl: string): Promise<string> {
     if (imageUrl.startsWith("/")) {
       const fs = await import("fs/promises");
       const path = await import("path");
-      
+
       // Construire le chemin vers le fichier dans public/
       const publicPath = path.join(process.cwd(), "public", imageUrl);
-      
+
       try {
         const fileBuffer = await fs.readFile(publicPath);
         return fileBuffer.toString("base64");
-      } catch (fsError) {
+      } catch {
         // Si la lecture du fichier échoue, essayer avec fetch en utilisant VERCEL_URL
-        const baseUrl =
-          process.env.VERCEL_URL
-            ? `https://${process.env.VERCEL_URL}`
-            : process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+        const baseUrl = process.env.VERCEL_URL
+          ? `https://${process.env.VERCEL_URL}`
+          : process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
         imageUrl = `${baseUrl}${imageUrl}`;
       }
     }

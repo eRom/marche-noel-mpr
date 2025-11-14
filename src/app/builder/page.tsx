@@ -76,7 +76,7 @@ export default function BuilderPage() {
         }
       } catch {
         // Erreur réseau ou autre
-          if (attempt < MAX_RETRIES) {
+        if (attempt < MAX_RETRIES) {
           // Réessayer automatiquement
           await new Promise((resolve) => setTimeout(resolve, 1000)); // Attendre 1 seconde
           return await generateWithRetry(imageUrl, style, attempt + 1);

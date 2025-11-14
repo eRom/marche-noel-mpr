@@ -1,0 +1,16 @@
+# robots.txt pour Marché de Noël du MPR de Nantes
+
+# Autoriser tous les robots à indexer le site
+User-agent: *
+Allow: /
+
+# Désactiver l'indexation des fichiers de développement et de configuration
+Disallow: /api/
+Disallow: /_next/
+Disallow: /sw.js
+Disallow: /sw-template.js
+Disallow: /unregister-sw.html
+
+# Sitemap
+Sitemap: https://mpr-noel.romain-ecarnot.com/sitemap.xml
+
