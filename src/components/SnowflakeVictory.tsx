@@ -69,7 +69,7 @@ export default function SnowflakeVictory() {
             Tous les flocons magiques trouvés !
           </p>
           <p className="text-primary-foreground/90 mt-2 text-lg md:text-xl">
-            ❄️ 11/11 ❄️
+            ❄️ 9/9 ❄️
           </p>
         </div>
       </div>

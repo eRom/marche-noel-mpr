@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, ReactNode, useContext, useState } from "react";
 
 interface SnowflakeHuntContextType {
   foundSnowflakes: Set<number>;
@@ -17,7 +17,7 @@ export function SnowflakeHuntProvider({ children }: { children: ReactNode }) {
   const [foundSnowflakes, setFoundSnowflakes] = useState<Set<number>>(
     new Set()
   );
-  const totalSnowflakes = 11;
+  const totalSnowflakes = 9;
 
   const collectSnowflake = (id: number) => {
     setFoundSnowflakes((prev) => {
