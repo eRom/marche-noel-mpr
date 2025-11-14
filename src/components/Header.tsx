@@ -11,7 +11,6 @@ const navigation = [
   { name: "Accueil", href: "/" },
   { name: "Programme", href: "/programme" },
   { name: "Galerie", href: "/galerie" },
-  { name: "Plan", href: "/plan" },
   { name: "À propos", href: "/a-propos" },
 ];
 

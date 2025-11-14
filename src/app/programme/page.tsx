@@ -1,11 +1,11 @@
 import CalendarReminder from "@/components/CalendarReminder";
 import MagicSnowflake from "@/components/MagicSnowflake";
+import MapSection from "@/components/MapSection";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import VideoSection from "@/components/VideoSection";
-import { Calendar, Clock, MapPin, Users } from "lucide-react";
+import { Calendar, Clock, Users } from "lucide-react";
 import dynamic from "next/dynamic";
-import Link from "next/link";
 
 // Lazy load non-critical components
 const Header = dynamic(() => import("@/components/Header"), {
@@ -183,7 +183,7 @@ export default function Programme() {
               </div>
             </AnimatedSection>
 
-            <div className="grid grid-cols-1 items-stretch gap-6 md:grid-cols-2 lg:grid-cols-4">
+            <div className="grid grid-cols-1 items-stretch gap-6 md:grid-cols-2 lg:grid-cols-3">
               <AnimatedSection animation="fadeInLeft" delay={200}>
                 <Card className="bg-card border-border flex h-full flex-col p-6 text-center">
                   <CardContent className="flex flex-1 flex-col justify-center pt-6">
@@ -239,33 +239,21 @@ export default function Programme() {
                   </CardContent>
                 </Card>
               </AnimatedSection>
-
-              <AnimatedSection animation="fadeInRight" delay={600}>
-                <Link href="/plan" className="h-full">
-                  <Card className="bg-card border-border flex h-full cursor-pointer flex-col p-6 text-center transition-shadow hover:shadow-lg">
-                    <CardContent className="flex flex-1 flex-col justify-center pt-6">
-                      <MapPin
-                        className="mx-auto mb-4 h-12 w-12 text-[#3b82f6]"
-                        aria-hidden="true"
-                      />
-                      <h3 className="text-card-foreground mb-2 text-lg font-semibold">
-                        Plan
-                      </h3>
-                      <p className="text-muted-foreground text-sm">
-                        Localisation interactive
-                        <br />
-                        Itinéraire
-                      </p>
-                    </CardContent>
-                  </Card>
-                </Link>
-              </AnimatedSection>
             </div>
           </div>
         </section>
 
-        {/* Video Section */}
+        {/* Map Section */}
         <section className="bg-noel-snow py-16">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <AnimatedSection animation="fadeInUp">
+              <MapSection />
+            </AnimatedSection>
+          </div>
+        </section>
+
+        {/* Video Section */}
+        <section className="py-16">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <AnimatedSection animation="fadeInUp">
               <VideoSection showSoundToggle={false} />

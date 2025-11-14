@@ -108,8 +108,7 @@ export default function Home() {
                           Programme riche
                         </h2>
                         <p className="text-muted-foreground">
-                          Des animations quotidiennes et des ateliers pour toute
-                          la famille.
+                          Des animations et des ateliers proposés par le MPR.
                         </p>
                       </CardContent>
                     </Card>
