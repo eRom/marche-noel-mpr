@@ -4,8 +4,12 @@ import { GalleryManager } from "@/components/GalleryManager";
 import { GalleryUpload } from "@/components/GalleryUpload";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { ArrowLeft, Lock, Settings, Upload } from "lucide-react";
 import Link from "next/link";
+import { useTransition } from "react";
+import { authenticateAdmin } from "@/actions/gallery";
 import { useState } from "react";
 
 type TabType = "upload" | "manage";
@@ -13,33 +17,26 @@ type TabType = "upload" | "manage";
 export default function GalleryAdminPage() {
   const [password, setPassword] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [error, setError] = useState("");
   const [activeTab, setActiveTab] = useState<TabType>("upload");
+  const [error, setError] = useState("");
+  const [isPending, startTransition] = useTransition();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
 
-    try {
-      const response = await fetch("/api/gallery/auth", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ password }),
-      });
+    startTransition(async () => {
+      const formData = new FormData();
+      formData.append("password", password);
 
-      const data = await response.json();
+      const result = await authenticateAdmin(formData);
 
-      if (response.ok && data.success) {
+      if (result.success) {
         setIsAuthenticated(true);
       } else {
-        setError(data.error || "Mot de passe incorrect");
+        setError(result.error);
       }
-    } catch (error) {
-      console.error("Erreur de connexion:", error);
-      setError("Erreur de connexion");
-    }
+    });
   };
 
   if (!isAuthenticated) {
@@ -54,29 +51,33 @@ export default function GalleryAdminPage() {
           </CardHeader>
           <CardContent>
             <form onSubmit={handleLogin} className="space-y-4">
-              <div>
-                <label
-                  htmlFor="password"
-                  className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
-                >
-                  Mot de passe
-                </label>
-                <input
-                  type="password"
+              <div className="space-y-2">
+                <Label htmlFor="password">Mot de passe</Label>
+                <Input
                   id="password"
+                  type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full rounded-lg border border-gray-300 bg-white px-4 py-2 text-gray-900 focus:ring-2 focus:ring-gray-500 focus:outline-none dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100"
                   placeholder="Entrez le mot de passe"
                   required
+                  aria-label="Mot de passe admin"
+                  aria-required="true"
+                  disabled={isPending}
                 />
-                {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
+                {error && (
+                  <p className="text-sm text-red-600" role="alert">
+                    {error}
+                  </p>
+                )}
               </div>
               <Button
                 type="submit"
                 className="w-full bg-gray-900 text-white hover:bg-gray-800 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-200"
+                disabled={isPending}
+                aria-busy={isPending}
+                aria-label={isPending ? "Connexion en cours..." : "Se connecter"}
               >
-                Se connecter
+                {isPending ? "Connexion..." : "Se connecter"}
               </Button>
             </form>
             <div className="mt-6 text-center">

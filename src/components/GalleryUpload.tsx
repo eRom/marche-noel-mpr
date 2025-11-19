@@ -13,7 +13,9 @@ import {
 } from "@/components/ui/select";
 import { AlertCircle, CheckCircle, Upload, X } from "lucide-react";
 import Image from "next/image";
-import { useCallback, useState, type ChangeEvent, type DragEvent } from "react";
+import { useCallback, useState, useTransition, type ChangeEvent, type DragEvent } from "react";
+import { uploadImage } from "@/actions/gallery";
+import { toast } from "sonner";
 
 interface UploadFile {
   file: File;
@@ -40,9 +42,9 @@ export function GalleryUpload({ password }: GalleryUploadProps) {
   const [file, setFile] = useState<UploadFile | null>(null);
   const [category, setCategory] = useState<string>("ambiance");
   const [isDragging, setIsDragging] = useState(false);
-  const [isUploading, setIsUploading] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
   const [title, setTitle] = useState<string>("");
+  const [isPending, startTransition] = useTransition();
 
   const handleDragEnter = useCallback((e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
@@ -211,48 +213,42 @@ export function GalleryUpload({ password }: GalleryUploadProps) {
     setTitle(cleanTitle);
   };
 
-  const handleUpload = async () => {
+  const handleUpload = () => {
     if (!file || !title.trim()) {
       return;
     }
 
-    setIsUploading(true);
     setFile({ ...file, status: "uploading" });
 
-    const formData = new FormData();
-    formData.append("file", file.file);
-    formData.append("category", category);
-    formData.append("title", title.trim());
+    startTransition(async () => {
+      const formData = new FormData();
+      formData.append("password", password);
+      formData.append("file", file.file);
+      formData.append("category", category);
+      formData.append("title", title.trim());
 
-    try {
-      const response = await fetch("/api/gallery/upload", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${password}`,
-        },
-        body: formData,
-      });
+      const result = await uploadImage(formData);
 
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || "Erreur lors de l'upload");
+      if (result.success) {
+        setFile({
+          ...file,
+          status: "success",
+          url: result.data.url,
+        });
+        toast.success("Image uploadée avec succès", {
+          description: `L'image "${title}" apparaîtra dans la galerie dans ~60 secondes`,
+        });
+      } else {
+        setFile({
+          ...file,
+          status: "error",
+          error: result.error,
+        });
+        toast.error("Erreur lors de l'upload", {
+          description: result.error,
+        });
       }
-
-      setFile({
-        ...file,
-        status: "success",
-        url: data.url,
-      });
-    } catch (error) {
-      setFile({
-        ...file,
-        status: "error",
-        error: error instanceof Error ? error.message : "Erreur inconnue",
-      });
-    } finally {
-      setIsUploading(false);
-    }
+    });
   };
 
   const reset = () => {
@@ -287,7 +283,7 @@ export function GalleryUpload({ password }: GalleryUploadProps) {
             <Select
               value={category}
               onValueChange={setCategory}
-              disabled={isUploading}
+              disabled={isPending}
             >
               <SelectTrigger id="category-select">
                 <SelectValue placeholder="Choisir une catégorie" />
@@ -323,7 +319,7 @@ export function GalleryUpload({ password }: GalleryUploadProps) {
             accept="image/*"
             onChange={handleFileSelect}
             className="hidden"
-            disabled={isUploading}
+            disabled={isPending}
           />
           <Upload
             className="mx-auto mb-4 h-12 w-12 text-gray-400 dark:text-gray-500"
@@ -471,20 +467,23 @@ export function GalleryUpload({ password }: GalleryUploadProps) {
           <div className="flex gap-3">
             {file.status === "pending" && (
               <>
-                <Button
-                  onClick={handleUpload}
-                  disabled={!canUpload || isUploading}
-                  className="flex-1 bg-gray-900 text-white hover:bg-gray-800 disabled:opacity-50 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-200"
-                >
-                  {isUploading ? "Upload en cours..." : "Uploader l'image"}
-                </Button>
-                <Button
-                  onClick={removeFile}
-                  disabled={isUploading}
-                  variant="outline"
-                >
-                  Annuler
-                </Button>
+              <Button
+                onClick={handleUpload}
+                disabled={!canUpload || isPending}
+                className="flex-1 bg-gray-900 text-white hover:bg-gray-800 disabled:opacity-50 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-200"
+                aria-busy={isPending}
+                aria-label={isPending ? "Upload en cours..." : "Uploader l'image"}
+              >
+                {isPending ? "Upload en cours..." : "Uploader l'image"}
+              </Button>
+              <Button
+                onClick={removeFile}
+                disabled={isPending}
+                variant="outline"
+                aria-label="Annuler l'upload"
+              >
+                Annuler
+              </Button>
               </>
             )}
             {(file.status === "success" || file.status === "error") && (

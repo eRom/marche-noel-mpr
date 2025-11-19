@@ -5,7 +5,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Check, Edit2, Trash2, X } from "lucide-react";
 import Image from "next/image";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, useTransition } from "react";
+import { listImages, deleteImage, renameImage } from "@/actions/gallery";
+import { toast } from "sonner";
 
 interface ImageInfo {
   id: string;
@@ -28,24 +30,19 @@ export function GalleryManager({ password }: GalleryManagerProps) {
   const [editingTitle, setEditingTitle] = useState<string>("");
   const [deletingId, setDeletingId] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const [isPending, startTransition] = useTransition();
 
   const loadImages = useCallback(async () => {
     try {
       setLoading(true);
       setError("");
 
-      const response = await fetch("/api/gallery/list", {
-        headers: {
-          Authorization: `Bearer ${password}`,
-        },
-      });
+      const result = await listImages(password);
 
-      const data = await response.json();
-
-      if (response.ok && data.success) {
-        setImages(data.images);
+      if (result.success) {
+        setImages(result.data);
       } else {
-        setError(data.error || "Erreur lors du chargement");
+        setError(result.error);
       }
     } catch {
       setError("Erreur de connexion");
@@ -65,36 +62,26 @@ export function GalleryManager({ password }: GalleryManagerProps) {
     }
   }, [editingId]);
 
-  const handleDelete = async (imageId: string, pathname: string) => {
+  const handleDelete = (imageId: string, pathname: string) => {
     if (!confirm("Êtes-vous sûr de vouloir supprimer cette image ?")) {
       return;
     }
 
-    try {
-      setDeletingId(imageId);
+    setDeletingId(imageId);
 
-      const response = await fetch("/api/gallery/delete", {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${password}`,
-        },
-        body: JSON.stringify({ pathname }),
-      });
+    startTransition(async () => {
+      const result = await deleteImage(password, pathname);
 
-      const data = await response.json();
-
-      if (response.ok && data.success) {
-        // Recharger la liste
+      if (result.success) {
         await loadImages();
+        toast.success("Image supprimée avec succès");
       } else {
-        alert(data.error || "Erreur lors de la suppression");
+        toast.error("Erreur lors de la suppression", {
+          description: result.error,
+        });
       }
-    } catch {
-      alert("Erreur de connexion");
-    } finally {
       setDeletingId(null);
-    }
+    });
   };
 
   const handleRenameStart = (image: ImageInfo) => {
@@ -107,34 +94,25 @@ export function GalleryManager({ password }: GalleryManagerProps) {
     setEditingTitle("");
   };
 
-  const handleRenameSave = async (pathname: string) => {
+  const handleRenameSave = (pathname: string) => {
     if (!editingTitle.trim()) {
       return;
     }
 
-    try {
-      const response = await fetch("/api/gallery/rename", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${password}`,
-        },
-        body: JSON.stringify({ pathname, newTitle: editingTitle }),
-      });
+    startTransition(async () => {
+      const result = await renameImage(password, pathname, editingTitle.trim());
 
-      const data = await response.json();
-
-      if (response.ok && data.success) {
-        // Recharger la liste
+      if (result.success) {
         await loadImages();
         setEditingId(null);
         setEditingTitle("");
+        toast.success("Image renommée avec succès");
       } else {
-        alert(data.error || "Erreur lors du renommage");
+        toast.error("Erreur lors du renommage", {
+          description: result.error,
+        });
       }
-    } catch {
-      alert("Erreur de connexion");
-    }
+    });
   };
 
   if (loading) {
@@ -182,7 +160,12 @@ export function GalleryManager({ password }: GalleryManagerProps) {
             {images.length > 1 ? "s" : ""}
           </p>
         </div>
-        <Button onClick={loadImages} variant="outline" disabled={loading}>
+        <Button 
+          onClick={loadImages} 
+          variant="outline" 
+          disabled={loading || isPending}
+          aria-label="Actualiser la liste des images"
+        >
           Actualiser
         </Button>
       </div>
@@ -232,13 +215,16 @@ export function GalleryManager({ password }: GalleryManagerProps) {
                       onChange={(e) => setEditingTitle(e.target.value)}
                       placeholder="Nouveau titre"
                       className="text-sm"
+                      aria-label="Nouveau titre de l'image"
+                      maxLength={50}
                     />
                     <div className="flex gap-2">
                       <Button
                         onClick={() => handleRenameSave(image.id)}
                         size="sm"
                         className="h-8 flex-1 bg-gray-900 text-white hover:bg-gray-800 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-200"
-                        disabled={!editingTitle.trim() || isDeleting}
+                        disabled={!editingTitle.trim() || isDeleting || isPending}
+                        aria-label="Enregistrer le nouveau titre"
                       >
                         <Check size={14} />
                       </Button>
@@ -247,7 +233,8 @@ export function GalleryManager({ password }: GalleryManagerProps) {
                         size="sm"
                         variant="outline"
                         className="h-8 flex-1"
-                        disabled={isDeleting}
+                        disabled={isDeleting || isPending}
+                        aria-label="Annuler le renommage"
                       >
                         <X size={14} />
                       </Button>
@@ -281,7 +268,8 @@ export function GalleryManager({ password }: GalleryManagerProps) {
                       variant="outline"
                       size="sm"
                       className="h-8 flex-1 text-xs"
-                      disabled={isDeleting}
+                      disabled={isDeleting || isPending}
+                      aria-label={`Renommer ${image.titleSlug}`}
                     >
                       <Edit2 size={14} className="mr-1" />
                       Renommer
@@ -291,7 +279,9 @@ export function GalleryManager({ password }: GalleryManagerProps) {
                       variant="destructive"
                       size="sm"
                       className="h-8 flex-1 text-xs"
-                      disabled={isDeleting}
+                      disabled={isDeleting || isPending}
+                      aria-label={`Supprimer ${image.titleSlug}`}
+                      aria-busy={isDeleting}
                     >
                       <Trash2 size={14} className="mr-1" />
                       Supprimer
