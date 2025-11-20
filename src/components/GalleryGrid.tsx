@@ -1,5 +1,6 @@
 "use client";
 
+import { getCategoryColor, getCategoryLabel } from "@/config/gallery";
 import type { GalleryImage } from "@/types/gallery";
 import Image from "next/image";
 import { useState } from "react";
@@ -8,16 +9,6 @@ import { Lightbox } from "./Lightbox";
 interface GalleryGridProps {
   images: GalleryImage[];
 }
-
-// Badge couleur par catégorie
-const categoryColors: Record<GalleryImage["category"], string> = {
-  stands: "bg-red-600",
-  animations: "bg-green-600",
-  visiteurs: "bg-blue-600",
-  ambiance: "bg-purple-600",
-  MPR: "bg-yellow-600",
-  IA: "bg-pink-600",
-};
 
 export function GalleryGrid({ images }: GalleryGridProps) {
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
@@ -72,9 +63,11 @@ export function GalleryGrid({ images }: GalleryGridProps) {
 
               {/* Badge catégorie */}
               <span
-                className={`absolute top-3 right-3 ${categoryColors[image.category]} rounded-full px-3 py-1 text-xs text-white capitalize shadow-lg`}
+                className={`absolute top-3 right-3 ${getCategoryColor(
+                  image.category
+                )} rounded-full px-3 py-1 text-xs text-white capitalize shadow-lg`}
               >
-                {image.category}
+                {getCategoryLabel(image.category)}
               </span>
 
               {/* Overlay info */}

@@ -1,3 +1,4 @@
+import { VALID_CATEGORIES, type GalleryCategory } from "@/config/gallery";
 import { put } from "@vercel/blob";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -67,15 +68,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Validation de la catégorie
-    const validCategories = [
-      "stands",
-      "animations",
-      "visiteurs",
-      "ambiance",
-      "MPR",
-      "IA",
-    ];
-    if (!category || !validCategories.includes(category)) {
+    if (!category || !VALID_CATEGORIES.includes(category as GalleryCategory)) {
       return NextResponse.json(
         { error: "Catégorie invalide" },
         { status: 400 }

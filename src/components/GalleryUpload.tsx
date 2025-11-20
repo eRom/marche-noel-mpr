@@ -11,6 +11,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { GALLERY_CATEGORIES } from "@/config/gallery";
 import { AlertCircle, CheckCircle, Upload, X } from "lucide-react";
 import Image from "next/image";
 import { useCallback, useState, type ChangeEvent, type DragEvent } from "react";
@@ -27,14 +28,10 @@ interface GalleryUploadProps {
   password: string;
 }
 
-const categories = [
-  { value: "stands", label: "Stands" },
-  { value: "animations", label: "Animations" },
-  { value: "visiteurs", label: "Visiteurs" },
-  { value: "ambiance", label: "Ambiance" },
-  { value: "MPR", label: "MPR" },
-  { value: "IA", label: "IA" },
-];
+const categories = Object.entries(GALLERY_CATEGORIES).map(([key, value]) => ({
+  value: key,
+  label: value.label,
+}));
 
 export function GalleryUpload({ password }: GalleryUploadProps) {
   const [file, setFile] = useState<UploadFile | null>(null);

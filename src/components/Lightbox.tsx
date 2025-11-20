@@ -1,19 +1,11 @@
 "use client";
 
-import type { GalleryImage, LightboxProps } from "@/types/gallery";
+import { getCategoryColor, getCategoryLabel } from "@/config/gallery";
+import type { LightboxProps } from "@/types/gallery";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, Share2, X } from "lucide-react";
 import Image from "next/image";
 import { useEffect } from "react";
-
-const categoryColors: Record<GalleryImage["category"], string> = {
-  stands: "bg-red-600",
-  animations: "bg-green-600",
-  visiteurs: "bg-blue-600",
-  ambiance: "bg-purple-600",
-  MPR: "bg-yellow-600",
-  IA: "bg-pink-600",
-};
 
 export function Lightbox({
   image,
@@ -117,9 +109,11 @@ export function Lightbox({
               <div className="mb-3 flex items-center gap-4">
                 <p className="text-sm opacity-80">{image.date}</p>
                 <span
-                  className={`${categoryColors[image.category]} rounded-full px-2 py-1 text-xs capitalize`}
+                  className={`${getCategoryColor(
+                    image.category
+                  )} rounded-full px-2 py-1 text-xs capitalize`}
                 >
-                  {image.category}
+                  {getCategoryLabel(image.category)}
                 </span>
               </div>
 
