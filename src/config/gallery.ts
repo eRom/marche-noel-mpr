@@ -5,6 +5,7 @@ export const GALLERY_CATEGORIES = {
   ambiance: { label: "Ambiance", color: "bg-purple-600" },
   MPR: { label: "MPR", color: "bg-yellow-600" },
   IA: { label: "IA", color: "bg-pink-600" },
+  produits: { label: "Produits", color: "bg-orange-600" },
 } as const;
 
 export type GalleryCategory = keyof typeof GALLERY_CATEGORIES;
