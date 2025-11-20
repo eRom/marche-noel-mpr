@@ -1,8 +1,10 @@
+import { GalleryCategory } from "@/config/gallery";
+
 export interface GalleryImage {
   id: string;
   url: string;
   title: string;
-  category: "stands" | "animations" | "visiteurs" | "ambiance" | "MPR" | "IA";
+  category: GalleryCategory;
   date: string;
   alt: string;
 }

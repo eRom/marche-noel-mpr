@@ -1,3 +1,4 @@
+import { VALID_CATEGORIES, type GalleryCategory } from "@/config/gallery";
 import type { GalleryImage } from "@/types/gallery";
 import { list } from "@vercel/blob";
 
@@ -31,8 +32,15 @@ export async function getGalleryImages(): Promise<GalleryImage[]> {
       .map((blob) => {
         // Parser metadata depuis pathname : gallery/category/filename.ext
         const parts = blob.pathname.split("/");
-        const category = parts[1] as GalleryImage["category"];
+        const rawCategory = parts[1];
         const filenameWithExt = parts[2] || "";
+
+        // Valider la catégorie, fallback sur "ambiance"
+        const category: GalleryCategory = VALID_CATEGORIES.includes(
+          rawCategory as GalleryCategory
+        )
+          ? (rawCategory as GalleryCategory)
+          : "ambiance";
 
         // Extraire le titre depuis le filename
         let title = "Photo";
@@ -76,7 +84,7 @@ export async function getGalleryImages(): Promise<GalleryImage[]> {
           id: blob.pathname,
           url: blob.url,
           title: title,
-          category: category || "ambiance",
+          category: category,
           date: new Date(blob.uploadedAt).toLocaleDateString("fr-FR", {
             day: "numeric",
             month: "long",

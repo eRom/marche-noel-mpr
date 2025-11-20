@@ -146,8 +146,9 @@ export default function RootLayout({
           <SnowflakeVictory />
           <ThemeProvider
             attribute="class"
-            defaultTheme="light"
+            defaultTheme="system"
             enableSystem
+            storageKey="theme"
             disableTransitionOnChange
           >
             {children}
