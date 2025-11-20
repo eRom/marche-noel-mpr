@@ -10,27 +10,12 @@ import {
   Users,
   Youtube,
 } from "lucide-react";
-import dynamic from "next/dynamic";
 import Image from "next/image";
 
-// Lazy load non-critical components
-const Header = dynamic(() => import("@/components/Header"), {
-  loading: () => <div className="bg-background h-16" />,
-});
-
-const Footer = dynamic(() => import("@/components/Footer"), {
-  loading: () => <div className="bg-muted h-32" />,
-});
-
-const AnimatedSection = dynamic(() => import("@/components/AnimatedSection"), {
-  loading: () => <div />,
-  ssr: true,
-});
-
-const TeamApraih = dynamic(() => import("@/components/TeamApraih"), {
-  loading: () => <div />,
-  ssr: true,
-});
+import AnimatedSection from "@/components/AnimatedSection";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import TeamApraih from "@/components/TeamApraih";
 
 export const metadata = {
   title: "À propos - Marché de Noël MPR Nantes 2025",
