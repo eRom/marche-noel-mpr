@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   /* Base colors - Light theme */
   --background: #ffffff;
@@ -106,59 +108,6 @@
   --font-mono: var(--font-geist-mono);
 }
 
-/* Dark theme colors */
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* Base colors - Dark theme */
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    --muted: #1f2937;
-    --muted-foreground: #9ca3af;
-    --popover: #1f2937;
-    --popover-foreground: #f9fafb;
-    --card: #1f2937;
-    --card-foreground: #f9fafb;
-    --border: #374151;
-    --input: #374151;
-    --ring: #ef4444;
-
-    /* Christmas theme colors - Dark theme adjustments */
-    --noel-red: #ef4444;
-    --noel-red-light: #f87171;
-    --noel-red-dark: #dc2626;
-    --noel-green: #22c55e;
-    --noel-green-light: #4ade80;
-    --noel-green-dark: #16a34a;
-    --noel-gold: #facc15;
-    --noel-gold-light: #fde047;
-    --noel-gold-dark: #eab308;
-    --noel-snow: #1e293b;
-    --noel-snow-light: #334155;
-    --noel-snow-dark: #475569;
-
-    /* Semantic colors - Dark theme adjustments */
-    --primary: var(--noel-red);
-    --primary-foreground: #ffffff;
-    --primary-light: var(--noel-red-light);
-    --primary-dark: var(--noel-red-dark);
-    --secondary: var(--noel-green);
-    --secondary-foreground: #ffffff;
-    --secondary-light: var(--noel-green-light);
-    --secondary-dark: var(--noel-green-dark);
-    --accent: var(--noel-gold);
-    --accent-foreground: #171717;
-    --accent-light: var(--noel-gold-light);
-    --accent-dark: var(--noel-gold-dark);
-    --destructive: #f87171;
-    --destructive-foreground: #ffffff;
-    --warning: #fbbf24;
-    --warning-foreground: #ffffff;
-    --success: #34d399;
-    --success-foreground: #ffffff;
-    --info: #60a5fa;
-    --info-foreground: #ffffff;
-  }
-}
 
 /* Manual dark mode toggle styles */
 .dark {
