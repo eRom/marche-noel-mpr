@@ -1,4 +1,3 @@
-import CalendarReminder from "@/components/CalendarReminder";
 import MagicSnowflake from "@/components/MagicSnowflake";
 import MapSection from "@/components/MapSection";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -109,9 +108,6 @@ export default function Programme() {
               <p className="text-muted-foreground mx-auto mb-6 max-w-2xl text-xl">
                 Découvrez un programme riche en animations et en activités.
               </p>
-              <div className="mt-6 flex justify-center">
-                <CalendarReminder variant="default" size="default" />
-              </div>
             </AnimatedSection>
           </div>
         </section>
