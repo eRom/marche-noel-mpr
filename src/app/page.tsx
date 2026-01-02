@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Image from "next/image";
 
 export default function Home() {
@@ -25,12 +24,6 @@ export default function Home() {
             L&apos;édition 2025 est terminée. Merci à tous pour votre
             participation !
           </p>
-          <Link
-            href="/2025"
-            className="text-primary font-medium hover:underline"
-          >
-            Voir les souvenirs de 2025
-          </Link>
         </div>
       </main>
     </div>
