@@ -1,6 +1,7 @@
 # Correction du mode Dark/Light
 
 ## What was done
+
 Correction du problème de basculement entre le mode clair et sombre (Light/Dark mode) qui ne s'appliquait pas correctement.
 
 ## Key decisions and changes
@@ -22,6 +23,7 @@ Correction du problème de basculement entre le mode clair et sombre (Light/Dark
 ## Code examples
 
 ### globals.css
+
 ```css
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
@@ -36,6 +38,7 @@ Correction du problème de basculement entre le mode clair et sombre (Light/Dark
 ```
 
 ### ThemeToggle.tsx
+
 ```tsx
 const handleToggle = () => {
   setTheme(isDark ? "light" : "dark");
@@ -43,6 +46,6 @@ const handleToggle = () => {
 ```
 
 ## Next steps
+
 - Vérifier visuellement que le basculement fonctionne dans les deux sens, indépendamment de la préférence système.
 - S'assurer que les utilitaires Tailwind `dark:` s'appliquent correctement.
-

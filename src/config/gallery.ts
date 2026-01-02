@@ -10,7 +10,9 @@ export const GALLERY_CATEGORIES = {
 
 export type GalleryCategory = keyof typeof GALLERY_CATEGORIES;
 
-export const VALID_CATEGORIES = Object.keys(GALLERY_CATEGORIES) as GalleryCategory[];
+export const VALID_CATEGORIES = Object.keys(
+  GALLERY_CATEGORIES
+) as GalleryCategory[];
 
 export const getCategoryLabel = (category: string): string => {
   const cat = GALLERY_CATEGORIES[category as GalleryCategory];
@@ -21,4 +23,3 @@ export const getCategoryColor = (category: string): string => {
   const cat = GALLERY_CATEGORIES[category as GalleryCategory];
   return cat ? cat.color : "bg-gray-600";
 };
-
