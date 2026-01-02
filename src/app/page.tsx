@@ -1,20 +1,8 @@
 import Link from "next/link";
-import dynamic from "next/dynamic";
-
-// Lazy load all non-critical components
-const Header = dynamic(() => import("@/components/Header"), {
-  loading: () => <div className="bg-background h-16" />,
-});
-
-const Footer = dynamic(() => import("@/components/Footer"), {
-  loading: () => <div className="bg-muted h-32" />,
-});
 
 export default function Home() {
   return (
     <div className="flex min-h-screen flex-col bg-white">
-      <Header />
-
       <main
         id="main-content"
         role="main"
@@ -36,8 +24,6 @@ export default function Home() {
           </Link>
         </div>
       </main>
-
-      <Footer />
     </div>
   );
 }
