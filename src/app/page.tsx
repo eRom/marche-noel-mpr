@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -9,6 +10,14 @@ export default function Home() {
         className="flex flex-grow items-center justify-center"
       >
         <div className="p-8 text-center">
+          <Image
+            src="/souvenir-2025.webp"
+            alt="Souvenir du Marché de Noël 2025"
+            width={1200}
+            height={655}
+            className="mx-auto mb-8 h-auto w-full max-w-2xl rounded-lg shadow-lg"
+            priority
+          />
           <h1 className="mb-4 text-4xl font-bold text-gray-900">
             Marché de Noël terminé
           </h1>
